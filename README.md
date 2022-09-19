@@ -1,1 +1,1 @@
-Desarrollado con [Next.js](https://nextjs.org/)
+Desarrollado con Astro
