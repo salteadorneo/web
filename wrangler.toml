@@ -1,6 +1,0 @@
-name = "web"
-main = "dist/_worker.js" # The adapter will output the worker in this location
-compatibility_date = "2022-05-10"
-
-[site]
-bucket = './dist' # The adapter will output static assets in this folder
