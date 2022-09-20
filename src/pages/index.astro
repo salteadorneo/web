@@ -3,43 +3,30 @@ import Layout from "../layouts/Layout.astro";
 import NavItem from "../components/NavItem.astro";
 import Education from "../components/Education.astro";
 import Work from "../components/Work.astro";
-import Form from "../components/Form.astro";
+import Form from "../components/Form";
+import ButtonTheme from "../components/ButtonTheme";
 
-import hero from "../assets/rabbit-laptop.png";
+import hero from "../assets/hero.png";
 
 import sotpro from "../assets/sotpro.jpg";
 import ctrli from "../assets/ctrl-i.jpg";
 import juliabescos from "../assets/juliabescos.png";
-// import stepslife from "../assets/stepslife.png";
+import stepslife from "../assets/stepslife.png";
 ---
 
 <Layout title="salteadorneo.dev">
   <header
-    class="sticky top-0 z-50 bg-white dark:bg-gray-900 dark:text-gray-200"
+    class="sticky top-0 z-50 bg-white dark:bg-[#121819] dark:text-gray-200"
   >
     <nav class="flex items-center justify-between flex-wrap py-2 px-10">
       <div class="flex items-center flex-shrink-0 mr-10">
         <a
           href="/"
-          class="text-xl tracking-tight font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-gray-600 to-[#121819]"
+          class="text-xl tracking-tight font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-gray-600 to-[#121819] dark:from-gray-200 dark:to-gray-300"
         >
           salteadorneo
         </a>
       </div>
-      {
-        /* <div class="block lg:hidden">
-				<button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
-				  <svg
-					class="fill-current h-3 w-3"
-					viewBox="0 0 20 20"
-					xmlns="http://www.w3.org/2000/svg"
-				  >
-					<title>Menu</title>
-					<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-				  </svg>
-				</button>
-			  </div> */
-      }
       <div class="w-full flex-grow hidden sm:flex sm:items-center sm:w-auto">
         <div class="text-sm flex-grow">
           <NavItem href="#educacion" title="Educación" />
@@ -47,22 +34,7 @@ import juliabescos from "../assets/juliabescos.png";
           <!-- <NavItem href="#contacto" title="Contacto" /> -->
         </div>
         <div>
-          {
-            /* <button
-					id="theme-toggle"
-					data-tooltip-target="tooltip-toggle"
-					type="button"
-					class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
-					onClick={changeTheme}
-				  >
-					{theme == "light" ? (
-					  <span>Dark</span>
-					) : (
-					  <span>Light</span>
-					)}
-					<span class="sr-only">Toggle {theme} mode</span>
-				  </button> */
-          }
+          <ButtonTheme client:visible />
 
           <!-- <a
             href="cv-cristianadan.pdf"
@@ -76,23 +48,11 @@ import juliabescos from "../assets/juliabescos.png";
   </header>
   <main>
     <section class="mb-10">
-      <div class="relative overflow-hidden bg-[#121819] dark:bg-gray-600">
+      <div class="relative overflow-hidden bg-[#121819]">
         <div class="mx-auto max-w-6xl">
           <div
-            class="relative z-10 bg-[#121819] dark:bg-gray-600 pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32"
+            class="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32"
           >
-            {
-              /* <svg
-					  class="absolute inset-y-0 right-0 hidden h-full w-48 translate-x-1/2 transform text-white lg:block"
-					  fill="currentColor"
-					  viewBox="0 0 100 100"
-					  preserveAspectRatio="none"
-					  aria-hidden="true"
-					>
-					  <polygon points="50,0 100,0 50,100 0,100" />
-					</svg> */
-            }
-
             <div>
               <div class="relative px-4 pt-6 sm:px-6 lg:px-8"></div>
             </div>
@@ -104,12 +64,7 @@ import juliabescos from "../assets/juliabescos.png";
                 <h1
                   class="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl"
                 >
-                  {
-                    /* <span class="block">
-							salteadorneo
-						  </span> */
-                  }
-                  <span class="">Cristian Adán</span>
+                  <span>Cristian Adán</span>
                 </h1>
                 <p
                   class="mt-3 text-base text-white sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl lg:mx-0"
@@ -204,26 +159,20 @@ import juliabescos from "../assets/juliabescos.png";
           tags={["JS", "CSS", "API Directus"]}
           url="https://juliabescos.com/"
         />
-        {
-          /* <Work
-				  image={stepslife}
-				  title="StepsLife"
-				  description="Desarrollo de aplicación móvil para Android e iOS utilizando Ionic, Cordova y AngularJS.
-	
-				  Permite guardar mensajes, adjuntar todo tipo de archivos (que luego procesa, adapta y convierte para visualizarlos en la misma) e incluso el pago de la subscripción con compras In-App.
-				  
-				  El API está desarrollado con NodeJS sobre Google Cloud. Está conectado con un tercero para la sincronización de emails."
-				  tags={["AngularJS", "App", "NodeJS", "Google Cloud"]}
-				  url="https://twitter.com/stepslifeapp"
-				/> */
-        }
+        <Work
+          image={stepslife}
+          title="StepsLife"
+          description="Desarrollo de aplicación móvil para Android e iOS utilizando Ionic, Cordova y AngularJS. Permite guardar mensajes, adjuntar todo tipo de archivos (que luego procesa, adapta y convierte para visualizarlos en la misma) e incluso el pago de la subscripción con compras In-App. El API está desarrollado con NodeJS sobre Google Cloud. Está conectado con un tercero para la sincronización de emails."
+          tags={["AngularJS", "App", "NodeJS", "Google Cloud"]}
+          url="https://twitter.com/stepslifeapp"
+        />
       </div>
     </section>
-    <!-- <section id="contacto" class="mb-20 py-10 bg-[#121819]">
+    <section id="contacto" class="mb-20 py-10 bg-[#121819]">
       <div class="mx-auto max-w-xl">
-        <Form />
+        <Form client:visible />
       </div>
-    </section> -->
+    </section>
     <footer class="mb-5 text-sm text-center">
       <p>Hecho con las manitas, Astro y Tailwind</p>
     </footer>

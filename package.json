@@ -12,11 +12,14 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^1.0.2",
-    "@astrojs/tailwind": "^2.0.1",
     "astro": "^1.2.7",
+    "node-fetch": "^3.2.10",
+    "preact": "^10.11.0",
     "tailwindcss": "^3.1.8"
   },
   "devDependencies": {
+    "@astrojs/preact": "^1.1.0",
+    "@astrojs/tailwind": "^2.0.1",
     "wrangler": "^2.1.4"
   }
 }
