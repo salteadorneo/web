@@ -18,7 +18,7 @@ import stepslife from "../assets/stepslife.png";
   <header
     class="sticky top-0 z-50 bg-white dark:bg-[#121819] dark:text-gray-200"
   >
-    <nav class="flex items-center justify-between flex-wrap py-2 px-10">
+    <nav class="flex items-center justify-between flex-wrap py-3 px-4">
       <div class="flex items-center flex-shrink-0 mr-10">
         <a
           href="/"
@@ -29,24 +29,23 @@ import stepslife from "../assets/stepslife.png";
       </div>
       <div class="w-full flex-grow hidden sm:flex sm:items-center sm:w-auto">
         <div class="text-sm flex-grow">
-          <NavItem href="#educacion" title="Educación" />
+          <NavItem href="#formacion" title="Formación" />
           <NavItem href="#experiencia" title="Experiencia" />
-          <!-- <NavItem href="#contacto" title="Contacto" /> -->
+          <NavItem href="#contacto" title="Contacto" />
         </div>
         <div>
           <ButtonTheme client:visible />
-
-          <!-- <a
+          <a
             href="cv-cristianadan.pdf"
-            class="inline-block text-sm px-4 py-2 leading-none border rounded border-black hover:bg-[#121819] hover:text-white mt-4 lg:mt-0"
+            class="inline-block text-sm px-4 py-2 leading-none border rounded border-[#121819] hover:bg-[#121819] hover:text-white"
           >
             CV
-          </a> -->
+          </a>
         </div>
       </div>
     </nav>
   </header>
-  <main>
+  <main class="dark:bg-[#121819]">
     <section class="mb-10">
       <div class="relative overflow-hidden bg-[#121819]">
         <div class="mx-auto max-w-6xl">
@@ -105,14 +104,14 @@ import stepslife from "../assets/stepslife.png";
         </div>
       </div>
     </section>
-    <section id="educacion" class="mb-20 mx-auto max-w-6xl">
+    <section id="formacion" class="mb-20 mx-auto max-w-6xl px-4 2xl:px-0">
       <h2
-        class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl md:text-4xl mb-10"
+        class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-200 sm:text-3xl md:text-4xl mb-10"
       >
-        Educación
+        Formación
       </h2>
 
-      <ol class="relative border-l border-gray-200 dark:border-gray-700">
+      <ol class="relative border-l border-gray-200 dark:border-gray-400 ml-4">
         <Education
           years="Años 2010-2011"
           title="Experto en aplicaciones de dispositivos móviles"
@@ -130,40 +129,42 @@ import stepslife from "../assets/stepslife.png";
         />
       </ol>
     </section>
-    <section id="experiencia" class="mb-20 mx-auto max-w-6xl">
+    <section id="experiencia" class="mb-20 mx-auto max-w-6xl px-4 2xl:px-0">
       <h2
-        class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl md:text-4xl mb-10"
+        class="text-2xl font-bold tracking-tight dark:text-gray-200 sm:text-3xl md:text-4xl mb-10"
       >
         Experiencia
       </h2>
 
-      <div class="grid grid-cols-3 gap-4 justify-center">
-        <Work
-          image={sotpro}
-          title="SOTPRO"
-          description="Una solución completa desarrollada en Wordpress con acceso total al cliente para actualizar los contenidos."
-          tags={["PHP", "Wordpress", "CSS"]}
-          url="https://sotpro.es/"
-        />
+      <div
+        class="grid grid-cols-1 gap-4 justify-center sm:grid-cols-2 lg:grid-cols-3"
+      >
         <Work
           image={ctrli}
           title="CTRL+i"
-          description="El escaparate perfecto para una tienda en Guadalajara."
-          tags={["HTML", "JS", "CSS"]}
+          description="Web personalizada de una tienda de Guadalajara."
+          tags={["HTML", "JS", "SASS"]}
           url="https://ctrl-i.es/"
         />
         <Work
           image={juliabescos}
           title="Julia Bescos"
-          description="Portfolio de esta diseñadora gráfica que cuida todos los detalles."
-          tags={["JS", "CSS", "API Directus"]}
+          description="Portfolio personalizado con un Headless CMS."
+          tags={["JS", "CSS", "Cockpit"]}
           url="https://juliabescos.com/"
+        />
+        <Work
+          image={sotpro}
+          title="SOTPRO"
+          description="Web completa sobre Wordpress."
+          tags={["PHP", "Wordpress", "CSS"]}
+          url="https://sotpro.es/"
         />
         <Work
           image={stepslife}
           title="StepsLife"
-          description="Desarrollo de aplicación móvil para Android e iOS utilizando Ionic, Cordova y AngularJS. Permite guardar mensajes, adjuntar todo tipo de archivos (que luego procesa, adapta y convierte para visualizarlos en la misma) e incluso el pago de la subscripción con compras In-App. El API está desarrollado con NodeJS sobre Google Cloud. Está conectado con un tercero para la sincronización de emails."
-          tags={["AngularJS", "App", "NodeJS", "Google Cloud"]}
+          description="Desarrollo APP híbrida de Android / iOS con Ionic y API con Node.js."
+          tags={["Angular", "Iconic", "Cordova", "Node.js", "GCP"]}
           url="https://twitter.com/stepslifeapp"
         />
       </div>
@@ -173,7 +174,7 @@ import stepslife from "../assets/stepslife.png";
         <Form client:visible />
       </div>
     </section>
-    <footer class="mb-5 text-sm text-center">
+    <footer class="pb-5 text-sm text-center dark:text-gray-200">
       <p>Hecho con las manitas, Astro y Tailwind</p>
     </footer>
   </main>

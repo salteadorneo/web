@@ -11,19 +11,24 @@ const { image, title, description, tags = [], url } = Astro.props;
 ---
 
 <article
-  class="rounded overflow-hidden shadow-lg bg-white"
+  class="rounded overflow-hidden shadow-lg bg-white dark:bg-gray-700"
   data-animate-type="motion-safe:animate-fadeIn"
 >
-  <img class="w-full max-h-40 object-cover" src={image} alt="" loading="lazy" />
+  <img
+    class="w-full max-h-40 object-cover"
+    src={image}
+    alt={title}
+    loading="lazy"
+  />
   <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">
+    <div class="font-bold text-xl mb-2 dark:text-gray-200">
       <a href={url} target="_blank">{title}</a>
     </div>
-    <p class="mb-3 text-gray-700 text-base">{description}</p>
+    <p class="mb-3 text-gray-700 dark:text-gray-200 text-base">{description}</p>
     <a
       href={url}
       target="_blank"
-      class="inline-flex items-center text-blue-600 dark:text-black hover:underline"
+      class="inline-flex items-center text-blue-600 dark:text-[#121819] hover:underline"
     >
       Visitar
       <svg
