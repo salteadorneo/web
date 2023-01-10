@@ -1,12 +1,17 @@
 ---
 const { duration, title, centre, description } = Astro.props;
+
+const parseDescription = (description: string) => {
+    // replace text in ** with <strong>
+    return description.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+};
 ---
 
 <article>
-    <span>{duration}</span>
+    <span class="back">{duration}</span>
     <h3 class="title">{title}</h3>
     <p class="centre">{centre}</p>
-    {description && <p>{description}</p>}
+    {description && <p set:html={parseDescription(description)} />}
 </article>
 
 <style>
@@ -17,7 +22,7 @@ const { duration, title, centre, description } = Astro.props;
         margin: 0 auto 30px;
     }
 
-    span {
+    .back {
         font-size: 70px;
         line-height: 70px;
         font-weight: 900;
