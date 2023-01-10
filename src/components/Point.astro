@@ -1,0 +1,44 @@
+---
+const { duration, title, centre, description } = Astro.props;
+---
+
+<article>
+    <span>{duration}</span>
+    <h3 class="title">{title}</h3>
+    <p class="centre">{centre}</p>
+    {description && <p>{description}</p>}
+</article>
+
+<style>
+    article {
+        display: flex;
+        flex-direction: column;
+        max-width: 300px;
+        margin: 0 auto 30px;
+    }
+
+    span {
+        font-size: 70px;
+        line-height: 70px;
+        font-weight: 900;
+        white-space: nowrap;
+        opacity: 0.2;
+    }
+
+    .title {
+        font-size: 2em;
+        line-height: 1em;
+        font-weight: 900;
+        margin: -30px 0 0;
+    }
+
+    p {
+        margin: 10px 0 0;
+    }
+
+    .centre {
+        font-size: 1.2em;
+        line-height: 1em;
+        font-weight: 100;
+    }
+</style>
