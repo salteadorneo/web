@@ -3,6 +3,7 @@ import Point from "./Point.astro";
 ---
 
 <section class="projects">
+    <h3 class="title">Proyectos</h3>
     <Point
         duration="Vue"
         title="Pokemodle"
@@ -62,5 +63,12 @@ import Point from "./Point.astro";
         max-width: 900px;
         padding: 0 24px;
         margin: 80px auto;
+    }
+
+    .title {
+        grid-column: 1 / -1;
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 100;
     }
 </style>

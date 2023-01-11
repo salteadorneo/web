@@ -46,7 +46,7 @@ import Linkedin from "./icons/Linkedin.astro";
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 50vh;
+        height: 30vh;
     }
 
     .text-bg {
@@ -96,11 +96,23 @@ import Linkedin from "./icons/Linkedin.astro";
         color: var(--color-primary);
     }
 
+    @media (max-width: 480px) {
+        nav {
+            gap: 16px;
+        }
+    }
+
     .hero {
         position: relative;
         z-index: 1;
         text-align: center;
         color: white;
+    }
+
+    @media (max-width: 550px) {
+        .hero {
+            font-size: 0.8em;
+        }
     }
 
     .title {
