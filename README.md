@@ -1,1 +1,1 @@
-![img](https://github.com/salteadorneo/web/tree/main/public/thumbnail.png)
+![img](https://github.com/salteadorneo/web/raw/main/public/thumbnail.png)
