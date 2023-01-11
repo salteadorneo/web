@@ -1,0 +1,66 @@
+---
+import Point from "./Point.astro";
+---
+
+<section class="projects">
+    <Point
+        duration="Vue"
+        title="Pokemodle"
+        subtitle="pokemodle.salteadorneo.dev"
+        url="https://pokemodle.salteadorneo.dev"
+        description="El juego diario de adivinar el Pokémon oculto. Desarrollado con **Vue.js**."
+    />
+    <Point
+        duration="React"
+        title="PlayJS"
+        subtitle="playjs.dev"
+        url="https://playjs.dev"
+        description="Un playground para probar código JavaScript. Desarrollado con **Vite** y **React**."
+    />
+    <Point
+        duration="Deno"
+        title="Blog"
+        subtitle="neoblog.es"
+        url="https://neoblog.es"
+        description="Mi blog desarrollado con **Deno**. Diseño minimalista y artículos directos."
+    />
+    <Point
+        duration="React"
+        title="Menyled"
+        subtitle="menyled.com"
+        url="https://www.menyled.com"
+        description="Web corporativa con catálogo productos actualizada en tiempo real. Desarrollado con **Vite** y **React**."
+    />
+    <Point
+        duration="JS"
+        title="Porto Alegría"
+        subtitle="portoalegria.org"
+        url="https://portoalegria.org"
+        description="Potente batucada de Madrid con fuerza. Desarrollado con **Vite** y **React**."
+    />
+    <Point
+        duration="JS"
+        title="CTRL+i"
+        subtitle="ctrl-i.es"
+        url="https://ctrl-i.es"
+        description="El escaparate perfecto para esta tienda física de Guadalajara. Desarrollado con **JavaScript**."
+    />
+    <Point
+        duration="Vue"
+        title="Julia Bescos"
+        subtitle="juliabescos.com"
+        url="https://juliabescos.com"
+        description="Portfolio de la diseñadora gráfica que cuida todos los detalles. Desarrollado con **Vue.js**."
+    />
+</section>
+
+<style>
+    .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 50px;
+        max-width: 900px;
+        padding: 0 24px;
+        margin: 80px auto;
+    }
+</style>

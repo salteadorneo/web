@@ -1,32 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
-import Project from "../components/Project.astro";
-import Footer from "../components/Footer.astro";
+import Projects from "../components/Projects.astro";
 import Roadmap from "../components/Roadmap.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout title="salteadorneo.dev | Cristian Adán">
-    <Header />
-    <main>
-        <!-- <section>
-			<h2>Proyectos</h2>
-			<Project
-				title="SOTPRO"
-				description="Una solución completa desarrollada en Wordpress con acceso total al cliente para actualizar los contenidos."
-			/>
-			<Project
-				title="CTRL+i"
-				description="El escaparate perfecto para la tienda física de Guadalajara."
-			/>
-			<Project
-				title="Julia Bescos"
-				description="Portfolio de esta diseñadora gráfica que cuida todos los detalles."
-			/>
-		</section> -->
+	<Header />
+	<main>
+		<Projects />
+		<Roadmap />
+	</main>
 
-        <Roadmap />
-    </main>
-
-    <Footer />
+	<Footer />
 </Layout>
