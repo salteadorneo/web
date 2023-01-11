@@ -9,7 +9,7 @@ import Point from "./Point.astro";
             <Point
                 duration="2007-2023"
                 title="Desarrollador Full Stack"
-                centre="Doers DF"
+                subtitle="Doers DF"
                 description="Más de 15 años creando proyectos como la web de **Mahou San Miguel** y **Greenpeace España**."
             />
         </div>
@@ -18,17 +18,17 @@ import Point from "./Point.astro";
             <Point
                 duration="2010-2011"
                 title="Desarrollo apps móviles iOS y Android"
-                centre="UNED"
+                subtitle="UNED"
             />
             <Point
                 duration="2005-2007"
                 title="FP - Explotación de Sistemas Informáticos"
-                centre="IES Luis Braille"
+                subtitle="IES Luis Braille"
             />
             <Point
                 duration="2002-2004"
                 title="Programación orientada a objectos Visual Basic / C++"
-                centre="Cyberdrive"
+                subtitle="Cyberdrive"
             />
         </div>
     </div>
@@ -43,11 +43,12 @@ import Point from "./Point.astro";
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        gap: 50px;
         max-width: 800px;
         margin: 0 auto;
     }
 
-    @media (max-width: 1180px) {
+    @media (max-width: 900px) {
         .cols {
             flex-direction: column;
             align-items: flex-start;
