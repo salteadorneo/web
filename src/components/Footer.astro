@@ -1,0 +1,51 @@
+---
+import Email from "./icons/Email.astro";
+import Github from "./icons/Github.astro";
+
+import { version } from "../../package.json";
+---
+
+<footer>
+    <p>
+        <a href="mailto:hola@salteadorneo.dev" title="Contactar por email">
+            <Email />
+            hola@salteadorneo.dev</a
+        >
+        <a
+            href="https://github.com/salteadorneo/web"
+            target="_blank"
+            title="Código abierto"
+        >
+            <Github /> salteadorneo/web
+        </a>
+        <span>Web desarrollada con <strong>Astro</strong></span>
+        <span>v.{version}</span>
+    </p>
+
+    <style>
+        footer {
+            padding: 30px 0;
+        }
+
+        footer p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 550px) {
+            footer p {
+                flex-direction: column;
+            }
+        }
+
+        footer a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+    </style>
+</footer>

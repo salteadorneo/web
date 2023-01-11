@@ -7,13 +7,16 @@ const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<meta name="description" content="Desarrollador fullstack" />
+		<script data-no-cookie async src="https://cdn.splitbee.io/sb.js"
+		></script>
 	</head>
 	<body>
 		<slot />
@@ -21,15 +24,49 @@ const { title } = Astro.props;
 </html>
 <style is:global>
 	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
+		--color-text: #e1e1e1;
+		--color-primary: #30a834;
+		--background: #121619;
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
 	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
+	body {
+		padding: 0;
+		margin: 0;
+		color: var(--color-text);
+		background: var(--background);
+	}
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p {
+		margin: 0;
+	}
+	a {
+		color: var(--color-text);
+	}
+	.color-primary {
+		color: var(--color-primary);
+	}
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+	::-webkit-scrollbar-track {
+		background: none;
+	}
+	::-webkit-scrollbar-thumb {
+		background: var(--color-text);
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: var(--color-primary);
+	}
+	nav a svg,
+	footer a svg {
+		width: 24px;
+		height: 24px;
 	}
 </style>

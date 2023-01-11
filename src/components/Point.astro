@@ -1,0 +1,88 @@
+---
+const { duration, title, subtitle, web, url, description } = Astro.props;
+
+const parseDescription = (description: string) => {
+    // replace text in ** with <strong>
+    return description.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+};
+---
+
+<article>
+    <span class="back">{duration || "_"}</span>
+    <h4 class="title">{title}</h4>
+    {
+        subtitle && (
+            <p class="subtitle">
+                {url ? (
+                    <a href={url} target="_blank">
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                data-name="link-Filled"
+                                d="m20.545 10.467-1.839 1.84a1 1 0 0 1-1.414-1.414l1.839-1.84a2.965 2.965 0 0 0 0-4.186 3.027 3.027 0 0 0-4.184 0l-3.36 3.36a2.046 2.046 0 0 0-.267.316 2.943 2.943 0 0 0 .268 3.87 1 1 0 0 1-1.415 1.414 4.915 4.915 0 0 1-.5-6.42 3.792 3.792 0 0 1 .5-.594l3.36-3.36a4.959 4.959 0 0 1 7.013 7.014Zm-8.132-.294a1 1 0 0 0 0 1.414 2.928 2.928 0 0 1 .688 3.1 2.827 2.827 0 0 1-.688 1.088l-3.36 3.36a3.027 3.027 0 0 1-4.184 0 2.965 2.965 0 0 1 0-4.186l1.839-1.84a1 1 0 1 0-1.414-1.414l-1.839 1.84a4.959 4.959 0 1 0 7.013 7.014l3.359-3.359a4.813 4.813 0 0 0 1.163-1.849 4.963 4.963 0 0 0-1.163-5.166 1 1 0 0 0-1.414-.002Z"
+                                fill="currentColor"
+                            />
+                        </svg>
+                        {subtitle}
+                    </a>
+                ) : (
+                    { subtitle }
+                )}
+            </p>
+        )
+    }
+    {description && <p set:html={parseDescription(description)} />}
+</article>
+
+<style>
+    article {
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .back {
+        font-size: 70px;
+        line-height: 70px;
+        font-weight: 900;
+        white-space: nowrap;
+        opacity: 0.2;
+    }
+
+    .title {
+        font-size: 2em;
+        line-height: 1em;
+        font-weight: 900;
+        color: white;
+        margin: -20px 0 0;
+    }
+
+    p {
+        margin: 10px 0 0;
+    }
+
+    .subtitle {
+        font-size: 1.2em;
+        line-height: 1em;
+        font-weight: 100;
+    }
+
+    .subtitle a {
+        color: var(--color-primary);
+        text-decoration: none;
+    }
+
+    .subtitle a:hover {
+        color: white;
+    }
+
+    .subtitle a svg {
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+    }
+</style>
