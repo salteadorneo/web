@@ -1,6 +1,8 @@
 ---
 import Email from "./icons/Email.astro";
 import Github from "./icons/Github.astro";
+
+import { version } from "../../package.json";
 ---
 
 <footer>
@@ -17,6 +19,7 @@ import Github from "./icons/Github.astro";
             <Github /> salteadorneo/web
         </a>
         <span>Web desarrollada con <strong>Astro</strong></span>
+        <span>v.{version}</span>
     </p>
 
     <style>
