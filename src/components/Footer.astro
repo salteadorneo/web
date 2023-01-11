@@ -1,12 +1,38 @@
+---
+import Email from "./icons/Email.astro";
+import Github from "./icons/Github.astro";
+---
+
 <footer>
     <p>
-        <a href="mailto:hola@salteadorneo.dev">hola@salteadorneo.dev</a>
+        <a href="mailto:hola@salteadorneo.dev" title="Contactar por email">
+            <Email />
+            hola@salteadorneo.dev</a
+        >
+        <a href="https://github.com/salteadorneo/test">
+            <Github />
+        </a>
+        <span>Web desarrollada con Astro. Alojada en Vercel.</span>
     </p>
 </footer>
 
 <style>
     footer {
-        text-align: center;
-        padding: 0 0 24px 0;
+        padding: 30px 0;
+    }
+
+    footer p {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        font-size: 14px;
+    }
+
+    footer a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
     }
 </style>
