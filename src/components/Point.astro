@@ -8,8 +8,8 @@ const parseDescription = (description: string) => {
 ---
 
 <article>
-    <span class="back">{duration}</span>
-    <h3 class="title">{title}</h3>
+    <span class="back">{duration || "_"}</span>
+    <h4 class="title">{title}</h4>
     {
         subtitle && (
             <p class="subtitle">
@@ -57,6 +57,7 @@ const parseDescription = (description: string) => {
         font-size: 2em;
         line-height: 1em;
         font-weight: 900;
+        color: white;
         margin: -20px 0 0;
     }
 
@@ -71,7 +72,12 @@ const parseDescription = (description: string) => {
     }
 
     .subtitle a {
+        color: var(--color-primary);
         text-decoration: none;
+    }
+
+    .subtitle a:hover {
+        color: white;
     }
 
     .subtitle a svg {
