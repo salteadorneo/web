@@ -1,5 +1,5 @@
 ---
-const { duration, title, subtitle, web, url, description } = Astro.props;
+const { image, duration, title, subtitle, url, description } = Astro.props;
 
 const parseDescription = (description: string) => {
     // replace text in ** with <strong>
@@ -8,6 +8,7 @@ const parseDescription = (description: string) => {
 ---
 
 <article>
+    {image && <img src={image} alt={title} class="img" />}
     <span class="back">{duration || "_"}</span>
     <h4 class="title">{title}</h4>
     {
@@ -43,6 +44,10 @@ const parseDescription = (description: string) => {
         display: flex;
         flex-direction: column;
         max-width: 100%;
+    }
+
+    .img {
+        width: 70%;
     }
 
     .back {
