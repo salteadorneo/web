@@ -62,7 +62,7 @@ import Point from "./Point.astro";
         gap: 50px;
         max-width: 900px;
         padding: 0 24px;
-        margin: 80px auto;
+        margin: 50px auto;
     }
 
     .title {
@@ -70,5 +70,15 @@ import Point from "./Point.astro";
         text-align: center;
         font-size: 2.5rem;
         font-weight: 100;
+    }
+
+    @media (max-width: 550px) {
+        .projects {
+            margin: 30px auto;
+        }
+
+        .title {
+            font-size: 2rem;
+        }
     }
 </style>
