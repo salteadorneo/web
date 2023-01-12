@@ -5,127 +5,131 @@ import Linkedin from "./icons/Linkedin.astro";
 ---
 
 <header>
-    <h1 class="logo">salteadorneo.<strong>dev</strong></h1>
-    <nav>
-        <a href="https://neoblog.es/" target="_blank">Blog</a>
-        <a href="mailto:hola@salteadorneo.dev" title="Contactar por email">
-            <Email />
-        </a>
-        <a
-            href="https://github.com/salteadorneo"
-            target="_blank"
-            class="github"
-            title="GitHub"
-        >
-            <Github />
-        </a>
-        <a
-            href="https://www.linkedin.com/in/cristianadan/"
-            target="_blank"
-            class="linkedin"
-            title="LinkedIn"
-        >
-            <Linkedin />
-        </a>
-    </nav>
-    <div class="hero">
-        <div>
-            <h2 class="title">Cristian Adán</h2>
-            <p class="desc">
-                Desarrollador <strong class="color-primary">Full Stack</strong>
-            </p>
-        </div>
+  <h1 class="logo">salteadorneo.<strong>dev</strong></h1>
+  <nav>
+    <a href="https://neoblog.es/" target="_blank">Blog</a>
+    <a href="mailto:hola@salteadorneo.dev" title="Contactar por email">
+      <Email />
+    </a>
+    <a
+      href="https://github.com/salteadorneo"
+      target="_blank"
+      class="github"
+      title="GitHub"
+    >
+      <Github />
+    </a>
+    <a
+      href="https://www.linkedin.com/in/cristianadan/"
+      target="_blank"
+      class="linkedin"
+      title="LinkedIn"
+    >
+      <Linkedin />
+    </a>
+  </nav>
+  <div class="hero">
+    <div>
+      <h2 class="title">Cristian Adán</h2>
+      <p class="desc">
+        Desarrollador <strong class="color-primary">Full Stack</strong>
+      </p>
     </div>
-    <span class="text-bg">ウェブ開発者</span>
+  </div>
+  <span class="text-bg">ウェブ開発者</span>
 </header>
 
 <style>
-    header {
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 30vh;
-    }
+  header {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+  }
 
-    .text-bg {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        z-index: 0;
-        font-size: 300px;
-        line-height: 300px;
-        font-weight: 900;
-        opacity: 0.1;
-        white-space: nowrap;
-    }
+  .text-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    font-size: 300px;
+    font-weight: 900;
+    opacity: 0.1;
+    white-space: nowrap;
+  }
 
-    .logo {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        font-size: 1.2em;
-        opacity: 0.8;
-        padding: 24px;
-    }
+  .logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    font-size: 1.2em;
+    opacity: 0.8;
+    padding: 24px;
+  }
 
-    .logo strong {
-        font-size: 0.72em;
-        text-transform: uppercase;
-        font-weight: 400;
-    }
+  .logo strong {
+    font-size: 0.72em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
 
+  nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+  }
+  nav a {
+    color: white;
+    line-height: 1em;
+    text-decoration: none;
+  }
+  nav a:hover {
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 480px) {
     nav {
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        padding: 24px;
+      gap: 16px;
     }
-    nav a {
-        color: white;
-        line-height: 1em;
-        text-decoration: none;
-    }
-    nav a:hover {
-        color: var(--color-primary);
-    }
+  }
 
-    @media (max-width: 480px) {
-        nav {
-            gap: 16px;
-        }
-    }
+  .hero {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    padding: 0 24px;
+  }
 
+  @media (max-width: 550px) {
     .hero {
-        position: relative;
-        z-index: 1;
-        text-align: center;
-        color: white;
-        padding: 0 24px;
+      font-size: 0.7em;
     }
+  }
 
-    @media (max-width: 550px) {
-        .hero {
-            font-size: 0.7em;
-        }
-    }
+  .title {
+    font-size: 4em;
+    line-height: 1em;
+    animation: fadein 1s ease;
+    animation-fill-mode: forwards;
+  }
 
-    .title {
-        font-size: 4em;
-        line-height: 1em;
-    }
-
-    .desc {
-        font-size: 2em;
-        line-height: 1em;
-        color: var(--color-text);
-        font-weight: 500;
-        margin: 8px 0 0;
-    }
+  .desc {
+    font-size: 2em;
+    line-height: 1em;
+    color: var(--color-text);
+    font-weight: 500;
+    margin: 8px 0 0;
+    animation: fadein 2s ease;
+    animation-fill-mode: forwards;
+  }
 </style>
