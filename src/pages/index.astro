@@ -3,11 +3,15 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Projects from "../components/Projects.astro";
 import Footer from "../components/Footer.astro";
+import Me from "../components/Me.astro";
+import Background from "../components/Background.astro";
 ---
 
 <Layout title="salteadorneo.dev | Cristian Adán">
+	<Background />
 	<Header />
 	<main>
+		<Me />
 		<Projects />
 	</main>
 	<Footer />

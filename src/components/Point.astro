@@ -31,7 +31,7 @@ const parseDescription = (description: string) => {
             {subtitle}
           </a>
         ) : (
-          { subtitle }
+          subtitle
         )}
       </p>
     )
@@ -61,6 +61,12 @@ const parseDescription = (description: string) => {
     font-weight: 900;
     white-space: nowrap;
     opacity: 0.2;
+    transition: all 0.3s ease;
+    z-index: -1;
+  }
+
+  article:hover .back {
+    opacity: 0.1;
   }
 
   .title {

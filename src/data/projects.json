@@ -2,8 +2,8 @@
   {
     "duration": "Vue",
     "title": "Pokemodle",
-    "subtitle": "pokemodle.salteadorneo.dev",
-    "url": "https://pokemodle.salteadorneo.dev",
+    "subtitle": "pokemodle.online",
+    "url": "https://pokemodle.online",
     "description": "El juego diario de adivinar el Pokémon oculto. Desarrollado con **Vue.js**."
   },
   {
@@ -28,7 +28,7 @@
     "description": "Web corporativa con catálogo productos actualizada en tiempo real. Desarrollado con **Vite** y **React**."
   },
   {
-    "duration": "JS",
+    "duration": "Vite",
     "title": "Porto Alegría",
     "subtitle": "portoalegria.org",
     "url": "https://portoalegria.org",
@@ -47,5 +47,19 @@
     "subtitle": "juliabescos.com",
     "url": "https://juliabescos.com",
     "description": "Portfolio de la diseñadora gráfica que cuida todos los detalles. Desarrollado con **Vue.js**."
+  },
+  {
+    "duration": "Astro",
+    "title": "Instrumentos de batucada",
+    "subtitle": "instrumentos-batucada.com",
+    "url": "https://instrumentos-batucada.com",
+    "description": "Información sobre los instrumentos de batucada."
+  },
+  {
+    "duration": "React",
+    "title": "Comics y mangas",
+    "subtitle": "comicsymangas.com",
+    "url": "https://comicsymangas.com",
+    "description": "Catálogo de novedades sobre comics, novelas gráficas y mangas."
   }
 ]
