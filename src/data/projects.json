@@ -61,5 +61,19 @@
     "subtitle": "comicsymangas.com",
     "url": "https://comicsymangas.com",
     "description": "Catálogo de novedades sobre comics, novelas gráficas y mangas."
+  },
+  {
+    "duration": "App",
+    "title": "Calculadora de viaje",
+    "subtitle": "Google Play",
+    "url": "https://play.google.com/store/apps/details?id=dev.salteadorneo.viaje",
+    "description": "Aplicación en React para calcular el coste de un viaje en coche."
+  },
+  {
+    "duration": "App",
+    "title": "Precio Gasolina",
+    "subtitle": "Google Play",
+    "url": "https://play.google.com/store/apps/details?id=dev.salteadorneo.gasolina",
+    "description": "Aplicación en React para consultar el precio de la gasolina en España."
   }
 ]
