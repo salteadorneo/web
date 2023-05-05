@@ -1,0 +1,68 @@
+<section class="py-12">
+    <p class="text-4xl font-light opacity-40 text-center mb-8">Contacto</p>
+    <form
+        id="contact-form"
+        action="https://formspree.io/f/mpzebone"
+        method="POST"
+        class="space-y-2 max-w-sm mx-auto text-center"
+    >
+        <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            class="py-1 px-3 w-full bg-transparent border-b outline-none"
+            required
+        />
+        <textarea
+            name="message"
+            placeholder="Mensaje"
+            class="py-1 px-3 w-full h-24 bg-transparent border-b outline-none"
+            required></textarea>
+        <button id="contact-form-button" class="py-1 px-6 border rounded"
+            >Enviar</button
+        >
+        <p id="contact-form-status"></p>
+    </form>
+</section>
+
+<script is:inline>
+    var form = document.getElementById("contact-form");
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+
+        var status = document.getElementById("contact-form-status");
+
+        var data = new FormData(event.target);
+        fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                Accept: "application/json",
+            },
+        })
+            .then((response) => {
+                if (response.ok) {
+                    status.innerHTML =
+                        "¡Gracias por contactar! Te responderé pronto.";
+                    form.reset();
+                } else {
+                    response.json().then((data) => {
+                        if (Object.hasOwn(data, "errors")) {
+                            status.innerHTML = data["errors"]
+                                .map((error) => error["message"])
+                                .join(", ");
+                        } else {
+                            status.innerHTML =
+                                "Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.";
+                        }
+                    });
+                }
+            })
+            .catch((error) => {
+                status.innerHTML =
+                    "Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.";
+            });
+    }
+    form.addEventListener("submit", handleSubmit);
+</script>
