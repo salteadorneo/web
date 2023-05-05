@@ -1,48 +1,13 @@
-<section class="me">
-    <div>
-        <img src="/cristian.png" alt="Cristian Adán" class="photo" />
-        <h2 class="title">Cristian Adán</h2>
-        <p class="desc">
-            Desarrollador <strong class="color-primary">Full Stack</strong>
-        </p>
+<section class="relative text-center px-6 grid place-content-center my-12">
+    <div class="space-y-1 sm:space-y-2">
+        <img
+            src="/cristian.png"
+            alt="Cristian Adán"
+            class="inline-block w-48 rounded-full aspect-square"
+        />
+        <h1 class="text-4xl sm:text-6xl font-bold text-white">Cristian Adán</h1>
+        <h2 class="text-lg sm:text-3xl font-medium">
+            Desarrollador <strong class="text-primary">Full Stack</strong>
+        </h2>
     </div>
 </section>
-
-<style>
-    .me {
-        position: relative;
-        z-index: 1;
-        text-align: center;
-        color: white;
-        padding: 0 24px;
-    }
-
-    @media (max-width: 550px) {
-        .me {
-            font-size: 0.7em;
-        }
-    }
-
-    .photo {
-        width: 180px;
-        aspect-ratio: 1/1;
-        border-radius: 50%;
-    }
-
-    .title {
-        font-size: 4em;
-        line-height: 1em;
-        animation: fadein 1s ease;
-        animation-fill-mode: forwards;
-    }
-
-    .desc {
-        font-size: 2em;
-        line-height: 1em;
-        color: var(--color-text);
-        font-weight: 500;
-        margin: 8px 0 0;
-        animation: fadein 2s ease;
-        animation-fill-mode: forwards;
-    }
-</style>

@@ -4,17 +4,29 @@ import Github from "./icons/Github.astro";
 import Linkedin from "./icons/Linkedin.astro";
 ---
 
-<header>
-  <h1 class="logo">salteadorneo.<strong>dev</strong></h1>
-  <nav>
-    <a href="https://neoblog.es/" target="_blank">Blog</a>
-    <a href="mailto:hola@salteadorneo.dev" title="Contactar por email">
+<header class="flex justify-between gap-4 p-6">
+  <p
+    class="text-xl leading-none font-bold opacity-80 select-none hover:text-white hover:opacity-100"
+  >
+    <a href="/"
+      >salteadorneo.<span class="text-sm font-normal uppercase">dev</span></a
+    >
+  </p>
+  <nav class="flex items-center gap-4 text-sm">
+    <a href="/blog" class="opacity-80 hover:text-white hover:opacity-100">
+      BLOG
+    </a>
+    <a
+      href="mailto:hola@salteadorneo.dev"
+      class="opacity-80 hover:text-white hover:opacity-100"
+      title="Contactar por email"
+    >
       <Email />
     </a>
     <a
       href="https://github.com/salteadorneo"
       target="_blank"
-      class="github"
+      class="opacity-80 hover:text-white hover:opacity-100"
       title="GitHub"
     >
       <Github />
@@ -22,59 +34,10 @@ import Linkedin from "./icons/Linkedin.astro";
     <a
       href="https://www.linkedin.com/in/cristianadan/"
       target="_blank"
-      class="linkedin"
+      class="opacity-80 hover:text-white hover:opacity-100"
       title="LinkedIn"
     >
       <Linkedin />
     </a>
   </nav>
 </header>
-
-<style>
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 24px;
-    gap: 12px;
-  }
-
-  .logo {
-    font-size: 1.2em;
-    line-height: 1em;
-    opacity: 0.8;
-    user-select: none;
-  }
-
-  .logo strong {
-    font-size: 0.72em;
-    line-height: 1em;
-    text-transform: uppercase;
-    font-weight: 400;
-  }
-
-  nav {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-  }
-
-  nav a {
-    color: white;
-    line-height: 1em;
-    text-decoration: none;
-  }
-
-  nav a:hover {
-    color: var(--color-primary);
-  }
-
-  @media (max-width: 480px) {
-    .logo {
-      font-size: 1em;
-    }
-    nav {
-      gap: 12px;
-    }
-  }
-</style>

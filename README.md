@@ -1,1 +1,1 @@
-![img](https://github.com/salteadorneo/web/raw/main/public/thumbnail.png)
+# Proyecto web portfolio y blog
