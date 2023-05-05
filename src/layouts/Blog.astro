@@ -1,13 +1,25 @@
 ---
+import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Layout from "./Layout.astro";
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
-<Layout title={title}>
+<Layout title={title} description={description}>
   <Header />
   <main class="max-w-2xl mx-auto px-4">
+    <section
+      class="relative text-center text-white px-6 grid place-content-center"
+    >
+      <div class="space-y-1 sm:space-y-2 mb-16 text-text">
+        <a href="/blog" class="hover:text-white">
+          <span class="text-xl leading-none font-bold">Blog</span>
+          <span class="text-sm">/ Programación y tecnología</span>
+        </a>
+      </div>
+    </section>
     <slot />
   </main>
+  <Footer />
 </Layout>

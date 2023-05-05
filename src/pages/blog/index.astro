@@ -10,21 +10,17 @@ allBlogPosts.sort((a, b) => {
 });
 ---
 
-<Blog title="Blog de salteadorneo.dev">
-    <section
-        class="relative text-center text-white px-6 grid place-content-center my-12"
-    >
-        <div class="space-y-1 sm:space-y-2">
-            <h2 class="text-4xl sm:text-6xl font-bold">Blog</h2>
-        </div>
-    </section>
-    <section class="space-y-10">
+<Blog
+    title="Blog de salteadorneo.dev - Programación y tecnología"
+    description="Descubre las últimas novedades de JavaScript, HTML, CSS, base de datos y tecnología en general."
+>
+    <section class="space-y-10 pb-8">
         {
             allBlogPosts.map((post) => (
                 <a href={`/blog/${post.slug}`} class="flex gap-8 group">
                     <img
                         src={post.data.image}
-                        alt=""
+                        alt={post.data.title}
                         class="h-28 aspect-square group-hover:scale-105 transition-all duration-300"
                     />
                     <span class="space-y-2">
