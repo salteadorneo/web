@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import Blog from "../../layouts/Blog.astro";
+
+const allBlogPosts = await getCollection("blog");
+
+// sort by date
+allBlogPosts.sort((a, b) => {
+    return b.data.publishedDate - a.data.publishedDate;
+});
+---
+
+<Blog title="Blog de salteadorneo.dev">
+    <section
+        class="relative text-center text-white px-6 grid place-content-center my-12"
+    >
+        <div class="space-y-1 sm:space-y-2">
+            <h2 class="text-4xl sm:text-6xl font-bold">Blog</h2>
+        </div>
+    </section>
+    <section class="space-y-10">
+        {
+            allBlogPosts.map((post) => (
+                <a href={`/blog/${post.slug}`} class="flex gap-8 group">
+                    <img
+                        src={post.data.image}
+                        alt=""
+                        class="h-28 aspect-square group-hover:scale-105 transition-all duration-300"
+                    />
+                    <span class="space-y-2">
+                        <h2 class="text-2xl font-black text-white">
+                            {post.data.title}
+                        </h2>
+                        <p class="flex items-center gap-2">
+                            {post.data.tags.map((tag: string) => (
+                                <span class="py-0.5 px-3 border rounded-full text-white text-xs uppercase opacity-60">
+                                    {tag}
+                                </span>
+                            ))}
+                        </p>
+                        <p class="text-sm">{post.data.description}</p>
+                    </span>
+                </a>
+            ))
+        }
+    </section>
+</Blog>
