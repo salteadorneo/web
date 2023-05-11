@@ -116,6 +116,13 @@ declare module 'astro:content' {
   collection: "blog",
   data: any
 } & { render(): Render[".md"] },
+"atomic-design.md": {
+  id: "atomic-design.md",
+  slug: "atomic-design",
+  body: string,
+  collection: "blog",
+  data: any
+} & { render(): Render[".md"] },
 "como-instalar-pnpm.md": {
   id: "como-instalar-pnpm.md",
   slug: "como-instalar-pnpm",
