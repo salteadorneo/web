@@ -21,7 +21,7 @@ crearse como sistemas de diseño atómicos.
 Hay cinco niveles en Atomic Design: átomos, moléculas, organismos, plantillas y
 páginas.
 
-![Diagrama completo de Atomic Design](../../../public/images/atomic-design-process.png)
+![Diagrama completo de Atomic Design](/images/atomic-design-process.png)
 
 ### Átomos
 
