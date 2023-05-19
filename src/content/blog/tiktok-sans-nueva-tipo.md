@@ -21,3 +21,5 @@ Ofrece soporte **multilingüe**, incluyendo **inglés, español, portugués, fra
 ![Imagen de comparación de fuentes](/images/tiktok-tipo3.gif)
 
 Cuenta con **funciones integradas de accesibilidad** y **protección contra la suplantación de identidad**. Estas funciones ofrecen alternativas estilísticas para letras y números, evitando la falsificación de nombres de usuario.
+
+Fuente: [tiktok.com](https://newsroom.tiktok.com/en-us/introducing-tiktok-sans)
