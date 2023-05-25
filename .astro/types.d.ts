@@ -165,6 +165,13 @@ declare module 'astro:content' {
   collection: "blog",
   data: any
 } & { render(): Render[".md"] },
+"playjs-0.3.1.md": {
+  id: "playjs-0.3.1.md",
+  slug: "playjs-031",
+  body: string,
+  collection: "blog",
+  data: any
+} & { render(): Render[".md"] },
 "promesas-javascript.md": {
   id: "promesas-javascript.md",
   slug: "promesas-javascript",
@@ -182,6 +189,13 @@ declare module 'astro:content' {
 "string-to-slug-javascript.md": {
   id: "string-to-slug-javascript.md",
   slug: "string-to-slug-javascript",
+  body: string,
+  collection: "blog",
+  data: any
+} & { render(): Render[".md"] },
+"tiktok-sans-nueva-tipo.md": {
+  id: "tiktok-sans-nueva-tipo.md",
+  slug: "tiktok-sans-nueva-tipo",
   body: string,
   collection: "blog",
   data: any
