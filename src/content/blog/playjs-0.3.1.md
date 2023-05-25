@@ -17,7 +17,7 @@ Puedes probarlo en <u>[**playjs.dev**](https://playjs.dev/)</u>
 
 A partir de la **versión 0.3.1** se añade soporte para **funciones asícronas** y se permite **importar paquetes npm**.
 
-### Funciones asícronas
+### Funciones asíncronas
 
 Se añade soporte `await` y `async`. Se abre el uso de `fetch` para llamadas a APIs. Un ejemplo de uso:
 
