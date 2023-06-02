@@ -24,7 +24,7 @@ El proyecto está **desplegado en Vercel** (<a href="http://infojobs-map.vercel.
 
 El proyecto fue **seleccionado entre los 15 finalistas elegidos por InfoJobs**. El **día 1 de junio** se hizo la **votación final** en el canal de <a href="https://www.twitch.tv/midudev" target="_blank">Twitch de midudev</a> para elegir a los ganadores. Tras las votaciones, mi proyecto quedó en **tercer lugar**. ¡Estoy muy contento con el resultado!
 
-<iframe src="https://player.twitch.tv/?video=1834928421&time=1h46m29s&parent=localhost" frameborder="0" allowfullscreen="true" scrolling="no" class="aspect-video"></iframe>
+<iframe src="https://player.twitch.tv/?video=1834928421&time=1h46m29s&parent=salteadorneo.dev" frameborder="0" allowfullscreen="true" scrolling="no" class="aspect-video"></iframe>
 
 ## ¿Qué es una hackathon?
 
