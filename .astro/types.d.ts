@@ -144,6 +144,13 @@ declare module 'astro:content' {
   collection: "blog",
   data: any
 } & { render(): Render[".md"] },
+"infojobs-hackathon-midudev.md": {
+  id: "infojobs-hackathon-midudev.md",
+  slug: "infojobs-hackathon-midudev",
+  body: string,
+  collection: "blog",
+  data: any
+} & { render(): Render[".md"] },
 "la-ia-es-el-presente.md": {
   id: "la-ia-es-el-presente.md",
   slug: "la-ia-es-el-presente",
