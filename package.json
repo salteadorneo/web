@@ -20,7 +20,7 @@
   },
   "eslintConfig": {
     "extends": [
-      "standard",
+      "./node_modules/standard/eslintrc.json",
       "./node_modules/astro/.eslintrc.json"
     ]
   }
