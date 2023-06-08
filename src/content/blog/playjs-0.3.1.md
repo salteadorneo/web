@@ -4,7 +4,7 @@ publishedDate: 2023-05-25 01:00:00
 tags: ["javascript", "side project", "playjs"]
 description: PlayJS es un playground para JavaScript en la web que permite ejecutar código en tiempo real.
 allow_iframes: true
-image: /images/javascript.svg
+image: /images/playjs.svg
 ---
 
 ## ¿Qué es PlayJS?
