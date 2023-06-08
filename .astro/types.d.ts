@@ -179,6 +179,13 @@ declare module 'astro:content' {
   collection: "blog",
   data: any
 } & { render(): Render[".md"] },
+"playjs-0.4.md": {
+  id: "playjs-0.4.md",
+  slug: "playjs-04",
+  body: string,
+  collection: "blog",
+  data: any
+} & { render(): Render[".md"] },
 "promesas-javascript.md": {
   id: "promesas-javascript.md",
   slug: "promesas-javascript",
