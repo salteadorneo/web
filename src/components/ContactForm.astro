@@ -1,4 +1,4 @@
-<section id="contacto" class="py-12">
+<section id="contacto" class="my-24">
     <p class="text-4xl font-light opacity-40 text-center mb-8">Contacto</p>
     <form
         id="contact-form"
@@ -26,43 +26,43 @@
 </section>
 
 <script is:inline>
-    var form = document.getElementById("contact-form");
+var form = document.getElementById("contact-form");
 
-    async function handleSubmit(event) {
-        event.preventDefault();
+async function handleSubmit(event) {
+    event.preventDefault();
 
-        var status = document.getElementById("contact-form-status");
+    var status = document.getElementById("contact-form-status");
 
-        var data = new FormData(event.target);
-        fetch(event.target.action, {
-            method: form.method,
-            body: data,
-            headers: {
-                Accept: "application/json",
-            },
-        })
-            .then((response) => {
-                if (response.ok) {
-                    status.innerHTML =
-                        "¡Gracias por contactar! Te responderé pronto.";
-                    form.reset();
-                } else {
-                    response.json().then((data) => {
-                        if (Object.hasOwn(data, "errors")) {
-                            status.innerHTML = data["errors"]
-                                .map((error) => error["message"])
-                                .join(", ");
-                        } else {
-                            status.innerHTML =
-                                "Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.";
-                        }
-                    });
-                }
-            })
-            .catch((error) => {
+    var data = new FormData(event.target);
+    fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: {
+            Accept: "application/json",
+        },
+    })
+        .then((response) => {
+            if (response.ok) {
                 status.innerHTML =
-                    "Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.";
-            });
-    }
-    form.addEventListener("submit", handleSubmit);
+                    "¡Gracias por contactar! Te responderé pronto.";
+                form.reset();
+            } else {
+                response.json().then((data) => {
+                    if (Object.hasOwn(data, "errors")) {
+                        status.innerHTML = data["errors"]
+                            .map((error) => error["message"])
+                            .join(", ");
+                    } else {
+                        status.innerHTML =
+                            "Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.";
+                    }
+                });
+            }
+        })
+        .catch((error) => {
+            status.innerHTML =
+                "Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.";
+        });
+}
+form.addEventListener("submit", handleSubmit);
 </script>
