@@ -35,6 +35,7 @@ const { Content } = await entry.render();
                         ))
                     }
                 </p>
+                <p class="text-sm">{entry.data.description}</p>
             </span>
         </div>
         <div class="markdown-content space-y-4">
@@ -43,6 +44,22 @@ const { Content } = await entry.render();
         <section class="flex items-center justify-center py-8">
             <div class="flex items-center gap-4">
                 <span>¡Comparte!</span>
+                <button
+                    onclick={`navigator.share({ url: '${Astro.request.url}' })`}
+                >
+                    <svg
+                        width={24}
+                        height={24}
+                        viewBox="0 0 36 36"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                    >
+                        <path
+                            d="M27.53 24a5 5 0 0 0-3.6 1.55l-12.19-6.1a4.47 4.47 0 0 0 0-2.8l12.21-6.21a5.12 5.12 0 1 0-1.07-1.7l-12.09 6.15a5 5 0 1 0 0 6.33l12.06 6.07a4.93 4.93 0 0 0-.31 1.71 5 5 0 1 0 5-5Z"
+                        ></path>
+                        <path fill="none" d="M0 0h36v36H0z"></path>
+                    </svg>
+                </button>
                 <a href="#" class="hidden"
                     ><svg
                         width="24"
