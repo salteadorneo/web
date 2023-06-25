@@ -172,6 +172,13 @@ declare module 'astro:content' {
   collection: "blog",
   data: any
 } & { render(): Render[".md"] },
+"open-source-jam-madrid.md": {
+  id: "open-source-jam-madrid.md",
+  slug: "open-source-jam-madrid",
+  body: string,
+  collection: "blog",
+  data: any
+} & { render(): Render[".md"] },
 "playjs-0.3.1.md": {
   id: "playjs-0.3.1.md",
   slug: "playjs-031",
