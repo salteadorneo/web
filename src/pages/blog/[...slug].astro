@@ -46,6 +46,7 @@ const { Content } = await entry.render();
                 <span>¡Comparte!</span>
                 <button
                     onclick={`navigator.share({ url: '${Astro.request.url}' })`}
+                    class="hover:text-primary"
                 >
                     <svg
                         width={24}
@@ -60,20 +61,7 @@ const { Content } = await entry.render();
                         <path fill="none" d="M0 0h36v36H0z"></path>
                     </svg>
                 </button>
-                <a href="#" class="hidden"
-                    ><svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                        ><path
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                            d="M18 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm12 7a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-2-4-8-5m8-7-8 5"
-                        ></path></svg
-                    ></a
-                ><a
+                <a
                     href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
                         Astro.request.url
                     )}`}
@@ -113,12 +101,6 @@ const { Content } = await entry.render();
                     >
                 </a>
             </div>
-            <a
-                href="https://pr.new/github.com/salteadorneo/neoblog.es/edit/main/posts/obtener-hashcode-string-js.md"
-                target="_blank"
-                class="hidden text-sm text-gray-500/80 hover:text-gray-700 transition-colors"
-                >Editar en StackBlitz</a
-            >
         </section>
     </section>
 </Blog>
