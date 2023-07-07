@@ -21,12 +21,23 @@ const { Content } = await entry.render();
 >
     <section class="container mx-auto space-y-4">
         <div class="flex flex-wrap sm:flex-nowrap gap-6">
-            <img src={entry.data.image} alt="" class="h-36 aspect-square" />
+            <img
+                src={entry.data.image}
+                alt=""
+                class="h-36 aspect-square"
+                style={`view-transition-name: image-${entry.slug}`}
+            />
             <span class="space-y-4">
-                <h1 class="text-4xl font-black text-white">
+                <h1
+                    class="text-4xl font-black text-white"
+                    style={`view-transition-name: title-${entry.slug}`}
+                >
                     {entry.data.title}
                 </h1>
-                <p class="flex flex-wrap items-center gap-2">
+                <p
+                    class="flex flex-wrap items-center gap-2"
+                    style={`view-transition-name: tags-${entry.slug}`}
+                >
                     {
                         entry.data.tags.map((tag: string) => (
                             <span class="py-0.5 px-3 border rounded-full text-white text-xs uppercase opacity-60">
@@ -35,7 +46,12 @@ const { Content } = await entry.render();
                         ))
                     }
                 </p>
-                <p class="text-sm">{entry.data.description}</p>
+                <p
+                    class="text-sm"
+                    style={`view-transition-name: desc-${entry.slug}`}
+                >
+                    {entry.data.description}
+                </p>
             </span>
         </div>
         <div class="markdown-content space-y-4">
