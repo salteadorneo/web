@@ -25,19 +25,31 @@ allBlogPosts.sort((a, b) => {
                         src={post.data.image}
                         alt={post.data.title}
                         class="h-28 aspect-square group-hover:scale-105 transition-all duration-300"
+                        style={`view-transition-name: image-${post.slug}`}
                     />
                     <span class="space-y-2">
-                        <h2 class="text-2xl leading-tight font-black text-white">
+                        <h2
+                            class="text-2xl leading-tight font-black text-white"
+                            style={`view-transition-name: title-${post.slug}`}
+                        >
                             {post.data.title}
                         </h2>
-                        <p class="flex flex-wrap items-center gap-2">
+                        <p
+                            class="flex flex-wrap items-center gap-2"
+                            style={`view-transition-name: tags-${post.slug}`}
+                        >
                             {post.data.tags.map((tag: string) => (
                                 <span class="py-0.5 px-3 border rounded-full text-white text-xs uppercase opacity-60">
                                     {tag}
                                 </span>
                             ))}
                         </p>
-                        <p class="text-sm">{post.data.description}</p>
+                        <p
+                            class="text-sm"
+                            style={`view-transition-name: desc-${post.slug}`}
+                        >
+                            {post.data.description}
+                        </p>
                     </span>
                 </a>
             ))
