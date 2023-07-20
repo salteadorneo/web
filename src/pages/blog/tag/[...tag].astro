@@ -1,0 +1,73 @@
+---
+import { getCollection } from "astro:content";
+import Blog from "../../../layouts/Blog.astro";
+import { slugify } from "../../../utils.js";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+
+  // get tags from all blog posts
+  const tags = blogEntries.map((entry) => entry.data.tags).flat();
+  // remove duplicates
+  const uniqueTags = [...new Set(tags)];
+  return uniqueTags.map((tag) => ({ params: { tag: slugify(tag) } }));
+}
+
+const { tag } = Astro.params;
+
+const allBlogPosts = await getCollection("blog");
+
+// sort by date
+allBlogPosts.sort((a, b) => {
+  return b.data.publishedDate - a.data.publishedDate;
+});
+---
+
+<Blog
+  title="Blog de salteadorneo.dev - Programación y tecnología"
+  description="Descubre las últimas novedades de JavaScript, HTML, CSS, base de datos y tecnología en general."
+>
+  <section class="space-y-10 pb-8">
+    {
+      allBlogPosts
+        .filter((post) => post.data.tags.map((t) => slugify(t)).includes(tag))
+        .map((post) => (
+          <div class="flex gap-6 sm:gap-8 group">
+            <img
+              src={post.data.image}
+              alt={post.data.title}
+              class="h-28 aspect-square group-hover:scale-105 transition-all duration-300"
+              style={`view-transition-name: image-${post.slug}`}
+            />
+            <span class="space-y-2">
+              <h2
+                class="text-2xl leading-tight font-black text-white"
+                style={`view-transition-name: title-${post.slug}`}
+              >
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              </h2>
+              <p
+                class="flex flex-wrap items-center gap-2"
+                style={`view-transition-name: tags-${post.slug}`}
+              >
+                {post.data.tags.map((tag: string) => (
+                  <a
+                    href={`/blog/tag/${slugify(tag)}`}
+                    class="py-0.5 px-3 border rounded-full text-white text-xs uppercase opacity-60"
+                  >
+                    {tag}
+                  </a>
+                ))}
+              </p>
+              <p
+                class="text-sm"
+                style={`view-transition-name: desc-${post.slug}`}
+              >
+                {post.data.description}
+              </p>
+            </span>
+          </div>
+        ))
+    }
+  </section>
+</Blog>
