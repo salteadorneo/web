@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Blog from "../../layouts/Blog.astro";
-import { slugify } from "../../utils.js";
+import Tag from "@components/Tag.astro";
 
 const allBlogPosts = await getCollection("blog");
 
@@ -18,7 +18,7 @@ allBlogPosts.sort((a, b) => {
   <section class="space-y-10 pb-8">
     {
       allBlogPosts.map((post) => (
-        <a href={`/blog/${post.slug}`} class="flex gap-6 sm:gap-8 group">
+        <article class="flex gap-6 sm:gap-8 group">
           <img
             src={post.data.image}
             alt={post.data.title}
@@ -30,19 +30,14 @@ allBlogPosts.sort((a, b) => {
               class="text-2xl leading-tight font-black text-white"
               style={`view-transition-name: title-${post.slug}`}
             >
-              {post.data.title}
+              <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
             </h2>
             <p
               class="flex flex-wrap items-center gap-2"
               style={`view-transition-name: tags-${post.slug}`}
             >
               {post.data.tags.map((tag: string) => (
-                <a
-                  href={`/blog/tag/${slugify(tag)}`}
-                  class="py-0.5 px-3 border rounded-full text-white text-xs uppercase opacity-60"
-                >
-                  {tag}
-                </a>
+                <Tag tag={tag} />
               ))}
             </p>
             <p
@@ -52,7 +47,7 @@ allBlogPosts.sort((a, b) => {
               {post.data.description}
             </p>
           </span>
-        </a>
+        </article>
       ))
     }
   </section>

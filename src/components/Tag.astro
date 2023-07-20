@@ -1,0 +1,12 @@
+---
+import { slugify } from "@/utils.js";
+
+const { tag } = Astro.props;
+---
+
+<a
+  href={`/blog/tag/${slugify(tag)}/`}
+  class="py-0.5 px-3 border rounded-full text-white text-xs uppercase opacity-60 hover:opacity-100 transition-opacity duration-200"
+>
+  {tag}
+</a>

@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Blog from "../../../layouts/Blog.astro";
 import { slugify } from "../../../utils.js";
+import Tag from "@components/Tag.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
@@ -27,10 +28,15 @@ allBlogPosts.sort((a, b) => {
   title="Blog de salteadorneo.dev - Programación y tecnología"
   description="Descubre las últimas novedades de JavaScript, HTML, CSS, base de datos y tecnología en general."
 >
+  <h1 class="text-2xl font-black text-white mb-12 uppercase">
+    {tag?.replace(/-/g, " ")}
+  </h1>
   <section class="space-y-10 pb-8">
     {
       allBlogPosts
-        .filter((post) => post.data.tags.map((t) => slugify(t)).includes(tag))
+        .filter((post) =>
+          post.data.tags.map((t: string) => slugify(t)).includes(tag)
+        )
         .map((post) => (
           <div class="flex gap-6 sm:gap-8 group">
             <img
@@ -44,19 +50,14 @@ allBlogPosts.sort((a, b) => {
                 class="text-2xl leading-tight font-black text-white"
                 style={`view-transition-name: title-${post.slug}`}
               >
-                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
               </h2>
               <p
                 class="flex flex-wrap items-center gap-2"
                 style={`view-transition-name: tags-${post.slug}`}
               >
                 {post.data.tags.map((tag: string) => (
-                  <a
-                    href={`/blog/tag/${slugify(tag)}`}
-                    class="py-0.5 px-3 border rounded-full text-white text-xs uppercase opacity-60"
-                  >
-                    {tag}
-                  </a>
+                  <Tag tag={tag} />
                 ))}
               </p>
               <p

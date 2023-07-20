@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Blog from "../../layouts/Blog.astro";
-import { slugify } from "../../utils";
+import Tag from "@components/Tag.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
@@ -39,16 +39,7 @@ const { Content } = await entry.render();
           class="flex flex-wrap items-center gap-2"
           style={`view-transition-name: tags-${entry.slug}`}
         >
-          {
-            entry.data.tags.map((tag: string) => (
-              <a
-                href={`/blog/tag/${slugify(tag)}`}
-                class="py-0.5 px-3 border rounded-full text-white text-xs uppercase opacity-60"
-              >
-                {tag}
-              </a>
-            ))
-          }
+          {entry.data.tags.map((tag: string) => <Tag tag={tag} />)}
         </p>
         <p class="text-sm" style={`view-transition-name: desc-${entry.slug}`}>
           {entry.data.description}
