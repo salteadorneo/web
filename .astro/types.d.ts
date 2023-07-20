@@ -172,6 +172,13 @@ declare module 'astro:content' {
   collection: "blog",
   data: any
 } & { render(): Render[".md"] },
+"open-ai-chat-gpt-hackathon-2023.md": {
+  id: "open-ai-chat-gpt-hackathon-2023.md",
+  slug: "open-ai-chat-gpt-hackathon-2023",
+  body: string,
+  collection: "blog",
+  data: any
+} & { render(): Render[".md"] },
 "open-source-jam-madrid.md": {
   id: "open-source-jam-madrid.md",
   slug: "open-source-jam-madrid",

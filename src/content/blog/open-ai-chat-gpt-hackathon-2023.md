@@ -9,8 +9,8 @@ image: /images/ai-lab-school.jpg
 
 ## ¿Qué ha sido la Open Source Jam?
 
-Del **27 al 2 julio de 2023** se ha celebrado la Open AI: Chat GPT Hackathon desde México. Fueron organizadas por AI Lab School.
+Del **27 al 2 julio de 2023** se ha celebrado la Open AI: Chat GPT Hackathon desde México. Fue organizada por AI Lab School.
 
 <video autoplay muted>
-    <source src="/videos/playjs05.webm" type="video/webm">
+    <source src="/videos/python-hackathon.mp4" type="video/mp4">
 </video>
