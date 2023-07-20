@@ -1,55 +1,55 @@
 ---
-import Email from "./icons/Email.astro";
-import Github from "./icons/Github.astro";
+import Email from "@/components/icons/Email.astro";
+import Github from "@/components/icons/Github.astro";
 
 import { version } from "../../package.json";
 ---
 
 <footer>
-    <p class="flex">
-        <a
-            href="mailto:hola@salteadorneo.dev"
-            title="Contactar por email"
-            class="hover:text-primary"
-        >
-            <Email />
-            hola@salteadorneo.dev</a
-        >
-        <a
-            href="https://github.com/salteadorneo/web"
-            target="_blank"
-            title="Código abierto"
-            class="hover:text-primary"
-        >
-            <Github /> salteadorneo/web
-        </a>
-        <span>v.{version}</span>
-    </p>
+  <p class="flex">
+    <a
+      href="mailto:hola@salteadorneo.dev"
+      title="Contactar por email"
+      class="hover:text-primary"
+    >
+      <Email />
+      hola@salteadorneo.dev</a
+    >
+    <a
+      href="https://github.com/salteadorneo/web"
+      target="_blank"
+      title="Código abierto"
+      class="hover:text-primary"
+    >
+      <Github /> salteadorneo/web
+    </a>
+    <span>v.{version}</span>
+  </p>
 
-    <style>
-        footer {
-            padding: 30px 0;
-        }
+  <style>
+    footer {
+      padding: 30px 0;
+    }
 
-        .flex {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            font-size: 14px;
-        }
+    .flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      font-size: 14px;
+    }
 
-        @media (max-width: 550px) {
-            .flex {
-                flex-direction: column;
-            }
-        }
+    @media (max-width: 550px) {
+      .flex {
+        flex-direction: column;
+      }
+    }
 
-        footer a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-    </style>
+    footer a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+  </style>
 </footer>
