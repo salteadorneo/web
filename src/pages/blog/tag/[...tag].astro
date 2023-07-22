@@ -1,0 +1,82 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@/components/Footer.astro";
+
+import Tag from "@/components/Tag.astro";
+import { slugify } from "@/utils.js";
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+
+  // get tags from all blog posts
+  const tags = blogEntries.map((entry) => entry.data.tags).flat();
+  // remove duplicates
+  const uniqueTags = [...new Set(tags)];
+  return uniqueTags.map((tag) => ({ params: { tag: slugify(tag) } }));
+}
+
+const { tag } = Astro.params;
+
+const allBlogPosts = await getCollection("blog");
+
+// sort by date
+allBlogPosts.sort((a, b) => {
+  return b.data.publishedDate - a.data.publishedDate;
+});
+---
+
+<Layout
+  title="Blog de salteadorneo.dev - Programación y tecnología"
+  description="Descubre las últimas novedades de JavaScript, HTML, CSS, base de datos y tecnología en general."
+>
+  <Header />
+  <main>
+    <h3 class="text-4xl font-light opacity-40 mb-8">
+      {tag?.toUpperCase().replace(/-/g, " ")}
+    </h3>
+
+    <section class="space-y-10 pb-8">
+      {
+        allBlogPosts
+          .filter((post) =>
+            post.data.tags.map((t: string) => slugify(t)).includes(tag)
+          )
+          .map((post) => (
+            <article class="flex items-center gap-4 sm:gap-8 group">
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                class="h-14 aspect-square grayscale group-hover:grayscale-0 transition-all duration-300"
+                style={`view-transition-name: image-${post.slug}`}
+              />
+              <span class="space-y-2">
+                <h2
+                  class="text-xl leading-none font-bold text-white"
+                  style={`view-transition-name: title-${post.slug}`}
+                >
+                  <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                </h2>
+                <p
+                  class="flex flex-wrap items-center gap-2"
+                  style={`view-transition-name: tags-${post.slug}`}
+                >
+                  {post.data.tags.map((tag: string) => (
+                    <Tag tag={tag} />
+                  ))}
+                </p>
+                <p
+                  class="text-sm"
+                  style={`view-transition-name: desc-${post.slug}`}
+                >
+                  {post.data.description}
+                </p>
+              </span>
+            </article>
+          ))
+      }
+    </section>
+  </main>
+  <Footer />
+</Layout>

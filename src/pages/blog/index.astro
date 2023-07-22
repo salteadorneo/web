@@ -1,58 +1,62 @@
 ---
 import { getCollection } from "astro:content";
-import Blog from "../../layouts/Blog.astro";
+import Layout from "@layouts/Layout.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@components/Header.astro";
+import Tag from "@components/Tag.astro";
 
 const allBlogPosts = await getCollection("blog");
 
 // sort by date
 allBlogPosts.sort((a, b) => {
-    return b.data.publishedDate - a.data.publishedDate;
+  return b.data.publishedDate - a.data.publishedDate;
 });
 ---
 
-<Blog
-    title="Blog de salteadorneo.dev - Programación y tecnología"
-    description="Descubre las últimas novedades de JavaScript, HTML, CSS, base de datos y tecnología en general."
+<Layout
+  title="Blog de salteadorneo.dev - Programación y tecnología"
+  description="Descubre las últimas novedades de JavaScript, HTML, CSS, base de datos y tecnología en general."
 >
+  <Header />
+  <main>
+    <h3 class="text-4xl font-light opacity-40 mb-8">Blog</h3>
+
     <section class="space-y-10 pb-8">
-        {
-            allBlogPosts.map((post) => (
-                <a
-                    href={`/blog/${post.slug}`}
-                    class="flex gap-6 sm:gap-8 group"
-                >
-                    <img
-                        src={post.data.image}
-                        alt={post.data.title}
-                        class="h-28 aspect-square group-hover:scale-105 transition-all duration-300"
-                        style={`view-transition-name: image-${post.slug}`}
-                    />
-                    <span class="space-y-2">
-                        <h2
-                            class="text-2xl leading-tight font-black text-white"
-                            style={`view-transition-name: title-${post.slug}`}
-                        >
-                            {post.data.title}
-                        </h2>
-                        <p
-                            class="flex flex-wrap items-center gap-2"
-                            style={`view-transition-name: tags-${post.slug}`}
-                        >
-                            {post.data.tags.map((tag: string) => (
-                                <span class="py-0.5 px-3 border rounded-full text-white text-xs uppercase opacity-60">
-                                    {tag}
-                                </span>
-                            ))}
-                        </p>
-                        <p
-                            class="text-sm"
-                            style={`view-transition-name: desc-${post.slug}`}
-                        >
-                            {post.data.description}
-                        </p>
-                    </span>
-                </a>
-            ))
-        }
+      {
+        allBlogPosts.map((post) => (
+          <article class="flex items-center gap-4 sm:gap-8 group">
+            <img
+              src={post.data.image}
+              alt={post.data.title}
+              class="h-14 aspect-square grayscale group-hover:grayscale-0 transition-all duration-300"
+              style={`view-transition-name: image-${post.slug}`}
+            />
+            <span class="space-y-2">
+              <h2
+                class="text-xl leading-none font-bold text-white"
+                style={`view-transition-name: title-${post.slug}`}
+              >
+                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+              </h2>
+              <p
+                class="flex flex-wrap items-center gap-2"
+                style={`view-transition-name: tags-${post.slug}`}
+              >
+                {post.data.tags.map((tag: string) => (
+                  <Tag tag={tag} />
+                ))}
+              </p>
+              <p
+                class="text-sm"
+                style={`view-transition-name: desc-${post.slug}`}
+              >
+                {post.data.description}
+              </p>
+            </span>
+          </article>
+        ))
+      }
     </section>
-</Blog>
+  </main>
+  <Footer />
+</Layout>

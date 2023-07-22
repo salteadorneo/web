@@ -1,57 +1,21 @@
 ---
-import Email from "./icons/Email.astro";
-import Github from "./icons/Github.astro";
-import Linkedin from "./icons/Linkedin.astro";
-import Twitter from "./icons/Twitter.astro";
+import Logo from "./Logo.astro";
+import Nav from "./Nav.astro";
 ---
 
 <header
-  class="flex flex-wrap max-[490px]:justify-center justify-between gap-4 p-6"
+  class="flex items-center justify-between max-sm:flex-col gap-4 py-5 w-full"
 >
-  <p
-    class="text-xl leading-none font-bold opacity-80 select-none hover:text-white hover:opacity-100"
-  >
-    <a href="/"
-      >salteadorneo.<span class="text-sm font-normal uppercase">dev</span></a
-    >
-  </p>
-  <nav class="flex items-center gap-4 text-sm">
-    <a href="/blog" class="opacity-80 hover:text-white hover:opacity-100">
-      BLOG
-    </a>
-    <a href="/#contacto" class="opacity-80 hover:text-white hover:opacity-100">
-      CONTACTO
-    </a>
-    <a
-      href="mailto:hola@salteadorneo.dev"
-      class="opacity-80 hover:text-white hover:opacity-100"
-      title="Contactar por email"
-    >
-      <Email />
-    </a>
-    <a
-      href="https://github.com/salteadorneo"
-      target="_blank"
-      class="opacity-80 hover:text-white hover:opacity-100"
-      title="GitHub"
-    >
-      <Github />
-    </a>
-    <a
-      href="https://www.linkedin.com/in/cristianadan/"
-      target="_blank"
-      class="opacity-80 hover:text-white hover:opacity-100"
-      title="LinkedIn"
-    >
-      <Linkedin />
-    </a>
-    <a
-      href="https://twitter.com/salteadorneodev"
-      target="_blank"
-      class="opacity-80 hover:text-white hover:opacity-100"
-      title="Twitter"
-    >
-      <Twitter />
-    </a>
-  </nav>
+  <a href="/" class="group flex items-center gap-3">
+    <img
+      src="/cristian.png"
+      alt="Cristian Adán"
+      class="inline-block w-8 rounded-full aspect-square grayscale group-hover:grayscale-0 transition-all duration-300"
+      style="view-transition-name: avatar"
+    />
+    <span class="text-left">
+      <Logo />
+    </span>
+  </a>
+  <Nav />
 </header>

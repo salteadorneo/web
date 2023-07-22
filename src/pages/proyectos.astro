@@ -1,0 +1,84 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Point from "@components/Point.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<Layout>
+  <Header />
+  <main>
+    <h3 class="text-4xl font-light opacity-40 mb-8">Proyectos destacados</h3>
+
+    <section class="space-y-6">
+      <Point
+        title="🟨 PlayJS"
+        url="https://playjs.dev"
+        description="Playground JavaScript en tu navegador. Desarrollado con **React**."
+        github="https://github.com/salteadorneo/playjs"
+      />
+      <Point
+        title="url.beauty"
+        url="https://url.beauty"
+        description="An other URL shortener. But, with magic. Desarrollado con **Deno**."
+        github="https://github.com/salteadorneo/url.beauty"
+      />
+      <Point
+        title="Clone UI"
+        url="https://clone-ui.design"
+        description="Sistemas de diseño clonados. **React** + **Tailwind CSS**."
+        github="https://github.com/salteadorneo/clone-ui"
+      />
+      <Point
+        title="Pokemodle"
+        url="https://pokemodle.online"
+        description="Juego de adivinar el Pokémon oculto cada día. Desarrollado con **Vue.js**"
+        github="https://github.com/salteadorneo/pokemodle"
+      />
+    </section>
+
+    <h3 class="text-2xl font-light opacity-40 mt-8 mb-4">Más proyectos</h3>
+
+    <section class="space-y-6">
+      <Point
+        title="Julia Bescos"
+        url="https://juliabescos.com"
+        description="Web Portfolio diseñadora gráfica."
+      />
+      <Point
+        title="Menyled"
+        url="https://www.menyled.com"
+        description="Web corporativa + catálogo de productos."
+      />
+      <Point
+        title="Porto Alegría"
+        url="https://portoalegria.org"
+        description="Web Escuela de Samba Porto Alegría."
+      />
+      <Point
+        title="CTRL+i"
+        url="https://ctrl-i.es"
+        description="Web tienda de videojuegos."
+      />
+      <!-- <Point
+        title="Instr. Batucada"
+        url="https://instrumentos-batucada.com"
+      />
+      <Point
+        title="Comics y mangas"
+        url="https://comicsymangas.com"
+      />
+      <Point
+        title="Calculadora de viaje"
+        url="https://play.google.com/store/apps/details?id=dev.salteadorneo.viaje"
+        description="Calculadora del coste de un viaje en coche."
+      />
+      <Point
+        title="Precio Gasolina"
+        url="https://play.google.com/store/apps/details?id=dev.salteadorneo.gasolina"
+        description="Consulta el precio de la gasolina en España."
+      /> -->
+    </section>
+  </main>
+  <Footer />
+</Layout>

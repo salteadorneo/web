@@ -1,17 +1,17 @@
 ---
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
-import Layout from "../layouts/Layout.astro";
+import Footer from "@/components/Footer.astro";
+import Header from "@/components/Header.astro";
+import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout>
-    <Header />
-    <main class="grid place-content-center py-28">
-        <section class="text-center">
-            <h1 class="text-8xl font-black">404</h1>
-            <p class="mb-8">Página no encontrada</p>
-            <a href="/" class="uppercase hover:text-primary">Ir a la portada</a>
-        </section>
-    </main>
-    <Footer />
+  <Header />
+  <main class="grid place-content-center py-12 text-center">
+    <section>
+      <h1 class="text-8xl font-black">404</h1>
+      <p class="mb-8">Página no encontrada</p>
+      <a href="/" class="uppercase hover:text-primary">Ir a la portada</a>
+    </section>
+  </main>
+  <Footer />
 </Layout>
