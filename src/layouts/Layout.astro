@@ -41,7 +41,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   </head>
   <body>
     <Background />
-    <slot />
+    <div class="max-w-3xl mx-auto px-4">
+      <slot />
+    </div>
   </body>
 </html>
 
@@ -52,14 +54,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     --background: #121619;
   }
 
-  html {
+  html,
+  body {
     font-family: system-ui, sans-serif;
     scroll-behavior: smooth;
+    overflow-y: scroll;
+    height: 100%;
   }
 
   body {
     color: var(--color-text);
     background: var(--background);
+    height: 100%;
   }
 
   ::-webkit-scrollbar {

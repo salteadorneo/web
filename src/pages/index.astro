@@ -1,20 +1,26 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Header from "@/components/Header.astro";
-import Projects from "@/components/Projects.astro";
-import Footer from "@/components/Footer.astro";
-import ContactForm from "@/components/ContactForm.astro";
+import Footer from "@components/Footer.astro";
+import Sign from "@components/Sign.astro";
+import Logo from "@components/Logo.astro";
+import Nav from "@components/Nav.astro";
 ---
 
 <Layout>
-  <Header />
-  <main class="max-w-3xl mx-auto px-4">
-    <section class="relative text-center px-6 grid place-content-center mt-24">
-      <div class="space-y-2">
+  <header
+    class="flex items-center justify-between max-sm:flex-col max-sm:gap-4 text-center py-6 w-full"
+  >
+    <Logo />
+    <Nav />
+  </header>
+  <main>
+    <section class="relative text-center grid place-content-center mt-8">
+      <div class="space-y-4">
         <img
           src="/cristian.png"
           alt="Cristian Adán"
           class="inline-block w-48 rounded-full aspect-square"
+          style="view-transition-name: avatar"
         />
         <h1 class="text-4xl sm:text-5xl font-bold text-white/90">
           Cristian Adán
@@ -22,10 +28,11 @@ import ContactForm from "@/components/ContactForm.astro";
         <h2 class="text-lg sm:text-2xl font-medium text-white/70">
           Desarrollador <strong class="text-primary">Full Stack</strong>
         </h2>
+        <Footer onlyIcons={true} />
+        <div class="flex justify-center">
+          <Sign />
+        </div>
       </div>
     </section>
-    <Projects />
-    <ContactForm />
   </main>
-  <Footer />
 </Layout>

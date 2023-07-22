@@ -1,5 +1,6 @@
 ---
-const { key, image, duration, title, subtitle, url, description } = Astro.props;
+import Github from "./icons/Github.astro";
+const { title, url, github, description } = Astro.props;
 
 const parseDescription = (description: string) => {
   // replace text in ** with <strong>
@@ -7,66 +8,47 @@ const parseDescription = (description: string) => {
 };
 ---
 
-<a href={url} target="_blank" class="group hover:bg-black/10 p-4">
-  {
-    image && (
-      <div class="flex justify-center">
-        <img
-          src={image}
-          alt={title}
-          class="h-80 object-contain aspect-square"
-        />
-      </div>
-    )
-  }
-  <div class={`relative space-y-2 ${duration ? "pt-10" : ""} text-center`}>
-    {
-      duration && (
-        <span class="back absolute top-0 left-1/2 -translate-x-1/2 opacity-10 group-hover:opacity-20">
-          {duration || "_"}
-        </span>
-      )
-    }
-    <h4 class="title">
+<article>
+  <div class={`relative space-y-1`}>
+    <h4 class="text-xl font-bold flex items-center gap-2">
       {title}
+      <a
+        href={url}
+        target="_blank"
+        class="text-white/70 leading-none hover:text-white"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2 8-8m0 0v5m0-5h-5"
+          ></path>
+        </svg>
+      </a>
+      {
+        github && (
+          <a
+            href={github}
+            target="_blank"
+            class="w-5 text-white/70 leading-none hover:text-white"
+          >
+            <Github />
+          </a>
+        )
+      }
     </h4>
-    {subtitle && <p class="text-primary text-lg leading-none">{subtitle}</p>}
     {
       description && (
-        <p
-          class="text-white/70 group-hover:text-white transition-all"
-          set:html={parseDescription(description)}
-        />
+        <p class="text-white/70" set:html={parseDescription(description)} />
       )
     }
   </div>
-</a>
-
-<style define:vars={{ key }}>
-  a {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeup 0.7s ease;
-    animation-fill-mode: forwards;
-    animation-delay: calc(var(--key) * 0.3s);
-  }
-
-  .back {
-    font-size: 70px;
-    line-height: 70px;
-    font-weight: 900;
-    white-space: nowrap;
-    transition: all 0.3s ease;
-    z-index: -1;
-  }
-
-  .title {
-    font-size: 2em;
-    line-height: 1em;
-    font-weight: 900;
-    color: white;
-  }
-</style>
+</article>

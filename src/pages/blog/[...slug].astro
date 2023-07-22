@@ -1,7 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import Blog from "@/layouts/Blog.astro";
 import Tag from "@/components/Tag.astro";
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@/components/Footer.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
@@ -15,101 +17,115 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 ---
 
-<Blog
+<Layout
   title={`${entry.data.title} - salteadorneo.dev`}
   description={entry.data.description}
   ogimage={entry.data.image}
 >
-  <section class="container mx-auto space-y-4">
-    <div class="flex flex-wrap sm:flex-nowrap gap-6">
-      <img
-        src={entry.data.image}
-        alt=""
-        class="h-36 aspect-square"
-        style={`view-transition-name: image-${entry.slug}`}
-      />
-      <span class="space-y-4">
-        <h1
-          class="text-4xl font-black text-white"
-          style={`view-transition-name: title-${entry.slug}`}
-        >
-          {entry.data.title}
-        </h1>
-        <p
-          class="flex flex-wrap items-center gap-2"
-          style={`view-transition-name: tags-${entry.slug}`}
-        >
-          {entry.data.tags.map((tag: string) => <Tag tag={tag} />)}
-        </p>
-        <p class="text-sm" style={`view-transition-name: desc-${entry.slug}`}>
-          {entry.data.description}
-        </p>
-      </span>
-    </div>
-    <div class="markdown-content space-y-4">
-      <Content />
-    </div>
-    <section class="flex items-center justify-center py-8">
-      <div class="flex items-center gap-4">
-        <span>¡Comparte!</span>
-        <button
-          onclick={`navigator.share({ url: '${Astro.request.url}' })`}
-          class="hover:text-primary"
-        >
-          <svg
-            width={24}
-            height={24}
-            viewBox="0 0 36 36"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
+  <Header />
+  <main>
+    <a
+      href="/blog/"
+      onclick="
+      window.history.back();
+      return window.history.length === 1;
+      "
+    >
+      <h3 class="text-4xl font-light opacity-40 mb-8">Blog</h3>
+    </a>
+
+    <section class="container mx-auto space-y-4">
+      <div class="flex flex-wrap sm:flex-nowrap gap-6">
+        <img
+          src={entry.data.image}
+          alt=""
+          class="h-36 aspect-square"
+          style={`view-transition-name: image-${entry.slug}`}
+        />
+        <span class="space-y-4">
+          <h1
+            class="text-4xl font-bold text-white"
+            style={`view-transition-name: title-${entry.slug}`}
           >
-            <path
-              d="M27.53 24a5 5 0 0 0-3.6 1.55l-12.19-6.1a4.47 4.47 0 0 0 0-2.8l12.21-6.21a5.12 5.12 0 1 0-1.07-1.7l-12.09 6.15a5 5 0 1 0 0 6.33l12.06 6.07a4.93 4.93 0 0 0-.31 1.71 5 5 0 1 0 5-5Z"
-            ></path>
-            <path fill="none" d="M0 0h36v36H0z"></path>
-          </svg>
-        </button>
-        <a
-          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-            Astro.request.url
-          )}`}
-          target="_blank"
-          class="hover:text-primary"
-          title="Compartir en LinkedIn"
-        >
-          <svg
-            class="inline-block w-8 h-8"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            ><path
-              d="M15.8338 2.5C16.2758 2.5 16.6998 2.67559 17.0123 2.98816C17.3249 3.30072 17.5005 3.72464 17.5005 4.16667V15.8333C17.5005 16.2754 17.3249 16.6993 17.0123 17.0118C16.6998 17.3244 16.2758 17.5 15.8338 17.5H4.16715C3.72513 17.5 3.3012 17.3244 2.98864 17.0118C2.67608 16.6993 2.50049 16.2754 2.50049 15.8333V4.16667C2.50049 3.72464 2.67608 3.30072 2.98864 2.98816C3.3012 2.67559 3.72513 2.5 4.16715 2.5H15.8338ZM15.4172 15.4167V11C15.4172 10.2795 15.1309 9.5885 14.6215 9.07903C14.112 8.56955 13.421 8.28333 12.7005 8.28333C11.9922 8.28333 11.1672 8.71667 10.7672 9.36667V8.44167H8.44215V15.4167H10.7672V11.3083C10.7672 10.6667 11.2838 10.1417 11.9255 10.1417C12.2349 10.1417 12.5317 10.2646 12.7504 10.4834C12.9692 10.7022 13.0922 10.9989 13.0922 11.3083V15.4167H15.4172ZM5.73382 7.13333C6.10512 7.13333 6.46122 6.98583 6.72377 6.72328C6.98632 6.46073 7.13382 6.10464 7.13382 5.73333C7.13382 4.95833 6.50882 4.325 5.73382 4.325C5.36031 4.325 5.00209 4.47338 4.73798 4.73749C4.47387 5.0016 4.32549 5.35982 4.32549 5.73333C4.32549 6.50833 4.95882 7.13333 5.73382 7.13333ZM6.89216 15.4167V8.44167H4.58382V15.4167H6.89216Z"
-              fill="currentColor"></path></svg
+            {entry.data.title}
+          </h1>
+          <p
+            class="flex flex-wrap items-center gap-2"
+            style={`view-transition-name: tags-${entry.slug}`}
           >
-        </a><a
-          href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
-            Astro.request.url
-          )}&text=${encodeURIComponent(
-            entry.data.title
-          )}&hashtags=${encodeURIComponent(entry.data.tags.join(","))}`}
-          target="_blank"
-          class="hover:text-primary"
-          title="Compartir en Twitter"
-        >
-          <svg
-            class="inline-block w-8 h-8"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            ><path
-              d="M18.0005 5.02869C17.4116 5.29638 16.7768 5.47229 16.119 5.55642C16.7921 5.15106 17.3122 4.50861 17.5569 3.73615C16.9221 4.11856 16.2185 4.38624 15.4766 4.53921C14.8724 3.88146 14.0234 3.49905 13.0598 3.49905C11.2624 3.49905 9.79399 4.96751 9.79399 6.78013C9.79399 7.04016 9.82458 7.29255 9.87812 7.52965C7.15536 7.39198 4.73089 6.08414 3.11712 4.10326C2.83414 4.5851 2.67353 5.15106 2.67353 5.74762C2.67353 6.8872 3.24714 7.89676 4.13433 8.47037C3.59131 8.47037 3.08653 8.31741 2.64294 8.08797V8.11091C2.64294 9.70173 3.77487 11.0325 5.27391 11.3308C4.79263 11.4625 4.28737 11.4808 3.79781 11.3843C4.00554 12.0363 4.41237 12.6068 4.96111 13.0156C5.50985 13.4244 6.17291 13.651 6.85709 13.6635C5.69734 14.5816 4.25976 15.0779 2.7806 15.0708C2.52056 15.0708 2.26053 15.0555 2.00049 15.0249C3.45364 15.9579 5.18213 16.501 7.03299 16.501C13.0598 16.501 16.3714 11.4991 16.3714 7.16253C16.3714 7.01722 16.3714 6.87955 16.3638 6.73424C17.0062 6.27534 17.5569 5.69408 18.0005 5.02869Z"
-              fill="currentColor"></path></svg
-          >
-        </a>
+            {entry.data.tags.map((tag: string) => <Tag tag={tag} />)}
+          </p>
+          <p class="text-sm" style={`view-transition-name: desc-${entry.slug}`}>
+            {entry.data.description}
+          </p>
+        </span>
       </div>
+      <div class="markdown-content space-y-4">
+        <Content />
+      </div>
+      <section class="flex items-center justify-center py-8">
+        <div class="flex items-center gap-4">
+          <span>¡Comparte!</span>
+          <button
+            onclick={`navigator.share({ url: '${Astro.request.url}' })`}
+            class="hover:text-primary"
+          >
+            <svg
+              width={24}
+              height={24}
+              viewBox="0 0 36 36"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+            >
+              <path
+                d="M27.53 24a5 5 0 0 0-3.6 1.55l-12.19-6.1a4.47 4.47 0 0 0 0-2.8l12.21-6.21a5.12 5.12 0 1 0-1.07-1.7l-12.09 6.15a5 5 0 1 0 0 6.33l12.06 6.07a4.93 4.93 0 0 0-.31 1.71 5 5 0 1 0 5-5Z"
+              ></path>
+              <path fill="none" d="M0 0h36v36H0z"></path>
+            </svg>
+          </button>
+          <a
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+              Astro.request.url
+            )}`}
+            target="_blank"
+            class="hover:text-primary"
+            title="Compartir en LinkedIn"
+          >
+            <svg
+              class="inline-block w-8 h-8"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                d="M15.8338 2.5C16.2758 2.5 16.6998 2.67559 17.0123 2.98816C17.3249 3.30072 17.5005 3.72464 17.5005 4.16667V15.8333C17.5005 16.2754 17.3249 16.6993 17.0123 17.0118C16.6998 17.3244 16.2758 17.5 15.8338 17.5H4.16715C3.72513 17.5 3.3012 17.3244 2.98864 17.0118C2.67608 16.6993 2.50049 16.2754 2.50049 15.8333V4.16667C2.50049 3.72464 2.67608 3.30072 2.98864 2.98816C3.3012 2.67559 3.72513 2.5 4.16715 2.5H15.8338ZM15.4172 15.4167V11C15.4172 10.2795 15.1309 9.5885 14.6215 9.07903C14.112 8.56955 13.421 8.28333 12.7005 8.28333C11.9922 8.28333 11.1672 8.71667 10.7672 9.36667V8.44167H8.44215V15.4167H10.7672V11.3083C10.7672 10.6667 11.2838 10.1417 11.9255 10.1417C12.2349 10.1417 12.5317 10.2646 12.7504 10.4834C12.9692 10.7022 13.0922 10.9989 13.0922 11.3083V15.4167H15.4172ZM5.73382 7.13333C6.10512 7.13333 6.46122 6.98583 6.72377 6.72328C6.98632 6.46073 7.13382 6.10464 7.13382 5.73333C7.13382 4.95833 6.50882 4.325 5.73382 4.325C5.36031 4.325 5.00209 4.47338 4.73798 4.73749C4.47387 5.0016 4.32549 5.35982 4.32549 5.73333C4.32549 6.50833 4.95882 7.13333 5.73382 7.13333ZM6.89216 15.4167V8.44167H4.58382V15.4167H6.89216Z"
+                fill="currentColor"></path></svg
+            >
+          </a><a
+            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+              Astro.request.url
+            )}&text=${encodeURIComponent(
+              entry.data.title
+            )}&hashtags=${encodeURIComponent(entry.data.tags.join(","))}`}
+            target="_blank"
+            class="hover:text-primary"
+            title="Compartir en Twitter"
+          >
+            <svg
+              class="inline-block w-8 h-8"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                d="M18.0005 5.02869C17.4116 5.29638 16.7768 5.47229 16.119 5.55642C16.7921 5.15106 17.3122 4.50861 17.5569 3.73615C16.9221 4.11856 16.2185 4.38624 15.4766 4.53921C14.8724 3.88146 14.0234 3.49905 13.0598 3.49905C11.2624 3.49905 9.79399 4.96751 9.79399 6.78013C9.79399 7.04016 9.82458 7.29255 9.87812 7.52965C7.15536 7.39198 4.73089 6.08414 3.11712 4.10326C2.83414 4.5851 2.67353 5.15106 2.67353 5.74762C2.67353 6.8872 3.24714 7.89676 4.13433 8.47037C3.59131 8.47037 3.08653 8.31741 2.64294 8.08797V8.11091C2.64294 9.70173 3.77487 11.0325 5.27391 11.3308C4.79263 11.4625 4.28737 11.4808 3.79781 11.3843C4.00554 12.0363 4.41237 12.6068 4.96111 13.0156C5.50985 13.4244 6.17291 13.651 6.85709 13.6635C5.69734 14.5816 4.25976 15.0779 2.7806 15.0708C2.52056 15.0708 2.26053 15.0555 2.00049 15.0249C3.45364 15.9579 5.18213 16.501 7.03299 16.501C13.0598 16.501 16.3714 11.4991 16.3714 7.16253C16.3714 7.01722 16.3714 6.87955 16.3638 6.73424C17.0062 6.27534 17.5569 5.69408 18.0005 5.02869Z"
+                fill="currentColor"></path></svg
+            >
+          </a>
+        </div>
+      </section>
     </section>
-  </section>
-</Blog>
+  </main>
+  <Footer />
+</Layout>
 
 <style is:inline>
   @media (min-width: 800px) {
@@ -129,7 +145,7 @@ const { Content } = await entry.render();
   .markdown-content h2,
   .markdown-content h3 {
     font-size: 1.6rem;
-    font-weight: 900;
+    font-weight: 700;
     color: white;
   }
 
