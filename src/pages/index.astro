@@ -1,38 +1,121 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Footer from "@components/Footer.astro";
 import Sign from "@components/Sign.astro";
 import Logo from "@components/Logo.astro";
-import Nav from "@components/Nav.astro";
+import Project from "@components/Project.astro";
+import Github from "@components/icons/Github.astro";
+import Linkedin from "@components/icons/Linkedin.astro";
+import Twitter from "@components/icons/Twitter.astro";
+import Email from "@components/icons/Email.astro";
+import ContactForm from "@components/ContactForm.astro";
 ---
 
 <Layout>
-  <header
-    class="flex items-center justify-between max-sm:flex-col max-sm:gap-4 text-center py-6 w-full"
-  >
+  <header class="px-8 flex items-center justify-between">
+    <Sign />
     <Logo />
-    <Nav />
   </header>
-  <main>
-    <section class="relative text-center grid place-content-center mt-8">
-      <div class="space-y-4">
-        <img
-          src="/cristian.png"
-          alt="Cristian Adán"
-          class="inline-block w-48 rounded-full aspect-square"
-          style="view-transition-name: avatar"
+  <main class="p-8">
+    <img
+      src="/cristian.png"
+      alt="Cristian Adán"
+      class="w-24 rounded-full object-cover mb-4"
+    />
+    <h1 class="text-5xl md:text-7xl font-semibold">Cristian Adán</h1>
+    <h2 class="text-2xl md:text-4xl font-light uppercase">
+      <span class="text-primary">Full Stack</span> Developer
+    </h2>
+    <p class="text-xl md:text-2xl max-w-lg opacity-50">
+      +15 años de experiencia
+    </p>
+    <section class="flex flex-row gap-6 mt-6">
+      <a
+        href="https://github.com/salteadorneo"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Enlace a GitHub"
+        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
+      >
+        <Github />
+        <span class="max-md:hidden">@salteadorneo</span>
+      </a>
+      <a
+        href="https://www.linkedin.com/in/cristianadan/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Enlace a LinkedIn"
+        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
+      >
+        <Linkedin />
+        <span class="max-md:hidden">/cristianadan</span>
+      </a>
+      <a
+        href="https://twitter.com/salteadorneodev"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Enlace a Twitter"
+        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
+      >
+        <Twitter />
+        <span class="max-md:hidden">@salteadorneodev</span>
+      </a>
+      <a
+        href="mailto:hola@salteadorneo.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Contactar por email"
+        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
+      >
+        <Email />
+        <span class="max-sm:hidden">hola@salteadorneo.dev</span>
+      </a>
+    </section>
+    <section class="mt-12">
+      <h2 class="font-medium uppercase mb-4 opacity-70">
+        Proyectos destacados
+      </h2>
+      <div class="flex gap-4 overflow-x-scroll pb-4">
+        <Project
+          image="/images/projects/clone-ui.design_.png"
+          title="Clone UI"
+          description="Generación de componentes UI con prompts simples."
+          tags="Next.js,Tailwind CSS,IA"
+          url="https://clone-ui.design"
         />
-        <h1 class="text-4xl sm:text-5xl font-bold text-white/90">
-          Cristian Adán
-        </h1>
-        <h2 class="text-lg sm:text-2xl font-medium text-white/70">
-          Desarrollador <strong class="text-primary">Full Stack</strong>
-        </h2>
-        <Footer onlyIcons={true} />
-        <div class="flex justify-center">
-          <Sign />
-        </div>
+        <Project
+          image="/images/projects/infinite.cards_es_.png"
+          title="infinite.cards"
+          description="Tarjetas digitales profesionales."
+          tags="Next.js,Tailwind CSS"
+          url="https://infinite.cards"
+        />
+        <Project
+          image="/images/projects/playjs.dev_.png"
+          title="PlayJS"
+          description="Playground JavaScript en tu navegador."
+          tags="React,Open source"
+          url="https://playjs.dev"
+          github="https://github.com/salteadorneo/playjs"
+        />
+        <Project
+          image="/images/projects/url.beauty_.png"
+          title="URL Beauty"
+          description="An other URL shortener. But, with magic."
+          tags="JavaScript,Deno,Open source"
+          url="https://url.beauty/"
+          github="https://github.com/salteadorneo/url.beauty"
+        />
+        <Project
+          image="/images/projects/pokemodle.salteadorneo.dev_.png"
+          title="Pokemodle"
+          description="Juego de adivinar el Pokémon oculto cada día."
+          tags="Vue.js,Open source"
+          url="https://pokemodle.online/"
+          github="https://github.com/salteadorneo/pokemodle"
+        />
       </div>
     </section>
+    <ContactForm />
   </main>
+  <footer></footer>
 </Layout>

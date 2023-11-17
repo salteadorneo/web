@@ -1,9 +1,7 @@
 ---
-import Background from "@/components/Background.astro";
-
 const {
-  title = "Cristian Adán - salteadorneo.dev",
-  description = "Desarrollador full stack",
+  title = "Cristian Adán - salteadorneo.dev - Full stack developer",
+  description = "Full stack developer con más de 15 años de experiencia profesional - hola@salteadorneo.dev",
   ogimage = "cristian.png",
 } = Astro.props;
 
@@ -40,10 +38,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <script data-no-cookie async src="https://cdn.splitbee.io/sb.js"></script>
   </head>
   <body>
-    <Background />
-    <div class="max-w-3xl mx-auto px-4">
-      <slot />
-    </div>
+    <slot />
   </body>
 </html>
 
@@ -58,18 +53,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   body {
     font-family: system-ui, sans-serif;
     scroll-behavior: smooth;
-    overflow-y: scroll;
-    height: 100%;
   }
 
   body {
     color: var(--color-text);
     background: var(--background);
-    height: 100%;
+    text-wrap: balance;
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 4px;
+    height: 4px;
   }
 
   ::-webkit-scrollbar-track {

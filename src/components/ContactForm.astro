@@ -1,27 +1,26 @@
-<h3 class="text-4xl font-light opacity-40 mb-8">Contacto</h3>
-
-<section>
+<section class="mt-16">
+  <h2 class="font-medium uppercase opacity-70">Contacto</h2>
   <form
     id="contact-form"
     action="https://formspree.io/f/mpzebone"
     method="POST"
-    class="space-y-4"
+    class="flex flex-col items-start gap-4 mt-4"
   >
     <input
       type="email"
       name="email"
       placeholder="Email"
-      class="py-1 px-3 w-full bg-transparent border-l-8 border-white/50 border-b outline-none opacity-70 hover:opacity-100 transition-all duration-300"
+      class="bg-transparent p-2 rounded border border-gray-500 w-full max-w-lg outline-none"
       required
     />
     <textarea
       name="message"
       placeholder="Mensaje"
-      class="py-1 px-3 w-full h-24 bg-transparent border-l-8 border-white/50 border-b outline-none opacity-70 hover:opacity-100 transition-all duration-300"
+      class="bg-transparent p-2 rounded border border-gray-500 w-full max-w-lg outline-none"
       required></textarea>
 
     <button
-      class="py-1 px-6 border rounded opacity-70 hover:opacity-100 transition-all duration-300"
+      class="bg-transparent p-2 rounded border border-gray-500 w-full max-w-lg outline-none hover:text-background hover:bg-gray-100"
       >Enviar</button
     >
     <p id="contact-form-status"></p>
@@ -29,42 +28,42 @@
 </section>
 
 <script is:inline>
-var form = document.getElementById("contact-form");
+  var form = document.getElementById("contact-form");
 
-async function handleSubmit(event) {
-  event.preventDefault();
+  async function handleSubmit(event) {
+    event.preventDefault();
 
-  var status = document.getElementById("contact-form-status");
+    var status = document.getElementById("contact-form-status");
 
-  var data = new FormData(event.target);
-  fetch(event.target.action, {
-    method: form.method,
-    body: data,
-    headers: {
-      Accept: "application/json",
-    },
-  })
-    .then((response) => {
-      if (response.ok) {
-        status.innerHTML = "¡Gracias por contactar! Te responderé pronto.";
-        form.reset();
-      } else {
-        response.json().then((data) => {
-          if (Object.hasOwn(data, "errors")) {
-            status.innerHTML = data["errors"]
-              .map((error) => error["message"])
-              .join(", ");
-          } else {
-            status.innerHTML =
-              "Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.";
-          }
-        });
-      }
+    var data = new FormData(event.target);
+    fetch(event.target.action, {
+      method: form.method,
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
     })
-    .catch((error) => {
-      status.innerHTML =
-        "Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.";
-    });
-}
-form.addEventListener("submit", handleSubmit);
+      .then((response) => {
+        if (response.ok) {
+          status.innerHTML = "¡Gracias por contactar! Te responderé pronto.";
+          form.reset();
+        } else {
+          response.json().then((data) => {
+            if (Object.hasOwn(data, "errors")) {
+              status.innerHTML = data["errors"]
+                .map((error) => error["message"])
+                .join(", ");
+            } else {
+              status.innerHTML =
+                "Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.";
+            }
+          });
+        }
+      })
+      .catch((error) => {
+        status.innerHTML =
+          "Ha ocurrido un error. Por favor, inténtelo de nuevo más tarde.";
+      });
+  }
+  form.addEventListener("submit", handleSubmit);
 </script>
