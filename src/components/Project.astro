@@ -3,16 +3,9 @@ import Github from "./icons/Github.astro";
 const { image, title, description, tags, url, github } = Astro.props;
 ---
 
-<article class="group w-72">
-    <div
-        class="opacity-20 grayscale group-hover:opacity-100 group-hover:grayscale-0 duration-300 w-72 aspect-video mb-2 overflow-hidden"
-    >
-        <a href={url} target="_blank">
-            <img src={image} alt={title} class="object-cover w-full h-full" />
-        </a>
-    </div>
-    <h3 class="text-2xl font-semibold flex items-center gap-2">
-        <a href={url} target="_blank">
+<article class="inline-block w-full p-4 pt-6 rounded-lg backdrop-blur-sm bg-black/5 mb-4 hover:bg-black/10 transition-all duration-300">
+    <h3 class="flex items-center gap-2 text-2xl text-nowrap font-semibold">
+        <a href={url} target="_blank" class="hover:text-primary transition-colors duration-300">
             {title}
         </a>
         {
@@ -20,23 +13,25 @@ const { image, title, description, tags, url, github } = Astro.props;
                 <a
                     href={github}
                     target="_blank"
-                    class="flex items-center gap-2 text-white/70 leading-none hover:text-white"
+                    class="text-white/70 leading-none hover:text-primary transition-colors duration-300"
                 >
-                    <Github />
+                    <Github size="20" />
                 </a>
             )
         }
     </h3>
-    <p class="leading-tight opacity-60 mt-1 mb-2">
+    <p class="text-white/60 leading-tight mt-1">
         {description}
     </p>
-    {
-        tags
-            ?.split(",")
-            .map((tag: string) => (
-                <span class="inline-block bg-gray-200 rounded-full px-3 text-sm font-semibold text-gray-800 mr-2">
-                    {tag}
-                </span>
-            ))
-    }
+    <p class="flex flex-wrap gap-1 mt-3">
+        {
+            tags
+                ?.split(",")
+                .map((tag: string) => (
+                    <span class="text-sm bg-white/5 rounded px-2 py-0.5 text-white/60 text-nowrap">
+                        {tag}
+                    </span>
+                ))
+        }
+    </p>
 </article>

@@ -1,33 +1,30 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Sign from "@components/Sign.astro";
-import Logo from "@components/Logo.astro";
 import Project from "@components/Project.astro";
 import Github from "@components/icons/Github.astro";
 import Linkedin from "@components/icons/Linkedin.astro";
 import Twitter from "@components/icons/Twitter.astro";
 import Email from "@components/icons/Email.astro";
+
+import { version } from "../../package.json";
 ---
 
 <Layout>
-  <header class="px-8 flex items-center justify-between">
-    <Sign />
-    <Logo />
-  </header>
-  <main class="p-8">
-    <img
+  <header class="max-w-3xl mx-auto p-4 flex flex-wrap items-center justify-between gap-6">
+    <section class="flex items-center gap-4">
+      <img
       src="/cristian.png"
       alt="Cristian Adán"
-      class="w-24 rounded-full object-cover mb-4"
+      class="w-14 rounded-full object-cover"
     />
-    <h1 class="text-5xl md:text-7xl font-semibold">Cristian Adán</h1>
-    <h2 class="text-2xl md:text-4xl font-light uppercase">
-      <span class="text-primary">Full Stack</span> Developer
-    </h2>
-    <p class="text-xl md:text-2xl max-w-lg opacity-50">
-      +15 años de experiencia
-    </p>
-    <section class="flex flex-row gap-6 mt-6">
+    <div>
+      <h1 class="text-3xl">Cristian Adán</h1>
+      <h2 class="text-sm uppercase">
+        <span class="text-primary">Full Stack</span> Developer
+      </h2>
+    </div>
+    </section>
+    <section class="flex gap-4">
       <a
         href="https://github.com/salteadorneo"
         target="_blank"
@@ -36,7 +33,6 @@ import Email from "@components/icons/Email.astro";
         class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
       >
         <Github />
-        <span class="max-md:hidden">@salteadorneo</span>
       </a>
       <a
         href="https://www.linkedin.com/in/cristianadan/"
@@ -46,7 +42,6 @@ import Email from "@components/icons/Email.astro";
         class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
       >
         <Linkedin />
-        <span class="max-md:hidden">/cristianadan</span>
       </a>
       <a
         href="https://twitter.com/salteadorneodev"
@@ -56,7 +51,6 @@ import Email from "@components/icons/Email.astro";
         class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
       >
         <Twitter />
-        <span class="max-md:hidden">@salteadorneodev</span>
       </a>
       <a
         href="mailto:hola@salteadorneo.dev"
@@ -66,14 +60,15 @@ import Email from "@components/icons/Email.astro";
         class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
       >
         <Email />
-        <span class="max-sm:hidden">hola@salteadorneo.dev</span>
       </a>
     </section>
-    <section class="mt-12">
-      <h2 class="font-medium uppercase mb-4 opacity-70">
+  </header>
+  <main class="max-w-3xl mx-auto p-4">
+    <section class="mt-4">
+      <h2 class="uppercase mb-4">
         Proyectos destacados
       </h2>
-      <div class="flex gap-4 overflow-x-scroll pb-4">
+      <div class="sm:columns-2 md:columns-3 gap-4">
         <Project
           image="/images/projects/clone-ui.design_.png"
           title="Clone UI"
@@ -82,11 +77,11 @@ import Email from "@components/icons/Email.astro";
           url="https://clone-ui.design"
         />
         <Project
-          image="/images/projects/infinite.cards_es_.png"
-          title="infinite.cards"
-          description="Tarjetas digitales profesionales."
-          tags="Next.js,Tailwind CSS"
-          url="https://infinite.cards"
+          title="wireframes"
+          description="Web components UI Library for wireframes and prototypes."
+          tags="Web Components,Open source"
+          url="https://salteadorneo.github.io/wireframes/"
+          github="https://github.com/salteadorneo/wireframes"
         />
         <Project
           image="/images/projects/playjs.dev_.png"
@@ -95,6 +90,13 @@ import Email from "@components/icons/Email.astro";
           tags="React,Open source"
           url="https://playjs.dev"
           github="https://github.com/salteadorneo/playjs"
+        />
+        <Project
+          image="/images/projects/infinite.cards_es_.png"
+          title="infinite.cards"
+          description="Tarjetas digitales profesionales."
+          tags="Next.js,Tailwind CSS"
+          url="https://infinite.cards"
         />
         <Project
           image="/images/projects/url.beauty_.png"
@@ -115,5 +117,11 @@ import Email from "@components/icons/Email.astro";
       </div>
     </section>
   </main>
-  <footer></footer>
+  <footer class="max-w-3xl mx-auto p-4">
+    <p>
+      <a href="https://github.com/salteadorneo/web" target="_blank" class="flex items-center justify-center gap-2 text-sm opacity-70 hover:opacity-100 transition-all duration-300">
+        <Github size="18" /> @salteadorneo/web v.{version}
+      </a>
+    </p>
+  </footer>
 </Layout>
