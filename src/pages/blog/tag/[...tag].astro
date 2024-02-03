@@ -19,10 +19,10 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 
-const allBlogPosts = await getCollection("blog");
+const posts = await getCollection("blog");
 
 // sort by date
-allBlogPosts.sort((a, b) => {
+posts.sort((a, b) => {
   return b.data.publishedDate - a.data.publishedDate;
 });
 ---
@@ -32,16 +32,16 @@ allBlogPosts.sort((a, b) => {
   description="Descubre las últimas novedades de JavaScript, HTML, CSS, base de datos y tecnología en general."
 >
   <Header />
-  <main>
+  <main class="max-w-3xl mx-auto p-4">
     <h3 class="text-4xl font-light opacity-40 mb-8">
       {tag?.toUpperCase().replace(/-/g, " ")}
     </h3>
 
     <section class="space-y-10 pb-8">
       {
-        allBlogPosts
+        posts
           .filter((post) =>
-            post.data.tags.map((t: string) => slugify(t)).includes(tag)
+            post.data.tags.map((t: string) => slugify(t)).includes(tag),
           )
           .map((post) => (
             <article class="flex items-center gap-4 sm:gap-8 group">

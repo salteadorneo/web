@@ -1,21 +1,62 @@
 ---
-import Logo from "./Logo.astro";
-import Nav from "./Nav.astro";
+import Github from "@components/icons/Github.astro";
+import Linkedin from "@components/icons/Linkedin.astro";
+import Twitter from "@components/icons/Twitter.astro";
+import Email from "@components/icons/Email.astro";
 ---
 
 <header
-  class="flex items-center justify-between max-sm:flex-col gap-4 py-5 w-full"
+  class="max-w-3xl mx-auto p-4 flex flex-wrap items-center justify-between gap-6"
 >
-  <a href="/" class="group flex items-center gap-3">
+  <a href="/" class="flex items-center gap-4">
     <img
       src="/cristian.png"
       alt="Cristian Adán"
-      class="inline-block w-8 rounded-full aspect-square grayscale group-hover:grayscale-0 transition-all duration-300"
-      style="view-transition-name: avatar"
+      class="w-14 rounded-full object-cover"
     />
-    <span class="text-left">
-      <Logo />
-    </span>
+    <div>
+      <h1 class="text-3xl">Cristian Adán</h1>
+      <h2 class="text-sm uppercase">
+        <span class="text-primary">Full Stack</span> Developer
+      </h2>
+    </div>
   </a>
-  <Nav />
+  <section class="flex gap-4">
+    <a
+      href="https://github.com/salteadorneo"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Enlace a GitHub"
+      class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
+    >
+      <Github />
+    </a>
+    <a
+      href="https://www.linkedin.com/in/cristianadan/"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Enlace a LinkedIn"
+      class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
+    >
+      <Linkedin />
+    </a>
+    <a
+      href="https://twitter.com/salteadorneodev"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Enlace a Twitter"
+      class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
+    >
+      <Twitter />
+    </a>
+    <a
+      href="mailto:hola@salteadorneo.dev"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Contactar por email"
+      class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
+    >
+      <Email />
+    </a>
+  </section>
 </header>

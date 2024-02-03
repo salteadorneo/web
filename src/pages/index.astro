@@ -1,72 +1,25 @@
 ---
+import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
+import Header from "@components/Header.astro";
 import Project from "@components/Project.astro";
-import Github from "@components/icons/Github.astro";
-import Linkedin from "@components/icons/Linkedin.astro";
-import Twitter from "@components/icons/Twitter.astro";
-import Email from "@components/icons/Email.astro";
+import Tag from "@components/Tag.astro";
+import Footer from "@components/Footer.astro";
 
-import { version } from "../../package.json";
+const posts = await getCollection("blog");
+
+// sort by date
+posts.sort((a, b) => {
+  return b.data.publishedDate - a.data.publishedDate;
+});
 ---
 
 <Layout>
-  <header class="max-w-3xl mx-auto p-4 flex flex-wrap items-center justify-between gap-6">
-    <section class="flex items-center gap-4">
-      <img
-      src="/cristian.png"
-      alt="Cristian Adán"
-      class="w-14 rounded-full object-cover"
-    />
-    <div>
-      <h1 class="text-3xl">Cristian Adán</h1>
-      <h2 class="text-sm uppercase">
-        <span class="text-primary">Full Stack</span> Developer
-      </h2>
-    </div>
-    </section>
-    <section class="flex gap-4">
-      <a
-        href="https://github.com/salteadorneo"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Enlace a GitHub"
-        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
-      >
-        <Github />
-      </a>
-      <a
-        href="https://www.linkedin.com/in/cristianadan/"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Enlace a LinkedIn"
-        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
-      >
-        <Linkedin />
-      </a>
-      <a
-        href="https://twitter.com/salteadorneodev"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Enlace a Twitter"
-        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
-      >
-        <Twitter />
-      </a>
-      <a
-        href="mailto:hola@salteadorneo.dev"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Contactar por email"
-        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
-      >
-        <Email />
-      </a>
-    </section>
-  </header>
+  <Header />
   <main class="max-w-3xl mx-auto p-4">
-    <section class="mt-4">
-      <h2 class="uppercase mb-4">
-        Proyectos destacados
+    <section class="relative mt-20">
+      <h2 class="absolute -top-28 text-[122px] font-black opacity-10 uppercase">
+        Proyectos
       </h2>
       <div class="sm:columns-2 md:columns-3 gap-4">
         <Project
@@ -116,12 +69,49 @@ import { version } from "../../package.json";
         />
       </div>
     </section>
+    <section class="relative mt-32">
+      <h2 class="absolute -top-28 text-[122px] font-black opacity-10 uppercase">
+        Blog
+      </h2>
+      <div>
+        {
+          posts.map((post) => (
+            <article class="group inline-flex gap-6 w-full p-6 rounded-lg backdrop-blur-sm bg-black/35 mb-4 hover:bg-black/10 transition-all duration-300">
+              <a href={`/blog/${post.slug}/`}>
+                <img
+                  src={post.data.image}
+                  alt={post.data.title}
+                  class="h-20 aspect-square grayscale group-hover:grayscale-0 transition-all duration-300"
+                  style={`view-transition-name: image-${post.slug}`}
+                />
+              </a>
+              <span class="space-y-2">
+                <h2
+                  class="text-xl leading-none font-bold text-white hover:text-primary"
+                  style={`view-transition-name: title-${post.slug}`}
+                >
+                  <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                </h2>
+                <p
+                  class="flex flex-wrap items-center gap-2"
+                  style={`view-transition-name: tags-${post.slug}`}
+                >
+                  {post.data.tags.map((tag: string) => (
+                    <Tag tag={tag} />
+                  ))}
+                </p>
+                <p
+                  class="text-sm"
+                  style={`view-transition-name: desc-${post.slug}`}
+                >
+                  {post.data.description}
+                </p>
+              </span>
+            </article>
+          ))
+        }
+      </div>
+    </section>
   </main>
-  <footer class="max-w-3xl mx-auto p-4">
-    <p>
-      <a href="https://github.com/salteadorneo/web" target="_blank" class="flex items-center justify-center gap-2 text-sm opacity-70 hover:opacity-100 transition-all duration-300">
-        <Github size="18" /> @salteadorneo/web v.{version}
-      </a>
-    </p>
-  </footer>
+  <Footer />
 </Layout>

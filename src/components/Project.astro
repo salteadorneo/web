@@ -3,9 +3,15 @@ import Github from "./icons/Github.astro";
 const { image, title, description, tags, url, github } = Astro.props;
 ---
 
-<article class="inline-block w-full p-4 pt-6 rounded-lg backdrop-blur-sm bg-black/5 mb-4 hover:bg-black/10 transition-all duration-300">
+<article
+    class="inline-block w-full p-4 pt-6 rounded-lg backdrop-blur-sm bg-black/35 mb-4 hover:bg-black/10 transition-all duration-300"
+>
     <h3 class="flex items-center gap-2 text-2xl text-nowrap font-semibold">
-        <a href={url} target="_blank" class="hover:text-primary transition-colors duration-300">
+        <a
+            href={url}
+            target="_blank"
+            class="hover:text-primary transition-colors duration-300"
+        >
             {title}
         </a>
         {
