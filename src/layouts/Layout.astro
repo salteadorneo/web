@@ -8,7 +8,7 @@ const {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
@@ -46,7 +46,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   :root {
     --color-text: #e1e1e1;
     --color-primary: #30a834;
-    --background: #121619;
+    --background: #050505;
   }
 
   @font-face {
@@ -68,17 +68,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   body {
     color: var(--color-text);
-    background: #121619; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to top,
-      #2a333a,
-      #121619
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to top,
-      #2a333a,
-      #121619
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: #050505;
+    background: -webkit-linear-gradient(to top, #111, #050505);
+    background: linear-gradient(to top, #111, #050505);
   }
 
   ::-webkit-scrollbar {
