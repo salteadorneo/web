@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Project from "@components/Project.astro";
+import LiteYouTube from "@components/LiteYouTube.astro";
 import Tag from "@components/Tag.astro";
 import Footer from "@components/Footer.astro";
 
@@ -19,22 +20,48 @@ posts.sort((a, b) => {
   <main class="max-w-3xl mx-auto p-4 w-[100vw] overflow-x-hidden">
     <section class="relative mt-20">
       <h2 class="absolute -top-28 text-[122px] font-black opacity-10 uppercase">
+        Bio
+      </h2>
+      <article
+        class="space-y-4 w-full p-6 rounded-lg backdrop-blur-sm bg-black/35"
+      >
+        <p>
+          Tengo <strong class="text-primary"
+            >más de 17 años de experiencia</strong
+          > en programación. He trabajado como <span class="text-primary"
+            >full-stack</span
+          > para clientes como <span class="text-primary">Greenpeace</span> ó <span
+            class="text-primary">Mahou San Miguel</span
+          >.
+        </p>
+        <p>
+          Actualmente trabajo como <strong class="text-primary"
+            >front-end</strong
+          > en un producto de fintech. En mi tiempo libre, construyo <span
+            class="text-primary">side-projects</span
+          >.
+        </p>
+      </article>
+    </section>
+    <section class="relative mt-32">
+      <h2 class="absolute -top-28 text-[122px] font-black opacity-10 uppercase">
         Proyectos
       </h2>
-      <div class="sm:columns-2 md:columns-3 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <Project
           image="/images/projects/clone-ui.design_.png"
           title="Clone UI"
           description="Generación de componentes UI con prompts simples."
           tags="Next.js,Tailwind CSS,IA"
           url="https://clone-ui.design"
+          classes="md:col-span-2"
         />
         <Project
-          title="wireframes"
-          description="Web components UI Library for wireframes and prototypes."
-          tags="Web Components,Open source"
-          url="https://salteadorneo.github.io/wireframes/"
-          github="https://github.com/salteadorneo/wireframes"
+          image="/images/projects/infinite.cards_es_.png"
+          title="infinite.cards"
+          description="Tarjetas digitales profesionales."
+          tags="Next.js,Tailwind CSS"
+          url="https://infinite.cards"
         />
         <Project
           image="/images/projects/playjs.dev_.png"
@@ -43,13 +70,14 @@ posts.sort((a, b) => {
           tags="React,Open source"
           url="https://playjs.dev"
           github="https://github.com/salteadorneo/playjs"
+          classes="md:col-span-2"
         />
         <Project
-          image="/images/projects/infinite.cards_es_.png"
-          title="infinite.cards"
-          description="Tarjetas digitales profesionales."
-          tags="Next.js,Tailwind CSS"
-          url="https://infinite.cards"
+          title="wireframes"
+          description="Web components UI Library for wireframes and prototypes."
+          tags="Web Components,Open source"
+          url="https://salteadorneo.github.io/wireframes/"
+          github="https://github.com/salteadorneo/wireframes"
         />
         <Project
           image="/images/projects/url.beauty_.png"
@@ -75,6 +103,12 @@ posts.sort((a, b) => {
           github="https://github.com/salteadorneo/cssx"
         />
       </div>
+    </section>
+    <section class="relative mt-32">
+      <h2 class="absolute -top-28 text-[122px] font-black opacity-10 uppercase">
+        Entrevista
+      </h2>
+      <LiteYouTube videoId="yn2phLEzhdY" />
     </section>
     <section class="relative mt-32">
       <h2 class="absolute -top-28 text-[122px] font-black opacity-10 uppercase">
