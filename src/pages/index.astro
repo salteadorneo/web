@@ -1,158 +1,63 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
-import Header from "@components/Header.astro";
-import Project from "@components/Project.astro";
-import LiteYouTube from "@components/LiteYouTube.astro";
-import Tag from "@components/Tag.astro";
-import Footer from "@components/Footer.astro";
-
-const posts = await getCollection("blog");
-
-// sort by date
-posts.sort((a, b) => {
-  return b.data.publishedDate - a.data.publishedDate;
-});
+import Github from "@components/icons/Github.astro";
+import Linkedin from "@components/icons/Linkedin.astro";
+import Twitter from "@components/icons/Twitter.astro";
+import Email from "@components/icons/Email.astro";
 ---
 
 <Layout>
-  <Header />
-  <main class="max-w-3xl mx-auto p-4 w-[100vw] overflow-x-hidden">
-    <section class="relative mt-20">
-      <h2 class="absolute -top-28 text-[122px] font-black opacity-10 uppercase">
-        Bio
-      </h2>
-      <article
-        class="space-y-4 w-full p-6 rounded-lg backdrop-blur-sm bg-black/35"
-      >
-        <p>
-          Tengo <strong class="text-primary"
-            >más de 17 años de experiencia</strong
-          > en programación. He trabajado como <span class="text-primary"
-            >full-stack</span
-          > para clientes como <span class="text-primary">Greenpeace</span> ó <span
-            class="text-primary">Mahou San Miguel</span
-          >.
-        </p>
-        <p>
-          Actualmente trabajo como <strong class="text-primary"
-            >front-end</strong
-          > en un producto de fintech. En mi tiempo libre, construyo <span
-            class="text-primary">side-projects</span
-          >.
-        </p>
-      </article>
-    </section>
-    <section class="relative mt-32">
-      <h2 class="absolute -top-28 text-[122px] font-black opacity-10 uppercase">
-        Proyectos
-      </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        <!-- <Project
-          image="/images/projects/clone-ui.design_.png"
-          title="Clone UI"
-          description="Generación de componentes UI con prompts simples."
-          tags="Next.js,Tailwind CSS,IA"
-          url="https://clone-ui.design"
-          classes="md:col-span-2"
-        /> -->
-        <!-- <Project
-          image="/images/projects/infinite.cards_es_.png"
-          title="infinite.cards"
-          description="Tarjetas digitales profesionales."
-          tags="Next.js,Tailwind CSS"
-          url="https://infinite.cards"
-        /> -->
-        <!-- <Project
-          image="/images/projects/playjs.dev_.png"
-          title="PlayJS"
-          description="Playground JavaScript en tu navegador."
-          tags="React,Open source"
-          url="https://playjs.dev"
-          github="https://github.com/salteadorneo/playjs"
-          classes="md:col-span-2"
-        /> -->
-        <Project
-          title="wireframes"
-          description="Web components UI Library for wireframes and prototypes."
-          tags="Web Components,Open source"
-          url="https://salteadorneo.github.io/wireframes/"
-          github="https://github.com/salteadorneo/wireframes"
-        />
-        <Project
-          image="/images/projects/url.beauty_.png"
-          title="URL Beauty"
-          description="An other URL shortener. But, with magic."
-          tags="JavaScript,Deno,Open source"
-          url="https://url.beauty/"
-          github="https://github.com/salteadorneo/url.beauty"
-        />
-        <Project
-          image="/images/projects/pokemodle.salteadorneo.dev_.png"
-          title="Pokemodle"
-          description="Juego de adivinar el Pokémon oculto cada día."
-          tags="Vue.js,Open source"
-          url="https://pokemodle.salteadorneo.dev/"
-          github="https://github.com/salteadorneo/pokemodle"
-        />
-        <Project
-          title="CSSX"
-          description="Generate HTML from CSS."
-          tags="CSS,Node.js,Open source"
-          url="https://salteadorneo.github.io/cssx/"
-          github="https://github.com/salteadorneo/cssx"
-        />
-      </div>
-    </section>
-    <section class="relative mt-32">
-      <h2 class="absolute -top-28 text-[122px] font-black opacity-10 uppercase">
-        Entrevista
-      </h2>
-      <LiteYouTube videoId="yn2phLEzhdY" />
-    </section>
-    <section class="relative mt-32">
-      <h2 class="absolute -top-28 text-[122px] font-black opacity-10 uppercase">
-        Blog
-      </h2>
+  <main class="grid place-content-center h-screen">
+    <a href="/" class="flex items-center gap-4">
+      <img
+        src="/cristian.png"
+        alt="Cristian Adán"
+        class="w-14 rounded-full object-cover"
+      />
       <div>
-        {
-          posts.map((post) => (
-            <article class="group inline-flex gap-6 w-full p-6 rounded-lg backdrop-blur-sm bg-black/35 mb-4 hover:bg-black/10 transition-all duration-300">
-              <a href={`/blog/${post.slug}/`}>
-                <img
-                  src={post.data.image}
-                  alt={post.data.title}
-                  class="h-20 aspect-square grayscale group-hover:grayscale-0 transition-all duration-300"
-                  style={`view-transition-name: image-${post.slug}`}
-                />
-              </a>
-              <span class="space-y-2">
-                <h2
-                  class="text-xl leading-none font-bold text-white hover:text-primary"
-                  style={`view-transition-name: title-${post.slug}`}
-                >
-                  <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-                </h2>
-                <p
-                  class="flex flex-wrap items-center gap-2"
-                  style={`view-transition-name: tags-${post.slug}`}
-                >
-                  {post.data.tags.map((tag: string) => (
-                    <Tag tag={tag} />
-                  ))}
-                </p>
-                <p
-                  class="text-sm"
-                  style={`view-transition-name: desc-${post.slug}`}
-                >
-                  {post.data.description}
-                </p>
-              </span>
-            </article>
-          ))
-        }
+        <h1 class="text-3xl">Cristian Adán</h1>
+        <h2 class="text-sm uppercase">
+          <span class="text-primary">Full Stack</span> Developer
+        </h2>
       </div>
+    </a>
+    <section class="flex justify-center gap-6 mt-6">
+      <a
+        href="https://github.com/salteadorneo"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Enlace a GitHub"
+        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
+      >
+        <Github />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/cristianadan/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Enlace a LinkedIn"
+        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
+      >
+        <Linkedin />
+      </a>
+      <a
+        href="https://twitter.com/salteadorneodev"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Enlace a Twitter"
+        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
+      >
+        <Twitter />
+      </a>
+      <a
+        href="mailto:hola@salteadorneo.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Contactar por email"
+        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
+      >
+        <Email />
+      </a>
     </section>
   </main>
-  <Footer />
 </Layout>
