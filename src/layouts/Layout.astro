@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+
 const {
   title = "Cristian Adán - salteadorneo.dev - Full stack developer",
   description = "Full stack developer con más de 15 años de experiencia profesional - hola@salteadorneo.dev",
@@ -36,6 +38,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="twitter:image" content={`${Astro.site}${ogimage}`} />
 
     <script data-no-cookie async src="https://cdn.splitbee.io/sb.js"></script>
+
+    <ViewTransitions />
   </head>
   <body>
     <slot />
