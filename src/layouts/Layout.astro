@@ -49,19 +49,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     --background: #050505;
   }
 
-  @font-face {
-    font-family: "Onest";
-    src:
-      url("/fonts/Onest-Regular.woff2") format("woff2"),
-      url("/fonts/Onest-Regular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
   html,
   body {
-    font-family: "Onest";
     scroll-behavior: smooth;
     min-height: 100dvh;
   }
