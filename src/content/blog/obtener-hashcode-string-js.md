@@ -3,7 +3,6 @@ title: Obtener el hash code de un string en JavaScript
 publishedDate: 2023-01-19 00:48:00
 tags: ["javascript", "hash", "string"]
 description: Método para obtener el hash code recibiendo una cadena de texto
-allow_iframes: true
 image: /images/javascript.svg
 ---
 
