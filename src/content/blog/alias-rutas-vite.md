@@ -54,3 +54,25 @@ siguiente manera:
 ```javascript
 import Button from "@/components/Button";
 ```
+
+## TypeScript
+
+Si estamos utilizando TypeScript en nuestro proyecto, también debemos
+configurar el compilador de TypeScript para que reconozca los alias. Para
+hacerlo, debemos crear un archivo llamado `tsconfig.json` en la raíz de nuestro
+proyecto y agregar la siguiente configuración:
+
+```json
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  }
+}
+```
+
+Con esta configuración, el compilador de TypeScript reconocerá los alias que
+hemos configurado en Vite y podremos importar módulos con
+`@/components/Button` en lugar de `../../components/Button`.
