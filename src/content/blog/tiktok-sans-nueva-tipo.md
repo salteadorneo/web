@@ -1,7 +1,7 @@
 ---
 title: "TikTok Sans: nueva tipo personalizada"
 publishedDate: 2023-05-18 20:00:00
-tags: ["tipografia", "diseño", "ux", "app"]
+tags: ["tipografia", "diseno", "ux", "app"]
 description: "TikTok ha presentado una nueva tipografía para todos sus productos."
 image: /images/tiktok.svg
 ---
