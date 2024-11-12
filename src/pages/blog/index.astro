@@ -6,15 +6,11 @@ import Header from "@components/Header.astro";
 import Tag from "@components/Tag.astro";
 
 const posts = await getCollection("blog");
-
-// sort by date
-posts.sort((a, b) => {
-  return b.data.publishedDate - a.data.publishedDate;
-});
+posts.sort((a, b) => b.data.publishedDate - a.data.publishedDate);
 ---
 
 <Layout
-  title="Blog de salteadorneo.dev - Programación y tecnología"
+  title="Blog de salteadorneo - Programación y tecnología"
   description="Descubre las últimas novedades de JavaScript, HTML, CSS, base de datos y tecnología en general."
 >
   <Header />
@@ -22,32 +18,29 @@ posts.sort((a, b) => {
     <section class="space-y-10 pb-8">
       {
         posts.map((post) => (
-          <article class="flex items-center gap-4 sm:gap-8 group">
+          <article class="flex gap-4 sm:gap-8 group">
             <img
               src={post.data.image}
               alt={post.data.title}
-              class="h-14 aspect-square grayscale group-hover:grayscale-0 transition-all duration-300"
+              class="h-20 aspect-square grayscale group-hover:grayscale-0 transition-all duration-300 rounded"
               style={`view-transition-name: image-${post.slug}`}
             />
             <span class="space-y-2">
               <h2
-                class="text-xl leading-none font-bold text-white"
+                class="text-2xl leading-none font-bold text-white"
                 style={`view-transition-name: title-${post.slug}`}
               >
                 <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
               </h2>
               <p
-                class="flex flex-wrap items-center gap-2"
+                class="flex flex-wrap items-center gap-4"
                 style={`view-transition-name: tags-${post.slug}`}
               >
                 {post.data.tags.map((tag: string) => (
                   <Tag tag={tag} />
                 ))}
               </p>
-              <p
-                class="text-sm"
-                style={`view-transition-name: desc-${post.slug}`}
-              >
+              <p style={`view-transition-name: desc-${post.slug}`}>
                 {post.data.description}
               </p>
             </span>

@@ -18,7 +18,7 @@ const { Content } = await entry.render();
 ---
 
 <Layout
-  title={`${entry.data.title} - salteadorneo.dev`}
+  title={`${entry.data.title} - Blog de salteadorneo`}
   description={entry.data.description}
   ogimage={entry.data.image}
 >
@@ -29,24 +29,24 @@ const { Content } = await entry.render();
         <img
           src={entry.data.image}
           alt=""
-          class="h-32 aspect-square"
+          class="h-40 aspect-square rounded"
           style={`view-transition-name: image-${entry.slug}`}
         />
         <span class="space-y-4">
           <h1
-            class="text-4xl font-bold text-white"
+            class="text-4xl font-bold"
             style={`view-transition-name: title-${entry.slug}`}
           >
             {entry.data.title}
           </h1>
           <p
-            class="flex flex-wrap items-center gap-2"
+            class="flex flex-wrap items-center gap-4"
             style={`view-transition-name: tags-${entry.slug}`}
           >
             {entry.data.tags.map((tag: string) => <Tag tag={tag} />)}
           </p>
           <p
-            class="text-sm text-pretty"
+            class="text-pretty"
             style={`view-transition-name: desc-${entry.slug}`}
           >
             {entry.data.description}
@@ -124,7 +124,8 @@ const { Content } = await entry.render();
   @media (min-width: 800px) {
     .markdown-content iframe,
     .markdown-content pre,
-    .markdown-content video {
+    .markdown-content video,
+    .markdown-content img {
       width: 120%;
       max-width: none;
       margin: 0 0 0 -10%;
@@ -133,6 +134,7 @@ const { Content } = await entry.render();
 
   .markdown-content pre {
     padding: 1rem;
+    background-color: #1a1a1a !important;
   }
 
   .markdown-content h2,
@@ -147,7 +149,7 @@ const { Content } = await entry.render();
   }
 
   .markdown-content p > code {
-    background-color: #24292e;
+    background-color: #1a1a1a;
     border-radius: 6px;
     margin: 0;
     padding: 0.2em 0.4em;
