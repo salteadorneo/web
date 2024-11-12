@@ -25,16 +25,16 @@ const { Content } = await entry.render();
   <Header />
   <main class="max-w-3xl mx-auto p-4">
     <section class="space-y-12">
-      <div class="flex flex-wrap sm:flex-nowrap gap-6">
+      <div class="flex flex-wrap sm:flex-nowrap gap-8">
         <img
           src={entry.data.image}
-          alt=""
+          alt={entry.data.title}
           class="h-40 aspect-square rounded"
           style={`view-transition-name: image-${entry.slug}`}
         />
         <span class="space-y-4">
           <h1
-            class="text-4xl font-bold"
+            class="text-5xl font-bold"
             style={`view-transition-name: title-${entry.slug}`}
           >
             {entry.data.title}

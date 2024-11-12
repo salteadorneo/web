@@ -17,10 +17,10 @@ posts.sort(
 >
   <Header />
   <main class="max-w-3xl mx-auto p-4">
-    <section class="space-y-10 pb-8">
+    <section class="space-y-12 pb-8">
       {
         posts.map((post) => (
-          <article class="flex gap-4 sm:gap-8 group">
+          <article class="flex gap-8 group">
             <img
               src={post.data.image}
               alt={post.data.title}
@@ -28,12 +28,12 @@ posts.sort(
               style={`view-transition-name: image-${post.slug}`}
             />
             <span class="space-y-2">
-              <h2
+              <h3
                 class="text-2xl leading-none font-bold text-white"
                 style={`view-transition-name: title-${post.slug}`}
               >
                 <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-              </h2>
+              </h3>
               <p
                 class="flex flex-wrap items-center gap-4"
                 style={`view-transition-name: tags-${post.slug}`}
