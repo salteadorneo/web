@@ -23,7 +23,9 @@ let posts = await getCollection("blog");
 posts = posts.filter((post) =>
   post.data.tags.map((t: string) => slugify(t)).includes(tag),
 );
-posts.sort((a, b) => b.data.publishedDate - a.data.publishedDate);
+posts.sort(
+  (a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime(),
+);
 ---
 
 <Layout

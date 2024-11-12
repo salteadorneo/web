@@ -6,7 +6,9 @@ import Header from "@components/Header.astro";
 import Tag from "@components/Tag.astro";
 
 const posts = await getCollection("blog");
-posts.sort((a, b) => b.data.publishedDate - a.data.publishedDate);
+posts.sort(
+  (a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime(),
+);
 ---
 
 <Layout
