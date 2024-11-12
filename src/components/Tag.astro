@@ -6,7 +6,7 @@ const { tag } = Astro.props;
 
 <a
   href={`/blog/tag/${slugify(tag)}/`}
-  class="text-primary hover:text-white text-nowrap"
+  class="text-primary hover:text-white text-nowrap transition-all"
 >
   #{tag}
 </a>

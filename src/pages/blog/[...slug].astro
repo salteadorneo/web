@@ -45,10 +45,7 @@ const { Content } = await entry.render();
           >
             {entry.data.tags.map((tag: string) => <Tag tag={tag} />)}
           </p>
-          <p
-            class="text-pretty"
-            style={`view-transition-name: desc-${entry.slug}`}
-          >
+          <p class="text-lg" style={`view-transition-name: desc-${entry.slug}`}>
             {entry.data.description}
           </p>
         </span>
@@ -132,20 +129,25 @@ const { Content } = await entry.render();
     }
   }
 
+  .markdown-content p {
+    font-size: 1.1rem;
+  }
+
   .markdown-content pre {
     padding: 1rem;
     background-color: #1a1a1a !important;
   }
 
+  .markdown-content h1,
   .markdown-content h2,
   .markdown-content h3 {
-    font-size: 1.6rem;
+    font-size: 2rem;
     font-weight: 700;
     color: white;
   }
 
   .markdown-content h3 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   .markdown-content p > code {
