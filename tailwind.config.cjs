@@ -19,9 +19,7 @@ module.exports = {
 				},
 			},
 			colors: {
-				primary: "var(--color-primary)",
-				text: "var(--color-text)",
-				background: "var(--background)",
+				primary: "var(--primary)",
 			}
 		},
 	},

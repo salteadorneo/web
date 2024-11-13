@@ -143,15 +143,17 @@ const { Content } = await entry.render();
   .markdown-content h3 {
     font-size: 2rem;
     font-weight: 700;
-    color: white;
+    color: light-dark(var(--light-text), var(--dark-text));
   }
 
   .markdown-content h3 {
     font-size: 1.5rem;
   }
 
+  .markdown-content h2 > code,
   .markdown-content p > code {
-    background-color: #1a1a1a;
+    color: light-dark(var(--dark-text), var(--light-text));
+    background-color: light-dark(var(--light-text), var(--dark-text));
     border-radius: 6px;
     margin: 0;
     padding: 0.2em 0.4em;
@@ -159,7 +161,7 @@ const { Content } = await entry.render();
   }
 
   .markdown-content a {
-    color: var(--color-primary);
+    color: var(--primary);
     text-decoration: underline;
   }
 </style>
