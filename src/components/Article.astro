@@ -12,12 +12,12 @@ const { post } = Astro.props;
         style={`view-transition-name: image-${post.slug}`}
     />
     <span class="space-y-2">
-        <h3
+        <h2
             class="text-2xl leading-none font-bold hover:text-primary"
             style={`view-transition-name: title-${post.slug}`}
         >
             <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-        </h3>
+        </h2>
         <p
             class="flex flex-wrap items-center gap-4"
             style={`view-transition-name: tags-${post.slug}`}
