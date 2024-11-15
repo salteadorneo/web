@@ -121,6 +121,7 @@ const { Content } = await entry.render();
   @media (min-width: 800px) {
     .markdown-content iframe,
     .markdown-content pre,
+    .markdown-content .pre,
     .markdown-content video,
     .markdown-content img {
       width: 130%;
@@ -142,12 +143,14 @@ const { Content } = await entry.render();
   .markdown-content h2,
   .markdown-content h3 {
     font-size: 2rem;
+    line-height: 2.5rem;
     font-weight: 700;
     color: light-dark(var(--light-text), var(--dark-text));
   }
 
   .markdown-content h3 {
     font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .markdown-content h2 > code,
