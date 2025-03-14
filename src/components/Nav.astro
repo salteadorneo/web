@@ -1,20 +1,59 @@
-<nav class="flex items-center justify-center gap-4 text-sm">
+---
+import Github from "@components/icons/Github.astro";
+import Linkedin from "@components/icons/Linkedin.astro";
+import Twitter from "@components/icons/Twitter.astro";
+import Email from "@components/icons/Email.astro";
+---
+
+<section class="flex items-center gap-6">
   <a
-    href="/proyectos/"
-    class="opacity-70 hover:text-white hover:opacity-100 transition-all duration-300"
+    href="/"
+    class="text-lg opacity-70 hover:opacity-100 transition-opacity duration-300"
   >
-    PROYECTOS
+    Proyectos
   </a>
   <a
-    href="/blog/"
-    class="opacity-70 hover:text-white hover:opacity-100 transition-all duration-300"
+    href="/blog"
+    class="text-lg opacity-70 hover:opacity-100 transition-opacity duration-300"
   >
-    BLOG
+    Blog
   </a>
-  <a
-    href="/contacto/"
-    class="opacity-70 hover:text-white hover:opacity-100 transition-all duration-300"
-  >
-    CONTACTO
-  </a>
-</nav>
+  <div class="flex items-center gap-4">
+    <a
+      href="https://github.com/salteadorneo"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Enlace a GitHub"
+      class="opacity-70 hover:opacity-100 transition-opacity duration-300"
+    >
+      <Github size="20" />
+    </a>
+    <a
+      href="https://www.linkedin.com/in/cristianadan/"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Enlace a LinkedIn"
+      class="opacity-70 hover:opacity-100 transition-opacity duration-300"
+    >
+      <Linkedin size="20" />
+    </a>
+    <a
+      href="https://twitter.com/salteadorneodev"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Enlace a Twitter"
+      class="opacity-70 hover:opacity-100 transition-opacity duration-300"
+    >
+      <Twitter size="20" />
+    </a>
+    <a
+      href="mailto:cristian@salteadorneo.dev"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Contactar por email"
+      class="opacity-70 hover:opacity-100 transition-opacity duration-300"
+    >
+      <Email size="20" />
+    </a>
+  </div>
+</section>

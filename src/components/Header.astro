@@ -1,57 +1,22 @@
 ---
-import Github from "@components/icons/Github.astro";
-import Linkedin from "@components/icons/Linkedin.astro";
-import Twitter from "@components/icons/Twitter.astro";
-import Email from "@components/icons/Email.astro";
+import Nav from "./Nav.astro";
 ---
 
 <header
-  class="py-4 px-6 flex flex-wrap items-center justify-between gap-6 mb-6"
+  class="p-6 max-w-4xl mx-auto flex flex-wrap items-center justify-between gap-6"
 >
-  <div>
-    <a
-      href="/blog"
-      class="text-2xl font-medium text-primary hover:text-black hover:dark:text-white transition-all"
-      >&lt;Blog <span class="italic">author</span>="salteadorneo" /&gt;</a
-    >
-    <p>&lt;!-- Cristian Adán - Full stack developer --&gt;</p>
+  <div class="flex items-center gap-6">
+    <a href="/">
+      <img
+        src="/cristian.png"
+        alt="Cristian Adán"
+        class="w-16 rounded-full object-cover"
+      />
+    </a>
+    <div>
+      <h1 class="text-2xl">Cristian Adán</h1>
+      <h2 class="opacity-70 uppercase">Full Stack Developer</h2>
+    </div>
   </div>
-  <section class="flex gap-4">
-    <a
-      href="https://github.com/salteadorneo"
-      target="_blank"
-      rel="noopener noreferrer"
-      title="Enlace a GitHub"
-      class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
-    >
-      <Github size="20" />
-    </a>
-    <a
-      href="https://www.linkedin.com/in/cristianadan/"
-      target="_blank"
-      rel="noopener noreferrer"
-      title="Enlace a LinkedIn"
-      class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
-    >
-      <Linkedin size="20" />
-    </a>
-    <a
-      href="https://twitter.com/salteadorneodev"
-      target="_blank"
-      rel="noopener noreferrer"
-      title="Enlace a Twitter"
-      class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
-    >
-      <Twitter size="20" />
-    </a>
-    <a
-      href="mailto:hola@salteadorneo.dev"
-      target="_blank"
-      rel="noopener noreferrer"
-      title="Contactar por email"
-      class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
-    >
-      <Email size="20" />
-    </a>
-  </section>
+  <Nav />
 </header>

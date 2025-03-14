@@ -1,68 +1,60 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Github from "@components/icons/Github.astro";
-import Linkedin from "@components/icons/Linkedin.astro";
-import Twitter from "@components/icons/Twitter.astro";
-import Email from "@components/icons/Email.astro";
+import Project from "@components/Project.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
 ---
 
 <Layout>
-  <main class="grid place-content-center h-screen">
-    <span class="flex items-center gap-4">
-      <img
-        src="/cristian.png"
-        alt="Cristian Adán"
-        class="w-14 rounded-full object-cover"
-      />
-      <div>
-        <h1 class="text-3xl">Cristian Adán</h1>
-        <h2 class="uppercase">
-          <span class="text-primary">Full Stack</span> Developer
-        </h2>
+  <Header />
+  <main class="p-6 max-w-4xl mx-auto">
+    <section>
+      <h2 class="text-4xl font-medium mb-6">Proyectos</h2>
+      <div class="grid gap-6">
+        <Project
+          title="infinite.cards"
+          description="Tarjetas digitales profesionales."
+          tags="JavaScript,Next.js"
+          url="https://infinite.cards/"
+        />
+        <Project
+          title="wireframes"
+          description="Web components UI Library for wireframes and prototypes."
+          tags="Web Components,Open source"
+          url="https://salteadorneo.github.io/wireframes/"
+          github="https://github.com/salteadorneo/wireframes"
+        />
+        <Project
+          image="/images/projects/url.beauty_.png"
+          title="URL Beauty"
+          description="An other URL shortener. But, with magic."
+          tags="JavaScript,Deno,Open source"
+          url="https://url.beauty/"
+          github="https://github.com/salteadorneo/url.beauty"
+        />
+        <Project
+          image="/images/projects/pokemodle.salteadorneo.dev_.png"
+          title="Pokemodle"
+          description="Juego de adivinar el Pokémon oculto cada día."
+          tags="Vue.js,Open source"
+          url="https://pokemodle.salteadorneo.dev/"
+          github="https://github.com/salteadorneo/pokemodle"
+        />
+        <Project
+          title="CSSX"
+          description="Generate HTML from CSS."
+          tags="CSS,Node.js,Open source"
+          url="https://cssx.js.org/"
+          github="https://github.com/salteadorneo/cssx"
+        />
       </div>
-    </span>
-    <section class="flex justify-center gap-6 mt-6">
-      <a
-        href="https://github.com/salteadorneo"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Enlace a GitHub"
-        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
-      >
-        <Github />
-      </a>
-      <a
-        href="https://www.linkedin.com/in/cristianadan/"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Enlace a LinkedIn"
-        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
-      >
-        <Linkedin />
-      </a>
-      <a
-        href="https://twitter.com/salteadorneodev"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Enlace a Twitter"
-        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
-      >
-        <Twitter />
-      </a>
-      <a
-        href="mailto:hola@salteadorneo.dev"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Contactar por email"
-        class="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300"
-      >
-        <Email />
-      </a>
+      <h2 class="text-2xl font-medium my-6">Descontinuados</h2>
+      <Project
+        title="clone-ui.design"
+        description="Genera componentes UI con simples prompts."
+        tags="AI,Next.js"
+      />
     </section>
-    <a
-      href="/blog"
-      class="flex items-center justify-center gap-2 opacity-70 hover:opacity-100 transition-opacity duration-300 p-4"
-      >Blog</a
-    >
   </main>
+  <Footer />
 </Layout>

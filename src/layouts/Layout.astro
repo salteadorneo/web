@@ -3,7 +3,7 @@ import { ViewTransitions } from "astro:transitions";
 
 const {
   title = "Cristian Adán - salteadorneo.dev - Full stack developer",
-  description = "Full stack developer con más de 15 años de experiencia profesional - hola@salteadorneo.dev",
+  description = "Full stack developer con más de 15 años de experiencia profesional - cristian@salteadorneo.dev",
   ogimage = "cristian.png",
 } = Astro.props;
 
@@ -69,6 +69,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   body {
     color: light-dark(var(--light-text), var(--dark-text));
     background: light-dark(var(--light-background), var(--dark-background));
+    overflow-y: scroll;
   }
 
   ::-webkit-scrollbar {
