@@ -1,10 +1,10 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@components/Header.astro";
 import Article from "@components/Article.astro";
 
+import { getCollection } from "astro:content";
 const posts = await getCollection("blog");
 posts.sort(
   (a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime(),
@@ -17,8 +17,9 @@ posts.sort(
 >
   <h1 class="sr-only">Blog de salteadorneo - Programación y tecnología</h1>
   <Header />
-  <main class="p-6 max-w-4xl mx-auto">
-    <section class="space-y-12">
+  <main>
+    <h2 class="p-6 max-w-5xl mx-auto text-4xl">Blog</h2>
+    <section class="p-6 max-w-6xl mx-auto space-y-6">
       {posts.map((post) => <Article post={post} />)}
     </section>
   </main>

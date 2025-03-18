@@ -23,7 +23,7 @@ const { Content } = await entry.render();
   ogimage={entry.data.image}
 >
   <Header />
-  <main class="p-6 max-w-4xl mx-auto">
+  <main class="p-6 max-w-6xl mx-auto">
     <section class="space-y-12">
       <div class="flex flex-wrap sm:flex-nowrap gap-8">
         <img
@@ -50,12 +50,12 @@ const { Content } = await entry.render();
       <div class="markdown-content space-y-6">
         <Content />
       </div>
-      <section class="flex items-center justify-center py-8">
+      <section class="glass rounded-2xl flex items-center justify-center py-4">
         <div class="flex items-center gap-4">
           <span>¡Comparte!</span>
           <button
             onclick={`navigator.share({ url: '${Astro.request.url}' })`}
-            class="hover:text-primary"
+            class="hover:text-primary transition-colors duration-300"
           >
             <svg
               width={24}
@@ -75,7 +75,7 @@ const { Content } = await entry.render();
               Astro.request.url,
             )}`}
             target="_blank"
-            class="hover:text-primary"
+            class="hover:text-primary transition-colors duration-300"
             title="Compartir en LinkedIn"
           >
             <svg
@@ -94,7 +94,7 @@ const { Content } = await entry.render();
               entry.data.title,
             )}&hashtags=${encodeURIComponent(entry.data.tags.join(","))}`}
             target="_blank"
-            class="hover:text-primary"
+            class="hover:text-primary transition-colors duration-300"
             title="Compartir en Twitter"
           >
             <svg
