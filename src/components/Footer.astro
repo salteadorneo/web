@@ -4,15 +4,20 @@ import Github from "@/components/icons/Github.astro";
 import { version } from "../../package.json";
 ---
 
-<footer class="p-6 max-w-4xl mx-auto">
-  <p class="flex items-center justify-center gap-2">
+<footer class="p-6 max-w-5xl mx-auto">
+  <p class="flex items-center justify-center gap-6">
+    <a
+      href="mailto:cristian@salteadorneo.dev"
+      class="hover:text-primary transition-colors duration-300"
+      >cristian@salteadorneo.dev</a
+    >
     <a
       href="https://github.com/salteadorneo/web"
       target="_blank"
-      class="flex items-center justify-center gap-2 text-sm hover:text-primary transition-all duration-300"
+      class="flex items-center justify-center gap-2 hover:text-primary transition-colors duration-300"
     >
-      <Github size="18" /> salteadorneo/web
+      <Github size="16" /> salteadorneo/web
     </a>
-    <span class="text-sm">v.{version}</span>
+    <span>v.{version}</span>
   </p>
 </footer>

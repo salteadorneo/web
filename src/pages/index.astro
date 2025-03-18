@@ -3,27 +3,34 @@ import Layout from "@/layouts/Layout.astro";
 import Project from "@components/Project.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import Article from "@components/Article.astro";
+
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog");
+posts.sort(
+  (a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime(),
+);
 ---
 
 <Layout>
   <Header />
-  <main class="p-6 max-w-4xl mx-auto">
-    <section>
-      <h2 class="text-4xl font-medium mb-6">Proyectos</h2>
-      <div class="grid gap-6">
+  <main>
+    <h2 id="proyectos" class="p-6 max-w-5xl mx-auto text-4xl font-medium">
+      Proyectos
+    </h2>
+
+    <section
+      class="p-6 max-w-6xl mx-auto grid h-full w-full gap-4 sm:grid-cols-6 sm:grid-rows-3"
+    >
+      <div class="sm:col-span-4 sm:row-span-1 flex items-center justify-center">
         <Project
           title="infinite.cards"
           description="Tarjetas digitales profesionales."
           tags="JavaScript,Next.js"
           url="https://infinite.cards/"
         />
-        <Project
-          title="wireframes"
-          description="Web components UI Library for wireframes and prototypes."
-          tags="Web Components,Open source"
-          url="https://salteadorneo.github.io/wireframes/"
-          github="https://github.com/salteadorneo/wireframes"
-        />
+      </div>
+      <div class="sm:col-span-2 sm:row-span-1 flex items-center justify-center">
         <Project
           image="/images/projects/url.beauty_.png"
           title="URL Beauty"
@@ -32,6 +39,17 @@ import Footer from "@components/Footer.astro";
           url="https://url.beauty/"
           github="https://github.com/salteadorneo/url.beauty"
         />
+      </div>
+      <div class="sm:col-span-2 sm:row-span-1 flex items-center justify-center">
+        <Project
+          title="wireframes"
+          description="Web components UI Library for wireframes and prototypes."
+          tags="Web Components,Open source"
+          url="https://salteadorneo.github.io/wireframes/"
+          github="https://github.com/salteadorneo/wireframes"
+        />
+      </div>
+      <div class="sm:col-span-4 sm:row-span-1 flex items-center justify-center">
         <Project
           image="/images/projects/pokemodle.salteadorneo.dev_.png"
           title="Pokemodle"
@@ -40,6 +58,8 @@ import Footer from "@components/Footer.astro";
           url="https://pokemodle.salteadorneo.dev/"
           github="https://github.com/salteadorneo/pokemodle"
         />
+      </div>
+      <div class="sm:col-span-3 sm:row-span-1 flex items-center justify-center">
         <Project
           title="CSSX"
           description="Generate HTML from CSS."
@@ -48,12 +68,61 @@ import Footer from "@components/Footer.astro";
           github="https://github.com/salteadorneo/cssx"
         />
       </div>
-      <h2 class="text-2xl font-medium my-6">Descontinuados</h2>
-      <Project
-        title="clone-ui.design"
-        description="Genera componentes UI con simples prompts."
-        tags="AI,Next.js"
-      />
+      <div class="sm:col-span-3 sm:row-span-1 flex items-center justify-center">
+        <Project
+          title="PlayJS"
+          description="Playground JavaScript en tu navegador."
+          url="https://playjs.dev"
+          github="https://github.com/salteadorneo/playjs"
+          tags="JavaScript,Open source"
+        />
+        <!-- <Project
+            title="Clone UI"
+            description="Genera componentes UI con simples prompts."
+            tags="AI,Next.js,Descontinuado"
+          /> -->
+      </div>
+    </section>
+
+    <h2 id="blog" class="p-6 max-w-5xl mx-auto text-4xl font-medium">Blog</h2>
+    <section class="p-6 max-w-6xl mx-auto space-y-6">
+      {posts.slice(0, 3).map((post) => <Article post={post} />)}
+      <a href="/blog" class="glass rounded-2xl block py-1 text-center"
+        >Ver más</a
+      >
+    </section>
+
+    <h2
+      id="contacto"
+      class="p-6 max-w-5xl mx-auto text-4xl font-medium text-center mt-6"
+    >
+      Contacto
+    </h2>
+    <section class="p-6 max-w-6xl mx-auto">
+      <form
+        id="contact-form"
+        action="https://formspree.io/f/mpzebone"
+        method="POST"
+        class="flex flex-col items-start justify-center gap-4"
+      >
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          class="bg-transparent p-2 rounded-2xl border border-white/[0.16] w-full max-w-lg mx-auto outline-none"
+          required
+        />
+        <textarea
+          name="message"
+          placeholder="Mensaje"
+          rows="4"
+          class="bg-transparent p-2 rounded-2xl border border-white/[0.16] w-full max-w-lg mx-auto outline-none"
+          required></textarea>
+
+        <button class="glass rounded-full py-1 px-8 mx-auto"> Enviar </button>
+
+        <p id="contact-form-status"></p>
+      </form>
     </section>
   </main>
   <Footer />

@@ -4,7 +4,7 @@ import Tag from "./Tag.astro";
 const { post } = Astro.props;
 ---
 
-<article class="flex gap-8 group">
+<article class="glass rounded-2xl flex gap-6 group p-4">
     <img
         src={post.data.image}
         alt={post.data.title}
@@ -19,7 +19,7 @@ const { post } = Astro.props;
             <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
         </h2>
         <p
-            class="flex flex-wrap items-center gap-4"
+            class="flex flex-wrap items-center gap-x-4"
             style={`view-transition-name: tags-${post.slug}`}
         >
             {post.data.tags.map((tag: string) => <Tag tag={tag} />)}

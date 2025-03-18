@@ -68,7 +68,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   body {
     color: light-dark(var(--light-text), var(--dark-text));
-    background: light-dark(var(--light-background), var(--dark-background));
+    /* background: light-dark(var(--light-background), var(--dark-background)); */
+    background-image: linear-gradient(
+      to bottom,
+      #000000,
+      #121212,
+      #1d1d1d,
+      #282828,
+      #343434
+    );
+    background-attachment: fixed;
     overflow-y: scroll;
   }
 
@@ -87,6 +96,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
   ::-webkit-scrollbar-thumb:hover {
     background: var(--primary);
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(16.2px);
+    -webkit-backdrop-filter: blur(16.2px);
+    border: 1px solid rgba(255, 255, 255, 0.16);
   }
 
   @keyframes fadein {

@@ -4,7 +4,7 @@ import Github from "./icons/Github.astro";
 const { image, title, description, tags, url, github } = Astro.props;
 ---
 
-<article>
+<article class="glass rounded-2xl p-4 w-full h-full">
     <h3 class="flex items-center gap-2 text-2xl text-nowrap font-semibold">
         {
             url ? (
@@ -39,7 +39,7 @@ const { image, title, description, tags, url, github } = Astro.props;
             tags
                 ?.split(",")
                 .map((tag: string) => (
-                    <span class="text-sm rounded-full px-2 py-0.5 text-white/60 text-nowrap border border-white/60">
+                    <span class="text-sm rounded-full px-3 py-0.5 text-white/70 text-nowrap bg-white/5">
                         {tag}
                     </span>
                 ))
