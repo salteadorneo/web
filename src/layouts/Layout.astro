@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 
 const {
   title = "Cristian Adán - salteadorneo.dev - Full stack developer",
@@ -8,6 +8,8 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+import "@/styles/global.css";
 ---
 
 <!doctype html>
@@ -39,7 +41,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <script data-no-cookie async src="https://cdn.splitbee.io/sb.js"></script>
 
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <slot />
@@ -50,13 +52,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   :root {
     color-scheme: light dark;
 
-    --light-text: #1a1a1a;
-    --dark-text: #e1e1e1;
-
     --primary: #30a834;
-
-    --light-background: #fcfcfc;
-    --dark-background: #050505;
   }
 
   html,
@@ -67,8 +63,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   body {
-    color: light-dark(var(--light-text), var(--dark-text));
-    /* background: light-dark(var(--light-background), var(--dark-background)); */
+    color: #e1e1e1;
     background-image: linear-gradient(
       to bottom,
       #000000,
@@ -91,7 +86,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: light-dark(var(--light-text), var(--dark-text));
+    background: #e1e1e1;
   }
 
   ::-webkit-scrollbar-thumb:hover {
