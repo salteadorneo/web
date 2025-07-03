@@ -9,4 +9,10 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  redirects: {
+    '/blog': {
+      status: 301,
+      destination: '/'
+    }
+  }
 });
