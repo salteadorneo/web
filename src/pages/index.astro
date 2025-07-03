@@ -1,6 +1,5 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Project from "@components/Project.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Article from "@components/Article.astro";
@@ -14,115 +13,10 @@ posts.sort(
 
 <Layout>
   <Header />
-  <main>
-    <h2 id="proyectos" class="p-6 max-w-5xl mx-auto text-4xl font-medium">
-      Proyectos
-    </h2>
-
-    <section
-      class="p-6 max-w-6xl mx-auto grid h-full w-full gap-4 sm:grid-cols-6 sm:grid-rows-3"
-    >
-      <div class="sm:col-span-4 sm:row-span-1 flex items-center justify-center">
-        <Project
-          title="infinite.cards"
-          description="Tarjetas digitales profesionales."
-          tags="JavaScript,Next.js"
-          url="https://infinite.cards/"
-        />
-      </div>
-      <div class="sm:col-span-2 sm:row-span-1 flex items-center justify-center">
-        <Project
-          image="/images/projects/url.beauty_.png"
-          title="URL Beauty"
-          description="An other URL shortener. But, with magic."
-          tags="JavaScript,Deno,Open source"
-          url="https://url.beauty/"
-          github="https://github.com/salteadorneo/url.beauty"
-        />
-      </div>
-      <div class="sm:col-span-2 sm:row-span-1 flex items-center justify-center">
-        <Project
-          title="wireframes"
-          description="Web components UI Library for wireframes and prototypes."
-          tags="Web Components,Open source"
-          url="https://salteadorneo.github.io/wireframes/"
-          github="https://github.com/salteadorneo/wireframes"
-        />
-      </div>
-      <div class="sm:col-span-4 sm:row-span-1 flex items-center justify-center">
-        <Project
-          image="/images/projects/pokemodle.salteadorneo.dev_.png"
-          title="Pokemodle"
-          description="Juego de adivinar el Pokémon oculto cada día."
-          tags="Vue.js,Open source"
-          url="https://pokemodle.salteadorneo.dev/"
-          github="https://github.com/salteadorneo/pokemodle"
-        />
-      </div>
-      <div class="sm:col-span-3 sm:row-span-1 flex items-center justify-center">
-        <Project
-          title="CSSX"
-          description="Generate HTML from CSS."
-          tags="CSS,Node.js,Open source"
-          url="https://cssx.js.org/"
-          github="https://github.com/salteadorneo/cssx"
-        />
-      </div>
-      <div class="sm:col-span-3 sm:row-span-1 flex items-center justify-center">
-        <Project
-          title="PlayJS"
-          description="Playground JavaScript en tu navegador."
-          url="https://playjs.dev"
-          github="https://github.com/salteadorneo/playjs"
-          tags="JavaScript,Open source"
-        />
-        <!-- <Project
-            title="Clone UI"
-            description="Genera componentes UI con simples prompts."
-            tags="AI,Next.js,Descontinuado"
-          /> -->
-      </div>
-    </section>
-
+  <main class="pt-44 sm:pt-30">
     <h2 id="blog" class="p-6 max-w-5xl mx-auto text-4xl font-medium">Blog</h2>
     <section class="p-6 max-w-6xl mx-auto space-y-6">
-      {posts.slice(0, 3).map((post) => <Article post={post} />)}
-      <a href="/blog" class="glass rounded-2xl block py-1 text-center"
-        >Ver más</a
-      >
-    </section>
-
-    <h2
-      id="contacto"
-      class="p-6 max-w-5xl mx-auto text-4xl font-medium text-center mt-6"
-    >
-      Contacto
-    </h2>
-    <section class="p-6 max-w-6xl mx-auto">
-      <form
-        id="contact-form"
-        action="https://formspree.io/f/mpzebone"
-        method="POST"
-        class="flex flex-col items-start justify-center gap-4"
-      >
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          class="bg-transparent p-2 rounded-2xl border border-white/[0.16] w-full max-w-lg mx-auto outline-none"
-          required
-        />
-        <textarea
-          name="message"
-          placeholder="Mensaje"
-          rows="4"
-          class="bg-transparent p-2 rounded-2xl border border-white/[0.16] w-full max-w-lg mx-auto outline-none"
-          required></textarea>
-
-        <button class="glass rounded-full py-1 px-8 mx-auto"> Enviar </button>
-
-        <p id="contact-form-status"></p>
-      </form>
+      {posts.map((post) => <Article post={post} />)}
     </section>
   </main>
   <Footer />
