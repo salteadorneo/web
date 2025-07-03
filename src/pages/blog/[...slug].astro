@@ -24,7 +24,7 @@ const { Content } = await entry.render();
 >
   <Header />
   <main class="pt-56 sm:pt-36 p-6 max-w-7xl mx-auto">
-    <section class="glass rounded-2xl p-16 space-y-12">
+    <section class="glass rounded-2xl p-8 sm:p-16 space-y-12">
       <div class="flex flex-wrap sm:flex-nowrap gap-8">
         <img
           src={entry.data.image}
@@ -40,7 +40,7 @@ const { Content } = await entry.render();
             {entry.data.title}
           </h1>
           <p
-            class="flex flex-wrap items-center gap-4"
+            class="flex flex-wrap items-center gap-x-4"
             style={`view-transition-name: tags-${entry.slug}`}
           >
             {entry.data.tags.map((tag: string) => <Tag tag={tag} />)}
