@@ -1,21 +1,16 @@
 ---
-import { Rcon } from "rcon-client";
-
 const RCON_HOST = import.meta.env.RCON_HOST;
-const RCON_PORT = import.meta.env.RCON_PORT;
-const RCON_PASSWORD = import.meta.env.RCON_PASSWORD;
 
-let serverOnline = false;
+let lastStatus = false;
 try {
-  const rcon = await Rcon.connect({
-    host: RCON_HOST,
-    port: parseInt(RCON_PORT || '25575'),
-    password: RCON_PASSWORD || ''
-  });
-  await rcon.end();
-  serverOnline = true;
+  const response = await fetch(new URL('/data/status-history.json', Astro.url));
+  const history = await response.json();
+  if (history.length > 0) {
+    const latest = history[history.length - 1];
+    lastStatus = latest.status === 'online';
+  }
 } catch (error) {
-  serverOnline = false;  
+  console.error('Error loading status:', error);
 }
 ---
 
@@ -24,7 +19,7 @@ try {
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
-        class={`w-5 h-5 ${serverOnline ? 'text-green-500' : 'text-red-500'}`}
+        class={`w-5 h-5 ${lastStatus ? 'text-green-500' : 'text-red-500'}`}
       >
         <rect x="2" y="14" width="2" height="4" fill="currentColor" />
         <rect x="6" y="11" width="2" height="7" fill="currentColor" />

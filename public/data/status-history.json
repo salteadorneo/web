@@ -1,0 +1,47 @@
+[
+  {
+    "timestamp": "2026-01-27T14:46:53.523Z",
+    "status": "offline",
+    "responseTime": null
+  },
+  {
+    "timestamp": "2026-01-27T14:48:09.182Z",
+    "status": "offline",
+    "responseTime": null
+  },
+  {
+    "timestamp": "2026-01-27T14:49:36.328Z",
+    "status": "offline",
+    "responseTime": null
+  },
+  {
+    "timestamp": "2026-01-27T14:50:23.815Z",
+    "status": "online",
+    "responseTime": 27
+  },
+  {
+    "timestamp": "2026-01-27T14:50:32.394Z",
+    "status": "online",
+    "responseTime": 22
+  },
+  {
+    "timestamp": "2026-01-27T14:50:34.054Z",
+    "status": "online",
+    "responseTime": 31
+  },
+  {
+    "timestamp": "2026-01-27T15:04:14.098Z",
+    "status": "online",
+    "responseTime": 40
+  },
+  {
+    "timestamp": "2026-01-27T15:06:23.583Z",
+    "status": "offline",
+    "responseTime": null
+  },
+  {
+    "timestamp": "2026-01-27T15:07:05.355Z",
+    "status": "online",
+    "responseTime": 70
+  }
+]
