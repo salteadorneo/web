@@ -1,40 +1,40 @@
-name: Check Server Status
+# name: Check Server Status
 
-on:
-  schedule:
-    - cron: '0 * * * *'
-  workflow_dispatch:
+# on:
+#   schedule:
+#     - cron: '0 * * * *'
+#   workflow_dispatch:
 
-jobs:
-  check-status:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+# jobs:
+#   check-status:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: '20'
 
-      - name: Install dependencies
-        run: npm install rcon-client
+#       - name: Install dependencies
+#         run: npm install rcon-client
 
-      - name: Check server status
-        env:
-          RCON_HOST: ${{ secrets.RCON_HOST }}
-          RCON_PASSWORD: ${{ secrets.RCON_PASSWORD }}
-        run: node check-status.js
+#       - name: Check server status
+#         env:
+#           RCON_HOST: ${{ secrets.RCON_HOST }}
+#           RCON_PASSWORD: ${{ secrets.RCON_PASSWORD }}
+#         run: node check-status.js
 
-      - name: Commit and push if changed
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git config --global credential.helper store
-          echo "https://x-access-token:${GITHUB_TOKEN}@github.com" > ~/.git-credentials
-          git add public/data/status-history.json
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update server status [skip ci]" && git push)
+#       - name: Commit and push if changed
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#         run: |
+#           git config --global user.name 'github-actions[bot]'
+#           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+#           git config --global credential.helper store
+#           echo "https://x-access-token:${GITHUB_TOKEN}@github.com" > ~/.git-credentials
+#           git add public/data/status-history.json
+#           git diff --quiet && git diff --staged --quiet || (git commit -m "Update server status [skip ci]" && git push)
