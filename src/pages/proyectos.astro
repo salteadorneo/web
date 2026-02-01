@@ -1,64 +1,167 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
-import Point from "@components/Point.astro";
+import Project from "@components/Project.astro";
 import Footer from "@/components/Footer.astro";
 ---
 
 <Layout>
   <Header />
-  <main>
-    <h3 class="text-4xl font-light opacity-40 mb-8">Proyectos destacados</h3>
+  <main class="pt-48 sm:pt-40">
+    <section class="p-6 max-w-6xl mx-auto space-y-6">
+      <h3 class="text-4xl font-light opacity-40 mb-8">Proyectos destacados</h3>
 
-    <section class="space-y-6">
-      <Point
-        title="Clone UI"
-        url="https://clone-ui.design"
-        description="Genera componentes UI con simples prompts. **Next.js** + **Tailwind CSS**."
-      />
-      <Point
-        title="∞ infinite.cards"
-        url="https://infinite.cards"
-        description="Tarjetas digitales profesionales. Desarrollado con **Next.js**."
-      />
-      <Point
-        title="🟨 PlayJS"
-        url="https://playjs.dev"
-        description="Playground JavaScript en tu navegador. Desarrollado con **React**."
-        github="https://github.com/salteadorneo/playjs"
-      />
-      <Point
-        title="URL Beauty"
-        url="https://url.beauty"
-        description="An other URL shortener. But, with magic. Desarrollado con **Deno**."
-        github="https://github.com/salteadorneo/url.beauty"
-      />
-      <Point
-        title="Pokemodle"
-        url="https://pokemodle.salteadorneo.dev/"
-        description="Juego de adivinar el Pokémon oculto cada día. Desarrollado con **Vue.js**"
-        github="https://github.com/salteadorneo/pokemodle"
-      />
-    </section>
+      <section
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+      >
+        <Project
+          title="PlayJS"
+          url="https://playjs.dev"
+          description="Playground JavaScript en tu navegador."
+          tags="React,JavaScript"
+          github="https://github.com/salteadorneo/playjs"
+        />
+        <Project
+          title="Agendados"
+          url="https://agendados.es"
+          description="Calendario centralizado de eventos de juegos de mesa, rol y miniaturas en España."
+          tags="Astro,React,Tailwind"
+          github="https://github.com/salteadorneo/agendados"
+        />
+        <Project
+          title="Status"
+          url="https://status.salteadorneo.dev"
+          description="Monitor de disponibilidad para GitHub Pages."
+          tags="GitHub Actions,Zero Dependencies"
+          github="https://salteadorneo/status"
+        />
+        <Project
+          title="Changes"
+          url="https://changes.salteadorneo.dev"
+          description="Monitoreo de cambios en URLs con screenshots automáticos."
+          tags="Puppeteer,Node.js"
+          github="https://github.com/salteadorneo/changes"
+        />
+        <Project
+          title="Generator"
+          url="https://generator.salteadorneo.dev"
+          description="Generador de datos aleatorios: DNI, NIE, CIF, matrículas."
+          tags="Astro,API REST"
+          github="https://github.com/salteadorneo/generator"
+        />
+        <Project
+          title="CSSX"
+          url="https://cssx.js.org"
+          description="Compila CSS como lenguaje de programación. Define estructura HTML y estilos en archivos `.cssx`."
+          tags="CSS,Compiler,PostCSS"
+          github="https://github.com/salteadorneo/cssx"
+        />
+        <Project
+          title="ZIP"
+          url="https://zip.salteadorneo.dev"
+          description="Explora y descarga archivos ZIP directamente en el navegador sin descargar el archivo completo."
+          tags="JSZip,JavaScript,Vanilla JS"
+          github="https://github.com/salteadorneo/zip"
+        />
+      </section>
 
-    <h3 class="text-2xl font-light opacity-40 mt-8 mb-4">Más proyectos</h3>
+      <h3 class="text-2xl font-light opacity-40 mt-12 mb-6">Juegos</h3>
 
-    <section class="space-y-6">
-      <Point
-        title="Julia Bescos"
-        url="https://juliabescos.com"
-        description="Web Portfolio diseñadora gráfica."
-      />
-      <Point
-        title="Menyled"
-        url="https://www.menyled.com"
-        description="Web corporativa + catálogo de productos."
-      />
-      <Point
-        title="Porto Alegría"
-        url="https://portoalegria.org"
-        description="Web Escuela de Samba Porto Alegría."
-      />
+      <section
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+      >
+        <Project
+          title="Pokemodle"
+          url="https://pokemodle.salteadorneo.dev/"
+          description="Adivina el Pokémon oculto cada día."
+          tags="Vue.js,Game"
+          github="https://github.com/salteadorneo/pokemodle"
+        />
+        <Project
+          title="Bulbs"
+          url="https://bulbs.salteadorneo.dev"
+          description="¿Puedes adivinar el orden de los focos en un intento?"
+          tags="Preact,Game"
+          github="https://github.com/salteadorneo/bulbs"
+        />
+        <Project
+          title="Qubes"
+          url="https://salteadorneodev.itch.io/qubes"
+          description="Juego de puzzle."
+          tags="Game,Puzzle,itch.io"
+        >
+          <div class="flex items-center gap-2 text-white/70">
+            <a href="https://salteadorneodev.itch.io/qubes" target="_blank">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-itch"
+                ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                  d="M2 7v1c0 1.087 1.078 2 2 2c1.107 0 2 -.91 2 -2c0 1.09 .893 2 2 2s2 -.91 2 -2c0 1.09 .893 2 2 2s2 -.91 2 -2c0 1.09 .893 2 2 2s2 -.91 2 -2c0 1.09 .893 2 2 2c.922 0 2 -.913 2 -2v-1c-.009 -.275 -.538 -.964 -1.588 -2.068a3 3 0 0 0 -2.174 -.932h-12.476a3 3 0 0 0 -2.174 .932c-1.05 1.104 -1.58 1.793 -1.588 2.068"
+                ></path><path
+                  d="M4 10c-.117 6.28 .154 9.765 .814 10.456c1.534 .367 4.355 .535 7.186 .536c2.83 -.001 5.652 -.169 7.186 -.536c.99 -1.037 .898 -9.559 .814 -10.456"
+                ></path><path d="M10 16l2 -2l2 2"></path><path d="M12 14v4"
+                ></path></svg
+              >
+            </a>
+            <a
+              href="https://play.google.com/store/apps/details?id=dev.salteadorneo.qubes&pcampaignid=web_share"
+              target="_blank"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-google-play"
+                ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                  d="M4 3.71v16.58a.7 .7 0 0 0 1.05 .606l14.622 -8.42a.55 .55 0 0 0 0 -.953l-14.622 -8.419a.7 .7 0 0 0 -1.05 .607l0 -.001"
+                ></path><path d="M15 9l-10.5 11.5"></path><path
+                  d="M4.5 3.5l10.5 11.5"></path></svg
+              >
+            </a>
+          </div>
+        </Project>
+      </section>
+
+      <h3 class="text-2xl font-light opacity-40 mt-12 mb-4">Deprecated</h3>
+
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <Project
+          title="URL Beauty"
+          description="An other URL shortener. But, with magic."
+          tags="Deno,URL Shortener"
+          github="https://github.com/salteadorneo/url.beauty"
+        />
+        <Project
+          title="Clone UI"
+          description="Genera componentes UI con simples prompts."
+          tags="Next.js,Tailwind CSS,AI"
+        />
+        <Project
+          title="infinite.cards"
+          description="Tarjetas digitales profesionales."
+          tags="Next.js,React"
+        />
+        <Project
+          title="basycss"
+          description="Framework CSS con clases utilitarias."
+          tags="CSS,Framework,SCSS"
+          github="https://github.com/salteadorneo/basycss"
+        />
+      </section>
     </section>
   </main>
   <Footer />

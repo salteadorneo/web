@@ -1,7 +1,23 @@
 ---
 import Github from "./icons/Github.astro";
 
-const { image, title, description, tags, url, github } = Astro.props;
+const { title, description, tags, url, github } = Astro.props;
+
+const parseDescription = (text: string) => {
+    return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+};
+
+const getDomain = (urlString: string) => {
+    try {
+        const urlObj = new URL(urlString);
+        return urlObj.hostname.replace("www.", "");
+    } catch {
+        return "";
+    }
+};
+
+const parsedDescription = parseDescription(description);
+const domain = url ? getDomain(url) : "";
 ---
 
 <article class="glass rounded-2xl p-4 w-full h-full">
@@ -19,21 +35,23 @@ const { image, title, description, tags, url, github } = Astro.props;
                 title
             )
         }
-        {
-            github && (
-                <a
-                    href={github}
-                    target="_blank"
-                    class="text-white/70 leading-none hover:text-primary transition-colors duration-300"
-                >
-                    <Github size="20" />
-                </a>
-            )
-        }
     </h3>
-    <p class="text-white/60 leading-tight mt-1">
-        {description}
+    {domain && <p class="text-white/40 text-sm mt-1">{domain}</p>}
+    <p class="text-white/60 leading-tight mt-2 mb-3">
+        <Fragment set:html={parsedDescription} />
     </p>
+    {
+        github && (
+            <a
+                href={github}
+                target="_blank"
+                class="text-white/70 leading-none hover:text-primary transition-colors duration-300"
+            >
+                <Github size="20" />
+            </a>
+        )
+    }
+    <slot />
     <p class="flex flex-wrap gap-2 mt-3">
         {
             tags
