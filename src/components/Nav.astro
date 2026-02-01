@@ -3,11 +3,10 @@ import Github from "@components/icons/Github.astro";
 import Linkedin from "@components/icons/Linkedin.astro";
 import Twitter from "@components/icons/Twitter.astro";
 import Email from "@components/icons/Email.astro";
-import Minecraft from "./Minecraft.astro";
 ---
 
-<section class="glass rounded-full flex items-center gap-6 py-2 px-6">
-  <div class="flex items-center gap-4">
+<section class="fixed top-1/2 right-6 -translate-y-1/2 glass rounded-full flex items-center gap-6 py-6 px-3">
+  <div class="flex flex-col items-center gap-4">
     <a
       href="https://github.com/salteadorneo"
       target="_blank"
@@ -44,8 +43,5 @@ import Minecraft from "./Minecraft.astro";
     >
       <Email size="20" />
     </a>
-    <div class="max-sm:hidden">
-      <Minecraft />
-    </div>
   </div>
 </section>

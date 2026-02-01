@@ -17,7 +17,7 @@ body {
 
 body {
     color: #e1e1e1;
-    background: #242424;
+    background: #181818;
 }
 
 ::-webkit-scrollbar {
@@ -38,10 +38,10 @@ body {
 }
 
 .glass {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, .02);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(16.2px);
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, .08);
 }
 
 @keyframes fadein {

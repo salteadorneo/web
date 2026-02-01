@@ -4,11 +4,11 @@ import Tag from "./Tag.astro";
 const { post } = Astro.props;
 ---
 
-<article class="glass rounded-2xl flex max-sm:flex-wrap gap-6 group p-8">
+<article class="rounded-2xl flex max-sm:flex-wrap gap-6 group p-8">
     <img
         src={post.data.image}
         alt={post.data.title}
-        class="h-30 aspect-square transition-all duration-300 rounded"
+        class="h-16 aspect-square transition-all duration-300 rounded"
         style={`view-transition-name: image-${post.slug}`}
     />
     <span class="space-y-4">
@@ -26,7 +26,7 @@ const { post } = Astro.props;
                 {post.data.tags.map((tag: string) => <Tag tag={tag} />)}
             </p>
         </div>
-        <p class="text-lg" style={`view-transition-name: desc-${post.slug}`}>
+        <p class="text-lg opacity-70" style={`view-transition-name: desc-${post.slug}`}>
             {post.data.description}
         </p>
     </span>

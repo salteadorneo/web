@@ -30,11 +30,11 @@ posts.sort(
   description="Descubre las últimas novedades de JavaScript, HTML, CSS, base de datos y tecnología en general."
 >
   <Header />
-  <main class="pt-48 sm:pt-36">
-    <h2 class="px-6 max-w-5xl mx-auto text-4xl font-medium">
+  <main>
+    <h2 class="p-6 w-full max-w-4xl mx-auto text-4xl font-medium">
       #{tag}
     </h2>
-    <section class="p-6 max-w-6xl mx-auto space-y-6">
+    <section class="w-full max-w-4xl mx-auto">
       {posts.map((post) => <Article post={post} />)}
     </section>
   </main>
