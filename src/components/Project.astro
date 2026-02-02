@@ -20,47 +20,53 @@ const parsedDescription = parseDescription(description);
 const domain = url ? getDomain(url) : "";
 ---
 
-<article class="glass rounded-2xl p-4 w-full h-full">
-    <h3 class="flex items-center gap-2 text-2xl text-nowrap font-semibold">
-        {
-            url ? (
-                <a
-                    href={url}
-                    target="_blank"
-                    class="hover:text-primary transition-colors duration-300"
-                >
-                    {title}
-                </a>
-            ) : (
-                title
-            )
-        }
-    </h3>
-    {domain && <p class="text-white/40 text-sm mt-1">{domain}</p>}
-    <p class="text-white/60 leading-tight mt-2 mb-3">
+<article class="glass rounded-2xl p-8 w-full h-full space-y-2">
+    <section>
+        <section class="flex items-center justify-between gap-4">
+            <h3 class="flex items-center gap-2 text-3xl text-nowrap">
+                {
+                    url ? (
+                        <a
+                            href={url}
+                            target="_blank"
+                            class="hover:text-primary transition-colors duration-300"
+                        >
+                            {title}
+                        </a>
+                    ) : (
+                        title
+                    )
+                }
+            </h3>
+            <p class="flex flex-wrap gap-2">
+                {
+                    tags
+                        ?.split(",")
+                        .map((tag: string) => (
+                            <span class="text-sm rounded-full px-3 py-0.5 text-white/70 text-nowrap bg-white/5">
+                                {tag}
+                            </span>
+                        ))
+                }
+            </p>
+        </section>
+        {domain && <p class="text-white/40">{domain}</p>}
+    </section>
+    <p class="text-white/70 text-lg leading-tight">
         <Fragment set:html={parsedDescription} />
     </p>
-    {
-        github && (
-            <a
-                href={github}
-                target="_blank"
-                class="text-white/70 leading-none hover:text-primary transition-colors duration-300"
-            >
-                <Github size="20" />
-            </a>
-        )
-    }
-    <slot />
-    <p class="flex flex-wrap gap-2 mt-3">
+    <!-- <section>
         {
-            tags
-                ?.split(",")
-                .map((tag: string) => (
-                    <span class="text-sm rounded-full px-3 py-0.5 text-white/70 text-nowrap bg-white/5">
-                        {tag}
-                    </span>
-                ))
+            github && (
+                <a
+                    href={github}
+                    target="_blank"
+                    class="text-white/70 leading-none hover:text-primary transition-colors duration-300"
+                >
+                    <Github size="20" />
+                </a>
+            )
         }
-    </p>
+        <slot />
+    </section> -->
 </article>

@@ -7,12 +7,12 @@ import Footer from "@/components/Footer.astro";
 
 <Layout>
   <Header />
-  <main class="pt-48 sm:pt-40">
-    <section class="p-6 max-w-6xl mx-auto space-y-6">
+  <main>
+    <section class="p-6 max-w-4xl mx-auto space-y-6">
       <h3 class="text-4xl font-light opacity-40 mb-8">Proyectos destacados</h3>
 
       <section
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+        class="grid gap-6 mb-12"
       >
         <Project
           title="PlayJS"
@@ -29,6 +29,13 @@ import Footer from "@/components/Footer.astro";
           github="https://github.com/salteadorneo/agendados"
         />
         <Project
+          title="CSSX"
+          url="https://cssx.js.org"
+          description="Compila CSS como lenguaje de programación. Define estructura HTML y estilos en archivos `.cssx`."
+          tags="CSS,Compiler,PostCSS"
+          github="https://github.com/salteadorneo/cssx"
+        />
+        <Project
           title="Status"
           url="https://status.salteadorneo.dev"
           description="Monitor de disponibilidad para GitHub Pages."
@@ -43,32 +50,25 @@ import Footer from "@/components/Footer.astro";
           github="https://github.com/salteadorneo/changes"
         />
         <Project
-          title="Generator"
-          url="https://generator.salteadorneo.dev"
-          description="Generador de datos aleatorios: DNI, NIE, CIF, matrículas."
-          tags="Astro,API REST"
-          github="https://github.com/salteadorneo/generator"
-        />
-        <Project
-          title="CSSX"
-          url="https://cssx.js.org"
-          description="Compila CSS como lenguaje de programación. Define estructura HTML y estilos en archivos `.cssx`."
-          tags="CSS,Compiler,PostCSS"
-          github="https://github.com/salteadorneo/cssx"
-        />
-        <Project
           title="ZIP"
           url="https://zip.salteadorneo.dev"
           description="Explora y descarga archivos ZIP directamente en el navegador sin descargar el archivo completo."
           tags="JSZip,JavaScript,Vanilla JS"
           github="https://github.com/salteadorneo/zip"
         />
+        <Project
+          title="Generator"
+          url="https://generator.salteadorneo.dev"
+          description="Generador de datos aleatorios: DNI, NIE, CIF, matrículas."
+          tags="Astro,API REST"
+          github="https://github.com/salteadorneo/generator"
+        />
       </section>
 
       <h3 class="text-2xl font-light opacity-40 mt-12 mb-6">Juegos</h3>
 
       <section
-        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+        class="grid gap-6 mb-12"
       >
         <Project
           title="Pokemodle"
@@ -136,9 +136,9 @@ import Footer from "@/components/Footer.astro";
         </Project>
       </section>
 
-      <h3 class="text-2xl font-light opacity-40 mt-12 mb-4">Deprecated</h3>
+      <h3 class="text-2xl font-light opacity-40 mt-12 mb-4">Archivados</h3>
 
-      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section class="grid gap-6 opacity-40">
         <Project
           title="URL Beauty"
           description="An other URL shortener. But, with magic."
