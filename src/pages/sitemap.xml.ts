@@ -1,10 +1,10 @@
-import { CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 
 export async function get() {
   const posts = await getCollection("blog");
 
   posts.sort((a, b) => {
-    return b.data.publishedDate - a.data.publishedDate;
+    return new Date(b.data.publishedDate).getTime() - new Date(a.data.publishedDate).getTime();
   });
 
   return {
