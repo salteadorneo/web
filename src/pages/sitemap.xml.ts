@@ -29,7 +29,7 @@ async function generateSitemapXml({ posts, site }: { posts: CollectionEntry<"blo
         <priority>0.90</priority>
     </url>
     ${posts.map((post:any) => {
-      const loc = new URL(`/${post.collection}/${post.slug}`, site.url).href;
+      const loc = new URL(`/${post.collection}/${post.id}`, site.url).href;
       return `
       <url>
           <loc>${loc}</loc>

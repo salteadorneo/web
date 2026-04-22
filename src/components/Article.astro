@@ -9,24 +9,24 @@ const { post } = Astro.props;
         src={post.data.image}
         alt={post.data.title}
         class="h-16 aspect-square transition-all duration-300 rounded"
-        style={`view-transition-name: image-${post.slug}`}
+        style={`view-transition-name: image-${post.id}`}
     />
     <span class="space-y-4">
         <div class="space-y-2">
             <h2
                 class="text-3xl leading-none font-bold hover:text-primary"
-                style={`view-transition-name: title-${post.slug}`}
+                style={`view-transition-name: title-${post.id}`}
             >
-                <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
             </h2>
             <p
                 class="flex flex-wrap items-center gap-x-4"
-                style={`view-transition-name: tags-${post.slug}`}
+                style={`view-transition-name: tags-${post.id}`}
             >
                 {post.data.tags.map((tag: string) => <Tag tag={tag} />)}
             </p>
         </div>
-        <p class="text-lg opacity-70" style={`view-transition-name: desc-${post.slug}`}>
+        <p class="text-lg opacity-70" style={`view-transition-name: desc-${post.id}`}>
             {post.data.description}
         </p>
     </span>

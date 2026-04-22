@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Tag from "@/components/Tag.astro";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
@@ -8,13 +8,13 @@ import Footer from "@/components/Footer.astro";
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
   return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { id: entry.id },
     props: { entry },
   }));
 }
 
 const { entry } = Astro.props;
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <Layout
@@ -30,18 +30,18 @@ const { Content } = await entry.render();
           src={entry.data.image}
           alt={entry.data.title}
           class="h-40 aspect-square rounded"
-          style={`view-transition-name: image-${entry.slug}`}
+          style={`view-transition-name: image-${entry.id}`}
         />
         <span class="space-y-4">
           <h1
             class="text-5xl font-bold"
-            style={`view-transition-name: title-${entry.slug}`}
+            style={`view-transition-name: title-${entry.id}`}
           >
             {entry.data.title}
           </h1>
           <p
             class="flex flex-wrap items-center gap-x-4"
-            style={`view-transition-name: tags-${entry.slug}`}
+            style={`view-transition-name: tags-${entry.id}`}
           >
             {entry.data.tags.map((tag: string) => <Tag tag={tag} />)}
           </p>
