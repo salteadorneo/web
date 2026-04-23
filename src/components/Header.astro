@@ -1,15 +1,30 @@
 ---
-import Nav from "./Nav.astro";
+import Github from "@/components/icons/Github.astro";
+import Linkedin from "@/components/icons/Linkedin.astro";
+import Twitter from "@/components/icons/Twitter.astro";
+import Email from "@/components/icons/Email.astro";
 ---
-
-<Nav />
 
 <header class="p-6 w-full mx-auto flex justify-between items-center gap-4">
   <a href="/">
     <h1 class="text-2xl">Cristian Adán</h1>
     <h2 class="text-lg opacity-70">salteadorneo.dev</h2>
   </a>
-  <nav>
-    <a href="/proyectos" class="mr-4 hover:underline">Proyectos</a>
+  <nav class="flex items-center gap-5">
+    <a href="/proyectos" class="hover:underline">Proyectos</a>
+    <div class="flex items-center gap-3 ml-2 pl-4 border-l border-border">
+      <a href="https://github.com/salteadorneo" target="_blank" rel="noopener noreferrer" title="GitHub" class="opacity-60 hover:opacity-100 transition-opacity">
+        <Github size="18" />
+      </a>
+      <a href="https://www.linkedin.com/in/cristianadan/" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="opacity-60 hover:opacity-100 transition-opacity">
+        <Linkedin size="18" />
+      </a>
+      <a href="https://twitter.com/salteadorneodev" target="_blank" rel="noopener noreferrer" title="Twitter" class="opacity-60 hover:opacity-100 transition-opacity">
+        <Twitter size="18" />
+      </a>
+      <a href="mailto:cristian@salteadorneo.dev" title="Email" class="opacity-60 hover:opacity-100 transition-opacity">
+        <Email size="18" />
+      </a>
+    </div>
   </nav>
 </header>
