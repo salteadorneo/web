@@ -23,39 +23,40 @@ const { Content } = await render(entry);
   ogimage={entry.data.image}
 >
   <Header />
-  <main class="px-6 w-full max-w-6xl mx-auto">
-    <section class="glass rounded-2xl p-8 sm:p-16 space-y-12">
+  <main>
+    <section class="px-6 w-full max-w-6xl mx-auto pb-16 border-t border-border pt-6">
+      <article class="rounded-xl border border-border bg-card p-8 sm:p-12 space-y-10">
       <div class="flex flex-wrap sm:flex-nowrap gap-8">
         <img
           src={entry.data.image}
           alt={entry.data.title}
-          class="h-40 aspect-square rounded"
+          class="h-28 w-28 sm:h-36 sm:w-36 aspect-square rounded-lg border border-border object-cover"
           style={`view-transition-name: image-${entry.id}`}
         />
-        <span class="space-y-4">
+        <div class="space-y-4 min-w-0">
           <h1
-            class="text-5xl font-bold"
+            class="text-3xl md:text-5xl font-bold text-foreground"
             style={`view-transition-name: title-${entry.id}`}
           >
             {entry.data.title}
           </h1>
           <p
-            class="flex flex-wrap items-center gap-x-4"
+            class="flex flex-wrap items-center gap-2"
             style={`view-transition-name: tags-${entry.id}`}
           >
             {entry.data.tags.map((tag: string) => <Tag tag={tag} />)}
           </p>
-        </span>
+        </div>
       </div>
       <div class="markdown-content space-y-6">
         <Content />
       </div>
-      <section class="glass rounded-2xl flex items-center justify-center py-4">
+      <section class="rounded-xl border border-border bg-secondary/35 flex items-center justify-center py-4">
         <div class="flex items-center gap-4">
-          <span>¡Comparte!</span>
+          <span class="text-base text-muted-foreground">Comparte</span>
           <button
             onclick={`navigator.share({ url: '${Astro.request.url}' })`}
-            class="hover:text-primary transition-colors duration-300"
+            class="text-muted-foreground hover:text-primary transition-colors duration-300"
           >
             <svg
               width={24}
@@ -75,7 +76,7 @@ const { Content } = await render(entry);
               Astro.request.url,
             )}`}
             target="_blank"
-            class="hover:text-primary transition-colors duration-300"
+            class="text-muted-foreground hover:text-primary transition-colors duration-300"
             title="Compartir en LinkedIn"
           >
             <svg
@@ -94,7 +95,7 @@ const { Content } = await render(entry);
               entry.data.title,
             )}&hashtags=${encodeURIComponent(entry.data.tags.join(","))}`}
             target="_blank"
-            class="hover:text-primary transition-colors duration-300"
+            class="text-muted-foreground hover:text-primary transition-colors duration-300"
             title="Compartir en Twitter"
           >
             <svg
@@ -112,6 +113,7 @@ const { Content } = await render(entry);
           </a>
         </div>
       </section>
+      </article>
     </section>
   </main>
   <Footer />

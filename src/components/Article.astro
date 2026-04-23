@@ -4,30 +4,32 @@ import Tag from "./Tag.astro";
 const { post } = Astro.props;
 ---
 
-<article class="rounded-2xl flex max-sm:flex-wrap gap-6 group p-8">
-    <img
-        src={post.data.image}
-        alt={post.data.title}
-        class="h-16 aspect-square transition-all duration-300 rounded"
-        style={`view-transition-name: image-${post.id}`}
-    />
-    <span class="space-y-4">
-        <div class="space-y-2">
-            <h2
-                class="text-3xl leading-none font-bold hover:text-primary"
-                style={`view-transition-name: title-${post.id}`}
-            >
-                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-            </h2>
-            <p
-                class="flex flex-wrap items-center gap-x-4"
-                style={`view-transition-name: tags-${post.id}`}
-            >
-                {post.data.tags.map((tag: string) => <Tag tag={tag} />)}
+<article class="group mt-6 rounded-xl border border-border bg-card p-6 md:p-7 transition-all hover:border-muted hover:shadow-sm">
+    <div class="flex gap-5 max-sm:flex-col">
+        <img
+            src={post.data.image}
+            alt={post.data.title}
+            class="h-16 w-16 shrink-0 rounded-lg border border-border object-cover transition-all duration-300"
+            style={`view-transition-name: image-${post.id}`}
+        />
+        <div class="space-y-4 min-w-0">
+            <div class="space-y-3">
+                <h2
+                    class="text-2xl leading-tight font-bold text-foreground transition-colors group-hover:text-primary"
+                    style={`view-transition-name: title-${post.id}`}
+                >
+                    <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                </h2>
+                <p
+                    class="flex flex-wrap items-center gap-2"
+                    style={`view-transition-name: tags-${post.id}`}
+                >
+                    {post.data.tags.map((tag: string) => <Tag tag={tag} />)}
+                </p>
+            </div>
+            <p class="text-base text-muted-foreground leading-relaxed" style={`view-transition-name: desc-${post.id}`}>
+                {post.data.description}
             </p>
         </div>
-        <p class="text-lg opacity-70" style={`view-transition-name: desc-${post.id}`}>
-            {post.data.description}
-        </p>
-    </span>
+    </div>
 </article>

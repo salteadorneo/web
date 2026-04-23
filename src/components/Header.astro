@@ -3,28 +3,33 @@ import Github from "@/components/icons/Github.astro";
 import Linkedin from "@/components/icons/Linkedin.astro";
 import Twitter from "@/components/icons/Twitter.astro";
 import Email from "@/components/icons/Email.astro";
+import Logo from "@/components/Logo.astro";
 ---
 
-<header class="p-6 w-full mx-auto flex justify-between items-center gap-4">
-  <a href="/">
-    <h1 class="text-2xl">Cristian Adán</h1>
-    <h2 class="text-lg opacity-70">salteadorneo.dev</h2>
-  </a>
-  <nav class="flex items-center gap-5">
-    <a href="/proyectos" class="hover:underline">Proyectos</a>
-    <div class="flex items-center gap-3 ml-2 pl-4 border-l border-border">
-      <a href="https://github.com/salteadorneo" target="_blank" rel="noopener noreferrer" title="GitHub" class="opacity-60 hover:opacity-100 transition-opacity">
+<header class="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
+  <div class="p-4 md:p-6 max-w-6xl mx-auto flex items-center justify-between gap-6">
+    <a href="/" class="hover:opacity-90 transition-opacity" aria-label="Ir al inicio">
+      <Logo />
+    </a>
+
+    <nav class="flex items-center gap-5 text-base">
+      <a href="/proyectos" class="text-muted-foreground hover:text-foreground transition-colors">Proyectos</a>
+      <a href="/" class="hidden sm:inline text-muted-foreground hover:text-foreground transition-colors">Blog</a>
+
+      <div class="flex items-center gap-3 ml-1 pl-4 border-l border-border">
+        <a href="https://github.com/salteadorneo" target="_blank" rel="noopener noreferrer" title="GitHub" class="opacity-60 hover:opacity-100 transition-opacity">
         <Github size="18" />
       </a>
-      <a href="https://www.linkedin.com/in/cristianadan/" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="opacity-60 hover:opacity-100 transition-opacity">
+        <a href="https://www.linkedin.com/in/cristianadan/" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="opacity-60 hover:opacity-100 transition-opacity">
         <Linkedin size="18" />
       </a>
-      <a href="https://twitter.com/salteadorneodev" target="_blank" rel="noopener noreferrer" title="Twitter" class="opacity-60 hover:opacity-100 transition-opacity">
+        <a href="https://twitter.com/salteadorneodev" target="_blank" rel="noopener noreferrer" title="X" class="opacity-60 hover:opacity-100 transition-opacity">
         <Twitter size="18" />
       </a>
-      <a href="mailto:cristian@salteadorneo.dev" title="Email" class="opacity-60 hover:opacity-100 transition-opacity">
+        <a href="mailto:cristian@salteadorneo.dev" title="Email" class="opacity-60 hover:opacity-100 transition-opacity">
         <Email size="18" />
       </a>
-    </div>
-  </nav>
+      </div>
+    </nav>
+  </div>
 </header>

@@ -31,10 +31,15 @@ posts.sort(
 >
   <Header />
   <main>
-    <h2 class="p-6 w-full max-w-4xl mx-auto text-4xl font-medium">
-      #{tag}
-    </h2>
-    <section class="w-full max-w-4xl mx-auto">
+    <section class="pt-10 pb-4 px-6 max-w-6xl mx-auto">
+      <p class="font-medium text-muted-foreground tracking-wide uppercase mb-3">
+        Blog
+      </p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+        Etiqueta #{tag}
+      </h2>
+    </section>
+    <section class="w-full max-w-6xl mx-auto px-6 pb-16 border-t border-border">
       {posts.map((post) => <Article post={post} />)}
     </section>
   </main>
