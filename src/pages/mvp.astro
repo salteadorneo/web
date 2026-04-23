@@ -1,0 +1,489 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+
+const currentYear = new Date().getFullYear();
+
+const problems = [
+  {
+    title: "Tienes una idea, pero aún no está validada",
+    description:
+      "Antes de invertir meses y dinero, necesitas una primera versión funcional para comprobar si hay interés real.",
+  },
+  {
+    title: "Tu equipo repite tareas manuales cada semana",
+    description:
+      "Copiar datos, consolidar informes y mover información entre herramientas consume tiempo que debería ir a trabajo de valor.",
+  },
+  {
+    title: "Las herramientas actuales no encajan contigo",
+    description:
+      "El software genérico suele traer funciones que no usas y deja fuera justo lo que tu operación necesita.",
+  },
+  {
+    title: "El desarrollo tradicional se hace eterno",
+    description:
+      "No todos los proyectos requieren presupuestos grandes, procesos pesados y meses de espera para empezar.",
+  },
+];
+
+const solutions = [
+  {
+    title: "MVP funcional para validar rápido",
+    description:
+      "Construyo lo mínimo necesario para probar tu idea con usuarios reales y tomar decisiones con datos.",
+  },
+  {
+    title: "Automatizaciones de procesos repetitivos",
+    description:
+      "Elimino pasos manuales y conecto herramientas para que tu equipo gane tiempo desde la primera entrega.",
+  },
+  {
+    title: "Herramientas internas a medida",
+    description:
+      "Aplicaciones pensadas para tu flujo real. Sin complejidad innecesaria y sin pagar por funciones de sobra.",
+  },
+  {
+    title: "Prototipos que ya se pueden usar",
+    description:
+      "No son maquetas vacías: son versiones funcionales para presentar, validar y mejorar con feedback real.",
+  },
+];
+
+const steps = [
+  {
+    number: "01",
+      title: "Entiendo el problema",
+    description:
+      "Una conversación corta para aterrizar objetivo, contexto y prioridad. Sin jerga ni documentos eternos.",
+    duration: "30 min",
+  },
+  {
+    number: "02",
+      title: "Defino el alcance útil",
+    description:
+      "En 48 horas te propongo qué construir primero, qué dejar fuera y cómo medir si funciona.",
+    duration: "48 h",
+  },
+  {
+    number: "03",
+    title: "Construcción en ciclos cortos",
+    description:
+      "Entregas frecuentes para que veas avance real, des feedback y ajustemos rumbo rápido si hace falta.",
+    duration: "1-3 semanas",
+  },
+  {
+    number: "04",
+    title: "Validación y siguientes pasos",
+    description:
+      "Con la primera versión en marcha, decidimos juntos si iterar, automatizar más o escalar lo que ya funciona.",
+    duration: "continuo",
+  },
+];
+
+const useCases = [
+  {
+    category: "Automatización",
+    title: "Extracción de datos de facturas",
+    description:
+      "Proceso manual de medio día reducido a segundos, sin cambiar el flujo habitual del equipo.",
+    result: "-95% tiempo de proceso",
+    tags: ["Integración", "Productividad", "Backoffice"],
+  },
+  {
+    category: "Validación de idea",
+    title: "Primer prototipo de app en 10 días",
+    description:
+      "Un emprendedor lanzó una versión funcional, consiguió usuarios iniciales y decidió con datos reales.",
+    result: "10 días a primer MVP",
+    tags: ["MVP", "Web app", "Experimentación"],
+  },
+  {
+    category: "Herramienta interna",
+    title: "Panel operativo para equipo interno",
+    description:
+      "Se centralizó la gestión en un solo sistema y se redujo la carga administrativa recurrente.",
+    result: "-60% tareas administrativas",
+    tags: ["Dashboard", "Operación", "Datos"],
+  },
+];
+
+const faqs = [
+  {
+    question: "¿Qué tipo de proyectos tienen sentido aquí?",
+    answer:
+      "Validación de ideas, automatización de tareas repetitivas, herramientas internas y conexiones entre sistemas que ya usas.",
+  },
+  {
+    question: "¿Tengo que tener todo definido antes de escribirte?",
+    answer:
+      "No. Con explicar el problema y el resultado que buscas es suficiente para arrancar.",
+  },
+  {
+    question: "¿Y si la idea no funciona?",
+    answer:
+      "Mejor descubrirlo pronto y con bajo coste. Esa es una de las ventajas de trabajar con un MVP real.",
+  },
+  {
+    question: "¿Se puede escalar después?",
+    answer:
+      "Sí. La primera versión se diseña para ser útil hoy, pero preparada para crecer cuando tenga sentido.",
+  },
+];
+---
+
+<!doctype html>
+<html lang="es" class="bg-background">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Desarrollo MVP rápido · Automatización y herramientas a medida — Cristian Adán</title>
+    <meta name="description" content="Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas en 1-3 semanas. Sin burocracia, sin costes iniciales. Validamos tu idea o resolvemos tu cuello de botella antes de invertir de más." />
+    <meta name="keywords" content="desarrollo MVP, MVP funcional, automatización de procesos, herramientas internas, prototipo web, freelance desarrollo web, validar idea, startup, desarrollo rápido España" />
+    <meta name="author" content="Cristian Adán" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://salteadorneo.dev/mvp" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://salteadorneo.dev/mvp" />
+    <meta property="og:title" content="Desarrollo MVP rápido · Automatización y herramientas a medida" />
+    <meta property="og:description" content="Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas en 1-3 semanas. Sin burocracia, sin costes iniciales." />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content="salteadorneo.dev" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@salteadorneodev" />
+    <meta name="twitter:title" content="Desarrollo MVP rápido · Automatización y herramientas a medida" />
+    <meta name="twitter:description" content="Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas en 1-3 semanas. Sin burocracia, sin costes iniciales." />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Desarrollo MVP y automatización a medida",
+      "description": "Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas adaptadas a tu operación real. Entregas en 1-3 semanas sin costes iniciales.",
+      "provider": {
+        "@type": "Person",
+        "name": "Cristian Adán",
+        "url": "https://salteadorneo.dev",
+        "sameAs": [
+          "https://github.com/salteadorneo",
+          "https://www.linkedin.com/in/cristianadan/",
+          "https://twitter.com/salteadorneodev"
+        ]
+      },
+      "serviceType": "Desarrollo de software",
+      "areaServed": "ES",
+      "inLanguage": "es",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Sin coste inicial. Presupuesto tras primera conversación.",
+        "availability": "https://schema.org/InStock"
+      }
+    }
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="min-h-screen bg-background text-foreground antialiased overflow-x-hidden">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background/85 backdrop-blur-md border-b border-border">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+        <a href="/" aria-label="Ir al inicio">
+          <Logo />
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#problemas" class="text-muted-foreground hover:text-foreground transition-colors">
+            Problemas
+          </a>
+          <a href="#proceso" class="text-muted-foreground hover:text-foreground transition-colors">
+            Proceso
+          </a>
+          <a href="#casos" class="text-muted-foreground hover:text-foreground transition-colors">
+            Casos
+          </a>
+        </nav>
+        <a
+          href="#contacto"
+          class="font-medium px-3 sm:px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors whitespace-nowrap"
+        >
+          Cuéntame tu proyecto
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="pt-28 pb-20 px-6">
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="font-medium text-muted-foreground mb-4 tracking-wide uppercase">
+            Del problema a la solución
+          </p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight text-balance">
+            Desarrollo MVP rápido<br class="hidden sm:block" />
+            <span class="text-primary/70">de la idea al producto en días</span>
+          </h1>
+          <p class="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed text-pretty">
+            Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas adaptadas a tu operación real. Sin burocracia, sin costes iniciales.
+          </p>
+          <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#contacto"
+              class="inline-flex items-center justify-center px-6 py-3 font-medium bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              Empezar conversación
+            </a>
+            <a
+              href="#proceso"
+              class="inline-flex items-center justify-center px-6 py-3 font-medium bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors"
+            >
+              Ver proceso
+            </a>
+          </div>
+
+          <div class="mt-16 pt-10 border-t border-border">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-sm sm:max-w-none mx-auto">
+              <div>
+                <p class="text-3xl md:text-4xl font-bold text-foreground">1-3</p>
+                <p class="text-muted-foreground mt-1">semanas</p>
+              </div>
+              <div>
+                <p class="text-3xl md:text-4xl font-bold text-foreground">0 €</p>
+                <p class="text-muted-foreground mt-1">coste inicial</p>
+              </div>
+              <div>
+                <p class="text-3xl md:text-4xl font-bold text-foreground">100%</p>
+                <p class="text-muted-foreground mt-1">enfocado en resultados</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="problemas" class="scroll-mt-24 py-20 px-6 bg-secondary/30">
+        <div class="max-w-6xl mx-auto">
+          <div class="max-w-2xl">
+            <p class="font-medium text-muted-foreground mb-3 tracking-wide uppercase">
+              El problema
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+              Situaciones que frenan tu avance
+            </h2>
+            <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+              Si te suena alguna de estas, podemos resolverla con una solución concreta y accionable en poco tiempo.
+            </p>
+          </div>
+
+          <div class="mt-12 grid md:grid-cols-2 gap-6">
+            {problems.map((problem, index) => (
+              <div class="p-6 bg-card rounded-xl border border-border hover:border-muted transition-colors">
+                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-secondary font-medium text-muted-foreground mb-4">
+                  {index + 1}
+                </span>
+                <h3 class="text-lg font-semibold text-foreground">
+                  {problem.title}
+                </h3>
+                <p class="mt-2 text-muted-foreground leading-relaxed">
+                  {problem.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="max-w-2xl">
+            <p class="font-medium text-muted-foreground mb-3 tracking-wide uppercase">
+              La solución
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+              Lo que puedo construir para ti
+            </h2>
+            <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+              Desarrollo rápido, iterativo y centrado en resultados reales.
+            </p>
+          </div>
+
+          <div class="mt-12 grid md:grid-cols-2 gap-8">
+            {solutions.map((solution) => (
+              <div class="p-6 bg-card rounded-xl border border-border">
+                <h3 class="text-lg font-semibold text-foreground">
+                  {solution.title}
+                </h3>
+                <p class="mt-2 text-muted-foreground leading-relaxed">
+                  {solution.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="proceso" class="scroll-mt-24 py-20 px-6 bg-secondary/30">
+        <div class="max-w-6xl mx-auto">
+          <div class="max-w-2xl">
+            <p class="font-medium text-muted-foreground mb-3 tracking-wide uppercase">
+              El proceso
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+              Cómo trabajo contigo
+            </h2>
+            <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+              Claridad desde el primer día y avances visibles en cada etapa.
+            </p>
+          </div>
+
+          <div class="mt-12 space-y-0">
+            {steps.map((step, index) => (
+              <div class="relative flex gap-6 pb-12 last:pb-0">
+                {index < steps.length - 1 && (
+                  <div class="absolute left-5.5 top-12 bottom-0 w-px bg-border" />
+                )}
+
+                <div class="shrink-0 w-11 h-11 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold z-10">
+                  {step.number}
+                </div>
+
+                <div class="flex-1 pt-1">
+                  <div class="flex items-center gap-3 flex-wrap">
+                    <h3 class="text-lg font-semibold text-foreground">
+                      {step.title}
+                    </h3>
+                    <span class="font-medium text-muted-foreground bg-secondary px-2 py-1 rounded">
+                      {step.duration}
+                    </span>
+                  </div>
+                  <p class="mt-2 text-muted-foreground leading-relaxed max-w-xl">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="casos" class="scroll-mt-24 py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="max-w-2xl">
+            <p class="font-medium text-muted-foreground mb-3 tracking-wide uppercase">
+              Casos de uso
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+              Ejemplos de resultados
+            </h2>
+            <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+              Soluciones concretas para problemas concretos.
+            </p>
+          </div>
+
+          <div class="mt-12 grid md:grid-cols-3 gap-6">
+            {useCases.map((useCase) => (
+              <div class="group p-6 bg-card rounded-xl border border-border hover:border-muted hover:shadow-sm transition-all">
+                <p class="font-medium text-muted-foreground uppercase tracking-wide">
+                  {useCase.category}
+                </p>
+                <h3 class="mt-3 text-lg font-semibold text-foreground group-hover:text-foreground/90">
+                  {useCase.title}
+                </h3>
+                <p class="mt-2 text-muted-foreground leading-relaxed">
+                  {useCase.description}
+                </p>
+                <p class="mt-4 font-semibold text-foreground">
+                  {useCase.result}
+                </p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  {useCase.tags.map((tag) => (
+                    <span class="text-muted-foreground bg-secondary px-2 py-1 rounded">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="py-20 px-6 bg-secondary/30">
+        <div class="max-w-3xl mx-auto">
+          <div class="max-w-2xl mb-10">
+            <p class="font-medium text-muted-foreground mb-3 tracking-wide uppercase">
+              Preguntas frecuentes
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+              Lo que suele salir en la primera charla
+            </h2>
+          </div>
+
+          <div class="space-y-4">
+            {faqs.map((faq) => (
+              <details class="group bg-card border border-border rounded-lg p-5">
+                <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
+                  <span class="font-semibold text-foreground">{faq.question}</span>
+                  <span class="text-muted-foreground group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <p class="mt-3 text-muted-foreground leading-relaxed">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="scroll-mt-24 py-20 px-6 bg-primary text-primary-foreground">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
+            ¿Tienes una idea o un proceso que te está frenando?
+          </h2>
+          <p class="mt-4 text-lg text-primary-foreground/80 leading-relaxed max-w-xl mx-auto">
+            Cuéntame qué necesitas. Te respondo en menos de 24 horas con claridad: si encaja, cómo lo enfocaría y cuál sería el primer paso.
+          </p>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="mailto:cristian@salteadorneo.dev?subject=Consulta%20MVP"
+              class="inline-flex items-center justify-center gap-2 px-6 py-3 font-medium bg-primary-foreground text-primary rounded-lg hover:bg-primary-foreground/90 transition-colors"
+            >
+              Enviar email
+            </a>
+            <a
+              href="#proceso"
+              class="inline-flex items-center justify-center gap-2 px-6 py-3 font-medium bg-transparent text-primary-foreground border border-primary-foreground/30 rounded-lg hover:bg-primary-foreground/10 transition-colors"
+            >
+              Revisar proceso
+            </a>
+          </div>
+
+          <div class="mt-12 pt-8 border-t border-primary-foreground/20">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-primary-foreground/70">
+              <span>Sin coste inicial</span>
+              <span>Respuesta en 24h</span>
+              <span>Conversación sin compromiso</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-10 px-6 border-t border-border">
+      <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+        <a href="/" aria-label="Ir al inicio">
+          <Logo />
+        </a>
+        <div class="flex flex-col sm:flex-row items-center gap-5 text-muted-foreground">
+          <a href="mailto:cristian@salteadorneo.dev" class="hover:text-primary transition-colors">cristian@salteadorneo.dev</a>
+          <a href="#problemas" class="hover:text-foreground transition-colors">Problemas</a>
+          <a href="#proceso" class="hover:text-foreground transition-colors">Proceso</a>
+          <a href="#contacto" class="hover:text-foreground transition-colors">Contacto</a>
+          <span>&#169; {currentYear}</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
