@@ -1,0 +1,309 @@
+---
+import '../styles/global.css';
+
+const currentYear = new Date().getFullYear();
+
+const comparisonRows = [
+  {
+    criterion: "Enfoque",
+    me: "Servicio hecho a medida según tu negocio, contexto y objetivos.",
+    tool: "Plataforma generalista para construir por tu cuenta.",
+  },
+  {
+    criterion: "Tiempo tuyo requerido",
+    me: "Mínimo. Tú defines prioridades y yo ejecuto.",
+    tool: "Alto. Tienes que decidir, construir, corregir y mantener.",
+  },
+  {
+    criterion: "Curva de aprendizaje",
+    me: "Casi nula para ti. Hablamos en términos de problema y resultado.",
+    tool: "Media o alta, según complejidad y nivel técnico.",
+  },
+  {
+    criterion: "Calidad técnica",
+    me: "Arquitectura, integraciones y decisiones adaptadas a tu caso real.",
+    tool: "Depende de plantillas, prompts y criterio técnico del usuario.",
+  },
+  {
+    criterion: "Soporte y criterio",
+    me: "Tienes una persona que responde, propone y se responsabiliza.",
+    tool: "Tienes una herramienta. El criterio estratégico lo pones tú.",
+  },
+  {
+    criterion: "Escalabilidad",
+    me: "Planificada desde el inicio para crecer sin rehacer todo.",
+    tool: "Puede requerir rehacer partes cuando aumenta complejidad.",
+  },
+  {
+    criterion: "Coste total real",
+    me: "Inviertes en resultado y velocidad de ejecución.",
+    tool: "Menor coste inicial, pero mayor coste en tiempo y retrabajo.",
+  },
+];
+
+const chooseMe = [
+  "Quieres avanzar rápido sin convertirte en gestor de una herramienta.",
+  "Necesitas una solución alineada a tu proceso, no a una plantilla.",
+  "Tu tiempo vale más que aprender, probar y mantener por tu cuenta.",
+  "Te importa tener criterio técnico y de negocio en cada decisión.",
+];
+
+const chooseTool = [
+  "Tienes tiempo para experimentar y construir por iteración propia.",
+  "Tu caso es simple y no depende de integraciones complejas.",
+  "Prefieres invertir menos dinero al inicio y asumir más carga operativa.",
+  "Disfrutas ajustando detalles técnicos y resolviendo bloqueos por tu cuenta.",
+];
+
+const process = [
+  {
+    number: "01",
+    title: "Diagnóstico rápido",
+    description:
+      "Entendemos tu objetivo, tus límites y el cuello de botella principal.",
+  },
+  {
+    number: "02",
+    title: "Plan de versión útil",
+    description:
+      "Definimos lo mínimo que debe funcionar para aportar valor real ya.",
+  },
+  {
+    number: "03",
+    title: "Ejecución con entregas",
+    description:
+      "Construyo, comparto avances y ajusto contigo en ciclos cortos.",
+  },
+  {
+    number: "04",
+    title: "Validación y escalado",
+    description:
+      "Medimos resultado y decidimos si iterar, automatizar más o ampliar alcance.",
+  },
+];
+---
+
+<!doctype html>
+<html lang="es" class="bg-background">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Comparativa clara entre contratar mis servicios y usar una herramienta tipo Lovable para construir tu producto."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>vs Lovable - Elegirme a mí o usar una herramienta</title>
+  </head>
+
+  <body class="min-h-screen bg-background text-foreground antialiased overflow-x-hidden">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background/85 backdrop-blur-md border-b border-border">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+        <a href="/" class="text-lg font-semibold tracking-tight text-foreground">
+          mvp<span class="text-muted">.</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#comparativa" class="text-base text-muted-foreground hover:text-foreground transition-colors">
+            Comparativa
+          </a>
+          <a href="#cuando" class="text-base text-muted-foreground hover:text-foreground transition-colors">
+            Cuándo elegir cada opción
+          </a>
+          <a href="#proceso" class="text-base text-muted-foreground hover:text-foreground transition-colors">
+            Proceso
+          </a>
+        </nav>
+        <a
+          href="#contacto"
+          class="text-base sm:text-base font-medium px-3 sm:px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors whitespace-nowrap"
+        >
+          Hablemos
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="pt-32 pb-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+          <p class="text-base font-medium text-muted-foreground mb-4 tracking-wide uppercase">
+            Comparativa realista
+          </p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight text-balance">
+            Elegirme a mí vs pagar una herramienta<br class="hidden sm:block" />
+            <span class="text-muted">tipo Lovable</span>
+          </h1>
+          <p class="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-pretty">
+            Las dos opciones pueden servir, pero no para lo mismo. Si buscas ahorrar tiempo, reducir riesgo y tener una solución ajustada a tu caso, trabajar conmigo suele ser la vía más rápida para llegar a resultado.
+          </p>
+          <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="#comparativa"
+              class="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+            >
+              Ver comparativa
+            </a>
+            <a
+              href="#contacto"
+              class="inline-flex items-center justify-center px-6 py-3 text-base font-medium bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors"
+            >
+              Quiero que lo veamos
+            </a>
+          </div>
+
+          <div class="mt-16 pt-10 border-t border-border">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-sm sm:max-w-none mx-auto">
+              <div>
+                <p class="text-3xl md:text-4xl font-bold text-foreground">Menos fricción</p>
+                <p class="text-base text-muted-foreground mt-1">tú te enfocas en negocio</p>
+              </div>
+              <div>
+                <p class="text-3xl md:text-4xl font-bold text-foreground">Más criterio</p>
+                <p class="text-base text-muted-foreground mt-1">tecnología + producto</p>
+              </div>
+              <div>
+                <p class="text-3xl md:text-4xl font-bold text-foreground">Más velocidad</p>
+                <p class="text-base text-muted-foreground mt-1">de idea a resultado útil</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="comparativa" class="scroll-mt-24 py-20 px-6 bg-secondary/30">
+        <div class="max-w-6xl mx-auto">
+          <div class="max-w-3xl mb-10">
+            <p class="text-base font-medium text-muted-foreground mb-3 tracking-wide uppercase">
+              Elegir bien
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+              Diferencias clave en la práctica
+            </h2>
+            <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+              No es solo precio mensual. La diferencia real está en tiempo, calidad de decisiones y capacidad de ejecutar sin bloquearte.
+            </p>
+          </div>
+
+          <div class="overflow-x-auto border border-border rounded-xl">
+            <table class="w-full min-w-205 text-left border-collapse">
+              <thead class="bg-card">
+                <tr>
+                  <th class="px-5 py-4 text-base uppercase tracking-wide text-muted-foreground border-b border-border">Criterio</th>
+                  <th class="px-5 py-4 text-base uppercase tracking-wide text-primary border-b border-border">Trabajar conmigo</th>
+                  <th class="px-5 py-4 text-base uppercase tracking-wide text-muted-foreground border-b border-border">Herramienta tipo Lovable</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonRows.map((row) => (
+                  <tr class="odd:bg-background even:bg-card/60">
+                    <td class="px-5 py-4 text-base font-semibold text-foreground border-b border-border/70">{row.criterion}</td>
+                    <td class="px-5 py-4 text-base text-foreground border-b border-border/70">{row.me}</td>
+                    <td class="px-5 py-4 text-base text-muted-foreground border-b border-border/70">{row.tool}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="cuando" class="scroll-mt-24 py-20 px-6">
+        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8">
+          <div class="bg-card border border-primary/30 rounded-xl p-7">
+            <p class="text-base uppercase tracking-wide text-primary mb-3">Tiene más sentido elegirme a mí si...</p>
+            <ul class="space-y-3">
+              {chooseMe.map((item) => (
+                <li class="flex items-start gap-3 text-base leading-relaxed text-foreground">
+                  <span class="text-primary mt-0.5">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="bg-card border border-border rounded-xl p-7">
+            <p class="text-base uppercase tracking-wide text-muted-foreground mb-3">Puede servir una herramienta tipo Lovable si...</p>
+            <ul class="space-y-3">
+              {chooseTool.map((item) => (
+                <li class="flex items-start gap-3 text-base leading-relaxed text-muted-foreground">
+                  <span class="text-muted-foreground mt-0.5">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="proceso" class="scroll-mt-24 py-20 px-6 bg-secondary/30">
+        <div class="max-w-5xl mx-auto">
+          <div class="max-w-2xl">
+            <p class="text-base font-medium text-muted-foreground mb-3 tracking-wide uppercase">
+              Cómo sería trabajar juntos
+            </p>
+            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+              Sin fricción y con entregas reales
+            </h2>
+          </div>
+
+          <div class="mt-12 space-y-0">
+            {process.map((step, index) => (
+              <div class="relative flex gap-6 pb-12 last:pb-0">
+                {index < process.length - 1 && (
+                  <div class="absolute left-5.5 top-12 bottom-0 w-px bg-border" />
+                )}
+                <div class="shrink-0 w-11 h-11 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-base font-semibold z-10">
+                  {step.number}
+                </div>
+                <div class="flex-1 pt-1">
+                  <h3 class="text-lg font-semibold text-foreground">{step.title}</h3>
+                  <p class="mt-2 text-muted-foreground leading-relaxed max-w-xl">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contacto" class="scroll-mt-24 py-20 px-6 bg-primary text-primary-foreground">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
+            Si quieres resultado, no solo una herramienta
+          </h2>
+          <p class="mt-4 text-lg text-primary-foreground/80 leading-relaxed max-w-2xl mx-auto">
+            Cuéntame tu caso y te digo en claro si te conviene trabajar conmigo o empezar por otra vía. Sin presión y sin humo.
+          </p>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="mailto:cristian@salteadorneo.dev?subject=Comparativa%20vs%20Lovable"
+              class="inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium bg-primary-foreground text-primary rounded-lg hover:bg-primary-foreground/90 transition-colors"
+            >
+              Enviar email
+            </a>
+            <a
+              href="/mvp4"
+              class="inline-flex items-center justify-center gap-2 px-6 py-3 text-base font-medium bg-transparent text-primary-foreground border border-primary-foreground/30 rounded-lg hover:bg-primary-foreground/10 transition-colors"
+            >
+              Ver servicios MVP
+            </a>
+          </div>
+
+          <p class="mt-6 text-base text-primary-foreground/75">
+            Respuesta habitual en menos de 24 horas
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-12 px-6 border-t border-border">
+      <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+        <a href="/" class="text-lg font-semibold tracking-tight text-foreground">
+          mvp<span class="text-muted">.</span>
+        </a>
+        <p class="text-base text-muted-foreground">
+          &#169; {currentYear} - comparativa de servicios y herramientas
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
