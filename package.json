@@ -13,10 +13,10 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
-    "@tailwindcss/vite": "^4.2.4",
-    "astro": "^6.1.9",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.3.7",
     "rcon-client": "^4.2.5",
-    "tailwindcss": "^4.2.4"
+    "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
     "standard": "^17.1.2"
