@@ -6,9 +6,41 @@ import Card from "@/components/ui/Card.astro";
 
 const groups = [
   {
-    label: "Destacados",
-    heading: true,
+    label: "Productos",
     projects: [
+      {
+        title: "Agendados",
+        url: "https://agendados.es",
+        description: "Calendario centralizado de eventos de juegos de mesa, rol y miniaturas en España.",
+        tags: ["Astro", "React", "Tailwind"],
+        github: "https://github.com/salteadorneo/agendados",
+      },
+      {
+        title: "Gantt",
+        url: "https://gantt.salteadorneo.dev",
+        description: "Planifica y visualiza proyectos con diagramas de Gantt directamente en el navegador.",
+        tags: ["JavaScript", "Vanilla JS"],
+        github: "https://github.com/salteadorneo/gantt",
+      },
+      {
+        title: "ZIP",
+        url: "https://zip.salteadorneo.dev",
+        description: "Explora y descarga archivos ZIP directamente en el navegador sin descargar el archivo completo.",
+        tags: ["JSZip", "JavaScript", "Vanilla JS"],
+        github: "https://github.com/salteadorneo/zip",
+      },
+    ],
+  },
+  {
+    label: "Herramientas para desarrolladores",
+    projects: [
+      {
+        title: "Links",
+        url: "https://link.salteadorneo.dev",
+        description: "Acortador de enlaces estático y sin base de datos, desplegable en GitHub Pages.",
+        tags: ["Node.js", "GitHub Pages", "Link Shortener"],
+        github: "https://github.com/salteadorneo/links",
+      },
       {
         title: "Wireframes",
         url: "https://wireframes.salteadorneo.dev",
@@ -24,38 +56,11 @@ const groups = [
         github: "https://github.com/salteadorneo/playjs",
       },
       {
-        title: "Agendados",
-        url: "https://agendados.es",
-        description: "Calendario centralizado de eventos de juegos de mesa, rol y miniaturas en España.",
-        tags: ["Astro", "React", "Tailwind"],
-        github: "https://github.com/salteadorneo/agendados",
-      },
-      {
         title: "CSSX",
         url: "https://cssx.js.org",
         description: "Compila CSS como lenguaje de programación. Define estructura HTML y estilos en archivos `.cssx`.",
         tags: ["CSS", "Compiler", "PostCSS"],
         github: "https://github.com/salteadorneo/cssx",
-      },
-    ],
-  },
-  {
-    label: "Herramientas",
-    heading: false,
-    projects: [
-      {
-        title: "Gantt",
-        url: "https://gantt.salteadorneo.dev",
-        description: "Planifica y visualiza proyectos con diagramas de Gantt directamente en el navegador.",
-        tags: ["JavaScript", "Vanilla JS"],
-        github: "https://github.com/salteadorneo/gantt",
-      },
-      {
-        title: "ZIP",
-        url: "https://zip.salteadorneo.dev",
-        description: "Explora y descarga archivos ZIP directamente en el navegador sin descargar el archivo completo.",
-        tags: ["JSZip", "JavaScript", "Vanilla JS"],
-        github: "https://github.com/salteadorneo/zip",
       },
       {
         title: "Status",
@@ -75,7 +80,6 @@ const groups = [
   },
   {
     label: "Juegos",
-    heading: false,
     projects: [
       {
         title: "Pokemodle",
@@ -101,7 +105,6 @@ const groups = [
   },
   {
     label: "Archivados",
-    heading: false,
     archived: true,
     projects: [
       {

@@ -30,7 +30,7 @@ const finalClass = `relative bg-card border border-border rounded-xl p-6 transit
   {title &&
     (href ? (
       <h3 class="mt-3 text-2xl font-semibold text-foreground">
-        <a href={href} class="hover:text-primary transition-colors">{title}</a>
+        <a href={href} target="_blank" class="hover:text-primary transition-colors">{title}</a>
       </h3>
     ) : (
       <h3 class="mt-3 text-2xl font-semibold text-foreground">{title}</h3>
