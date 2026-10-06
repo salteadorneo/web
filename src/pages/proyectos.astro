@@ -142,7 +142,7 @@ const groups = [
   <main>
     <section class="pt-10 pb-4 px-6 max-w-6xl mx-auto">
       <p class="font-medium text-muted-foreground tracking-wide uppercase mb-3">
-        Proyectos
+        Side Projects
       </p>
       <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
         Proyectos
@@ -162,6 +162,7 @@ const groups = [
                 title={project.title}
                 description={project.description}
                 href={(project as any).url}
+                github={project.github}
               />
             ))}
           </div>

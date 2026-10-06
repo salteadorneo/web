@@ -1,10 +1,13 @@
 ---
+import Github from '@components/icons/Github.astro';
+
 interface Props {
   title?: string;
   description?: string;
   eyebrow?: string;
   href?: string;
   className?: string;
+  github?: string;
 }
 
 const {
@@ -13,9 +16,10 @@ const {
   eyebrow,
   href,
   className = "",
+  github,
 } = Astro.props as Props;
 
-const finalClass = `bg-card border border-border rounded-xl p-6 transition-all hover:border-muted hover:shadow-sm ${className}`.trim();
+const finalClass = `relative bg-card border border-border rounded-xl p-6 transition-all hover:border-muted hover:shadow-sm ${className}`.trim();
 ---
 
 <article class={finalClass}>
@@ -25,14 +29,20 @@ const finalClass = `bg-card border border-border rounded-xl p-6 transition-all h
 
   {title &&
     (href ? (
-      <h3 class="mt-3 text-lg font-semibold text-foreground">
+      <h3 class="mt-3 text-2xl font-semibold text-foreground">
         <a href={href} class="hover:text-primary transition-colors">{title}</a>
       </h3>
     ) : (
-      <h3 class="mt-3 text-lg font-semibold text-foreground">{title}</h3>
+      <h3 class="mt-3 text-2xl font-semibold text-foreground">{title}</h3>
     ))}
 
   {description && <p class="mt-2 text-base text-muted-foreground leading-relaxed">{description}</p>}
 
   <slot />
+
+  {github && (
+    <a href={github} target="_blank" class="absolute top-5 right-5 text-white/70 leading-none hover:text-primary transition-colors duration-300">
+      <Github size="20" />
+    </a>
+  )}
 </article>
