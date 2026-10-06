@@ -1,7 +1,7 @@
 {
   "name": "salteadorneo.dev",
   "type": "module",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -13,10 +13,10 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
-    "@tailwindcss/vite": "^4.3.0",
-    "astro": "^6.3.7",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^6.4.8",
     "rcon-client": "^4.2.5",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
     "standard": "^17.1.2"
