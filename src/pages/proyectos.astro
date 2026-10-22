@@ -16,18 +16,17 @@ const groups = [
         github: "https://github.com/salteadorneo/agendados",
       },
       {
-        title: "Gantt",
-        url: "https://gantt.salteadorneo.dev",
-        description: "Planifica y visualiza proyectos con diagramas de Gantt directamente en el navegador.",
-        tags: ["JavaScript", "Vanilla JS"],
-        github: "https://github.com/salteadorneo/gantt",
+        title: "Vinilos",
+        url: "https://vinilos.salteadorneo.dev",
+        description: "Catálogo y colección de vinilos con información de artistas, álbumes y lanzamientos.",
+        tags: ["Astro", "Tailwind"],
       },
       {
-        title: "ZIP",
-        url: "https://zip.salteadorneo.dev",
-        description: "Explora y descarga archivos ZIP directamente en el navegador sin descargar el archivo completo.",
-        tags: ["JSZip", "JavaScript", "Vanilla JS"],
-        github: "https://github.com/salteadorneo/zip",
+        title: "HN-ES",
+        url: "https://salteadorneo.github.io/hn-es/",
+        description: "Periódico digital con las noticias de Hacker News en español, traducidas automáticamente.",
+        tags: ["Astro", "Tailwind"],
+        github: "https://github.com/salteadorneo/hn-es",
       },
     ],
   },
@@ -35,11 +34,11 @@ const groups = [
     label: "Herramientas para desarrolladores",
     projects: [
       {
-        title: "Links",
-        url: "https://link.salteadorneo.dev",
-        description: "Acortador de enlaces estático y sin base de datos, desplegable en GitHub Pages.",
-        tags: ["Node.js", "GitHub Pages", "Link Shortener"],
-        github: "https://github.com/salteadorneo/links",
+        title: "PlayJS",
+        url: "https://playjs.dev",
+        description: "Playground JavaScript en tu navegador.",
+        tags: ["React", "JavaScript"],
+        github: "https://github.com/salteadorneo/playjs",
       },
       {
         title: "Wireframes",
@@ -49,13 +48,6 @@ const groups = [
         github: "https://github.com/salteadorneo/wireframes",
       },
       {
-        title: "PlayJS",
-        url: "https://playjs.dev",
-        description: "Playground JavaScript en tu navegador.",
-        tags: ["React", "JavaScript"],
-        github: "https://github.com/salteadorneo/playjs",
-      },
-      {
         title: "CSSX",
         url: "https://cssx.js.org",
         description: "Compila CSS como lenguaje de programación. Define estructura HTML y estilos en archivos `.cssx`.",
@@ -63,11 +55,32 @@ const groups = [
         github: "https://github.com/salteadorneo/cssx",
       },
       {
+        title: "Gantt",
+        url: "https://gantt.salteadorneo.dev",
+        description: "Planifica y visualiza proyectos with diagramas de Gantt directamente en el navegador.",
+        tags: ["JavaScript", "Vanilla JS"],
+        github: "https://github.com/salteadorneo/gantt",
+      },
+      {
         title: "Status",
         url: "https://status.salteadorneo.dev",
         description: "Monitor de disponibilidad para GitHub Pages.",
         tags: ["GitHub Actions", "Zero Dependencies"],
         github: "https://salteadorneo/status",
+      },
+      {
+        title: "ZIP",
+        url: "https://zip.salteadorneo.dev",
+        description: "Explora y descarga archivos ZIP directamente en el navegador sin descargar el archivo completo.",
+        tags: ["JSZip", "JavaScript", "Vanilla JS"],
+        github: "https://github.com/salteadorneo/zip",
+      },
+      {
+        title: "Links",
+        url: "https://link.salteadorneo.dev",
+        description: "Acortador de enlaces estático y sin base de datos, desplegable en GitHub Pages.",
+        tags: ["Node.js", "GitHub Pages", "Link Shortener"],
+        github: "https://github.com/salteadorneo/links",
       },
       {
         title: "Changes",
@@ -144,8 +157,8 @@ const groups = [
   <Header />
   <main>
     <section class="pt-10 pb-4 px-6 max-w-6xl mx-auto">
-      <p class="font-medium text-muted-foreground tracking-wide uppercase mb-3">
-        Side Projects
+      <p class="font-medium text-sm text-muted-foreground mb-3 flex items-center gap-2">
+        <span class="text-primary">❯</span> side projects
       </p>
       <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
         Proyectos

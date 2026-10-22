@@ -17,6 +17,11 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  markdown: {
+    shikiConfig: {
+      theme: "tokyo-night",
+    },
+  },
   redirects: {
     '/blog': {
       status: 301,

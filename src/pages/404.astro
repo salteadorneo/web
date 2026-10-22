@@ -6,11 +6,18 @@ import Layout from "@/layouts/Layout.astro";
 
 <Layout>
   <Header />
-  <main class="grid place-content-center py-12 text-center">
-    <section>
-      <h1 class="text-8xl font-black">404</h1>
-      <p class="mb-8">Página no encontrada</p>
-      <a href="/" class="uppercase hover:text-primary">Ir a la portada</a>
+  <main class="grid place-content-center px-6 py-24">
+    <section class="w-full max-w-md border border-border bg-card p-8">
+      <p class="text-xs text-muted-foreground flex items-center gap-2">
+        <span class="text-primary">❯</span> cat ~/404
+      </p>
+      <h1 class="mt-4 text-7xl font-black text-primary">404</h1>
+      <p class="mt-2 text-muted-foreground">Página no encontrada</p>
+      <a
+        href="/"
+        class="mt-6 inline-block text-sm text-primary hover:underline underline-offset-4"
+        >$ cd ~</a
+      >
     </section>
   </main>
   <Footer />

@@ -192,7 +192,7 @@ const faqs = [
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body class="min-h-screen bg-background text-foreground antialiased overflow-x-hidden">
-    <header class="fixed top-0 left-0 right-0 z-50 bg-background/85 backdrop-blur-md border-b border-border">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-background/95 border-b border-border">
       <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
         <a href="/" aria-label="Ir al inicio">
           <Logo />
@@ -281,7 +281,7 @@ const faqs = [
           <div class="mt-12 grid md:grid-cols-2 gap-6">
             {problems.map((problem, index) => (
               <div class="p-6 bg-card rounded-xl border border-border hover:border-muted transition-colors">
-                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-secondary font-medium text-muted-foreground mb-4">
+                <span class="inline-flex items-center justify-center w-8 h-8 rounded-none bg-secondary font-medium text-muted-foreground mb-4">
                   {index + 1}
                 </span>
                 <h3 class="text-lg font-semibold text-foreground">
@@ -346,7 +346,7 @@ const faqs = [
                   <div class="absolute left-5.5 top-12 bottom-0 w-px bg-border" />
                 )}
 
-                <div class="shrink-0 w-11 h-11 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold z-10">
+                <div class="shrink-0 w-11 h-11 rounded-none bg-primary text-primary-foreground flex items-center justify-center font-semibold z-10">
                   {step.number}
                 </div>
 

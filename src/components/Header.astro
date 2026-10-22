@@ -4,30 +4,54 @@ import Linkedin from "@/components/icons/Linkedin.astro";
 import Twitter from "@/components/icons/Twitter.astro";
 import Email from "@/components/icons/Email.astro";
 import Logo from "@/components/Logo.astro";
+
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === "/"
+    ? path === "/" || path.startsWith("/blog")
+    : path.startsWith(href);
+
+const linkClass = (href: string) =>
+  `group flex items-center gap-1.5 text-sm transition-colors ${
+    isActive(href)
+      ? "text-foreground"
+      : "text-muted-foreground hover:text-foreground"
+  }`;
+
+const markerClass = (href: string) =>
+  `transition-colors ${
+    isActive(href)
+      ? "text-primary"
+      : "text-transparent group-hover:text-primary/60"
+  }`;
 ---
 
-<header class="sticky top-0 z-40 border-b border-border/70 bg-background/85 backdrop-blur">
-  <div class="p-4 md:p-6 max-w-6xl mx-auto flex items-center justify-between gap-6">
+<header class="omarchy-bar sticky top-0 z-40">
+  <div class="px-4 md:px-6 py-2.5 max-w-6xl mx-auto flex items-center justify-between gap-4">
     <a href="/" class="hover:opacity-90 transition-opacity" aria-label="Ir al inicio">
       <Logo />
     </a>
 
-    <nav class="flex items-center gap-5 text-base">
-      <a href="/proyectos" class="text-muted-foreground hover:text-foreground transition-colors">Proyectos</a>
-      <a href="/" class="hidden sm:inline text-muted-foreground hover:text-foreground transition-colors">Blog</a>
+    <nav class="flex items-center gap-5 text-sm">
+      <a href="/proyectos" class={linkClass("/proyectos")}>
+        <span class={markerClass("/proyectos")}>❯</span>proyectos
+      </a>
+      <a href="/" class={`hidden sm:flex ${linkClass("/")}`}>
+        <span class={markerClass("/")}>❯</span>blog
+      </a>
 
-      <div class="flex items-center gap-3 ml-1 pl-4 border-l border-border">
-        <a href="https://github.com/salteadorneo" target="_blank" rel="noopener noreferrer" title="GitHub" class="opacity-60 hover:opacity-100 transition-opacity">
-        <Github size="18" />
+      <div class="hidden sm:flex items-center gap-3.5 ml-1 pl-4 border-l border-border">
+        <a href="https://github.com/salteadorneo" target="_blank" rel="noopener noreferrer" title="GitHub" class="text-muted-foreground hover:text-primary transition-colors">
+        <Github size="16" />
       </a>
-        <a href="https://www.linkedin.com/in/cristianadan/" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="opacity-60 hover:opacity-100 transition-opacity">
-        <Linkedin size="18" />
+        <a href="https://www.linkedin.com/in/cristianadan/" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="text-muted-foreground hover:text-primary transition-colors">
+        <Linkedin size="16" />
       </a>
-        <a href="https://twitter.com/salteadorneodev" target="_blank" rel="noopener noreferrer" title="X" class="opacity-60 hover:opacity-100 transition-opacity">
-        <Twitter size="18" />
+        <a href="https://twitter.com/salteadorneodev" target="_blank" rel="noopener noreferrer" title="X" class="text-muted-foreground hover:text-primary transition-colors">
+        <Twitter size="16" />
       </a>
-        <a href="mailto:cristian@salteadorneo.dev" title="Email" class="opacity-60 hover:opacity-100 transition-opacity">
-        <Email size="18" />
+        <a href="mailto:cristian@salteadorneo.dev" title="Email" class="text-muted-foreground hover:text-primary transition-colors">
+        <Email size="16" />
       </a>
       </div>
     </nav>

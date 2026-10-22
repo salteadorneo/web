@@ -1,56 +1,106 @@
 @import "tailwindcss";
 
 @theme {
-    --color-background: #181818;
-    --color-foreground: #e1e1e1;
-    --color-muted: #9ca3af;
-    --color-muted-foreground: #a3a3a3;
-    --color-border: #2b2b2b;
-    --color-card: #1f1f1f;
-    --color-secondary: #262626;
-    --color-secondary-foreground: #e1e1e1;
-    --color-primary: #30a834;
-    --color-primary-foreground: #0f0f0f;
+    /* Tokyo Night — paleta del tema activo de Omarchy */
+    --color-background: #1a1b26;
+    --color-foreground: #c0caf5;
+    --color-muted: #565f89;
+    --color-muted-foreground: #a9b1d6;
+    --color-border: #292e42;
+    --color-card: #1f2335;
+    --color-secondary: #24283b;
+    --color-secondary-foreground: #c0caf5;
+    --color-primary: #7aa2f7;
+    --color-primary-foreground: #1a1b26;
+
+    --color-accent: #bb9af7;
+    --color-success: #9ece6a;
+    --color-warning: #e0af68;
+    --color-danger: #f7768e;
+    --color-info: #7dcfff;
+
+    --font-mono: "JetBrainsMono Nerd Font", "JetBrains Mono", "Fira Code",
+        ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono",
+        monospace;
+
+    /* Omarchy usa ventanas sin redondeo (rounding = 0) */
+    --radius-xs: 0px;
+    --radius-sm: 0px;
+    --radius-md: 0px;
+    --radius-lg: 0px;
+    --radius-xl: 0px;
+    --radius-2xl: 0px;
+    --radius-3xl: 0px;
+    --radius-4xl: 0px;
 }
 
 :root {
     color-scheme: dark;
+    --primary: var(--color-primary);
 }
 
 html,
 body {
-    font-family: monospace;
+    font-family: var(--font-mono);
     scroll-behavior: smooth;
     min-height: 100dvh;
 }
 
 body {
-    color: #e1e1e1;
-    background: #181818;
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+    background-image: radial-gradient(
+        ellipse 80% 45% at 50% -10%,
+        rgba(122, 162, 247, 0.09),
+        transparent 70%
+    );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: var(--color-primary);
+    color: var(--color-primary-foreground);
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
+    width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: none;
+    background: var(--color-background);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #e1e1e1;
+    background: var(--color-muted);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--primary);
+    background: var(--color-primary);
 }
 
+/* Panel plano, sin blur: la estética de Omarchy */
 .glass {
-    background: rgba(255, 255, 255, .02);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, .08);
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+}
+
+/* Barra de estado superior, tipo Waybar */
+.omarchy-bar {
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* Omarchy: sin redondeo ni en la utilidad base de Tailwind */
+.rounded {
+    border-radius: 0;
 }
 
 @keyframes fadein {
@@ -72,5 +122,19 @@ body {
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
     }
 }

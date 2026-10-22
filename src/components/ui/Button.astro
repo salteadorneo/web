@@ -18,13 +18,13 @@ const {
 } = Astro.props as Props;
 
 const baseClass =
-  "inline-flex items-center justify-center px-6 py-3 text-base font-medium rounded-lg transition-colors";
+  "inline-flex items-center justify-center px-6 py-3 text-sm font-medium tracking-wide transition-colors";
 
 const variantClass = {
-  primary: "bg-primary text-primary-foreground hover:bg-primary/90",
-  secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+  primary: "bg-primary text-primary-foreground hover:bg-primary/85",
+  secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/70",
   outline:
-    "bg-transparent text-foreground border border-border hover:bg-secondary/60",
+    "bg-transparent text-foreground border border-border hover:border-primary/60 hover:text-primary",
 }[variant];
 
 const finalClass = `${baseClass} ${variantClass} ${className}`.trim();

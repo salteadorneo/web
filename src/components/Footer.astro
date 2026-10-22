@@ -5,8 +5,8 @@ import { version } from "../../package.json";
 import Minecraft from "./Minecraft.astro";
 ---
 
-<footer class="p-6 max-w-5xl mx-auto">
-  <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+<footer class="mt-8 border-t border-border">
+  <div class="p-6 max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-muted-foreground">
     <a
       href="mailto:cristian@salteadorneo.dev"
       class="hover:text-primary transition-colors duration-300"
@@ -20,7 +20,7 @@ import Minecraft from "./Minecraft.astro";
       <Github size="16" /> salteadorneo/web
     </a>
     <a href="/system-design" class="hover:text-primary transition-colors duration-300">system design</a>
-    <span>v.{version}</span>
+    <span class="text-muted-foreground/60">v.{version}</span>
   </div>
 </footer>
 

@@ -15,6 +15,10 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+const months = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const published = entry.data.publishedDate;
+const date = `${published.getUTCDate()} ${months[published.getUTCMonth()]} ${published.getUTCFullYear()}`;
 ---
 
 <Layout
@@ -25,12 +29,17 @@ const { Content } = await render(entry);
   <Header />
   <main>
     <section class="px-6 w-full max-w-6xl mx-auto pb-16 border-t border-border pt-6">
-      <article class="rounded-xl border border-border bg-card p-8 sm:p-12 space-y-10">
+      <article class="border border-border bg-card">
+      <div class="flex items-center justify-between gap-4 border-b border-border bg-secondary/50 px-4 py-2 text-xs text-muted-foreground">
+        <span class="truncate"><span class="text-primary">❯</span> cat ~/blog/{entry.id}.md</span>
+        <time datetime={published.toISOString()} class="hidden sm:inline">{date}</time>
+      </div>
+      <div class="p-8 sm:p-12 space-y-10">
       <div class="flex flex-wrap sm:flex-nowrap gap-8">
         <img
           src={entry.data.image}
           alt={entry.data.title}
-          class="h-28 w-28 sm:h-36 sm:w-36 aspect-square rounded-lg border border-border object-cover"
+          class="h-28 w-28 sm:h-36 sm:w-36 aspect-square border border-border object-cover"
           style={`view-transition-name: image-${entry.id}`}
         />
         <div class="space-y-4 min-w-0">
@@ -51,7 +60,7 @@ const { Content } = await render(entry);
       <div class="markdown-content space-y-6">
         <Content />
       </div>
-      <section class="rounded-xl border border-border bg-secondary/35 flex items-center justify-center py-4">
+      <section class="border border-border bg-secondary/35 flex items-center justify-center py-4">
         <div class="flex items-center gap-4">
           <span class="text-base text-muted-foreground">Comparte</span>
           <button
@@ -113,6 +122,7 @@ const { Content } = await render(entry);
           </a>
         </div>
       </section>
+      </div>
       </article>
     </section>
   </main>
@@ -129,7 +139,7 @@ const { Content } = await render(entry);
       width: 105%;
       max-width: none;
       margin: 0 0 0 -2.5%;
-      border-radius: .8rem;
+      border-radius: 0;
     }
   }
 
@@ -140,8 +150,10 @@ const { Content } = await render(entry);
   .markdown-content pre {
     padding: 1.4rem;
     font-size: 1rem;
-    background-color: #414141 !important;
+    background-color: #16161e !important;
+    border: 1px solid var(--color-border);
     margin-bottom: 1.2rem;
+    overflow-x: auto;
   }
 
   .markdown-content h1,
@@ -150,7 +162,7 @@ const { Content } = await render(entry);
     font-size: 2rem;
     line-height: 2.5rem;
     font-weight: 700;
-    color: #e1e1e1;
+    color: #c0caf5;
   }
 
   .markdown-content h3 {
@@ -160,9 +172,9 @@ const { Content } = await render(entry);
 
   .markdown-content h2 > code,
   .markdown-content p > code {
-    color: #121212;
-    background-color: #e1e1e1;
-    border-radius: 6px;
+    color: #7dcfff;
+    background-color: #292e42;
+    border-radius: 0;
     margin: 0;
     padding: 0.2em 0.4em;
     font-size: 85%;
@@ -170,7 +182,35 @@ const { Content } = await render(entry);
   }
 
   .markdown-content a {
-    color: var(--primary);
+    color: var(--color-primary);
     text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .markdown-content ul,
+  .markdown-content ol {
+    padding-left: 1.5rem;
+  }
+
+  .markdown-content ul {
+    list-style: square;
+  }
+
+  .markdown-content ol {
+    list-style: decimal;
+  }
+
+  .markdown-content li::marker {
+    color: var(--color-primary);
+  }
+
+  .markdown-content blockquote {
+    border-left: 2px solid var(--color-primary);
+    padding-left: 1rem;
+    color: var(--color-muted-foreground);
+  }
+
+  .markdown-content hr {
+    border-color: var(--color-border);
   }
 </style>

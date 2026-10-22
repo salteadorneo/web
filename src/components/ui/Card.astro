@@ -19,12 +19,12 @@ const {
   github,
 } = Astro.props as Props;
 
-const finalClass = `relative bg-card border border-border rounded-xl p-6 transition-all hover:border-muted hover:shadow-sm ${className}`.trim();
+const finalClass = `relative bg-card border border-border p-6 transition-colors hover:border-primary/60 ${className}`.trim();
 ---
 
 <article class={finalClass}>
   {eyebrow && (
-    <p class="text-base font-medium text-muted-foreground uppercase tracking-wide">{eyebrow}</p>
+    <p class="text-[0.68rem] uppercase tracking-[0.18em] text-muted-foreground">{eyebrow}</p>
   )}
 
   {title &&
@@ -41,8 +41,8 @@ const finalClass = `relative bg-card border border-border rounded-xl p-6 transit
   <slot />
 
   {github && (
-    <a href={github} target="_blank" class="absolute top-5 right-5 text-white/70 leading-none hover:text-primary transition-colors duration-300">
-      <Github size="20" />
+    <a href={github} target="_blank" class="absolute top-5 right-5 text-muted-foreground leading-none hover:text-primary transition-colors duration-300">
+      <Github size="18" />
     </a>
   )}
 </article>

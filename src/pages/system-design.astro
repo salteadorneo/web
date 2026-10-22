@@ -12,8 +12,8 @@ import Card from "@/components/ui/Card.astro";
 
     <!-- Intro -->
     <section>
-      <p class="font-medium text-muted-foreground tracking-wide uppercase mb-3">
-        Referencia de diseño
+      <p class="font-medium text-sm text-muted-foreground mb-3 flex items-center gap-2">
+        <span class="text-primary">❯</span> system design
       </p>
       <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
         System Design
@@ -55,7 +55,7 @@ import Card from "@/components/ui/Card.astro";
     <!-- Tipografía -->
     <section class="space-y-6">
       <h2 class="text-2xl font-bold text-foreground">Tipografía</h2>
-      <p class="text-muted-foreground leading-relaxed">La familia base del sitio es <code class="bg-secondary px-2 py-0.5 rounded text-foreground">monospace</code> (definida en global.css). Tamaño mínimo: <code class="bg-secondary px-2 py-0.5 rounded text-foreground">text-base</code>.</p>
+      <p class="text-muted-foreground leading-relaxed">La familia base del sitio es <code class="bg-secondary px-2 py-0.5 rounded text-foreground">"JetBrainsMono Nerd Font", "JetBrains Mono", monospace</code> (definida en global.css). Tamaño mínimo: <code class="bg-secondary px-2 py-0.5 rounded text-foreground">text-base</code>. Radio de borde: <code class="bg-secondary px-2 py-0.5 rounded text-foreground">0</code>, como en Omarchy.</p>
       <div class="space-y-5 border border-border rounded-xl divide-y divide-border">
         {[
           { label: "text-6xl font-bold", cls: "text-6xl font-bold text-foreground", sample: "Título hero" },
@@ -115,7 +115,7 @@ import Card from "@/components/ui/Card.astro";
         <Card eyebrow="Con slot">
           <div class="mt-4 flex flex-wrap gap-2">
             {["Tag 1", "Tag 2", "Tag 3"].map((tag) => (
-              <span class="bg-secondary text-muted-foreground px-3 py-1 rounded-full">{tag}</span>
+              <span class="bg-secondary text-muted-foreground px-3 py-1">{tag}</span>
             ))}
           </div>
         </Card>
