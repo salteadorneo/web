@@ -1,0 +1,121 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout title="Generador Lorem Ipsum" description="Generador de texto Lorem Ipsum en el navegador">
+  <main class="min-h-screen flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-2xl bg-card border border-border rounded-xl p-6 shadow-sm">
+      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">Generador Lorem Ipsum</h1>
+
+      <textarea
+        id="output"
+        readonly
+        rows="8"
+        class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono text-sm mb-4"
+      ></textarea>
+
+      <div class="flex flex-wrap items-center gap-2 mb-6">
+        <button id="copy" type="button" class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors">Copiar</button>
+        <button id="regenerate" type="button" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">Regenerar</button>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label for="paragraphs" class="flex items-center justify-between text-sm text-foreground mb-1">
+            <span>Párrafos</span>
+            <span id="paragraphsValue" class="text-muted-foreground">1</span>
+          </label>
+          <input id="paragraphs" type="range" min="1" max="10" value="1" class="w-full" />
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button id="minus" type="button" class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors">− Reducir</button>
+          <button id="plus" type="button" class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors">+ Ampliar</button>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script is:inline>
+  const WORDS = [
+    "lorem","ipsum","dolor","sit","amet","consectetur","adipiscing","elit","sed","do",
+    "eiusmod","tempor","incididunt","ut","labore","et","dolore","magna","aliqua","ut",
+    "enim","ad","minim","veniam","quis","nostrud","exercitation","ullamco","laboris",
+    "nisi","ut","aliquip","ex","ea","commodo","consequat","duis","aute","irure","dolor",
+    "in","reprehenderit","in","voluptate","velit","esse","cillum","dolore","eu","fugiat",
+    "nulla","pariatur","excepteur","sint","occaecat","cupidatat","non","proident","sunt",
+    "in","culpa","qui","officia","deserunt","mollit","anim","id","est","laborum"
+  ];
+
+  const outputEl = document.getElementById("output");
+  const paragraphsEl = document.getElementById("paragraphs");
+  const paragraphsValueEl = document.getElementById("paragraphsValue");
+  const plusEl = document.getElementById("plus");
+  const minusEl = document.getElementById("minus");
+  const regenerateEl = document.getElementById("regenerate");
+  const copyEl = document.getElementById("copy");
+
+  function randomWord() {
+    return WORDS[Math.floor(Math.random() * WORDS.length)];
+  }
+
+  function sentence() {
+    const len = 8 + Math.floor(Math.random() * 12);
+    const words = [];
+    for (let i = 0; i < len; i++) words.push(randomWord());
+    words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
+    return words.join(" ") + ".";
+  }
+
+  function paragraph() {
+    const sentences = 3 + Math.floor(Math.random() * 4);
+    const out = [];
+    for (let i = 0; i < sentences; i++) out.push(sentence());
+    return out.join(" ");
+  }
+
+  function generate() {
+    const count = parseInt(paragraphsEl.value, 10);
+    const paras = [];
+    for (let i = 0; i < count; i++) paras.push(paragraph());
+    outputEl.value = paras.join("\n\n");
+  }
+
+  function updateValue() {
+    paragraphsValueEl.textContent = paragraphsEl.value;
+  }
+
+  paragraphsEl.addEventListener("input", () => { updateValue(); generate(); });
+  paragraphsEl.addEventListener("change", () => { updateValue(); generate(); });
+
+  plusEl.addEventListener("click", () => {
+    const v = Math.min(10, parseInt(paragraphsEl.value, 10) + 1);
+    paragraphsEl.value = v;
+    updateValue();
+    generate();
+  });
+
+  minusEl.addEventListener("click", () => {
+    const v = Math.max(1, parseInt(paragraphsEl.value, 10) - 1);
+    paragraphsEl.value = v;
+    updateValue();
+    generate();
+  });
+
+  regenerateEl.addEventListener("click", generate);
+
+  copyEl.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(outputEl.value);
+      copyEl.textContent = "Copiado";
+      setTimeout(() => (copyEl.textContent = "Copiar"), 1500);
+    } catch (e) {
+      copyEl.textContent = "Error";
+      setTimeout(() => (copyEl.textContent = "Copiar"), 1500);
+    }
+  });
+
+  updateValue();
+  generate();
+</script>
