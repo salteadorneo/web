@@ -15,8 +15,8 @@ const groups = [
       <nav class="bg-card border-r border-border overflow-y-auto p-4">
         <h1 class="text-xl font-bold text-foreground mb-4">Herramientas</h1>
         {groups.map((g) => (
-          <div class="mb-5">
-            <p class="text-xs uppercase tracking-widest text-muted-foreground mb-2 px-1">{g.name}</p>
+          <details open class="mb-5">
+            <summary class="text-xs uppercase tracking-widest text-muted-foreground mb-2 px-1 cursor-pointer">{g.name}</summary>
             <ul class="space-y-1">
               {g.items.map(([href,label]) => (
                 <li>
@@ -26,7 +26,7 @@ const groups = [
                 </li>
               ))}
             </ul>
-          </div>
+          </details>
         ))}
       </nav>
       <section class="bg-background min-h-0">

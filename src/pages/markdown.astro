@@ -3,27 +3,47 @@ import Layout from "@/layouts/Layout.astro";
 ---
 <Layout title="Markdown">
 <main class="min-h-screen flex items-center justify-center px-4 py-8">
-<div class="w-full max-w-2xl bg-card border border-border rounded-xl p-6">
+<div class="w-full max-w-4xl bg-card border border-border rounded-xl p-6">
 <h1 class="text-2xl font-bold text-foreground mb-4 text-center">Markdown preview</h1>
-<textarea id="in" rows="8" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3"></textarea>
-<div id="out" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground prose min-h-[8rem]"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+<textarea id="in" rows="12" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground"></textarea>
+<div id="out" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground min-h-[8rem] overflow-auto"></div>
+</div>
+<style is:global>
+  #out p { margin:0; }
+  #out h1 { font-size:1.5rem; font-weight:700; }
+  #out h2 { font-size:1.25rem; font-weight:600; }
+  #out h3 { font-size:1.1rem; font-weight:600; }
+  #out ul { padding-left:1.2rem; list-style:disc; }
+  #out code { background:rgba(0,0,0,.1); padding:0 .2rem; border-radius:.2rem; }
+</style>
 </div></main>
 <script is:inline>
 const i=document.getElementById('in'),o=document.getElementById('out');
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-function md(s){
-  s=esc(s);
-  s=s.replace(/^### (.*)$/gm,'<h3>$1</h3>');
-  s=s.replace(/^## (.*)$/gm,'<h2>$1</h2>');
-  s=s.replace(/^# (.*)$/gm,'<h1>$1</h1>');
+function inline(s){
   s=s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');
   s=s.replace(/\*(.+?)\*/g,'<em>$1</em>');
   s=s.replace(/`(.+?)`/g,'<code>$1</code>');
   s=s.replace(/\[(.+?)\]\((.+?)\)/g,'<a href="$2">$1</a>');
-  s=s.replace(/^- (.*)$/gm,'<li>$1</li>');
-  s=s.replace(/(<li>.*<\/li>\n?)+/g,'<ul>$&</ul>');
-  s=s.replace(/\n\n/g,'</p><p>');
-  return '<p>'+s+'</p>';
+  return s;
+}
+function md(s){
+  const lines=s.split('\n');
+  let html='',inList=false;
+  for(const raw of lines){
+    const line=raw.trim();
+    if(!line){ if(inList){html+='</ul>';inList=false;} html+='<br>'; continue; }
+    let m;
+    if((m=line.match(/^###\s+(.*)$/))){ if(inList){html+='</ul>';inList=false;} html+='<h3>'+inline(esc(m[1]))+'</h3>'; }
+    else if((m=line.match(/^##\s+(.*)$/))){ if(inList){html+='</ul>';inList=false;} html+='<h2>'+inline(esc(m[1]))+'</h2>'; }
+    else if((m=line.match(/^#\s+(.*)$/))){ if(inList){html+='</ul>';inList=false;} html+='<h1>'+inline(esc(m[1]))+'</h1>'; }
+    else if((m=line.match(/^[-*]\s+\[([ xX])\]\s+(.*)$/))){ if(!inList){html+='<ul>';inList=true;} const checked=m[1].toLowerCase()==='x'; html+='<li><input type="checkbox" '+(checked?'checked':'')+' disabled> '+inline(esc(m[2]))+'</li>'; }
+    else if((m=line.match(/^[-*]\s+(.*)$/))){ if(!inList){html+='<ul>';inList=true;} html+='<li>'+inline(esc(m[1]))+'</li>'; }
+    else { if(inList){html+='</ul>';inList=false;} html+='<p>'+inline(esc(line))+'</p>'; }
+  }
+  if(inList) html+='</ul>';
+  return html;
 }
 function run(){o.innerHTML=md(i.value);}
 i.addEventListener('input',run);run();
