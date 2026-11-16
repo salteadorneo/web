@@ -1,0 +1,19 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+<Layout title="JWT">
+<main class="min-h-screen flex items-center justify-center px-4 py-8">
+<div class="w-full max-w-md bg-card border border-border rounded-xl p-6">
+<h1 class="text-2xl font-bold text-foreground mb-4 text-center">JWT decoder</h1>
+<textarea id="in" rows="3" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3 font-mono text-sm"></textarea>
+<p class="text-sm text-muted-foreground">Header</p>
+<pre id="h" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono text-xs mb-3 whitespace-pre-wrap"></pre>
+<p class="text-sm text-muted-foreground">Payload</p>
+<pre id="p" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono text-xs"></pre>
+</div></main>
+<script is:inline>
+const i=document.getElementById('in'),h=document.getElementById('h'),p=document.getElementById('p');
+function b64(s){s=s.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';return decodeURIComponent(escape(atob(s)));}
+i.addEventListener('input',()=>{const parts=i.value.trim().split('.');h.textContent='';p.textContent='';if(parts.length<2)return;try{h.textContent=JSON.stringify(JSON.parse(b64(parts[0])),null,2);}catch(e){h.textContent='error';}try{p.textContent=JSON.stringify(JSON.parse(b64(parts[1])),null,2);}catch(e){p.textContent='error';}});
+</script>
+</Layout>

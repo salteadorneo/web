@@ -1,0 +1,44 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+const groups = [
+  { name: "Generadores", items: [["/pass","Contraseñas"],["/lipsum","Lorem Ipsum"],["/uuid","UUID"],["/random","Aleatorios"]] },
+  { name: "Texto", items: [["/base64","Base64"],["/url","URL"],["/slug","Slug"],["/case","Mayúsculas"],["/markdown","Markdown"]] },
+  { name: "Datos", items: [["/json","JSON"],["/hash","Hash"],["/color","Color"],["/timestamp","Timestamp"],["/jwt","JWT"]] },
+  { name: "Desarrollo", items: [["/regex","Regex"],["/diff","Diff"],["/cron","Cron"]] },
+];
+---
+
+<Layout title="Herramientas" description="Colección de herramientas web gratuitas">
+  <main class="h-screen flex flex-col">
+    <div class="flex-1 grid grid-cols-1 md:grid-cols-[260px_1fr] min-h-0">
+      <nav class="bg-card border-r border-border overflow-y-auto p-4">
+        <h1 class="text-xl font-bold text-foreground mb-4">Herramientas</h1>
+        {groups.map((g) => (
+          <div class="mb-5">
+            <p class="text-xs uppercase tracking-widest text-muted-foreground mb-2 px-1">{g.name}</p>
+            <ul class="space-y-1">
+              {g.items.map(([href,label]) => (
+                <li>
+                  <button data-href={href} class="tool-link w-full text-left px-3 py-2 rounded-lg hover:bg-secondary text-foreground text-sm transition-colors">
+                    {label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
+      <section class="bg-background min-h-0">
+        <iframe id="frame" src="/pass" class="w-full h-full border-0"></iframe>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<script is:inline>
+  const frame = document.getElementById("frame");
+  document.querySelectorAll(".tool-link").forEach((btn) => {
+    btn.addEventListener("click", () => { frame.src = btn.dataset.href; });
+  });
+</script>

@@ -1,0 +1,21 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+<Layout title="Timestamp">
+<main class="min-h-screen flex items-center justify-center px-4 py-8">
+<div class="w-full max-w-md bg-card border border-border rounded-xl p-6">
+<h1 class="text-2xl font-bold text-foreground mb-4 text-center">Timestamp</h1>
+<p class="text-sm text-muted-foreground mb-2">Epoch (segundos)</p>
+<input id="epoch" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3 font-mono"/>
+<p class="text-sm text-muted-foreground mb-2">Fecha ISO</p>
+<input id="iso" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3 font-mono"/>
+<button id="now" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg">Ahora</button>
+</div></main>
+<script is:inline>
+const e=document.getElementById('epoch'),i=document.getElementById('iso');
+e.addEventListener('input',()=>{const v=+e.value;if(!isNaN(v))i.value=new Date(v*1000).toISOString();});
+i.addEventListener('input',()=>{const d=new Date(i.value);if(!isNaN(d))e.value=Math.floor(d.getTime()/1000);});
+document.getElementById('now').onclick=()=>{const n=Math.floor(Date.now()/1000);e.value=n;i.value=new Date(n*1000).toISOString();};
+document.getElementById('now').click();
+</script>
+</Layout>

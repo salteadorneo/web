@@ -1,0 +1,19 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+<Layout title="Regex">
+<main class="min-h-screen flex items-center justify-center px-4 py-8">
+<div class="w-full max-w-md bg-card border border-border rounded-xl p-6">
+<h1 class="text-2xl font-bold text-foreground mb-4 text-center">Regex tester</h1>
+<input id="pat" placeholder="patrón" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-2 font-mono"/>
+<input id="flags" placeholder="flags (g,i,m)" value="g" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3 font-mono"/>
+<textarea id="text" rows="4" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3"></textarea>
+<p id="res" class="text-foreground font-mono text-sm whitespace-pre-wrap"></p>
+<p id="err" class="text-red-500 text-sm"></p>
+</div></main>
+<script is:inline>
+const p=document.getElementById('pat'),f=document.getElementById('flags'),t=document.getElementById('text'),r=document.getElementById('res'),e=document.getElementById('err');
+function run(){r.textContent='';e.textContent='';try{const re=new RegExp(p.value,f.value);const m=t.value.match(re);r.textContent=m?m.join('\n'):'(sin coincidencias)';}catch(err){e.textContent=err.message;}}
+[p,f,t].forEach(x=>x.addEventListener('input',run));run();
+</script>
+</Layout>

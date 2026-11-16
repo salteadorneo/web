@@ -1,0 +1,18 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+<Layout title="Color">
+<main class="min-h-screen flex items-center justify-center px-4 py-8">
+<div class="w-full max-w-md bg-card border border-border rounded-xl p-6">
+<h1 class="text-2xl font-bold text-foreground mb-4 text-center">Color</h1>
+<input id="hex" value="#3b82f6" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3"/>
+<div id="preview" class="w-full h-16 rounded-lg border border-border mb-3"></div>
+<p id="rgb" class="text-foreground font-mono text-sm"></p>
+<p id="hsl" class="text-foreground font-mono text-sm"></p>
+</div></main>
+<script is:inline>
+const hex=document.getElementById('hex'),prev=document.getElementById('preview'),rgb=document.getElementById('rgb'),hsl=document.getElementById('hsl');
+function upd(){const v=hex.value.trim();prev.style.background=v;const m=v.match(/^#?([0-9a-f]{6})$/i);if(!m){rgb.textContent='invalid';hsl.textContent='';return;}const n=parseInt(m[1],16);const r=(n>>16)&255,g=(n>>8)&255,b=n&255;rgb.textContent=`rgb(${r}, ${g}, ${b})`;let rr=r/255,gg=g/255,bb=b/255;const max=Math.max(rr,gg,bb),min=Math.min(rr,gg,bb);let h=0,s=0,l=(max+min)/2;if(max!==min){const d=max-min;s=l>0.5?d/(2-max-min):d/(max+min);switch(max){case rr:h=(gg-bb)/d+(gg<bb?6:0);break;case gg:h=(bb-rr)/d+2;break;case bb:h=(rr-gg)/d+4;break;}h/=6;}hsl.textContent=`hsl(${Math.round(h*360)}, ${Math.round(s*100)}%, ${Math.round(l*100)}%)`;}
+hex.addEventListener('input',upd);upd();
+</script>
+</Layout>
