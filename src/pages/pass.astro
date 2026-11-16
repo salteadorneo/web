@@ -1,0 +1,126 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout title="Generador de contraseñas" description="Generador de contraseñas seguro en el navegador">
+  <main class="min-h-screen flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-md bg-card border border-border rounded-xl p-6 shadow-sm">
+      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">Generador de contraseñas</h1>
+
+      <div class="flex items-center gap-2 mb-6">
+        <input
+          id="password"
+          type="text"
+          readonly
+          class="flex-1 px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono"
+        />
+        <button
+          id="copy"
+          type="button"
+          class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors"
+        >
+          Copiar
+        </button>
+        <button
+          id="regenerate"
+          type="button"
+          class="px-3 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+        >
+          ↻
+        </button>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label for="length" class="flex items-center justify-between text-sm text-foreground mb-1">
+            <span>Longitud</span>
+            <span id="lengthValue" class="text-muted-foreground">16</span>
+          </label>
+          <input id="length" type="range" min="4" max="64" value="16" class="w-full" />
+        </div>
+
+        <label class="flex items-center justify-between text-foreground cursor-pointer">
+          <span>Mayúsculas (A-Z)</span>
+          <input id="uppercase" type="checkbox" checked class="w-4 h-4" />
+        </label>
+        <label class="flex items-center justify-between text-foreground cursor-pointer">
+          <span>Minúsculas (a-z)</span>
+          <input id="lowercase" type="checkbox" checked class="w-4 h-4" />
+        </label>
+        <label class="flex items-center justify-between text-foreground cursor-pointer">
+          <span>Números (0-9)</span>
+          <input id="numbers" type="checkbox" checked class="w-4 h-4" />
+        </label>
+        <label class="flex items-center justify-between text-foreground cursor-pointer">
+          <span>Símbolos (!@#$...)</span>
+          <input id="symbols" type="checkbox" checked class="w-4 h-4" />
+        </label>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script is:inline>
+  const UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const LOWER = "abcdefghijklmnopqrstuvwxyz";
+  const NUMBERS = "0123456789";
+  const SYMBOLS = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+
+  const passwordEl = document.getElementById("password");
+  const lengthEl = document.getElementById("length");
+  const lengthValueEl = document.getElementById("lengthValue");
+  const uppercaseEl = document.getElementById("uppercase");
+  const lowercaseEl = document.getElementById("lowercase");
+  const numbersEl = document.getElementById("numbers");
+  const symbolsEl = document.getElementById("symbols");
+  const regenerateEl = document.getElementById("regenerate");
+  const copyEl = document.getElementById("copy");
+
+  function generate() {
+    let charset = "";
+    if (uppercaseEl.checked) charset += UPPER;
+    if (lowercaseEl.checked) charset += LOWER;
+    if (numbersEl.checked) charset += NUMBERS;
+    if (symbolsEl.checked) charset += SYMBOLS;
+    if (!charset) charset = LOWER;
+
+    const length = parseInt(lengthEl.value, 10);
+    let result = "";
+    const arr = new Uint32Array(length);
+    crypto.getRandomValues(arr);
+    for (let i = 0; i < length; i++) {
+      result += charset[arr[i] % charset.length];
+    }
+    passwordEl.value = result;
+  }
+
+  function updateLength() {
+    lengthValueEl.textContent = lengthEl.value;
+  }
+
+  [lengthEl, uppercaseEl, lowercaseEl, numbersEl, symbolsEl].forEach((el) => {
+    el.addEventListener("input", () => {
+      updateLength();
+      generate();
+    });
+    el.addEventListener("change", () => {
+      updateLength();
+      generate();
+    });
+  });
+
+  regenerateEl.addEventListener("click", generate);
+  copyEl.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(passwordEl.value);
+      copyEl.textContent = "Copiado";
+      setTimeout(() => (copyEl.textContent = "Copiar"), 1500);
+    } catch (e) {
+      copyEl.textContent = "Error";
+      setTimeout(() => (copyEl.textContent = "Copiar"), 1500);
+    }
+  });
+
+  updateLength();
+  generate();
+</script>
