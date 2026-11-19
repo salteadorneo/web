@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Article from "@components/Article.astro";
+import Shortcuts from "@components/Shortcuts.astro";
 
 import { getCollection } from "astro:content";
 const posts = await getCollection("blog");
@@ -23,8 +24,9 @@ const tools = [
 
 <Layout>
   <Header />
+  <Shortcuts />
   <main>
-    <section class="pt-10 pb-4 px-6 max-w-6xl mx-auto">
+    <section class="pt-10 pb-4 px-6 max-w-4xl mx-auto">
       <p class="font-medium text-sm text-muted-foreground mb-3 flex items-center gap-2">
         <span class="text-primary">❯</span> herramientas
       </p>
@@ -32,7 +34,7 @@ const tools = [
         Tools
       </h2>
     </section>
-    <section class="w-full max-w-6xl mx-auto px-6 pb-10 border-t border-border">
+    <section class="w-full max-w-4xl mx-auto px-6 pb-10 border-t border-border">
       <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mt-6">
         {tools.map(([href, label]) => (
           <li>
@@ -52,7 +54,7 @@ const tools = [
       </p>
     </section>
 
-    <section class="pt-10 pb-4 px-6 max-w-6xl mx-auto">
+    <section class="pt-10 pb-4 px-6 max-w-4xl mx-auto">
       <p class="font-medium text-sm text-muted-foreground mb-3 flex items-center gap-2">
         <span class="text-primary">❯</span> blog
       </p>
@@ -60,7 +62,7 @@ const tools = [
         Últimas entradas
       </h2>
     </section>
-    <section class="w-full max-w-6xl mx-auto px-6 pb-16 border-t border-border">
+    <section class="w-full max-w-4xl mx-auto px-6 pb-16 border-t border-border">
       {latest.map((post) => (
         <Article post={post} />
       ))}

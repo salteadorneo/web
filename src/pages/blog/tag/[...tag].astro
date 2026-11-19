@@ -31,7 +31,7 @@ posts.sort(
 >
   <Header />
   <main>
-    <section class="pt-10 pb-4 px-6 max-w-6xl mx-auto">
+    <section class="pt-10 pb-4 px-6 max-w-4xl mx-auto">
       <p class="font-medium text-sm text-muted-foreground mb-3 flex items-center gap-2">
         <span class="text-primary">❯</span> blog
       </p>
@@ -39,7 +39,7 @@ posts.sort(
         Etiqueta #{tag}
       </h2>
     </section>
-    <section class="w-full max-w-6xl mx-auto px-6 pb-16 border-t border-border">
+    <section class="w-full max-w-4xl mx-auto px-6 pb-16 border-t border-border">
       {posts.map((post) => (
         <Article post={post} />
       ))}

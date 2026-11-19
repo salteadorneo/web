@@ -2,11 +2,10 @@
 import Github from "@/components/icons/Github.astro";
 
 import { version } from "../../package.json";
-import Minecraft from "./Minecraft.astro";
 ---
 
 <footer class="mt-8 border-t border-border">
-  <div class="p-6 max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-muted-foreground">
+  <div class="p-6 max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-muted-foreground">
     <a
       href="mailto:cristian@salteadorneo.dev"
       class="hover:text-primary transition-colors duration-300"
@@ -18,10 +17,7 @@ import Minecraft from "./Minecraft.astro";
       target="_blank"
       class="flex items-center justify-center gap-2 hover:text-primary transition-colors duration-300"
     >
-      <Github size="16" /> salteadorneo/web
-    </a>
-    <a href="/tools" class="hover:text-primary transition-colors duration-300">
-      tools
+      <Github size="16" /> Código abierto
     </a>
     <a
       href="/console"
@@ -36,12 +32,6 @@ import Minecraft from "./Minecraft.astro";
       system design
     </a>
     <span class="text-muted-foreground/60">v.{version}</span>
-    <span
-      class="text-muted-foreground/60 cursor-help"
-      title="Atajos: . github · c console · h home · t tools · b blog · p proyectos · ? ayuda"
-    >
-      ⌨
-    </span>
   </div>
 </footer>
 

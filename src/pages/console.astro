@@ -1,5 +1,5 @@
 ---
-import ToolsLayout from "@/layouts/ToolsLayout.astro";
+import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog"))
@@ -13,7 +13,7 @@ const posts = (await getCollection("blog"))
   .sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 ---
 
-<ToolsLayout description="Terminal secreta" noindex>
+<Layout description="Terminal secreta" noindex>
   <main class="fixed inset-0 bg-[#1a1b26] text-[#c0caf5] font-mono text-sm flex flex-col">
     <div
       id="term"
@@ -373,4 +373,4 @@ const posts = (await getCollection("blog"))
     term.focus();
     caretToEnd();
   </script>
-</ToolsLayout>
+</Layout>

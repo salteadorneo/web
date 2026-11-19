@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Card from "@/components/ui/Card.astro";
+import Shortcuts from "@components/Shortcuts.astro";
 
 const groups = [
   {
@@ -165,8 +166,9 @@ const groups = [
 
 <Layout title="Proyectos — salteadorneo.dev">
   <Header />
+  <Shortcuts />
   <main>
-    <section class="pt-10 pb-4 px-6 max-w-6xl mx-auto">
+    <section class="pt-10 pb-4 px-6 max-w-4xl mx-auto">
       <p class="font-medium text-sm text-muted-foreground mb-3 flex items-center gap-2">
         <span class="text-primary">❯</span> side projects
       </p>
@@ -175,7 +177,7 @@ const groups = [
       </h1>
     </section>
 
-    <section class="max-w-6xl mx-auto px-6 pb-20 space-y-16 border-t border-border pt-10">
+    <section class="max-w-4xl mx-auto px-6 pb-20 space-y-16 border-t border-border pt-10">
       {groups.map((group) => (
         <div>
           <h2

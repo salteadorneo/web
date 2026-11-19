@@ -5,6 +5,7 @@ import Footer from "@components/Footer.astro";
 import Article from "@components/Article.astro";
 
 import { getCollection } from "astro:content";
+import Shortcuts from "@components/Shortcuts.astro";
 const posts = await getCollection("blog");
 posts.sort(
   (a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime(),
@@ -13,8 +14,9 @@ posts.sort(
 
 <Layout title="Blog" description="Todas las entradas del blog">
   <Header />
+  <Shortcuts />
   <main>
-    <section class="pt-10 pb-4 px-6 max-w-6xl mx-auto">
+    <section class="pt-10 pb-4 px-6 max-w-4xl mx-auto">
       <p class="font-medium text-sm text-muted-foreground mb-3 flex items-center gap-2">
         <span class="text-primary">❯</span> blog
       </p>
@@ -22,7 +24,7 @@ posts.sort(
         Todas las entradas
       </h2>
     </section>
-    <section class="w-full max-w-6xl mx-auto px-6 pb-16 border-t border-border">
+    <section class="w-full max-w-4xl mx-auto px-6 pb-16 border-t border-border">
       {posts.map((post) => (
         <Article post={post} />
       ))}

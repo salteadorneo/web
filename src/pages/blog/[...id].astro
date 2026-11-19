@@ -4,6 +4,7 @@ import Tag from "@/components/Tag.astro";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import Shortcuts from "@components/Shortcuts.astro";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
@@ -40,8 +41,10 @@ const date = `${published.getUTCDate()} ${months[published.getUTCMonth()]} ${pub
   ogimage={entry.data.image}
 >
   <Header />
+  <Shortcuts />
   <main>
-    <section class="px-6 w-full max-w-6xl mx-auto pb-16 border-t border-border pt-6">
+    <section class="px-6 w-full max-w-4xl mx-auto pb-16 border-t border-border pt-6">
+
       <article class="border border-border bg-card">
         <div class="flex items-center justify-between gap-4 border-b border-border bg-secondary/50 px-4 py-2 text-xs text-muted-foreground">
           <span class="truncate">
@@ -163,7 +166,7 @@ const date = `${published.getUTCDate()} ${months[published.getUTCMonth()]} ${pub
   }
 
   .markdown-content p {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .markdown-content pre {
@@ -178,15 +181,15 @@ const date = `${published.getUTCDate()} ${months[published.getUTCMonth()]} ${pub
   .markdown-content h1,
   .markdown-content h2,
   .markdown-content h3 {
-    font-size: 2rem;
-    line-height: 2.5rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
     font-weight: 700;
     color: #c0caf5;
   }
 
   .markdown-content h3 {
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 
   .markdown-content h2 > code,

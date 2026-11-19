@@ -26,7 +26,6 @@ export default defineConfig({
     '/base64': '/tool/base64',
     '/case': '/tool/case',
     '/color': '/tool/color',
-    '/console': '/tool/console',
     '/cron': '/tool/cron',
     '/diff': '/tool/diff',
     '/hash': '/tool/hash',

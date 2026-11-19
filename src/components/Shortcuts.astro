@@ -1,0 +1,50 @@
+<p class="py-4 text-xs text-muted-foreground/20 hover:text-muted-foreground/60 transition-colors flex flex-wrap gap-3 justify-center">
+  <span class="mr-6">⌨ Atajos de teclado</span>
+  <span><kbd class="border border-border/40 px-1 rounded">h</kbd> home</span>
+  <span><kbd class="border border-border/40 px-1 rounded">p</kbd> proyectos</span>
+  <span><kbd class="border border-border/40 px-1 rounded">t</kbd> tools</span>
+  <span><kbd class="border border-border/40 px-1 rounded">b</kbd> blog</span>
+  <span><kbd class="border border-border/40 px-1 rounded">c</kbd> console</span>
+  <span><kbd class="border border-border/40 px-1 rounded">g</kbd> github</span>
+  <span><kbd class="border border-border/40 px-1 rounded">l</kbd> linkedin</span>
+  <span><kbd class="border border-border/40 px-1 rounded">x</kbd> x</span>
+  <span><kbd class="border border-border/40 px-1 rounded">e</kbd> email</span>
+</p>
+
+<script is:inline>
+  document.addEventListener("keydown", (e) => {
+    const t = e.target;
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    switch (e.key) {
+      case ".":
+      case "g":
+        window.open("https://github.com/salteadorneo/web", "_blank");
+        break;
+      case "c":
+        window.location.href = "/console";
+        break;
+      case "h":
+        window.location.href = "/";
+        break;
+      case "t":
+        window.location.href = "/tools";
+        break;
+      case "b":
+        window.location.href = "/blog";
+        break;
+      case "p":
+        window.location.href = "/proyectos";
+        break;
+      case "l":
+        window.open("https://www.linkedin.com/in/cristianadan/", "_blank");
+        break;
+      case "x":
+        window.open("https://twitter.com/salteadorneodev", "_blank");
+        break;
+      case "e":
+        window.location.href = "mailto:cristian@salteadorneo.dev";
+        break;
+    }
+  });
+</script>

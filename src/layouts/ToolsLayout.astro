@@ -1,4 +1,5 @@
 ---
+import Shortcuts from "@components/Shortcuts.astro";
 import Layout from "./Layout.astro";
 import Header from "@components/Header.astro";
 
@@ -47,13 +48,14 @@ const { title, description } = Astro.props;
 
 <Layout title={title} description={description}>
   <Header />
-  <nav class="bg-card border-b border-border overflow-x-auto px-4 py-1">
-    <div class="max-w-6xl mx-auto flex gap-1 sm:justify-center">
+  <Shortcuts />
+  <nav class="bg-card border-y border-border overflow-x-auto px-4 py-1 md:mt-2">
+    <div class="max-w-4xl mx-auto flex gap-1 md:justify-center">
       {groups.map((g) =>
         g.items.map(([href, label]) => (
           <a
             href={href}
-            class="p-3 rounded hover:bg-secondary text-foreground text-xs transition-colors whitespace-nowrap"
+            class="px-2 py-3 rounded hover:bg-secondary text-foreground text-xs transition-colors whitespace-nowrap"
           >
             {label}
           </a>
