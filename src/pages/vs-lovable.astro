@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import "../styles/global.css";
 
 const currentYear = new Date().getFullYear();
 
@@ -99,17 +99,29 @@ const process = [
   <body class="min-h-screen bg-background text-foreground antialiased overflow-x-hidden">
     <header class="fixed top-0 left-0 right-0 z-50 bg-background/95 border-b border-border">
       <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
-        <a href="/" class="text-lg font-semibold tracking-tight text-foreground">
+        <a
+          href="/"
+          class="text-lg font-semibold tracking-tight text-foreground"
+        >
           mvp<span class="text-muted">.</span>
         </a>
         <nav class="hidden md:flex items-center gap-8">
-          <a href="#comparativa" class="text-base text-muted-foreground hover:text-foreground transition-colors">
+          <a
+            href="#comparativa"
+            class="text-base text-muted-foreground hover:text-foreground transition-colors"
+          >
             Comparativa
           </a>
-          <a href="#cuando" class="text-base text-muted-foreground hover:text-foreground transition-colors">
+          <a
+            href="#cuando"
+            class="text-base text-muted-foreground hover:text-foreground transition-colors"
+          >
             Cuándo elegir cada opción
           </a>
-          <a href="#proceso" class="text-base text-muted-foreground hover:text-foreground transition-colors">
+          <a
+            href="#proceso"
+            class="text-base text-muted-foreground hover:text-foreground transition-colors"
+          >
             Proceso
           </a>
         </nav>
@@ -129,11 +141,15 @@ const process = [
             Comparativa realista
           </p>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight text-balance">
-            Elegirme a mí vs pagar una herramienta<br class="hidden sm:block" />
+            Elegirme a mí vs pagar una herramienta
+            <br class="hidden sm:block" />
             <span class="text-muted">tipo Lovable</span>
           </h1>
           <p class="mt-6 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed text-pretty">
-            Las dos opciones pueden servir, pero no para lo mismo. Si buscas ahorrar tiempo, reducir riesgo y tener una solución ajustada a tu caso, trabajar conmigo suele ser la vía más rápida para llegar a resultado.
+            Las dos opciones pueden servir, pero no para lo mismo. Si buscas
+            ahorrar tiempo, reducir riesgo y tener una solución ajustada a tu
+            caso, trabajar conmigo suele ser la vía más rápida para llegar a
+            resultado.
           </p>
           <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -153,16 +169,28 @@ const process = [
           <div class="mt-16 pt-10 border-t border-border">
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-sm sm:max-w-none mx-auto">
               <div>
-                <p class="text-3xl md:text-4xl font-bold text-foreground">Menos fricción</p>
-                <p class="text-base text-muted-foreground mt-1">tú te enfocas en negocio</p>
+                <p class="text-3xl md:text-4xl font-bold text-foreground">
+                  Menos fricción
+                </p>
+                <p class="text-base text-muted-foreground mt-1">
+                  tú te enfocas en negocio
+                </p>
               </div>
               <div>
-                <p class="text-3xl md:text-4xl font-bold text-foreground">Más criterio</p>
-                <p class="text-base text-muted-foreground mt-1">tecnología + producto</p>
+                <p class="text-3xl md:text-4xl font-bold text-foreground">
+                  Más criterio
+                </p>
+                <p class="text-base text-muted-foreground mt-1">
+                  tecnología + producto
+                </p>
               </div>
               <div>
-                <p class="text-3xl md:text-4xl font-bold text-foreground">Más velocidad</p>
-                <p class="text-base text-muted-foreground mt-1">de idea a resultado útil</p>
+                <p class="text-3xl md:text-4xl font-bold text-foreground">
+                  Más velocidad
+                </p>
+                <p class="text-base text-muted-foreground mt-1">
+                  de idea a resultado útil
+                </p>
               </div>
             </div>
           </div>
@@ -179,7 +207,8 @@ const process = [
               Diferencias clave en la práctica
             </h2>
             <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
-              No es solo precio mensual. La diferencia real está en tiempo, calidad de decisiones y capacidad de ejecutar sin bloquearte.
+              No es solo precio mensual. La diferencia real está en tiempo,
+              calidad de decisiones y capacidad de ejecutar sin bloquearte.
             </p>
           </div>
 
@@ -187,17 +216,29 @@ const process = [
             <table class="w-full min-w-205 text-left border-collapse">
               <thead class="bg-card">
                 <tr>
-                  <th class="px-5 py-4 text-base uppercase tracking-wide text-muted-foreground border-b border-border">Criterio</th>
-                  <th class="px-5 py-4 text-base uppercase tracking-wide text-primary border-b border-border">Trabajar conmigo</th>
-                  <th class="px-5 py-4 text-base uppercase tracking-wide text-muted-foreground border-b border-border">Herramienta tipo Lovable</th>
+                  <th class="px-5 py-4 text-base uppercase tracking-wide text-muted-foreground border-b border-border">
+                    Criterio
+                  </th>
+                  <th class="px-5 py-4 text-base uppercase tracking-wide text-primary border-b border-border">
+                    Trabajar conmigo
+                  </th>
+                  <th class="px-5 py-4 text-base uppercase tracking-wide text-muted-foreground border-b border-border">
+                    Herramienta tipo Lovable
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 {comparisonRows.map((row) => (
                   <tr class="odd:bg-background even:bg-card/60">
-                    <td class="px-5 py-4 text-base font-semibold text-foreground border-b border-border/70">{row.criterion}</td>
-                    <td class="px-5 py-4 text-base text-foreground border-b border-border/70">{row.me}</td>
-                    <td class="px-5 py-4 text-base text-muted-foreground border-b border-border/70">{row.tool}</td>
+                    <td class="px-5 py-4 text-base font-semibold text-foreground border-b border-border/70">
+                      {row.criterion}
+                    </td>
+                    <td class="px-5 py-4 text-base text-foreground border-b border-border/70">
+                      {row.me}
+                    </td>
+                    <td class="px-5 py-4 text-base text-muted-foreground border-b border-border/70">
+                      {row.tool}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -209,7 +250,9 @@ const process = [
       <section id="cuando" class="scroll-mt-24 py-20 px-6">
         <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-8">
           <div class="bg-card border border-primary/30 rounded-xl p-7">
-            <p class="text-base uppercase tracking-wide text-primary mb-3">Tiene más sentido elegirme a mí si...</p>
+            <p class="text-base uppercase tracking-wide text-primary mb-3">
+              Tiene más sentido elegirme a mí si...
+            </p>
             <ul class="space-y-3">
               {chooseMe.map((item) => (
                 <li class="flex items-start gap-3 text-base leading-relaxed text-foreground">
@@ -221,7 +264,9 @@ const process = [
           </div>
 
           <div class="bg-card border border-border rounded-xl p-7">
-            <p class="text-base uppercase tracking-wide text-muted-foreground mb-3">Puede servir una herramienta tipo Lovable si...</p>
+            <p class="text-base uppercase tracking-wide text-muted-foreground mb-3">
+              Puede servir una herramienta tipo Lovable si...
+            </p>
             <ul class="space-y-3">
               {chooseTool.map((item) => (
                 <li class="flex items-start gap-3 text-base leading-relaxed text-muted-foreground">
@@ -255,8 +300,12 @@ const process = [
                   {step.number}
                 </div>
                 <div class="flex-1 pt-1">
-                  <h3 class="text-lg font-semibold text-foreground">{step.title}</h3>
-                  <p class="mt-2 text-muted-foreground leading-relaxed max-w-xl">{step.description}</p>
+                  <h3 class="text-lg font-semibold text-foreground">
+                    {step.title}
+                  </h3>
+                  <p class="mt-2 text-muted-foreground leading-relaxed max-w-xl">
+                    {step.description}
+                  </p>
                 </div>
               </div>
             ))}
@@ -264,13 +313,17 @@ const process = [
         </div>
       </section>
 
-      <section id="contacto" class="scroll-mt-24 py-20 px-6 bg-primary text-primary-foreground">
+      <section
+        id="contacto"
+        class="scroll-mt-24 py-20 px-6 bg-primary text-primary-foreground"
+      >
         <div class="max-w-3xl mx-auto text-center">
           <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
             Si quieres resultado, no solo una herramienta
           </h2>
           <p class="mt-4 text-lg text-primary-foreground/80 leading-relaxed max-w-2xl mx-auto">
-            Cuéntame tu caso y te digo en claro si te conviene trabajar conmigo o empezar por otra vía. Sin presión y sin humo.
+            Cuéntame tu caso y te digo en claro si te conviene trabajar conmigo
+            o empezar por otra vía. Sin presión y sin humo.
           </p>
 
           <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -297,7 +350,10 @@ const process = [
 
     <footer class="py-12 px-6 border-t border-border">
       <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <a href="/" class="text-lg font-semibold tracking-tight text-foreground">
+        <a
+          href="/"
+          class="text-lg font-semibold tracking-tight text-foreground"
+        >
           mvp<span class="text-muted">.</span>
         </a>
         <p class="text-base text-muted-foreground">

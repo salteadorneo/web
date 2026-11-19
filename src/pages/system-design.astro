@@ -9,7 +9,6 @@ import Card from "@/components/ui/Card.astro";
 <Layout title="System Design — salteadorneo.dev">
   <Header />
   <main class="max-w-6xl mx-auto px-6 pt-10 pb-24 space-y-24">
-
     <!-- Intro -->
     <section>
       <p class="font-medium text-sm text-muted-foreground mb-3 flex items-center gap-2">
@@ -19,7 +18,8 @@ import Card from "@/components/ui/Card.astro";
         System Design
       </h1>
       <p class="mt-3 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-        Componentes, tokens y patrones que se usan en todo el sitio. Fuente de verdad para mantener coherencia visual.
+        Componentes, tokens y patrones que se usan en todo el sitio. Fuente de
+        verdad para mantener coherencia visual.
       </p>
     </section>
 
@@ -28,13 +28,26 @@ import Card from "@/components/ui/Card.astro";
     <!-- Colores -->
     <section class="space-y-6">
       <h2 class="text-2xl font-bold text-foreground">Colores</h2>
-      <p class="text-muted-foreground leading-relaxed">Variables CSS definidas en <code class="bg-secondary px-2 py-0.5 rounded text-foreground">global.css</code> bajo <code class="bg-secondary px-2 py-0.5 rounded text-foreground">@theme</code>.</p>
+      <p class="text-muted-foreground leading-relaxed">
+        Variables CSS definidas en{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          global.css
+        </code>{" "}
+        bajo{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          @theme
+        </code>
+        .
+      </p>
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
         {[
           { name: "background", cls: "bg-background border border-border" },
           { name: "foreground", cls: "bg-foreground" },
           { name: "primary", cls: "bg-primary" },
-          { name: "primary-foreground", cls: "bg-primary-foreground border border-border" },
+          {
+            name: "primary-foreground",
+            cls: "bg-primary-foreground border border-border",
+          },
           { name: "secondary", cls: "bg-secondary" },
           { name: "secondary-foreground", cls: "bg-secondary-foreground" },
           { name: "card", cls: "bg-card border border-border" },
@@ -55,20 +68,67 @@ import Card from "@/components/ui/Card.astro";
     <!-- Tipografía -->
     <section class="space-y-6">
       <h2 class="text-2xl font-bold text-foreground">Tipografía</h2>
-      <p class="text-muted-foreground leading-relaxed">La familia base del sitio es <code class="bg-secondary px-2 py-0.5 rounded text-foreground">"JetBrainsMono Nerd Font", "JetBrains Mono", monospace</code> (definida en global.css). Tamaño mínimo: <code class="bg-secondary px-2 py-0.5 rounded text-foreground">text-base</code>. Radio de borde: <code class="bg-secondary px-2 py-0.5 rounded text-foreground">0</code>, como en Omarchy.</p>
+      <p class="text-muted-foreground leading-relaxed">
+        La familia base del sitio es{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          "JetBrainsMono Nerd Font", "JetBrains Mono", monospace
+        </code>{" "}
+        (definida en global.css). Tamaño mínimo:{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          text-base
+        </code>
+        . Radio de borde:{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">0</code>,
+        como en Omarchy.
+      </p>
       <div class="space-y-5 border border-border rounded-xl divide-y divide-border">
         {[
-          { label: "text-6xl font-bold", cls: "text-6xl font-bold text-foreground", sample: "Título hero" },
-          { label: "text-5xl font-bold", cls: "text-5xl font-bold text-foreground", sample: "Título sección" },
-          { label: "text-4xl font-bold", cls: "text-4xl font-bold text-foreground", sample: "Encabezado H1" },
-          { label: "text-3xl font-bold", cls: "text-3xl font-bold text-foreground", sample: "Encabezado H2" },
-          { label: "text-2xl font-semibold", cls: "text-2xl font-semibold text-foreground", sample: "Encabezado H3" },
-          { label: "text-xl", cls: "text-xl text-foreground", sample: "Subtítulo / intro" },
-          { label: "text-lg", cls: "text-lg text-muted-foreground", sample: "Cuerpo grande / descripción principal" },
-          { label: "text-base", cls: "text-base text-muted-foreground", sample: "Cuerpo estándar — texto de tarjetas, etiquetas, navigation" },
+          {
+            label: "text-6xl font-bold",
+            cls: "text-6xl font-bold text-foreground",
+            sample: "Título hero",
+          },
+          {
+            label: "text-5xl font-bold",
+            cls: "text-5xl font-bold text-foreground",
+            sample: "Título sección",
+          },
+          {
+            label: "text-4xl font-bold",
+            cls: "text-4xl font-bold text-foreground",
+            sample: "Encabezado H1",
+          },
+          {
+            label: "text-3xl font-bold",
+            cls: "text-3xl font-bold text-foreground",
+            sample: "Encabezado H2",
+          },
+          {
+            label: "text-2xl font-semibold",
+            cls: "text-2xl font-semibold text-foreground",
+            sample: "Encabezado H3",
+          },
+          {
+            label: "text-xl",
+            cls: "text-xl text-foreground",
+            sample: "Subtítulo / intro",
+          },
+          {
+            label: "text-lg",
+            cls: "text-lg text-muted-foreground",
+            sample: "Cuerpo grande / descripción principal",
+          },
+          {
+            label: "text-base",
+            cls: "text-base text-muted-foreground",
+            sample:
+              "Cuerpo estándar — texto de tarjetas, etiquetas, navigation",
+          },
         ].map(({ label, cls, sample }) => (
           <div class="px-6 py-5 flex flex-col sm:flex-row sm:items-baseline gap-3">
-            <code class="shrink-0 text-muted-foreground bg-secondary px-2 py-0.5 rounded w-48">{label}</code>
+            <code class="shrink-0 text-muted-foreground bg-secondary px-2 py-0.5 rounded w-48">
+              {label}
+            </code>
             <span class={cls}>{sample}</span>
           </div>
         ))}
@@ -79,12 +139,46 @@ import Card from "@/components/ui/Card.astro";
 
     <!-- Botones -->
     <section class="space-y-6">
-      <h2 class="text-2xl font-bold text-foreground">Botones — <code class="text-primary font-medium">Button.astro</code></h2>
-      <p class="text-muted-foreground leading-relaxed">Componente <code class="bg-secondary px-2 py-0.5 rounded text-foreground">src/components/ui/Button.astro</code>. Acepta <code class="bg-secondary px-2 py-0.5 rounded text-foreground">href</code> para enlace o se renderiza como <code class="bg-secondary px-2 py-0.5 rounded text-foreground">&lt;button&gt;</code>. Variantes: <code class="bg-secondary px-2 py-0.5 rounded text-foreground">primary</code>, <code class="bg-secondary px-2 py-0.5 rounded text-foreground">secondary</code>, <code class="bg-secondary px-2 py-0.5 rounded text-foreground">outline</code>.</p>
+      <h2 class="text-2xl font-bold text-foreground">
+        Botones — <code class="text-primary font-medium">Button.astro</code>
+      </h2>
+      <p class="text-muted-foreground leading-relaxed">
+        Componente{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          src/components/ui/Button.astro
+        </code>
+        . Acepta{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          href
+        </code>{" "}
+        para enlace o se renderiza como{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          &lt;button&gt;
+        </code>
+        . Variantes:{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          primary
+        </code>
+        ,{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          secondary
+        </code>
+        ,{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          outline
+        </code>
+        .
+      </p>
       <div class="flex flex-wrap gap-4">
-        <Button href="#" variant="primary">Botón primario</Button>
-        <Button href="#" variant="secondary">Botón secundario</Button>
-        <Button href="#" variant="outline">Botón outline</Button>
+        <Button href="#" variant="primary">
+          Botón primario
+        </Button>
+        <Button href="#" variant="secondary">
+          Botón secundario
+        </Button>
+        <Button href="#" variant="outline">
+          Botón outline
+        </Button>
         <Button variant="primary">Botón submit</Button>
       </div>
       <div class="bg-card border border-border rounded-xl p-5 overflow-x-auto">
@@ -98,8 +192,36 @@ import Card from "@/components/ui/Card.astro";
 
     <!-- Tarjetas -->
     <section class="space-y-6">
-      <h2 class="text-2xl font-bold text-foreground">Tarjetas — <code class="text-primary font-medium">Card.astro</code></h2>
-      <p class="text-muted-foreground leading-relaxed">Componente <code class="bg-secondary px-2 py-0.5 rounded text-foreground">src/components/ui/Card.astro</code>. Props: <code class="bg-secondary px-2 py-0.5 rounded text-foreground">title</code>, <code class="bg-secondary px-2 py-0.5 rounded text-foreground">description</code>, <code class="bg-secondary px-2 py-0.5 rounded text-foreground">eyebrow</code>, <code class="bg-secondary px-2 py-0.5 rounded text-foreground">href</code>. Acepta <code class="bg-secondary px-2 py-0.5 rounded text-foreground">slot</code> para contenido extra.</p>
+      <h2 class="text-2xl font-bold text-foreground">
+        Tarjetas — <code class="text-primary font-medium">Card.astro</code>
+      </h2>
+      <p class="text-muted-foreground leading-relaxed">
+        Componente{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          src/components/ui/Card.astro
+        </code>
+        . Props:{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          title
+        </code>
+        ,{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          description
+        </code>
+        ,{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          eyebrow
+        </code>
+        ,{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          href
+        </code>
+        . Acepta{" "}
+        <code class="bg-secondary px-2 py-0.5 rounded text-foreground">
+          slot
+        </code>{" "}
+        para contenido extra.
+      </p>
       <div class="grid md:grid-cols-3 gap-6">
         <Card
           eyebrow="Ejemplo"
@@ -115,7 +237,9 @@ import Card from "@/components/ui/Card.astro";
         <Card eyebrow="Con slot">
           <div class="mt-4 flex flex-wrap gap-2">
             {["Tag 1", "Tag 2", "Tag 3"].map((tag) => (
-              <span class="bg-secondary text-muted-foreground px-3 py-1">{tag}</span>
+              <span class="bg-secondary text-muted-foreground px-3 py-1">
+                {tag}
+              </span>
             ))}
           </div>
         </Card>

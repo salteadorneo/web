@@ -3,44 +3,67 @@ import Tag from "./Tag.astro";
 
 const { post } = Astro.props;
 
-const months = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const months = [
+  "ene",
+  "feb",
+  "mar",
+  "abr",
+  "may",
+  "jun",
+  "jul",
+  "ago",
+  "sep",
+  "oct",
+  "nov",
+  "dic",
+];
 const published = post.data.publishedDate;
 const date = `${published.getUTCDate()} ${months[published.getUTCMonth()]} ${published.getUTCFullYear()}`;
 ---
 
 <article class="group relative mt-6 border border-border bg-card p-6 md:p-7 transition-colors hover:border-primary/60">
-    <span class="absolute left-0 top-0 h-full w-0.5 bg-primary opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true"></span>
-    <div class="flex gap-5 max-sm:flex-col">
-        <img
-            src={post.data.image}
-            alt={post.data.title}
-            class="h-16 w-16 shrink-0 border border-border object-cover transition-colors duration-300 group-hover:border-primary/40"
-            style={`view-transition-name: image-${post.id}`}
-        />
-        <div class="space-y-4 min-w-0 flex-1">
-            <div class="space-y-3">
-                <div class="flex items-start justify-between gap-4">
-                    <h2
-                        class="text-2xl leading-tight font-bold text-foreground transition-colors group-hover:text-primary"
-                        style={`view-transition-name: title-${post.id}`}
-                    >
-                        <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-                    </h2>
-                    <time
-                        datetime={published.toISOString()}
-                        class="shrink-0 pt-1.5 text-xs text-muted-foreground/70"
-                    >{date}</time>
-                </div>
-                <p
-                    class="flex flex-wrap items-center gap-2"
-                    style={`view-transition-name: tags-${post.id}`}
-                >
-                    {post.data.tags.map((tag: string) => <Tag tag={tag} />)}
-                </p>
-            </div>
-            <p class="text-base text-muted-foreground leading-relaxed" style={`view-transition-name: desc-${post.id}`}>
-                {post.data.description}
-            </p>
+  <span
+    class="absolute left-0 top-0 h-full w-0.5 bg-primary opacity-0 transition-opacity group-hover:opacity-100"
+    aria-hidden="true"
+  ></span>
+  <div class="flex gap-5 max-sm:flex-col">
+    <img
+      src={post.data.image}
+      alt={post.data.title}
+      class="h-16 w-16 shrink-0 border border-border object-cover transition-colors duration-300 group-hover:border-primary/40"
+      style={`view-transition-name: image-${post.id}`}
+    />
+    <div class="space-y-4 min-w-0 flex-1">
+      <div class="space-y-3">
+        <div class="flex items-start justify-between gap-4">
+          <h2
+            class="text-2xl leading-tight font-bold text-foreground transition-colors group-hover:text-primary"
+            style={`view-transition-name: title-${post.id}`}
+          >
+            <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+          </h2>
+          <time
+            datetime={published.toISOString()}
+            class="shrink-0 pt-1.5 text-xs text-muted-foreground/70"
+          >
+            {date}
+          </time>
         </div>
+        <p
+          class="flex flex-wrap items-center gap-2"
+          style={`view-transition-name: tags-${post.id}`}
+        >
+          {post.data.tags.map((tag: string) => (
+            <Tag tag={tag} />
+          ))}
+        </p>
+      </div>
+      <p
+        class="text-base text-muted-foreground leading-relaxed"
+        style={`view-transition-name: desc-${post.id}`}
+      >
+        {post.data.description}
+      </p>
     </div>
+  </div>
 </article>

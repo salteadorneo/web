@@ -3,30 +3,30 @@ const RCON_HOST = import.meta.env.RCON_HOST;
 
 let lastStatus = false;
 try {
-  const response = await fetch(new URL('/data/status-history.json', Astro.url));
+  const response = await fetch(new URL("/data/status-history.json", Astro.url));
   const history = await response.json();
   if (history.length > 0) {
     const latest = history[history.length - 1];
-    lastStatus = latest.status === 'online';
+    lastStatus = latest.status === "online";
   }
 } catch (error) {
-  console.error('Error loading status:', error);
+  console.error("Error loading status:", error);
 }
 ---
 
 {!!RCON_HOST && (
   <div class="flex items-center gap-2">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
-        class={`w-5 h-5 ${lastStatus ? 'text-green-500' : 'text-red-500'}`}
-      >
-        <rect x="2" y="14" width="2" height="4" fill="currentColor" />
-        <rect x="6" y="11" width="2" height="7" fill="currentColor" />
-        <rect x="10" y="8" width="2" height="10" fill="currentColor" />
-        <rect x="14" y="5" width="2" height="13" fill="currentColor" />
-        <rect x="18" y="2" width="2" height="16" fill="currentColor" />
-      </svg>
-      <p>{RCON_HOST}</p>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 20 20"
+      class={`w-5 h-5 ${lastStatus ? "text-green-500" : "text-red-500"}`}
+    >
+      <rect x="2" y="14" width="2" height="4" fill="currentColor" />
+      <rect x="6" y="11" width="2" height="7" fill="currentColor" />
+      <rect x="10" y="8" width="2" height="10" fill="currentColor" />
+      <rect x="14" y="5" width="2" height="13" fill="currentColor" />
+      <rect x="18" y="2" width="2" height="16" fill="currentColor" />
+    </svg>
+    <p>{RCON_HOST}</p>
   </div>
 )}

@@ -7,9 +7,7 @@ import Logo from "@/components/Logo.astro";
 
 const path = Astro.url.pathname;
 const isActive = (href: string) =>
-  href === "/"
-    ? path === "/" || path.startsWith("/blog")
-    : path.startsWith(href);
+  href === "/" ? path === "/" : path.startsWith(href);
 
 const linkClass = (href: string) =>
   `group flex items-center gap-1.5 text-sm transition-colors ${
@@ -28,7 +26,11 @@ const markerClass = (href: string) =>
 
 <header class="omarchy-bar sticky top-0 z-40">
   <div class="px-4 md:px-6 py-2.5 max-w-6xl mx-auto flex items-center justify-between gap-4">
-    <a href="/" class="hover:opacity-90 transition-opacity" aria-label="Ir al inicio">
+    <a
+      href="/"
+      class="hover:opacity-90 transition-opacity"
+      aria-label="Ir al inicio"
+    >
       <Logo />
     </a>
 
@@ -36,23 +38,48 @@ const markerClass = (href: string) =>
       <a href="/proyectos" class={linkClass("/proyectos")}>
         <span class={markerClass("/proyectos")}>❯</span>proyectos
       </a>
-      <a href="/" class={`hidden sm:flex ${linkClass("/")}`}>
-        <span class={markerClass("/")}>❯</span>blog
+      <a href="/tools" class={linkClass("/tools")}>
+        <span class={markerClass("/tools")}>❯</span>tools
+      </a>
+      <a href="/blog" class={`hidden sm:flex ${linkClass("/blog")}`}>
+        <span class={markerClass("/blog")}>❯</span>blog
       </a>
 
       <div class="hidden sm:flex items-center gap-3.5 ml-1 pl-4 border-l border-border">
-        <a href="https://github.com/salteadorneo" target="_blank" rel="noopener noreferrer" title="GitHub" class="text-muted-foreground hover:text-primary transition-colors">
-        <Github size="16" />
-      </a>
-        <a href="https://www.linkedin.com/in/cristianadan/" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="text-muted-foreground hover:text-primary transition-colors">
-        <Linkedin size="16" />
-      </a>
-        <a href="https://twitter.com/salteadorneodev" target="_blank" rel="noopener noreferrer" title="X" class="text-muted-foreground hover:text-primary transition-colors">
-        <Twitter size="16" />
-      </a>
-        <a href="mailto:cristian@salteadorneo.dev" title="Email" class="text-muted-foreground hover:text-primary transition-colors">
-        <Email size="16" />
-      </a>
+        <a
+          href="https://github.com/salteadorneo"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="GitHub"
+          class="text-muted-foreground hover:text-primary transition-colors"
+        >
+          <Github size="16" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/cristianadan/"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="LinkedIn"
+          class="text-muted-foreground hover:text-primary transition-colors"
+        >
+          <Linkedin size="16" />
+        </a>
+        <a
+          href="https://twitter.com/salteadorneodev"
+          target="_blank"
+          rel="noopener noreferrer"
+          title="X"
+          class="text-muted-foreground hover:text-primary transition-colors"
+        >
+          <Twitter size="16" />
+        </a>
+        <a
+          href="mailto:cristian@salteadorneo.dev"
+          title="Email"
+          class="text-muted-foreground hover:text-primary transition-colors"
+        >
+          <Email size="16" />
+        </a>
       </div>
     </nav>
   </div>

@@ -1,6 +1,6 @@
 ---
-import '../styles/global.css';
-import Logo from '../components/Logo.astro';
+import "../styles/global.css";
+import Logo from "../components/Logo.astro";
 
 const currentYear = new Date().getFullYear();
 
@@ -53,14 +53,14 @@ const solutions = [
 const steps = [
   {
     number: "01",
-      title: "Entiendo el problema",
+    title: "Entiendo el problema",
     description:
       "Una conversación corta para aterrizar objetivo, contexto y prioridad. Sin jerga ni documentos eternos.",
     duration: "30 min",
   },
   {
     number: "02",
-      title: "Defino el alcance útil",
+    title: "Defino el alcance útil",
     description:
       "En 48 horas te propongo qué construir primero, qué dejar fuera y cómo medir si funciona.",
     duration: "48 h",
@@ -139,8 +139,14 @@ const faqs = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Desarrollo MVP rápido · Automatización y herramientas a medida — Cristian Adán</title>
-    <meta name="description" content="Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas en 1-3 semanas. Sin burocracia, sin costes iniciales. Validamos tu idea o resolvemos tu cuello de botella antes de invertir de más." />
-    <meta name="keywords" content="desarrollo MVP, MVP funcional, automatización de procesos, herramientas internas, prototipo web, freelance desarrollo web, validar idea, startup, desarrollo rápido España" />
+    <meta
+      name="description"
+      content="Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas en 1-3 semanas. Sin burocracia, sin costes iniciales. Validamos tu idea o resolvemos tu cuello de botella antes de invertir de más."
+    />
+    <meta
+      name="keywords"
+      content="desarrollo MVP, MVP funcional, automatización de procesos, herramientas internas, prototipo web, freelance desarrollo web, validar idea, startup, desarrollo rápido España"
+    />
     <meta name="author" content="Cristian Adán" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://salteadorneo.dev/mvp" />
@@ -148,45 +154,57 @@ const faqs = [
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://salteadorneo.dev/mvp" />
-    <meta property="og:title" content="Desarrollo MVP rápido · Automatización y herramientas a medida" />
-    <meta property="og:description" content="Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas en 1-3 semanas. Sin burocracia, sin costes iniciales." />
+    <meta
+      property="og:title"
+      content="Desarrollo MVP rápido · Automatización y herramientas a medida"
+    />
+    <meta
+      property="og:description"
+      content="Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas en 1-3 semanas. Sin burocracia, sin costes iniciales."
+    />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:site_name" content="salteadorneo.dev" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@salteadorneodev" />
-    <meta name="twitter:title" content="Desarrollo MVP rápido · Automatización y herramientas a medida" />
-    <meta name="twitter:description" content="Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas en 1-3 semanas. Sin burocracia, sin costes iniciales." />
+    <meta
+      name="twitter:title"
+      content="Desarrollo MVP rápido · Automatización y herramientas a medida"
+    />
+    <meta
+      name="twitter:description"
+      content="Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas en 1-3 semanas. Sin burocracia, sin costes iniciales."
+    />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Desarrollo MVP y automatización a medida",
-      "description": "Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas adaptadas a tu operación real. Entregas en 1-3 semanas sin costes iniciales.",
-      "provider": {
-        "@type": "Person",
-        "name": "Cristian Adán",
-        "url": "https://salteadorneo.dev",
-        "sameAs": [
-          "https://github.com/salteadorneo",
-          "https://www.linkedin.com/in/cristianadan/",
-          "https://twitter.com/salteadorneodev"
-        ]
-      },
-      "serviceType": "Desarrollo de software",
-      "areaServed": "ES",
-      "inLanguage": "es",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR",
-        "description": "Sin coste inicial. Presupuesto tras primera conversación.",
-        "availability": "https://schema.org/InStock"
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Desarrollo MVP y automatización a medida",
+        "description": "Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas adaptadas a tu operación real. Entregas en 1-3 semanas sin costes iniciales.",
+        "provider": {
+          "@type": "Person",
+          "name": "Cristian Adán",
+          "url": "https://salteadorneo.dev",
+          "sameAs": [
+            "https://github.com/salteadorneo",
+            "https://www.linkedin.com/in/cristianadan/",
+            "https://twitter.com/salteadorneodev"
+          ]
+        },
+        "serviceType": "Desarrollo de software",
+        "areaServed": "ES",
+        "inLanguage": "es",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR",
+          "description": "Sin coste inicial. Presupuesto tras primera conversación.",
+          "availability": "https://schema.org/InStock"
+        }
       }
-    }
     </script>
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -198,13 +216,22 @@ const faqs = [
           <Logo />
         </a>
         <nav class="hidden md:flex items-center gap-8">
-          <a href="#problemas" class="text-muted-foreground hover:text-foreground transition-colors">
+          <a
+            href="#problemas"
+            class="text-muted-foreground hover:text-foreground transition-colors"
+          >
             Problemas
           </a>
-          <a href="#proceso" class="text-muted-foreground hover:text-foreground transition-colors">
+          <a
+            href="#proceso"
+            class="text-muted-foreground hover:text-foreground transition-colors"
+          >
             Proceso
           </a>
-          <a href="#casos" class="text-muted-foreground hover:text-foreground transition-colors">
+          <a
+            href="#casos"
+            class="text-muted-foreground hover:text-foreground transition-colors"
+          >
             Casos
           </a>
         </nav>
@@ -224,11 +251,14 @@ const faqs = [
             Del problema a la solución
           </p>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight text-balance">
-            Desarrollo MVP rápido<br class="hidden sm:block" />
+            Desarrollo MVP rápido
+            <br class="hidden sm:block" />
             <span class="text-primary/70">de la idea al producto en días</span>
           </h1>
           <p class="mt-6 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed text-pretty">
-            Construyo MVPs funcionales, automatizaciones de procesos y herramientas internas adaptadas a tu operación real. Sin burocracia, sin costes iniciales.
+            Construyo MVPs funcionales, automatizaciones de procesos y
+            herramientas internas adaptadas a tu operación real. Sin burocracia,
+            sin costes iniciales.
           </p>
           <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -248,15 +278,21 @@ const faqs = [
           <div class="mt-16 pt-10 border-t border-border">
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 max-w-sm sm:max-w-none mx-auto">
               <div>
-                <p class="text-3xl md:text-4xl font-bold text-foreground">1-3</p>
+                <p class="text-3xl md:text-4xl font-bold text-foreground">
+                  1-3
+                </p>
                 <p class="text-muted-foreground mt-1">semanas</p>
               </div>
               <div>
-                <p class="text-3xl md:text-4xl font-bold text-foreground">0 €</p>
+                <p class="text-3xl md:text-4xl font-bold text-foreground">
+                  0 €
+                </p>
                 <p class="text-muted-foreground mt-1">coste inicial</p>
               </div>
               <div>
-                <p class="text-3xl md:text-4xl font-bold text-foreground">100%</p>
+                <p class="text-3xl md:text-4xl font-bold text-foreground">
+                  100%
+                </p>
                 <p class="text-muted-foreground mt-1">enfocado en resultados</p>
               </div>
             </div>
@@ -274,7 +310,8 @@ const faqs = [
               Situaciones que frenan tu avance
             </h2>
             <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
-              Si te suena alguna de estas, podemos resolverla con una solución concreta y accionable en poco tiempo.
+              Si te suena alguna de estas, podemos resolverla con una solución
+              concreta y accionable en poco tiempo.
             </p>
           </div>
 
@@ -426,23 +463,33 @@ const faqs = [
             {faqs.map((faq) => (
               <details class="group bg-card border border-border rounded-lg p-5">
                 <summary class="cursor-pointer list-none flex items-start justify-between gap-4">
-                  <span class="font-semibold text-foreground">{faq.question}</span>
-                  <span class="text-muted-foreground group-open:rotate-45 transition-transform">+</span>
+                  <span class="font-semibold text-foreground">
+                    {faq.question}
+                  </span>
+                  <span class="text-muted-foreground group-open:rotate-45 transition-transform">
+                    +
+                  </span>
                 </summary>
-                <p class="mt-3 text-muted-foreground leading-relaxed">{faq.answer}</p>
+                <p class="mt-3 text-muted-foreground leading-relaxed">
+                  {faq.answer}
+                </p>
               </details>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="contacto" class="scroll-mt-24 py-20 px-6 bg-primary text-primary-foreground">
+      <section
+        id="contacto"
+        class="scroll-mt-24 py-20 px-6 bg-primary text-primary-foreground"
+      >
         <div class="max-w-3xl mx-auto text-center">
           <h2 class="text-3xl md:text-4xl font-bold tracking-tight">
             ¿Tienes una idea o un proceso que te está frenando?
           </h2>
           <p class="mt-4 text-lg text-primary-foreground/80 leading-relaxed max-w-xl mx-auto">
-            Cuéntame qué necesitas. Te respondo en menos de 24 horas con claridad: si encaja, cómo lo enfocaría y cuál sería el primer paso.
+            Cuéntame qué necesitas. Te respondo en menos de 24 horas con
+            claridad: si encaja, cómo lo enfocaría y cuál sería el primer paso.
           </p>
 
           <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -477,10 +524,21 @@ const faqs = [
           <Logo />
         </a>
         <div class="flex flex-col sm:flex-row items-center gap-5 text-muted-foreground">
-          <a href="mailto:cristian@salteadorneo.dev" class="hover:text-primary transition-colors">cristian@salteadorneo.dev</a>
-          <a href="#problemas" class="hover:text-foreground transition-colors">Problemas</a>
-          <a href="#proceso" class="hover:text-foreground transition-colors">Proceso</a>
-          <a href="#contacto" class="hover:text-foreground transition-colors">Contacto</a>
+          <a
+            href="mailto:cristian@salteadorneo.dev"
+            class="hover:text-primary transition-colors"
+          >
+            cristian@salteadorneo.dev
+          </a>
+          <a href="#problemas" class="hover:text-foreground transition-colors">
+            Problemas
+          </a>
+          <a href="#proceso" class="hover:text-foreground transition-colors">
+            Proceso
+          </a>
+          <a href="#contacto" class="hover:text-foreground transition-colors">
+            Contacto
+          </a>
           <span>&#169; {currentYear}</span>
         </div>
       </div>

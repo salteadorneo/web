@@ -11,20 +11,23 @@ const groups = [
       {
         title: "Agendados",
         url: "https://agendados.es",
-        description: "Calendario centralizado de eventos de juegos de mesa, rol y miniaturas en España.",
+        description:
+          "Calendario centralizado de eventos de juegos de mesa, rol y miniaturas en España.",
         tags: ["Astro", "React", "Tailwind"],
         github: "https://github.com/salteadorneo/agendados",
       },
       {
         title: "Vinilos",
         url: "https://vinilos.salteadorneo.dev",
-        description: "Catálogo y colección de vinilos con información de artistas, álbumes y lanzamientos.",
+        description:
+          "Catálogo y colección de vinilos con información de artistas, álbumes y lanzamientos.",
         tags: ["Astro", "Tailwind"],
       },
       {
         title: "HN-ES",
         url: "https://salteadorneo.github.io/hn-es/",
-        description: "Periódico digital con las noticias de Hacker News en español, traducidas automáticamente.",
+        description:
+          "Periódico digital con las noticias de Hacker News en español, traducidas automáticamente.",
         tags: ["Astro", "Tailwind"],
         github: "https://github.com/salteadorneo/hn-es",
       },
@@ -50,14 +53,16 @@ const groups = [
       {
         title: "CSSX",
         url: "https://cssx.js.org",
-        description: "Compila CSS como lenguaje de programación. Define estructura HTML y estilos en archivos `.cssx`.",
+        description:
+          "Compila CSS como lenguaje de programación. Define estructura HTML y estilos en archivos `.cssx`.",
         tags: ["CSS", "Compiler", "PostCSS"],
         github: "https://github.com/salteadorneo/cssx",
       },
       {
         title: "Gantt",
         url: "https://gantt.salteadorneo.dev",
-        description: "Planifica y visualiza proyectos with diagramas de Gantt directamente en el navegador.",
+        description:
+          "Planifica y visualiza proyectos with diagramas de Gantt directamente en el navegador.",
         tags: ["JavaScript", "Vanilla JS"],
         github: "https://github.com/salteadorneo/gantt",
       },
@@ -71,21 +76,24 @@ const groups = [
       {
         title: "ZIP",
         url: "https://zip.salteadorneo.dev",
-        description: "Explora y descarga archivos ZIP directamente en el navegador sin descargar el archivo completo.",
+        description:
+          "Explora y descarga archivos ZIP directamente en el navegador sin descargar el archivo completo.",
         tags: ["JSZip", "JavaScript", "Vanilla JS"],
         github: "https://github.com/salteadorneo/zip",
       },
       {
         title: "Links",
         url: "https://link.salteadorneo.dev",
-        description: "Acortador de enlaces estático y sin base de datos, desplegable en GitHub Pages.",
+        description:
+          "Acortador de enlaces estático y sin base de datos, desplegable en GitHub Pages.",
         tags: ["Node.js", "GitHub Pages", "Link Shortener"],
         github: "https://github.com/salteadorneo/links",
       },
       {
         title: "Changes",
         url: "https://changes.salteadorneo.dev",
-        description: "Monitoreo de cambios en URLs con screenshots automáticos.",
+        description:
+          "Monitoreo de cambios en URLs con screenshots automáticos.",
         tags: ["Puppeteer", "Node.js"],
         github: "https://github.com/salteadorneo/changes",
       },
@@ -104,7 +112,8 @@ const groups = [
       {
         title: "Bulbs",
         url: "https://salteadorneodev.itch.io/bulbs",
-        description: "¿Puedes adivinar el orden de las bombillas en un intento?",
+        description:
+          "¿Puedes adivinar el orden de las bombillas en un intento?",
         tags: ["Preact", "Game"],
         github: "https://github.com/salteadorneo/bulbs",
       },
@@ -122,7 +131,8 @@ const groups = [
     projects: [
       {
         title: "Generator",
-        description: "Generador de datos aleatorios: DNI, NIE, CIF, matrículas.",
+        description:
+          "Generador de datos aleatorios: DNI, NIE, CIF, matrículas.",
         tags: ["API REST", "NPM Package"],
         github: "https://github.com/salteadorneo/generator",
       },
@@ -168,10 +178,14 @@ const groups = [
     <section class="max-w-6xl mx-auto px-6 pb-20 space-y-16 border-t border-border pt-10">
       {groups.map((group) => (
         <div>
-          <h2 class={`text-xl font-semibold mb-6 ${group.archived ? "text-muted-foreground" : "text-foreground"}`}>
+          <h2
+            class={`text-xl font-semibold mb-6 ${group.archived ? "text-muted-foreground" : "text-foreground"}`}
+          >
             {group.label}
           </h2>
-          <div class={`grid gap-6 grid-cols-1 md:grid-cols-2 ${group.archived ? "opacity-40" : ""}`}>
+          <div
+            class={`grid gap-6 grid-cols-1 md:grid-cols-2 ${group.archived ? "opacity-40" : ""}`}
+          >
             {group.projects.map((project) => (
               <Card
                 eyebrow={project.tags?.join(", ")}

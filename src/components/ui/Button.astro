@@ -30,14 +30,12 @@ const variantClass = {
 const finalClass = `${baseClass} ${variantClass} ${className}`.trim();
 ---
 
-{
-  href ? (
-    <a href={href} class={finalClass} target={target} rel={rel}>
-      <slot />
-    </a>
-  ) : (
-    <button type={type} class={finalClass}>
-      <slot />
-    </button>
-  )
-}
+{href ? (
+  <a href={href} class={finalClass} target={target} rel={rel}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={finalClass}>
+    <slot />
+  </button>
+)}
