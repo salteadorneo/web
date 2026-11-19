@@ -44,7 +44,6 @@ const date = `${published.getUTCDate()} ${months[published.getUTCMonth()]} ${pub
   <Shortcuts />
   <main>
     <section class="px-6 w-full max-w-4xl mx-auto pb-16 border-t border-border pt-6">
-
       <article class="border border-border bg-card">
         <div class="flex items-center justify-between gap-4 border-b border-border bg-secondary/50 px-4 py-2 text-xs text-muted-foreground">
           <span class="truncate">
@@ -56,12 +55,14 @@ const date = `${published.getUTCDate()} ${months[published.getUTCMonth()]} ${pub
         </div>
         <div class="p-8 sm:p-12 space-y-10">
           <div class="flex flex-wrap sm:flex-nowrap gap-8">
-            <img
-              src={entry.data.image}
-              alt={entry.data.title}
-              class="h-28 w-28 sm:h-36 sm:w-36 aspect-square border border-border object-cover"
-              style={`view-transition-name: image-${entry.id}`}
-            />
+            {entry.data.image && (
+              <img
+                src={entry.data.image}
+                alt={entry.data.title}
+                class="h-28 w-28 sm:h-36 sm:w-36 aspect-square border border-border object-cover"
+                style={`view-transition-name: image-${entry.id}`}
+              />
+            )}
             <div class="space-y-4 min-w-0">
               <h1
                 class="text-3xl md:text-5xl font-bold text-foreground"
