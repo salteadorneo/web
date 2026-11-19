@@ -1,0 +1,82 @@
+---
+import Layout from "./Layout.astro";
+import Header from "@components/Header.astro";
+
+const groups = [
+  {
+    name: "Generadores",
+    items: [
+      ["/tool/pass", "Contraseñas"],
+      ["/tool/lipsum", "Lorem Ipsum"],
+      ["/tool/uuid", "UUID"],
+      ["/tool/random", "Aleatorios"],
+    ],
+  },
+  {
+    name: "Texto",
+    items: [
+      ["/tool/base64", "Base64"],
+      ["/tool/url", "URL"],
+      ["/tool/slug", "Slug"],
+      ["/tool/case", "Mayúsculas"],
+      ["/tool/markdown", "Markdown"],
+    ],
+  },
+  {
+    name: "Datos",
+    items: [
+      ["/tool/json", "JSON"],
+      ["/tool/hash", "Hash"],
+      ["/tool/color", "Color"],
+      ["/tool/timestamp", "Timestamp"],
+      ["/tool/jwt", "JWT"],
+    ],
+  },
+  {
+    name: "Desarrollo",
+    items: [
+      ["/tool/regex", "Regex"],
+      ["/tool/diff", "Diff"],
+      ["/tool/cron", "Cron"],
+    ],
+  },
+];
+
+const { title, description } = Astro.props;
+---
+
+<Layout title={title} description={description}>
+  <Header />
+  <nav class="bg-card border-b border-border overflow-x-auto px-4 py-2">
+    <div class="max-w-6xl mx-auto flex gap-2">
+      {groups.map((g) => (
+        <div class="flex items-center gap-1">
+          <span class="text-xs uppercase tracking-widest text-muted-foreground px-2">
+            {g.name}
+          </span>
+          {g.items.map(([href, label]) => (
+            <a
+              href={href}
+              class="px-3 py-1.5 rounded-lg hover:bg-secondary text-foreground text-sm transition-colors whitespace-nowrap"
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+      ))}
+    </div>
+  </nav>
+  <slot />
+  <script is:inline>
+    const path = window.location.pathname.replace(/\/$/, "");
+    const nav = document.querySelector("nav.bg-card.border-b");
+    const links = nav ? nav.querySelectorAll("a") : [];
+    links.forEach((a) => {
+      const href = a.getAttribute("href");
+      if (href && href.replace(/\/$/, "") === path) {
+        a.classList.add("bg-secondary");
+        a.scrollIntoView({ inline: "center", block: "nearest" });
+      }
+    });
+  </script>
+</Layout>

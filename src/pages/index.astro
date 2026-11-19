@@ -9,11 +9,49 @@ const posts = await getCollection("blog");
 posts.sort(
   (a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime(),
 );
+const latest = posts.slice(0, 3);
+
+const tools = [
+  ["/tool/json", "JSON"],
+  ["/tool/hash", "Hash"],
+  ["/tool/regex", "Regex"],
+  ["/tool/uuid", "UUID"],
+  ["/tool/pass", "Contraseñas"],
+  ["/tool/timestamp", "Timestamp"],
+];
 ---
 
 <Layout>
   <Header />
   <main>
+    <section class="pt-10 pb-4 px-6 max-w-6xl mx-auto">
+      <p class="font-medium text-sm text-muted-foreground mb-3 flex items-center gap-2">
+        <span class="text-primary">❯</span> herramientas
+      </p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+        Tools
+      </h2>
+    </section>
+    <section class="w-full max-w-6xl mx-auto px-6 pb-10 border-t border-border">
+      <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 mt-6">
+        {tools.map(([href, label]) => (
+          <li>
+            <a
+              href={href}
+              class="block border border-border bg-card px-4 py-3 text-sm text-foreground hover:border-primary/60 transition-colors text-center"
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-4 text-sm text-muted-foreground">
+        <a href="/tools" class="text-primary hover:underline">
+          Ver todas las herramientas →
+        </a>
+      </p>
+    </section>
+
     <section class="pt-10 pb-4 px-6 max-w-6xl mx-auto">
       <p class="font-medium text-sm text-muted-foreground mb-3 flex items-center gap-2">
         <span class="text-primary">❯</span> blog
@@ -23,7 +61,14 @@ posts.sort(
       </h2>
     </section>
     <section class="w-full max-w-6xl mx-auto px-6 pb-16 border-t border-border">
-      {posts.map((post) => <Article post={post} />)}
+      {latest.map((post) => (
+        <Article post={post} />
+      ))}
+      <p class="mt-6 text-sm text-muted-foreground">
+        <a href="/blog" class="text-primary hover:underline">
+          Ver todas las entradas →
+        </a>
+      </p>
     </section>
   </main>
   <Footer />

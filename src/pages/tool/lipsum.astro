@@ -1,11 +1,13 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
 ---
 
-<Layout title="Lorem Ipsum" description="Lorem Ipsum en el navegador">
+<ToolsLayout title="Lorem Ipsum" description="Lorem Ipsum en el navegador">
   <main class="min-h-screen flex items-center justify-center px-4 py-8">
     <div class="w-full max-w-2xl bg-card border border-border rounded-xl p-6 shadow-sm">
-      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">Generador Lorem Ipsum</h1>
+      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">
+        Generador Lorem Ipsum
+      </h1>
 
       <textarea
         id="output"
@@ -15,37 +17,135 @@ import Layout from "@/layouts/Layout.astro";
       ></textarea>
 
       <div class="flex flex-wrap items-center gap-2 mb-6">
-        <button id="copy" type="button" class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors">Copiar</button>
-        <button id="regenerate" type="button" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">Regenerar</button>
+        <button
+          id="copy"
+          type="button"
+          class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors"
+        >
+          Copiar
+        </button>
+        <button
+          id="regenerate"
+          type="button"
+          class="px-3 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
+        >
+          Regenerar
+        </button>
       </div>
 
       <div class="space-y-4">
         <div>
-          <label for="paragraphs" class="flex items-center justify-between text-sm text-foreground mb-1">
+          <label
+            for="paragraphs"
+            class="flex items-center justify-between text-sm text-foreground mb-1"
+          >
             <span>Párrafos</span>
-            <span id="paragraphsValue" class="text-muted-foreground">1</span>
+            <span id="paragraphsValue" class="text-muted-foreground">
+              1
+            </span>
           </label>
-          <input id="paragraphs" type="range" min="1" max="10" value="1" class="w-full" />
+          <input
+            id="paragraphs"
+            type="range"
+            min="1"
+            max="10"
+            value="1"
+            class="w-full"
+          />
         </div>
 
         <div class="flex items-center gap-2">
-          <button id="minus" type="button" class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors">− Reducir</button>
-          <button id="plus" type="button" class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors">+ Ampliar</button>
+          <button
+            id="minus"
+            type="button"
+            class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors"
+          >
+            − Reducir
+          </button>
+          <button
+            id="plus"
+            type="button"
+            class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors"
+          >
+            + Ampliar
+          </button>
         </div>
       </div>
     </div>
   </main>
-</Layout>
+</ToolsLayout>
 
 <script is:inline>
   const WORDS = [
-    "lorem","ipsum","dolor","sit","amet","consectetur","adipiscing","elit","sed","do",
-    "eiusmod","tempor","incididunt","ut","labore","et","dolore","magna","aliqua","ut",
-    "enim","ad","minim","veniam","quis","nostrud","exercitation","ullamco","laboris",
-    "nisi","ut","aliquip","ex","ea","commodo","consequat","duis","aute","irure","dolor",
-    "in","reprehenderit","in","voluptate","velit","esse","cillum","dolore","eu","fugiat",
-    "nulla","pariatur","excepteur","sint","occaecat","cupidatat","non","proident","sunt",
-    "in","culpa","qui","officia","deserunt","mollit","anim","id","est","laborum"
+    "lorem",
+    "ipsum",
+    "dolor",
+    "sit",
+    "amet",
+    "consectetur",
+    "adipiscing",
+    "elit",
+    "sed",
+    "do",
+    "eiusmod",
+    "tempor",
+    "incididunt",
+    "ut",
+    "labore",
+    "et",
+    "dolore",
+    "magna",
+    "aliqua",
+    "ut",
+    "enim",
+    "ad",
+    "minim",
+    "veniam",
+    "quis",
+    "nostrud",
+    "exercitation",
+    "ullamco",
+    "laboris",
+    "nisi",
+    "ut",
+    "aliquip",
+    "ex",
+    "ea",
+    "commodo",
+    "consequat",
+    "duis",
+    "aute",
+    "irure",
+    "dolor",
+    "in",
+    "reprehenderit",
+    "in",
+    "voluptate",
+    "velit",
+    "esse",
+    "cillum",
+    "dolore",
+    "eu",
+    "fugiat",
+    "nulla",
+    "pariatur",
+    "excepteur",
+    "sint",
+    "occaecat",
+    "cupidatat",
+    "non",
+    "proident",
+    "sunt",
+    "in",
+    "culpa",
+    "qui",
+    "officia",
+    "deserunt",
+    "mollit",
+    "anim",
+    "id",
+    "est",
+    "laborum",
   ];
 
   const outputEl = document.getElementById("output");
@@ -86,8 +186,14 @@ import Layout from "@/layouts/Layout.astro";
     paragraphsValueEl.textContent = paragraphsEl.value;
   }
 
-  paragraphsEl.addEventListener("input", () => { updateValue(); generate(); });
-  paragraphsEl.addEventListener("change", () => { updateValue(); generate(); });
+  paragraphsEl.addEventListener("input", () => {
+    updateValue();
+    generate();
+  });
+  paragraphsEl.addEventListener("change", () => {
+    updateValue();
+    generate();
+  });
 
   plusEl.addEventListener("click", () => {
     const v = Math.min(10, parseInt(paragraphsEl.value, 10) + 1);

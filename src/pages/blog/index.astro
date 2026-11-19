@@ -1,0 +1,32 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Article from "@components/Article.astro";
+
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog");
+posts.sort(
+  (a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime(),
+);
+---
+
+<Layout title="Blog" description="Todas las entradas del blog">
+  <Header />
+  <main>
+    <section class="pt-10 pb-4 px-6 max-w-6xl mx-auto">
+      <p class="font-medium text-sm text-muted-foreground mb-3 flex items-center gap-2">
+        <span class="text-primary">❯</span> blog
+      </p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+        Todas las entradas
+      </h2>
+    </section>
+    <section class="w-full max-w-6xl mx-auto px-6 pb-16 border-t border-border">
+      {posts.map((post) => (
+        <Article post={post} />
+      ))}
+    </section>
+  </main>
+  <Footer />
+</Layout>

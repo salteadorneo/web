@@ -1,0 +1,58 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="Diff">
+  <main class="min-h-screen flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-2xl bg-card border border-border rounded-xl p-6">
+      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">
+        Diff de textos
+      </h1>
+      <div class="grid grid-cols-2 gap-2 mb-3">
+        <textarea
+          id="a"
+          rows="6"
+          class="px-3 py-2 bg-background border border-border rounded-lg text-foreground"
+          placeholder="Texto A"
+        ></textarea>
+        <textarea
+          id="b"
+          rows="6"
+          class="px-3 py-2 bg-background border border-border rounded-lg text-foreground"
+          placeholder="Texto B"
+        ></textarea>
+      </div>
+      <button
+        id="run"
+        class="px-3 py-2 bg-primary text-primary-foreground rounded-lg mb-3"
+      >
+        Comparar
+      </button>
+      <pre
+        id="out"
+        class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono text-sm whitespace-pre-wrap"
+      ></pre>
+    </div>
+  </main>
+  <script is:inline>
+    const a = document.getElementById("a"),
+      b = document.getElementById("b"),
+      out = document.getElementById("out");
+    document.getElementById("run").onclick = () => {
+      const la = a.value.split("\n"),
+        lb = b.value.split("\n");
+      const res = [];
+      const max = Math.max(la.length, lb.length);
+      for (let i = 0; i < max; i++) {
+        const x = la[i] ?? "",
+          y = lb[i] ?? "";
+        if (x === y) res.push("  " + x);
+        else {
+          if (x) res.push("- " + x);
+          if (y) res.push("+ " + y);
+        }
+      }
+      out.textContent = res.join("\n");
+    };
+  </script>
+</ToolsLayout>

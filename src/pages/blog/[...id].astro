@@ -16,7 +16,20 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
-const months = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const months = [
+  "ene",
+  "feb",
+  "mar",
+  "abr",
+  "may",
+  "jun",
+  "jul",
+  "ago",
+  "sep",
+  "oct",
+  "nov",
+  "dic",
+];
 const published = entry.data.publishedDate;
 const date = `${published.getUTCDate()} ${months[published.getUTCMonth()]} ${published.getUTCFullYear()}`;
 ---
@@ -30,99 +43,105 @@ const date = `${published.getUTCDate()} ${months[published.getUTCMonth()]} ${pub
   <main>
     <section class="px-6 w-full max-w-6xl mx-auto pb-16 border-t border-border pt-6">
       <article class="border border-border bg-card">
-      <div class="flex items-center justify-between gap-4 border-b border-border bg-secondary/50 px-4 py-2 text-xs text-muted-foreground">
-        <span class="truncate"><span class="text-primary">❯</span> cat ~/blog/{entry.id}.md</span>
-        <time datetime={published.toISOString()} class="hidden sm:inline">{date}</time>
-      </div>
-      <div class="p-8 sm:p-12 space-y-10">
-      <div class="flex flex-wrap sm:flex-nowrap gap-8">
-        <img
-          src={entry.data.image}
-          alt={entry.data.title}
-          class="h-28 w-28 sm:h-36 sm:w-36 aspect-square border border-border object-cover"
-          style={`view-transition-name: image-${entry.id}`}
-        />
-        <div class="space-y-4 min-w-0">
-          <h1
-            class="text-3xl md:text-5xl font-bold text-foreground"
-            style={`view-transition-name: title-${entry.id}`}
-          >
-            {entry.data.title}
-          </h1>
-          <p
-            class="flex flex-wrap items-center gap-2"
-            style={`view-transition-name: tags-${entry.id}`}
-          >
-            {entry.data.tags.map((tag: string) => <Tag tag={tag} />)}
-          </p>
+        <div class="flex items-center justify-between gap-4 border-b border-border bg-secondary/50 px-4 py-2 text-xs text-muted-foreground">
+          <span class="truncate">
+            <span class="text-primary">❯</span> cat ~/blog/{entry.id}.md
+          </span>
+          <time datetime={published.toISOString()} class="hidden sm:inline">
+            {date}
+          </time>
         </div>
-      </div>
-      <div class="markdown-content space-y-6">
-        <Content />
-      </div>
-      <section class="border border-border bg-secondary/35 flex items-center justify-center py-4">
-        <div class="flex items-center gap-4">
-          <span class="text-base text-muted-foreground">Comparte</span>
-          <button
-            onclick={`navigator.share({ url: '${Astro.request.url}' })`}
-            class="text-muted-foreground hover:text-primary transition-colors duration-300"
-          >
-            <svg
-              width={24}
-              height={24}
-              viewBox="0 0 36 36"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-            >
-              <path
-                d="M27.53 24a5 5 0 0 0-3.6 1.55l-12.19-6.1a4.47 4.47 0 0 0 0-2.8l12.21-6.21a5.12 5.12 0 1 0-1.07-1.7l-12.09 6.15a5 5 0 1 0 0 6.33l12.06 6.07a4.93 4.93 0 0 0-.31 1.71 5 5 0 1 0 5-5Z"
-              ></path>
-              <path fill="none" d="M0 0h36v36H0z"></path>
-            </svg>
-          </button>
-          <a
-            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-              Astro.request.url,
-            )}`}
-            target="_blank"
-            class="text-muted-foreground hover:text-primary transition-colors duration-300"
-            title="Compartir en LinkedIn"
-          >
-            <svg
-              class="inline-block w-8 h-8"
-              viewBox="0 0 20 20"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              ><path
-                d="M15.8338 2.5C16.2758 2.5 16.6998 2.67559 17.0123 2.98816C17.3249 3.30072 17.5005 3.72464 17.5005 4.16667V15.8333C17.5005 16.2754 17.3249 16.6993 17.0123 17.0118C16.6998 17.3244 16.2758 17.5 15.8338 17.5H4.16715C3.72513 17.5 3.3012 17.3244 2.98864 17.0118C2.67608 16.6993 2.50049 16.2754 2.50049 15.8333V4.16667C2.50049 3.72464 2.67608 3.30072 2.98864 2.98816C3.3012 2.67559 3.72513 2.5 4.16715 2.5H15.8338ZM15.4172 15.4167V11C15.4172 10.2795 15.1309 9.5885 14.6215 9.07903C14.112 8.56955 13.421 8.28333 12.7005 8.28333C11.9922 8.28333 11.1672 8.71667 10.7672 9.36667V8.44167H8.44215V15.4167H10.7672V11.3083C10.7672 10.6667 11.2838 10.1417 11.9255 10.1417C12.2349 10.1417 12.5317 10.2646 12.7504 10.4834C12.9692 10.7022 13.0922 10.9989 13.0922 11.3083V15.4167H15.4172ZM5.73382 7.13333C6.10512 7.13333 6.46122 6.98583 6.72377 6.72328C6.98632 6.46073 7.13382 6.10464 7.13382 5.73333C7.13382 4.95833 6.50882 4.325 5.73382 4.325C5.36031 4.325 5.00209 4.47338 4.73798 4.73749C4.47387 5.0016 4.32549 5.35982 4.32549 5.73333C4.32549 6.50833 4.95882 7.13333 5.73382 7.13333ZM6.89216 15.4167V8.44167H4.58382V15.4167H6.89216Z"
-                fill="currentColor"></path></svg
-            >
-          </a><a
-            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
-              Astro.request.url,
-            )}&text=${encodeURIComponent(
-              entry.data.title,
-            )}&hashtags=${encodeURIComponent(entry.data.tags.join(","))}`}
-            target="_blank"
-            class="text-muted-foreground hover:text-primary transition-colors duration-300"
-            title="Compartir en Twitter"
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              fill="currentColor"
-              ><g
-                ><path
-                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                ></path></g
+        <div class="p-8 sm:p-12 space-y-10">
+          <div class="flex flex-wrap sm:flex-nowrap gap-8">
+            <img
+              src={entry.data.image}
+              alt={entry.data.title}
+              class="h-28 w-28 sm:h-36 sm:w-36 aspect-square border border-border object-cover"
+              style={`view-transition-name: image-${entry.id}`}
+            />
+            <div class="space-y-4 min-w-0">
+              <h1
+                class="text-3xl md:text-5xl font-bold text-foreground"
+                style={`view-transition-name: title-${entry.id}`}
               >
-            </svg>
-          </a>
+                {entry.data.title}
+              </h1>
+              <p
+                class="flex flex-wrap items-center gap-2"
+                style={`view-transition-name: tags-${entry.id}`}
+              >
+                {entry.data.tags.map((tag: string) => (
+                  <Tag tag={tag} />
+                ))}
+              </p>
+            </div>
+          </div>
+          <div class="markdown-content space-y-6">
+            <Content />
+          </div>
+          <section class="border border-border bg-secondary/35 flex items-center justify-center py-4">
+            <div class="flex items-center gap-4">
+              <span class="text-base text-muted-foreground">Comparte</span>
+              <button
+                onclick={`navigator.share({ url: '${Astro.request.url}' })`}
+                class="text-muted-foreground hover:text-primary transition-colors duration-300"
+              >
+                <svg
+                  width={24}
+                  height={24}
+                  viewBox="0 0 36 36"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                >
+                  <path d="M27.53 24a5 5 0 0 0-3.6 1.55l-12.19-6.1a4.47 4.47 0 0 0 0-2.8l12.21-6.21a5.12 5.12 0 1 0-1.07-1.7l-12.09 6.15a5 5 0 1 0 0 6.33l12.06 6.07a4.93 4.93 0 0 0-.31 1.71 5 5 0 1 0 5-5Z"></path>
+                  <path fill="none" d="M0 0h36v36H0z"></path>
+                </svg>
+              </button>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+                  Astro.request.url,
+                )}`}
+                target="_blank"
+                class="text-muted-foreground hover:text-primary transition-colors duration-300"
+                title="Compartir en LinkedIn"
+              >
+                <svg
+                  class="inline-block w-8 h-8"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.8338 2.5C16.2758 2.5 16.6998 2.67559 17.0123 2.98816C17.3249 3.30072 17.5005 3.72464 17.5005 4.16667V15.8333C17.5005 16.2754 17.3249 16.6993 17.0123 17.0118C16.6998 17.3244 16.2758 17.5 15.8338 17.5H4.16715C3.72513 17.5 3.3012 17.3244 2.98864 17.0118C2.67608 16.6993 2.50049 16.2754 2.50049 15.8333V4.16667C2.50049 3.72464 2.67608 3.30072 2.98864 2.98816C3.3012 2.67559 3.72513 2.5 4.16715 2.5H15.8338ZM15.4172 15.4167V11C15.4172 10.2795 15.1309 9.5885 14.6215 9.07903C14.112 8.56955 13.421 8.28333 12.7005 8.28333C11.9922 8.28333 11.1672 8.71667 10.7672 9.36667V8.44167H8.44215V15.4167H10.7672V11.3083C10.7672 10.6667 11.2838 10.1417 11.9255 10.1417C12.2349 10.1417 12.5317 10.2646 12.7504 10.4834C12.9692 10.7022 13.0922 10.9989 13.0922 11.3083V15.4167H15.4172ZM5.73382 7.13333C6.10512 7.13333 6.46122 6.98583 6.72377 6.72328C6.98632 6.46073 7.13382 6.10464 7.13382 5.73333C7.13382 4.95833 6.50882 4.325 5.73382 4.325C5.36031 4.325 5.00209 4.47338 4.73798 4.73749C4.47387 5.0016 4.32549 5.35982 4.32549 5.73333C4.32549 6.50833 4.95882 7.13333 5.73382 7.13333ZM6.89216 15.4167V8.44167H4.58382V15.4167H6.89216Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </a>
+              <a
+                href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+                  Astro.request.url,
+                )}&text=${encodeURIComponent(
+                  entry.data.title,
+                )}&hashtags=${encodeURIComponent(entry.data.tags.join(","))}`}
+                target="_blank"
+                class="text-muted-foreground hover:text-primary transition-colors duration-300"
+                title="Compartir en Twitter"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  fill="currentColor"
+                >
+                  <g>
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                  </g>
+                </svg>
+              </a>
+            </div>
+          </section>
         </div>
-      </section>
-      </div>
       </article>
     </section>
   </main>

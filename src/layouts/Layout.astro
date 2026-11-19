@@ -42,7 +42,11 @@ import "@/styles/global.css";
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={`${Astro.site}${ogimage}`} />
 
-    <script async is:inline src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+    <script
+      async
+      is:inline
+      src="https://scripts.simpleanalyticscdn.com/latest.js"
+    ></script>
     <script async defer src="https://a.salteadorneo.dev/a.js"></script>
 
     <ClientRouter />
@@ -50,17 +54,33 @@ import "@/styles/global.css";
   <body>
     <slot />
     <script is:inline>
-      document.addEventListener('keydown', (e) => {
+      document.addEventListener("keydown", (e) => {
         const t = e.target;
-        if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable)) return;
+        if (
+          t &&
+          (t.tagName === "INPUT" ||
+            t.tagName === "TEXTAREA" ||
+            t.isContentEditable)
+        )
+          return;
         if (e.metaKey || e.ctrlKey || e.altKey) return;
-        if (e.key === '.') { window.open('https://github.com/salteadorneo/web', '_blank'); }
-        else if (e.key === 'c') { window.location.href = '/console'; }
-        else if (e.key === 'h') { window.location.href = '/'; }
-        else if (e.key === 't') { window.location.href = '/tools'; }
-        else if (e.key === 'b') { window.location.href = '/blog' || '/'; }
-        else if (e.key === 'p') { window.location.href = '/proyectos'; }
-        else if (e.key === '?') { alert('Atajos: . github · c console · h home · t tools · b blog · p proyectos'); }
+        if (e.key === ".") {
+          window.open("https://github.com/salteadorneo/web", "_blank");
+        } else if (e.key === "c") {
+          window.location.href = "/console";
+        } else if (e.key === "h") {
+          window.location.href = "/";
+        } else if (e.key === "t") {
+          window.location.href = "/tools";
+        } else if (e.key === "b") {
+          window.location.href = "/blog" || "/";
+        } else if (e.key === "p") {
+          window.location.href = "/proyectos";
+        } else if (e.key === "?") {
+          alert(
+            "Atajos: . github · c console · h home · t tools · b blog · p proyectos",
+          );
+        }
       });
     </script>
   </body>

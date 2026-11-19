@@ -40,7 +40,9 @@ posts.sort(
       </h2>
     </section>
     <section class="w-full max-w-6xl mx-auto px-6 pb-16 border-t border-border">
-      {posts.map((post) => <Article post={post} />)}
+      {posts.map((post) => (
+        <Article post={post} />
+      ))}
     </section>
   </main>
   <Footer />

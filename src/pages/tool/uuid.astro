@@ -1,0 +1,57 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="UUID">
+  <main class="min-h-screen flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-md bg-card border border-border rounded-xl p-6">
+      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">
+        UUID v4
+      </h1>
+      <textarea
+        id="out"
+        readonly
+        rows="6"
+        class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono text-sm mb-4"
+      ></textarea>
+      <div class="flex gap-2 mb-4">
+        <input
+          id="count"
+          type="number"
+          min="1"
+          max="50"
+          value="5"
+          class="w-20 px-2 py-2 bg-background border border-border rounded-lg text-foreground"
+        />
+        <button
+          id="gen"
+          class="px-3 py-2 bg-primary text-primary-foreground rounded-lg"
+        >
+          Generar
+        </button>
+        <button
+          id="copy"
+          class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg"
+        >
+          Copiar
+        </button>
+      </div>
+    </div>
+  </main>
+  <script is:inline>
+    function uuid() {
+      return crypto.randomUUID();
+    }
+    const out = document.getElementById("out"),
+      count = document.getElementById("count");
+    function gen() {
+      const n = Math.min(50, Math.max(1, +count.value || 1));
+      out.value = Array.from({ length: n }, uuid).join("\n");
+    }
+    document.getElementById("gen").onclick = gen;
+    document.getElementById("copy").onclick = async () => {
+      await navigator.clipboard.writeText(out.value);
+    };
+    gen();
+  </script>
+</ToolsLayout>

@@ -1,0 +1,58 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="JSON">
+  <main class="min-h-screen flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-2xl bg-card border border-border rounded-xl p-6">
+      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">
+        JSON formatear
+      </h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        <textarea
+          id="in"
+          rows="12"
+          class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground"
+        ></textarea>
+        <textarea
+          id="out"
+          readonly
+          rows="12"
+          class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono text-sm"
+        ></textarea>
+      </div>
+      <div class="flex justify-center gap-2 mt-3">
+        <button
+          id="fmt"
+          class="px-3 py-2 bg-primary text-primary-foreground rounded-lg"
+        >
+          Formatear
+        </button>
+        <button
+          id="min"
+          class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg"
+        >
+          Minificar
+        </button>
+      </div>
+      <p id="err" class="text-red-500 text-sm mt-2 text-center"></p>
+    </div>
+  </main>
+  <script is:inline>
+    const i = document.getElementById("in"),
+      o = document.getElementById("out"),
+      e = document.getElementById("err");
+    function run(space) {
+      try {
+        const j = JSON.parse(i.value);
+        o.value = JSON.stringify(j, null, space);
+        e.textContent = "";
+      } catch (err) {
+        o.value = "";
+        e.textContent = err.message;
+      }
+    }
+    document.getElementById("fmt").onclick = () => run(2);
+    document.getElementById("min").onclick = () => run(0);
+  </script>
+</ToolsLayout>

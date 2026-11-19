@@ -1,0 +1,376 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog"))
+  .map((p) => ({
+    slug: p.id,
+    title: p.data.title,
+    body: p.body ?? "",
+    url: `/blog/${p.id}`,
+    date: p.data.publishedDate?.toISOString?.() ?? "",
+  }))
+  .sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+---
+
+<ToolsLayout description="Terminal secreta" noindex>
+  <main class="fixed inset-0 bg-[#1a1b26] text-[#c0caf5] font-mono text-sm flex flex-col">
+    <div
+      id="term"
+      contenteditable="true"
+      spellcheck="false"
+      autocomplete="off"
+      class="flex-1 overflow-y-auto px-4 py-3 whitespace-pre-wrap outline-none caret-green-400"
+      autofocus
+    ></div>
+  </main>
+
+  <script is:inline define:vars={{ posts }}>
+    const term = document.getElementById("term");
+
+    let cwd = "~";
+    let history = [];
+    let hIndex = -1;
+    let promptStr = "salteadorneo@web:~$ ";
+
+    const CONTACT = {
+      email: "cristian@salteadorneo.dev",
+      github: "https://github.com/salteadorneo",
+      linkedin: "https://www.linkedin.com/in/salteadorneo",
+      twitter: "https://twitter.com/salteadorneo",
+      web: "https://salteadorneo.dev",
+    };
+
+    const QUOTES = [
+      "El mejor código es el que no tienes que escribir.",
+      "Primero hazlo funcionar, luego hazlo bonito, luego hazlo rápido.",
+      "Los bugs son solo features no documentadas.",
+      "sudo rm -rf /problems",
+    ];
+
+    function caretToEnd() {
+      const range = document.createRange();
+      range.selectNodeContents(term);
+      range.collapse(false);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+
+    function print(text = "") {
+      term.textContent += text + "\n";
+      term.scrollTop = term.scrollHeight;
+      caretToEnd();
+    }
+
+    function prompt() {
+      promptStr = `salteadorneo@web:${cwd}$ `;
+      term.textContent += promptStr;
+      term.scrollTop = term.scrollHeight;
+      caretToEnd();
+    }
+
+    function clear() {
+      term.textContent = "";
+    }
+
+    const commands = {
+      help: () => {
+        print("Comandos disponibles:");
+        print("  help            Muestra esta ayuda");
+        print("  about           Sobre mí");
+        print("  contact         Información de contacto");
+        print("  ls [dir]        Lista posts (blog) o archivos");
+        print("  cat <slug>      Muestra un post (.md)");
+        print("  cd <dir>        Cambia de directorio (/, ~, blog)");
+        print("  pwd             Directorio actual");
+        print("  open <slug|url> Abre un post o URL");
+        print("  search <term>   Busca en los posts");
+        print("  stats           Estadísticas del blog");
+        print("  neofetch        Info del sistema");
+        print("  fortune         Frase aleatoria");
+        print("  tree            Estructura del sitio");
+        print("  whoami          Quién soy");
+        print("  date            Fecha actual");
+        print("  echo <texto>    Imprime texto");
+        print("  clear           Limpia la terminal");
+        print("  history         Historial de comandos");
+        print("  exit            Vuelve al inicio");
+        print("");
+        print("Easter eggs: sudo hire me | matrix | cowsay <msg> | rm -rf /");
+      },
+      about: () => {
+        print(
+          "Cristian Adán — Full stack developer con +15 años de experiencia.",
+        );
+        print("Blog sobre desarrollo web, IA, CSS, JS y más.");
+        print("Sitio: https://salteadorneo.dev");
+      },
+      contact: () => {
+        print("📧 Email:    " + CONTACT.email);
+        print("🐙 GitHub:   " + CONTACT.github);
+        print("💼 LinkedIn: " + CONTACT.linkedin);
+        print("🐦 Twitter:  " + CONTACT.twitter);
+        print("🌐 Web:      " + CONTACT.web);
+      },
+      whoami: () => print("visitante (pero bienvenido)"),
+      date: () => print(new Date().toString()),
+      pwd: () =>
+        print(
+          "/home/salteadorneo" +
+            (cwd === "~" ? "" : "/" + cwd.replace(/^~\//, "")),
+        ),
+      clear,
+      history: () => history.forEach((c, i) => print(`  ${i + 1}  ${c}`)),
+      echo: (args) => print(args.join(" ")),
+      fortune: () => print(QUOTES[Math.floor(Math.random() * QUOTES.length)]),
+      neofetch: () => {
+        print("        .--.        salteadorneo@web");
+        print("       |o_o |       ----------------");
+        print("       |:_/ |       OS: salteadorneo.dev (Astro)");
+        print("      //   \\ \\      Host: browser");
+        print("     (|     | )     Kernel: JavaScript");
+        print("    /'\\_   _/`\\     Shell: console (easter egg)");
+        print("    \\___)=(___/     Posts: " + posts.length);
+        print(
+          "                    Uptime: " +
+            Math.floor(performance.now() / 1000) +
+            "s",
+        );
+      },
+      ls: (args) => {
+        const dir = args[0] || cwd;
+        if (dir === "blog" || dir === "~/blog" || dir === "posts") {
+          posts.forEach((p) => print(p.slug + ".md   " + p.title));
+          return;
+        }
+        if (dir === "/" || dir === "~" || !dir) {
+          print("blog/   tools/   about.txt   contact.txt   secret.txt");
+          return;
+        }
+        print("ls: no se puede acceder a " + dir + ": No existe el directorio");
+      },
+      cd: (args) => {
+        const d = args[0] || "~";
+        if (d === "~" || d === "/" || d === "home") {
+          cwd = "~";
+        } else if (d === "blog" || d === "~/blog") {
+          cwd = "~/blog";
+        } else if (d === "..") {
+          cwd = "~";
+        } else {
+          print("cd: " + d + ": No existe el directorio");
+          return;
+        }
+        promptStr = `salteadorneo@web:${cwd}$ `;
+      },
+      cat: (args) => {
+        const name = (args[0] || "").replace(/\.md$/, "");
+        if (!name) {
+          print("cat: falta operando");
+          return;
+        }
+        const p = posts.find((x) => x.slug === name);
+        if (!p) {
+          // archivos virtuales
+          const virtual = {
+            "about.txt": "Cristian Adán. Full stack dev. +15 años.",
+            "contact.txt": Object.entries(CONTACT)
+              .map(([k, v]) => k + ": " + v)
+              .join("\n"),
+            "secret.txt":
+              "Has encontrado el easter egg 🎉\nPrueba: sudo hire me",
+          };
+          if (virtual[name + ".txt"] || virtual[name]) {
+            print(virtual[name] || virtual[name + ".txt"]);
+            return;
+          }
+          print("cat: " + name + ": No existe el archivo");
+          return;
+        }
+        print("--- " + p.title + " ---");
+        print(p.body.slice(0, 2000));
+        if (p.body.length > 2000)
+          print("\n... (truncado) ver completo en " + p.url);
+      },
+      open: (args) => {
+        const name = (args[0] || "").replace(/\.md$/, "");
+        const p = posts.find((x) => x.slug === name);
+        if (p) {
+          window.location.href = p.url;
+          return;
+        }
+        if (/^https?:\/\//.test(args[0])) {
+          window.open(args[0], "_blank");
+          return;
+        }
+        print("open: no encontrado " + args[0]);
+      },
+      search: (args) => {
+        const q = args.join(" ").toLowerCase();
+        if (!q) {
+          print("search: falta término");
+          return;
+        }
+        const res = posts.filter((p) =>
+          (p.title + " " + p.body).toLowerCase().includes(q),
+        );
+        if (!res.length) {
+          print('Sin resultados para "' + q + '"');
+          return;
+        }
+        res.forEach((p) => print(p.slug + "  " + p.title));
+      },
+      stats: () => {
+        print("Posts: " + posts.length);
+        const words = posts.reduce((a, p) => a + p.body.split(/\s+/).length, 0);
+        print("Palabras aprox: " + words);
+        print("Último: " + (posts[0]?.title || "-"));
+      },
+      tree: () => {
+        print("salteadorneo.dev/");
+        print("├── blog/  (" + posts.length + " posts)");
+        print("├── tools/");
+        print("├── console/  (estás aquí)");
+        print("└── ...");
+      },
+      exit: () => {
+        window.location.href = "/";
+      },
+      matrix: () => {
+        let i = 0;
+        const id = setInterval(() => {
+          print(Math.random().toString(36).slice(2, 40));
+          if (++i > 20) clearInterval(id);
+        }, 80);
+      },
+      cowsay: (args) => {
+        const msg = args.join(" ") || "Moo!";
+        print(" " + "_".repeat(msg.length + 2));
+        print("< " + msg + " >");
+        print(" " + "-".repeat(msg.length + 2));
+        print("        \\   ^__^");
+        print("         \\  (oo)\\_______");
+        print("            (__)\\       )\\/\\");
+        print("                ||----w |");
+        print("                ||     ||");
+      },
+    };
+
+    // sudo hire me
+    const sudoHandler = (args) => {
+      if (args.join(" ") === "hire me") {
+        print("🎉 ¡Excelente decisión! Contacta en " + CONTACT.email);
+        print("O abre: " + CONTACT.github);
+      } else {
+        print("sudo: " + args.join(" ") + ": command not found");
+      }
+    };
+
+    function run(line) {
+      line = line.trim();
+      if (!line) return;
+      history.push(line);
+      hIndex = history.length;
+      const parts = line.split(/\s+/);
+      const cmd = parts[0];
+      const args = parts.slice(1);
+      if (cmd === "sudo") {
+        sudoHandler(args);
+        return;
+      }
+      if (commands[cmd]) {
+        try {
+          commands[cmd](args);
+        } catch (e) {
+          print("Error: " + e.message);
+        }
+      } else {
+        print(cmd + ': command not found. Escribe "help".');
+      }
+    }
+
+    term.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const text = term.textContent || "";
+        const idx = text.lastIndexOf(promptStr);
+        const line = idx >= 0 ? text.slice(idx + promptStr.length) : "";
+        // remove the just-typed command line's trailing? keep output starts newline
+        term.textContent = text.replace(/\n?$/, "") + "\n";
+        run(line);
+        prompt();
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        if (hIndex > 0) {
+          hIndex--;
+          const text = term.textContent || "";
+          const idx = text.lastIndexOf(promptStr);
+          const before = idx >= 0 ? text.slice(0, idx + promptStr.length) : "";
+          term.textContent = before + (history[hIndex] || "");
+          caretToEnd();
+        }
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        if (hIndex < history.length - 1) {
+          hIndex++;
+          const text = term.textContent || "";
+          const idx = text.lastIndexOf(promptStr);
+          const before = idx >= 0 ? text.slice(0, idx + promptStr.length) : "";
+          term.textContent = before + (history[hIndex] || "");
+        } else {
+          hIndex = history.length;
+          const text = term.textContent || "";
+          const idx = text.lastIndexOf(promptStr);
+          const before = idx >= 0 ? text.slice(0, idx + promptStr.length) : "";
+          term.textContent = before;
+        }
+        caretToEnd();
+      } else if (e.key === "Tab") {
+        e.preventDefault();
+        const text = term.textContent || "";
+        const idx = text.lastIndexOf(promptStr);
+        const before = idx >= 0 ? text.slice(0, idx + promptStr.length) : "";
+        const typed = idx >= 0 ? text.slice(idx + promptStr.length) : text;
+        const parts = typed.split(/\s+/);
+        const token = parts.pop() || "";
+        if (!token) return;
+        const entries =
+          cwd === "~/blog"
+            ? posts.map((p) => p.slug + ".md")
+            : [
+                "blog/",
+                "tools/",
+                "about.txt",
+                "contact.txt",
+                "secret.txt",
+              ].concat(posts.map((p) => p.slug + ".md"));
+        const matches = entries.filter((e) => e.startsWith(token));
+        if (matches.length === 1) {
+          parts.push(matches[0]);
+          term.textContent =
+            before + parts.join(" ") + (parts.length ? " " : "");
+          caretToEnd();
+        } else if (matches.length > 1) {
+          print(matches.join("  "));
+          // re-add prompt + current typed
+          prompt();
+        }
+      }
+    });
+
+    // prevent editing previous lines: force caret to end
+    term.addEventListener("input", () => {
+      // keep caret at end
+      caretToEnd();
+    });
+
+    // boot
+    print("salteadorneoOS 0.0.1");
+    print('Escribe "help" para empezar. Pista: sudo hire me');
+    print("");
+    prompt();
+    term.focus();
+    caretToEnd();
+  </script>
+</ToolsLayout>

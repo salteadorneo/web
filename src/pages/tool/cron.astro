@@ -1,0 +1,225 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="Cron">
+  <main class="min-h-screen flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-md bg-card border border-border rounded-xl p-6">
+      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">Cron</h1>
+      <div class="grid grid-cols-5 gap-2 mb-4 text-xs">
+        <select
+          id="m"
+          class="px-1 py-2 bg-background border border-border rounded text-foreground"
+        ></select>
+        <select
+          id="h"
+          class="px-1 py-2 bg-background border border-border rounded text-foreground"
+        ></select>
+        <select
+          id="d"
+          class="px-1 py-2 bg-background border border-border rounded text-foreground"
+        ></select>
+        <select
+          id="mo"
+          class="px-1 py-2 bg-background border border-border rounded text-foreground"
+        ></select>
+        <select
+          id="w"
+          class="px-1 py-2 bg-background border border-border rounded text-foreground"
+        ></select>
+      </div>
+      <p class="text-xs text-muted-foreground mb-2 text-center">
+        minuto · hora · día · mes · día semana
+      </p>
+      <input
+        id="expr"
+        class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono mb-3"
+      />
+      <p id="desc" class="text-foreground text-sm mb-3"></p>
+      <button
+        id="copy"
+        class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg"
+      >
+        Copiar
+      </button>
+    </div>
+  </main>
+  <script is:inline>
+    const minuteOpts = [
+      "*",
+      "*/5",
+      "*/10",
+      "*/15",
+      "*/30",
+      ...Array.from({ length: 60 }, (_, i) => String(i)),
+    ];
+    const hourOpts = [
+      "*",
+      "*/2",
+      "*/3",
+      "*/6",
+      ...Array.from({ length: 24 }, (_, i) => String(i)),
+    ];
+    const dayOpts = [
+      "*",
+      "*/2",
+      ...Array.from({ length: 31 }, (_, i) => String(i + 1)),
+    ];
+    const monthOpts = [
+      "*",
+      "*/2",
+      ...Array.from({ length: 12 }, (_, i) => String(i + 1)),
+    ];
+    const weekOpts = [
+      "*",
+      "1-5",
+      "0,6",
+      ...Array.from({ length: 7 }, (_, i) => String(i)),
+    ];
+    const fields = [
+      { id: "m", opts: minuteOpts },
+      { id: "h", opts: hourOpts },
+      { id: "d", opts: dayOpts },
+      { id: "mo", opts: monthOpts },
+      { id: "w", opts: weekOpts },
+    ];
+    const wlabels = {
+      "*": "Cualquier día",
+      "1-5": "Lunes a viernes",
+      "0,6": "Fin de semana",
+      0: "Domingo",
+      1: "Lunes",
+      2: "Martes",
+      3: "Miércoles",
+      4: "Jueves",
+      5: "Viernes",
+      6: "Sábado",
+    };
+    const monthLabels = [
+      "",
+      "Enero",
+      "Febrero",
+      "Marzo",
+      "Abril",
+      "Mayo",
+      "Junio",
+      "Julio",
+      "Agosto",
+      "Septiembre",
+      "Octubre",
+      "Noviembre",
+      "Diciembre",
+    ];
+    fields.forEach((f) => {
+      const s = document.getElementById(f.id);
+      f.opts.forEach((o) => {
+        const opt = document.createElement("option");
+        opt.value = o;
+        if (f.id === "w" && wlabels[o]) opt.textContent = wlabels[o];
+        else if (
+          f.id === "mo" &&
+          !o.startsWith("*") &&
+          !o.startsWith("/") &&
+          monthLabels[+o]
+        )
+          opt.textContent = monthLabels[+o];
+        else opt.textContent = o;
+        s.appendChild(opt);
+      });
+    });
+    const expr = document.getElementById("expr"),
+      desc = document.getElementById("desc");
+    function minuteDesc(v) {
+      if (v === "*") return "cada minuto";
+      if (v.startsWith("*/")) return "cada " + v.slice(2) + " minutos";
+      return "en el minuto " + v;
+    }
+    function hourDesc(v) {
+      if (v === "*") return "cada hora";
+      return "a las " + v + ":00";
+    }
+    function dayDesc(v) {
+      if (v === "*") return "cada día";
+      return "el día " + v + " del mes";
+    }
+    const months = [
+      "",
+      "enero",
+      "febrero",
+      "marzo",
+      "abril",
+      "mayo",
+      "junio",
+      "julio",
+      "agosto",
+      "septiembre",
+      "octubre",
+      "noviembre",
+      "diciembre",
+    ];
+    function monthDesc(v) {
+      if (v === "*") return "todos los meses";
+      return "en " + months[+v];
+    }
+    const wdays = {
+      "*": "cualquier día de la semana",
+      "1-5": "de lunes a viernes",
+      "0,6": "fines de semana",
+      0: "domingos",
+      1: "lunes",
+      2: "martes",
+      3: "miércoles",
+      4: "jueves",
+      5: "viernes",
+      6: "sábados",
+    };
+    function weekDesc(v) {
+      return wdays[v] || "día de semana " + v;
+    }
+    function update() {
+      const parts = fields.map((f) => document.getElementById(f.id).value);
+      expr.value = parts.join(" ");
+      desc.textContent =
+        "Se ejecuta " +
+        minuteDesc(parts[0]) +
+        " " +
+        hourDesc(parts[1]) +
+        ", " +
+        dayDesc(parts[2]) +
+        ", " +
+        monthDesc(parts[3]) +
+        ", " +
+        weekDesc(parts[4]) +
+        ".";
+    }
+    function syncFromExpr() {
+      const parts = expr.value.trim().split(/\s+/);
+      if (parts.length !== 5) return;
+      fields.forEach((f, i) => {
+        const s = document.getElementById(f.id);
+        const v = parts[i];
+        const opt = [...s.options].find((o) => o.value === v);
+        s.value = opt ? v : "";
+      });
+      desc.textContent =
+        "Se ejecuta " +
+        minuteDesc(parts[0]) +
+        " " +
+        hourDesc(parts[1]) +
+        ", " +
+        dayDesc(parts[2]) +
+        ", " +
+        monthDesc(parts[3]) +
+        ", " +
+        weekDesc(parts[4]) +
+        ".";
+    }
+    fields.forEach((f) =>
+      document.getElementById(f.id).addEventListener("change", update),
+    );
+    expr.addEventListener("input", syncFromExpr);
+    document.getElementById("copy").onclick = async () => {
+      await navigator.clipboard.writeText(expr.value);
+    };
+  </script>
+</ToolsLayout>

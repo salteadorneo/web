@@ -1,44 +1,70 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
 
 const groups = [
-  { name: "Generadores", items: [["/pass","Contraseñas"],["/lipsum","Lorem Ipsum"],["/uuid","UUID"],["/random","Aleatorios"]] },
-  { name: "Texto", items: [["/base64","Base64"],["/url","URL"],["/slug","Slug"],["/case","Mayúsculas"],["/markdown","Markdown"]] },
-  { name: "Datos", items: [["/json","JSON"],["/hash","Hash"],["/color","Color"],["/timestamp","Timestamp"],["/jwt","JWT"]] },
-  { name: "Desarrollo", items: [["/regex","Regex"],["/diff","Diff"],["/cron","Cron"]] },
+  {
+    name: "Generadores",
+    items: [
+      ["/tool/pass", "Contraseñas"],
+      ["/tool/lipsum", "Lorem Ipsum"],
+      ["/tool/uuid", "UUID"],
+      ["/tool/random", "Aleatorios"],
+    ],
+  },
+  {
+    name: "Texto",
+    items: [
+      ["/tool/base64", "Base64"],
+      ["/tool/url", "URL"],
+      ["/tool/slug", "Slug"],
+      ["/tool/case", "Mayúsculas"],
+      ["/tool/markdown", "Markdown"],
+    ],
+  },
+  {
+    name: "Datos",
+    items: [
+      ["/tool/json", "JSON"],
+      ["/tool/hash", "Hash"],
+      ["/tool/color", "Color"],
+      ["/tool/timestamp", "Timestamp"],
+      ["/tool/jwt", "JWT"],
+    ],
+  },
+  {
+    name: "Desarrollo",
+    items: [
+      ["/tool/regex", "Regex"],
+      ["/tool/diff", "Diff"],
+      ["/tool/cron", "Cron"],
+    ],
+  },
 ];
 ---
 
-<Layout title="Herramientas" description="Colección de herramientas web gratuitas">
-  <main class="h-screen flex flex-col">
-    <div class="flex-1 grid grid-cols-1 md:grid-cols-[260px_1fr] min-h-0">
-      <nav class="bg-card border-r border-border overflow-y-auto p-4">
-        <h1 class="text-xl font-bold text-foreground mb-4">Herramientas</h1>
-        {groups.map((g) => (
-          <details open class="mb-5">
-            <summary class="text-xs uppercase tracking-widest text-muted-foreground mb-2 px-1 cursor-pointer">{g.name}</summary>
-            <ul class="space-y-1">
-              {g.items.map(([href,label]) => (
-                <li>
-                  <button data-href={href} class="tool-link w-full text-left px-3 py-2 rounded-lg hover:bg-secondary text-foreground text-sm transition-colors">
-                    {label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </details>
-        ))}
-      </nav>
-      <section class="bg-background min-h-0">
-        <iframe id="frame" src="/pass" class="w-full h-full border-0"></iframe>
+<ToolsLayout
+  title="Herramientas"
+  description="Colección de herramientas web gratuitas"
+>
+  <main class="max-w-6xl mx-auto px-6 py-10">
+    {groups.map((g) => (
+      <section class="mb-8">
+        <h2 class="text-xs uppercase tracking-widest text-muted-foreground mb-3">
+          {g.name}
+        </h2>
+        <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+          {g.items.map(([href, label]) => (
+            <li>
+              <a
+                href={href}
+                class="block border border-border bg-card px-4 py-3 text-sm text-foreground hover:border-primary/60 transition-colors text-center"
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </section>
-    </div>
+    ))}
   </main>
-</Layout>
-
-<script is:inline>
-  const frame = document.getElementById("frame");
-  document.querySelectorAll(".tool-link").forEach((btn) => {
-    btn.addEventListener("click", () => { frame.src = btn.dataset.href; });
-  });
-</script>
+</ToolsLayout>

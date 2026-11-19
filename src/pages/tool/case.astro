@@ -1,0 +1,75 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="Case">
+  <main class="min-h-screen flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-md bg-card border border-border rounded-xl p-6">
+      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">
+        Cambio de mayúsculas
+      </h1>
+      <textarea
+        id="in"
+        rows="4"
+        class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3"
+      ></textarea>
+      <div class="flex flex-wrap gap-2 mb-3">
+        <button
+          data-t="upper"
+          class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg"
+        >
+          MAYÚSCULAS
+        </button>
+        <button
+          data-t="lower"
+          class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg"
+        >
+          minúsculas
+        </button>
+        <button
+          data-t="title"
+          class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg"
+        >
+          Título
+        </button>
+        <button
+          data-t="sentence"
+          class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg"
+        >
+          Frase
+        </button>
+      </div>
+      <textarea
+        id="out"
+        readonly
+        rows="4"
+        class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono text-sm"
+      ></textarea>
+    </div>
+  </main>
+  <script is:inline>
+    const i = document.getElementById("in"),
+      o = document.getElementById("out");
+    function title(s) {
+      return s.replace(
+        /\w\S*/g,
+        (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase(),
+      );
+    }
+    function sentence(s) {
+      return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+    }
+    document.querySelectorAll("button[data-t]").forEach(
+      (b) =>
+        (b.onclick = () => {
+          const t = b.dataset.t;
+          let v = i.value;
+          if (t === "upper") v = v.toUpperCase();
+          else if (t === "lower") v = v.toLowerCase();
+          else if (t === "title") v = title(v);
+          else if (t === "sentence") v = sentence(v);
+          o.value = v;
+        }),
+    );
+  </script>
+</ToolsLayout>
