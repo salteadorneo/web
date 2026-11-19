@@ -6,10 +6,10 @@ const groups = [
   {
     name: "Generadores",
     items: [
-      ["/tool/pass", "Contraseñas"],
-      ["/tool/lipsum", "Lorem Ipsum"],
+      ["/tool/pass", "Pass"],
+      ["/tool/lipsum", "Lipsum"],
       ["/tool/uuid", "UUID"],
-      ["/tool/random", "Aleatorios"],
+      ["/tool/random", "Rand"],
     ],
   },
   {
@@ -18,8 +18,8 @@ const groups = [
       ["/tool/base64", "Base64"],
       ["/tool/url", "URL"],
       ["/tool/slug", "Slug"],
-      ["/tool/case", "Mayúsculas"],
-      ["/tool/markdown", "Markdown"],
+      ["/tool/case", "Case"],
+      ["/tool/markdown", "MD"],
     ],
   },
   {
@@ -28,7 +28,7 @@ const groups = [
       ["/tool/json", "JSON"],
       ["/tool/hash", "Hash"],
       ["/tool/color", "Color"],
-      ["/tool/timestamp", "Timestamp"],
+      ["/tool/timestamp", "Time"],
       ["/tool/jwt", "JWT"],
     ],
   },
@@ -47,23 +47,18 @@ const { title, description } = Astro.props;
 
 <Layout title={title} description={description}>
   <Header />
-  <nav class="bg-card border-b border-border overflow-x-auto px-4 py-2">
-    <div class="max-w-6xl mx-auto flex gap-2">
-      {groups.map((g) => (
-        <div class="flex items-center gap-1">
-          <span class="text-xs uppercase tracking-widest text-muted-foreground px-2">
-            {g.name}
-          </span>
-          {g.items.map(([href, label]) => (
-            <a
-              href={href}
-              class="px-3 py-1.5 rounded-lg hover:bg-secondary text-foreground text-sm transition-colors whitespace-nowrap"
-            >
-              {label}
-            </a>
-          ))}
-        </div>
-      ))}
+  <nav class="bg-card border-b border-border overflow-x-auto px-4 py-1">
+    <div class="max-w-6xl mx-auto flex gap-1 sm:justify-center">
+      {groups.map((g) =>
+        g.items.map(([href, label]) => (
+          <a
+            href={href}
+            class="p-3 rounded hover:bg-secondary text-foreground text-xs transition-colors whitespace-nowrap"
+          >
+            {label}
+          </a>
+        )),
+      )}
     </div>
   </nav>
   <slot />
