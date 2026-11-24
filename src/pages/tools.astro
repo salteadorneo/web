@@ -5,56 +5,57 @@ const groups = [
   {
     name: "Generadores",
     items: [
-      ["/tool/pass", "Pass"],
-      ["/tool/lipsum", "Lipsum"],
-      ["/tool/uuid", "UUID"],
-      ["/tool/random", "Rand"],
+      ["/tool/pass", "Pass", "Genera contraseñas seguras en el navegador"],
+      ["/tool/lipsum", "Lipsum", "Genera texto lorem ipsum"],
+      ["/tool/uuid", "UUID", "Genera identificadores UUID v4"],
+      ["/tool/random", "Rand", "Números aleatorios criptográficos"],
     ],
   },
   {
     name: "Texto",
     items: [
-      ["/tool/base64", "Base64"],
-      ["/tool/url", "URL"],
-      ["/tool/slug", "Slug"],
-      ["/tool/case", "Case"],
-      ["/tool/markdown", "MD"],
+      ["/tool/base64", "Base64", "Codifica y decodifica Base64"],
+      ["/tool/url", "URL", "Codifica y decodifica URLs"],
+      ["/tool/slug", "Slug", "Convierte texto a slug URL"],
+      ["/tool/case", "Case", "Cambia mayúsculas/minúsculas"],
+      ["/tool/markdown", "MD", "Previsualiza Markdown"],
     ],
   },
   {
     name: "Datos",
     items: [
-      ["/tool/json", "JSON"],
-      ["/tool/hash", "Hash"],
-      ["/tool/color", "Color"],
-      ["/tool/timestamp", "Time"],
-      ["/tool/jwt", "JWT"],
+      ["/tool/json", "JSON", "Formatea y valida JSON"],
+      ["/tool/hash", "Hash", "Calcula hashes criptográficos"],
+      ["/tool/color", "Color", "Convierte entre formatos de color"],
+      ["/tool/timestamp", "Time", "Convierte timestamps Unix"],
+      ["/tool/jwt", "JWT", "Decodifica tokens JWT"],
     ],
   },
   {
     name: "Desarrollo",
     items: [
-      ["/tool/regex", "Regex"],
-      ["/tool/diff", "Diff"],
-      ["/tool/cron", "Cron"],
+      ["/tool/regex", "Regex", "Prueba expresiones regulares"],
+      ["/tool/diff", "Diff", "Compara dos textos"],
+      ["/tool/cron", "Cron", "Interpreta expresiones cron"],
     ],
   },
   {
     name: "Seguridad",
     items: [
-      ["/tool/payloads", "Payloads"],
-      ["/tool/subdomains", "Subdomains"],
-      ["/tool/breach", "Breach"],
-      ["/tool/hashid", "HashID"],
-      ["/tool/csp", "CSP"],
-      ["/tool/revshell", "RevShell"],
-      ["/tool/encoder", "Encoder"],
-      ["/tool/jwtforge", "JWT Forge"],
-      ["/tool/recon", "Recon"],
-      ["/tool/xssplay", "XSS Play"],
-      ["/tool/fuzzer", "Fuzzer"],
-      ["/tool/corstest", "CORS"],
-      ["/tool/myip", "My IP"],
+      ["/tool/payloads", "Payloads", "Payloads comunes de pentest"],
+      ["/tool/subdomains", "Subdomains", "Enumera subdominios via CT"],
+      ["/tool/breach", "Breach", "Comprueba contraseñas filtradas"],
+      ["/tool/hashid", "HashID", "Identifica el tipo de hash"],
+      ["/tool/csp", "CSP", "Genera políticas CSP"],
+      ["/tool/revshell", "RevShell", "Genera reverse shells"],
+      ["/tool/encoder", "Encoder", "Codifica/decodifica varios formatos"],
+      ["/tool/jwtforge", "JWT Forge", "Firma tokens JWT (HS256)"],
+      ["/tool/recon", "Recon", "Información de IP y DNS"],
+      ["/tool/xssplay", "XSS Play", "Prueba sanitización XSS"],
+      ["/tool/fuzzer", "Fuzzer", "Genera URLs con payloads"],
+      ["/tool/corstest", "CORS", "Prueba configuración CORS"],
+      ["/tool/ports", "Ports", "Comprueba puertos abiertos"],
+      ["/tool/myip", "My IP", "Muestra tu IP pública"],
     ],
   },
 ];
@@ -70,14 +71,17 @@ const groups = [
         <h2 class="text-xs uppercase tracking-widest text-muted-foreground mb-3">
           {g.name}
         </h2>
-        <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-          {g.items.map(([href, label]) => (
+        <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+          {g.items.map(([href, label, desc]) => (
             <li>
               <a
                 href={href}
-                class="block border border-border bg-card px-4 py-3 text-sm text-foreground hover:border-primary/60 transition-colors text-center"
+                class="block border border-border bg-card px-4 py-3 text-sm text-foreground hover:border-primary/60 transition-colors"
               >
-                {label}
+                <span class="font-medium">{label}</span>
+                {desc && (
+                  <span class="block text-xs text-muted-foreground mt-1">{desc}</span>
+                )}
               </a>
             </li>
           ))}
