@@ -1,0 +1,33 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="Subdomains" description="Enumeración de subdominios via Certificate Transparency (crt.sh)">
+  <main class="min-h-0 flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-2xl bg-card border border-border rounded-xl p-6">
+      <p class="text-xs text-muted-foreground mb-3 text-center">
+        Usa una API externa (crt.sh). Los datos se envían a un tercero.
+      </p>
+      <div class="flex gap-2 mb-3">
+        <input id="domain" placeholder="example.com" class="flex-1 px-3 py-2 bg-background border border-border rounded-lg text-foreground" />
+        <button id="run" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg">Buscar</button>
+      </div>
+      <textarea id="out" rows="16" readonly class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono text-sm"></textarea>
+    </div>
+  </main>
+  <script is:inline>
+    document.getElementById("run").onclick = async () => {
+      const d = document.getElementById("domain").value.trim();
+      const out = document.getElementById("out");
+      out.value = "Buscando...";
+      try {
+        const r = await fetch("https://crt.sh/?q=%25." + encodeURIComponent(d) + "&output=json");
+        const j = await r.json();
+        const set = new Set(j.map((e) => e.name_value).flatMap((v) => v.split("\n")));
+        out.value = [...set].sort().join("\n");
+      } catch (e) {
+        out.value = "Error: " + e.message;
+      }
+    };
+  </script>
+</ToolsLayout>

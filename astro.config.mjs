@@ -39,6 +39,19 @@ export default defineConfig({
     '/slug': '/tool/slug',
     '/timestamp': '/tool/timestamp',
     '/url': '/tool/url',
-    '/uuid': '/tool/uuid'
+    '/uuid': '/tool/uuid',
+    '/payloads': '/tool/payloads',
+    '/subdomains': '/tool/subdomains',
+    '/breach': '/tool/breach',
+    '/hashid': '/tool/hashid',
+    '/csp': '/tool/csp',
+    '/revshell': '/tool/revshell',
+    '/encoder': '/tool/encoder',
+    '/jwtforge': '/tool/jwtforge',
+    '/recon': '/tool/recon',
+    '/xssplay': '/tool/xssplay',
+    '/fuzzer': '/tool/fuzzer',
+    '/corstest': '/tool/corstest',
+    '/myip': '/tool/myip'
   }
 })

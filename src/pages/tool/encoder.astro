@@ -1,0 +1,40 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="Encoder" description="Encoder/decoder multi-formato">
+  <main class="min-h-0 flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-2xl bg-card border border-border rounded-xl p-6">
+      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">Encoder / Decoder</h1>
+      <textarea id="in" rows="4" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3"></textarea>
+      <div class="flex gap-2 mb-3 flex-wrap">
+        <button data-op="b64e" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg text-sm">B64 Enc</button>
+        <button data-op="b64d" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg text-sm">B64 Dec</button>
+        <button data-op="urle" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg text-sm">URL Enc</button>
+        <button data-op="urld" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg text-sm">URL Dec</button>
+        <button data-op="hexe" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg text-sm">Hex Enc</button>
+        <button data-op="hexd" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg text-sm">Hex Dec</button>
+        <button data-op="htmle" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg text-sm">HTML Enc</button>
+      </div>
+      <textarea id="out" rows="4" readonly class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono text-sm"></textarea>
+    </div>
+  </main>
+  <script is:inline>
+    const i = document.getElementById("in"), o = document.getElementById("out");
+    const ops = {
+      b64e: (s) => btoa(unescape(encodeURIComponent(s))),
+      b64d: (s) => decodeURIComponent(escape(atob(s))),
+      urle: (s) => encodeURIComponent(s),
+      urld: (s) => decodeURIComponent(s),
+      hexe: (s) => [...new TextEncoder().encode(s)].map(b=>b.toString(16).padStart(2,"0")).join(""),
+      hexd: (s) => new TextDecoder().decode(new Uint8Array(s.match(/.{1,2}/g).map(b=>parseInt(b,16)))),
+      htmle: (s) => s.replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])),
+    };
+    document.querySelectorAll("button[data-op]").forEach(b => {
+      b.onclick = () => {
+        try { o.value = ops[b.dataset.op](i.value); }
+        catch (e) { o.value = "Error: " + e.message; }
+      };
+    });
+  </script>
+</ToolsLayout>

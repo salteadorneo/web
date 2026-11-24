@@ -1,0 +1,41 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="CSP" description="Generador de Content-Security-Policy">
+  <main class="min-h-0 flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-2xl bg-card border border-border rounded-xl p-6">
+      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">CSP Builder</h1>
+      <div class="space-y-2 mb-3">
+        <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="self" checked> 'self'</label>
+        <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="inline" > 'unsafe-inline'</label>
+        <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="eval" > 'unsafe-eval'</label>
+      </div>
+      <input id="extra" placeholder="dominios extra (espacio)" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3 text-sm" />
+      <textarea id="out" rows="4" readonly class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono text-sm mb-3"></textarea>
+      <button id="copy" class="px-3 py-2 bg-secondary text-secondary-foreground rounded-lg">Copiar</button>
+    </div>
+  </main>
+  <script is:inline>
+    function build() {
+      const parts = [];
+      if (document.getElementById("self").checked) parts.push("'self'");
+      if (document.getElementById("inline").checked) parts.push("'unsafe-inline'");
+      if (document.getElementById("eval").checked) parts.push("'unsafe-eval'");
+      const extra = document.getElementById("extra").value.trim().split(/\s+/).filter(Boolean);
+      parts.push(...extra);
+      const v = parts.join(" ");
+      document.getElementById("out").value = "default-src " + v + "; script-src " + v + "; style-src " + v + "; img-src " + v + " data:; font-src " + v + ";";
+    }
+    ["self","inline","eval","extra"].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener("input", build);
+      el.addEventListener("change", build);
+    });
+    build();
+    document.getElementById("copy").onclick = async () => {
+      await navigator.clipboard.writeText(document.getElementById("out").value);
+      const b = document.getElementById("copy"); b.textContent="Copiado"; setTimeout(()=>b.textContent="Copiar",1500);
+    };
+  </script>
+</ToolsLayout>

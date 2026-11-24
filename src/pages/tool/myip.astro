@@ -1,0 +1,29 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="My IP" description="Muestra tu IP pública">
+  <main class="min-h-0 flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-md bg-card border border-border rounded-xl p-6">
+      <p class="text-xs text-muted-foreground mb-3 text-center">
+        Usa APIs externas (ipify.org, ipapi.co). Tu IP se envía a terceros.
+      </p>
+      <div id="ip" class="text-3xl font-mono text-center mb-4">...</div>
+      <pre id="info" class="text-xs text-foreground whitespace-pre-wrap"></pre>
+    </div>
+  </main>
+  <script is:inline>
+    (async () => {
+      try {
+        const r = await fetch("https://api.ipify.org?format=json");
+        const j = await r.json();
+        document.getElementById("ip").textContent = j.ip;
+        const r2 = await fetch("https://ipapi.co/" + j.ip + "/json/");
+        const j2 = await r2.json();
+        document.getElementById("info").textContent = JSON.stringify(j2, null, 2);
+      } catch (e) {
+        document.getElementById("ip").textContent = "Error";
+      }
+    })();
+  </script>
+</ToolsLayout>

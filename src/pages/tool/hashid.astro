@@ -1,0 +1,37 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="Hash ID" description="Identificador de tipo de hash">
+  <main class="min-h-0 flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-md bg-card border border-border rounded-xl p-6">
+      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">Hash ID</h1>
+      <input id="h" placeholder="hash" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3 font-mono text-sm" />
+      <div id="res" class="text-sm text-foreground whitespace-pre-wrap"></div>
+    </div>
+  </main>
+  <script is:inline>
+    function identify(h) {
+      h = h.trim();
+      const L = h.length;
+      const res = [];
+      if (/^[0-9a-f]+$/i.test(h)) {
+        if (L === 32) res.push("MD5 / NTLM / MD4");
+        if (L === 40) res.push("SHA-1");
+        if (L === 56) res.push("SHA-224");
+        if (L === 64) res.push("SHA-256");
+        if (L === 96) res.push("SHA-384");
+        if (L === 128) res.push("SHA-512");
+      }
+      if (/^\$2[aby]\$/.test(h)) res.push("bcrypt");
+      if (/^\$argon2/.test(h)) res.push("Argon2");
+      if (/^\$scrypt\$/.test(h)) res.push("scrypt");
+      if (/^[0-9a-f]{8}-[0-9a-f]{4}-/.test(h)) res.push("UUID");
+      if (!res.length) res.push("Desconocido");
+      return res.join("\n");
+    }
+    const h = document.getElementById("h");
+    const res = document.getElementById("res");
+    h.addEventListener("input", () => { res.textContent = identify(h.value); });
+  </script>
+</ToolsLayout>

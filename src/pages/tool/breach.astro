@@ -1,0 +1,43 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="Breach" description="Comprobación de contraseñas filtradas (HIBP k-anonymity)">
+  <main class="min-h-0 flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-md bg-card border border-border rounded-xl p-6">
+      <p class="text-xs text-muted-foreground mb-3 text-center">
+        Usa la API de Have I Been Pwned (k-anonymity). Solo se envía un prefijo del hash.
+      </p>
+      <input id="pw" type="password" placeholder="contraseña" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3" />
+      <button id="run" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg mb-3">Comprobar</button>
+      <div id="res" class="text-sm text-foreground"></div>
+    </div>
+  </main>
+  <script is:inline>
+    async function sha1(s) {
+      const buf = await crypto.subtle.digest("SHA-1", new TextEncoder().encode(s));
+      return [...new Uint8Array(buf)].map((b) => b.toString(16).padStart(2, "0")).join("").toUpperCase();
+    }
+    document.getElementById("run").onclick = async () => {
+      const pw = document.getElementById("pw").value;
+      const res = document.getElementById("res");
+      res.textContent = "Comprobando...";
+      const h = await sha1(pw);
+      const prefix = h.slice(0, 5);
+      const suffix = h.slice(5);
+      try {
+        const r = await fetch("https://api.pwnedpasswords.com/range/" + prefix);
+        const text = await r.text();
+        const match = text.split("\n").find((l) => l.startsWith(suffix));
+        if (match) {
+          const count = match.split(":")[1].trim();
+          res.textContent = "Filtrada " + count + " veces.";
+        } else {
+          res.textContent = "No encontrada en brechas conocidas.";
+        }
+      } catch (e) {
+        res.textContent = "Error: " + e.message;
+      }
+    };
+  </script>
+</ToolsLayout>

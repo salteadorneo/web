@@ -1,0 +1,40 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="Recon" description="IP info y DNS lookup">
+  <main class="min-h-0 flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-2xl bg-card border border-border rounded-xl p-6">
+      <p class="text-xs text-muted-foreground mb-3 text-center">
+        Usa APIs externas (ipapi.co, dns.google). Los datos se envían a terceros.
+      </p>
+      <div class="flex gap-2 mb-3">
+        <input id="q" placeholder="dominio o IP" class="flex-1 px-3 py-2 bg-background border border-border rounded-lg text-foreground" />
+        <button id="ipinfo" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg text-sm">IP Info</button>
+        <button id="dns" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg text-sm">DNS</button>
+      </div>
+      <textarea id="out" rows="16" readonly class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono text-sm"></textarea>
+    </div>
+  </main>
+  <script is:inline>
+    const out = document.getElementById("out");
+    document.getElementById("ipinfo").onclick = async () => {
+      const q = document.getElementById("q").value.trim();
+      out.value = "Consultando...";
+      try {
+        const r = await fetch("https://ipapi.co/" + encodeURIComponent(q) + "/json/");
+        const j = await r.json();
+        out.value = JSON.stringify(j, null, 2);
+      } catch (e) { out.value = "Error: " + e.message; }
+    };
+    document.getElementById("dns").onclick = async () => {
+      const q = document.getElementById("q").value.trim();
+      out.value = "Consultando...";
+      try {
+        const r = await fetch("https://dns.google/resolve?name=" + encodeURIComponent(q) + "&type=A");
+        const j = await r.json();
+        out.value = JSON.stringify(j, null, 2);
+      } catch (e) { out.value = "Error: " + e.message; }
+    };
+  </script>
+</ToolsLayout>

@@ -1,0 +1,25 @@
+---
+import ToolsLayout from "@/layouts/ToolsLayout.astro";
+---
+
+<ToolsLayout title="Fuzzer" description="Generador de variantes de parámetros">
+  <main class="min-h-0 flex items-center justify-center px-4 py-8">
+    <div class="w-full max-w-2xl bg-card border border-border rounded-xl p-6">
+      <h1 class="text-2xl font-bold text-foreground mb-4 text-center">Param Fuzzer</h1>
+      <input id="base" placeholder="https://target.com/page?id=1" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3" />
+      <textarea id="payloads" rows="6" class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground mb-3" placeholder="1\n2\n' OR 1=1"></textarea>
+      <button id="run" class="px-3 py-2 bg-primary text-primary-foreground rounded-lg mb-3">Generar</button>
+      <textarea id="out" rows="12" readonly class="w-full px-3 py-2 bg-background border border-border rounded-lg text-foreground font-mono text-sm"></textarea>
+    </div>
+  </main>
+  <script is:inline>
+    document.getElementById("run").onclick = () => {
+      const base = document.getElementById("base").value;
+      const pls = document.getElementById("payloads").value.split("\n").map(s=>s.trim()).filter(Boolean);
+      const url = new URL(base);
+      const param = [...url.searchParams.keys()][0];
+      const out = pls.map(p => { const u = new URL(base); u.searchParams.set(param, p); return u.toString(); }).join("\n");
+      document.getElementById("out").value = out;
+    };
+  </script>
+</ToolsLayout>
