@@ -52,6 +52,7 @@ export default defineConfig({
     '/xssplay': '/tool/xssplay',
     '/fuzzer': '/tool/fuzzer',
     '/corstest': '/tool/corstest',
-    '/myip': '/tool/myip'
+    '/myip': '/tool/myip',
+    '/ports': '/tool/ports'
   }
 })
