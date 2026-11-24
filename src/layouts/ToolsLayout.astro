@@ -3,77 +3,11 @@ import Shortcuts from "@components/Shortcuts.astro";
 import Layout from "./Layout.astro";
 import Header from "@components/Header.astro";
 
-const groups = [
-  {
-    name: "Generadores",
-    items: [
-      ["/tool/pass", "Pass"],
-      ["/tool/lipsum", "Lipsum"],
-      ["/tool/uuid", "UUID"],
-      ["/tool/random", "Rand"],
-    ],
-  },
-  {
-    name: "Texto",
-    items: [
-      ["/tool/base64", "Base64"],
-      ["/tool/url", "URL"],
-      ["/tool/slug", "Slug"],
-      ["/tool/case", "Case"],
-      ["/tool/markdown", "MD"],
-    ],
-  },
-  {
-    name: "Datos",
-    items: [
-      ["/tool/json", "JSON"],
-      ["/tool/hash", "Hash"],
-      ["/tool/color", "Color"],
-      ["/tool/timestamp", "Time"],
-      ["/tool/jwt", "JWT"],
-    ],
-  },
-  {
-    name: "Desarrollo",
-    items: [
-      ["/tool/regex", "Regex"],
-      ["/tool/diff", "Diff"],
-      ["/tool/cron", "Cron"],
-    ],
-  },
-];
-
 const { title, description } = Astro.props;
 ---
 
 <Layout title={title} description={description}>
   <Header />
   <Shortcuts />
-  <nav class="bg-card border-y border-border overflow-x-auto px-4 py-1 md:mt-2">
-    <div class="max-w-4xl mx-auto flex gap-1 md:justify-center">
-      {groups.map((g) =>
-        g.items.map(([href, label]) => (
-          <a
-            href={href}
-            class="px-2 py-3 rounded hover:bg-secondary text-foreground text-xs transition-colors whitespace-nowrap"
-          >
-            {label}
-          </a>
-        )),
-      )}
-    </div>
-  </nav>
   <slot />
-  <script is:inline>
-    const path = window.location.pathname.replace(/\/$/, "");
-    const nav = document.querySelector("nav.bg-card.border-b");
-    const links = nav ? nav.querySelectorAll("a") : [];
-    links.forEach((a) => {
-      const href = a.getAttribute("href");
-      if (href && href.replace(/\/$/, "") === path) {
-        a.classList.add("bg-secondary");
-        a.scrollIntoView({ inline: "center", block: "nearest" });
-      }
-    });
-  </script>
 </Layout>
